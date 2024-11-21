@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap');
+
+.informationtextContainer{
+display: flex;
+ align-items: center;
+ justify-content: space-around;
+ margin-top: 30px;
+ padding: 0 30px 0 30px; 
+
+}
+
+.infotext{
+    width: 629px;
+    height: auto;   
+}
+.infotextheading{
+
+font-family: Roboto;
+font-size: 36px;
+font-weight: 600;
+line-height: 42.19px;
+letter-spacing: 0.5px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
+.infotextbody{
+font-family: Manrope;
+font-size: 20px;
+font-weight: 400;
+line-height: var(--TitleLargeLineHeight);
+letter-spacing: 0.20000000298023224px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
+.readMoreButton{
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 4px;
+   padding: 8px 0 8px 0;
+   height: 49px;
+   border-radius: 5px;
+   border: none;
+   background: none;
+
+}
+.readMoreButton span{
+font-family: Roboto;
+font-size: 18px;
+font-weight: 600;
+line-height: 27px;
+letter-spacing: 0.4000000059604645px;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
+.infoimgBox{
+width: 567px;
+height: 328px;
+gap: 0px;
+border-radius: 12px 0px 0px 0px;
+opacity: 1px;
+margin-left: 62px;
+
+
+}
+.infoimg{
+    width: 100%;
+    height: 100%; 
+}
+
+
+
+
+    @media (max-width: 764px) {
+        .sectionOneContainer{
+            display: flex;
+            gap:24px;
+            padding:24px 16px 24px 16px;
+        }
+        .informationtextContainer{
+           flex-direction: column;
+            height: auto;
+            margin:0;
+            padding: 0;
+            gap: 20px;
+            width: 100%;
+            align-items: center;
+    
+            }
+            .infotextheading{
+                font-size: 24px;
+                padding:0;
+            }
+
+    .infotextbody{
+        font-size: 16px;
+    }
+            .infotext,
+            .infoimgBox {
+                width: 100%;
+                margin: 0;
+            }
+        
+            .infoimgBox {
+                height: auto; 
+                border-radius: 10px; 
+            }
+        
+            .infoimg {
+                width: 100%;
+                height: auto; 
+            }
+            .readMoreButton span{
+                font-size: 16px;
+            }
+    }
+    

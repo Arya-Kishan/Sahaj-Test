@@ -1,0 +1,144 @@
+
+.container {
+    background-color: #f3f4f6;
+    font-family: Roboto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 100px 40px 100px;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.headerTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+.title {
+    font-size: 1.875rem;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 1.125rem;
+    margin-top: 0.5rem;
+}
+
+.highlight {
+    font-weight: bold;
+}
+
+.downloadButton {
+    width: 222px;
+    height: 59px;
+    background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
+    color: #FFFFFF;
+    font-weight: 500;
+    padding: 16px 48px 16px 48px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.mainContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+
+.videoContainer {
+    width: 600px;
+   height: 656px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.videoImage {
+    width: 600px;
+    height: 656px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.playButton {
+    position: absolute;
+    /* inset: 0; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #f8db75;
+    cursor: pointer;
+}
+
+.stepsContainer {
+    width: 100%;
+    max-width: 600px;
+}
+
+.stepTitle {
+    color: #f8db75;
+    font-weight: bold;
+}
+
+.stepSubtitle {
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.stepText {
+    margin-top: 0.5rem;
+    color: #4a5568;
+    padding-left: 1.5rem;
+}
+
+.learnMoreButton {
+    background-color: black;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+}
+
+.footer {
+    background-color: #292929;
+    color: white;
+    padding: 40px 100px 40px 100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.statNumber {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.statTitle {
+    margin: 0;
+    color: #C18823;
+}
+
+.statDescription {
+    font-size: 0.875rem;
+    color: #FFFFFF;
+}

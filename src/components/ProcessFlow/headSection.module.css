@@ -1,0 +1,26 @@
+.processFlowHeading{
+    padding: 60px 0px;
+    gap: 62px;
+    opacity: 0px;
+    background: black;
+    color:white;
+   
+}
+.processFlowHeading p{
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56.25px;
+    text-align: center;
+}
+
+
+@media (max-width: 768px) { 
+    .processFlowHeading p{
+        font-family: Roboto;
+        font-size: 28px;
+        font-weight: 500;
+
+    }
+}
+

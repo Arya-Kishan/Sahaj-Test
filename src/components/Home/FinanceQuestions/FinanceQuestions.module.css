@@ -1,0 +1,149 @@
+.container {
+  background: linear-gradient(0deg, #FFFFFF, #FFFFFF),
+    linear-gradient(0deg, rgba(193, 136, 35, 0.06), rgba(193, 136, 35, 0.06));
+
+  padding: 60px 100px 60px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 40px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: Roboto;
+  color: #000000;
+}
+
+.cardsContainer {
+  font-family: Roboto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #000000;
+  color: #ffff;
+  width: 289px;
+  height: 410px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.question {
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.container2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 100px 40px 100px;
+  background-color: #FFFFFF;
+  font-family: Roboto;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 24px;
+}
+
+.headsection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #000000;
+}
+
+.title2 {
+
+  color: #000000;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.service {
+  display: flex;
+  gap: 13px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-top: 5px;
+  /* background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%); */
+  color: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
+
+}
+
+.serviceTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  color: #000000;
+}
+
+.serviceDescription {
+  margin: 0;
+  color: #000000BF;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.viewServicesButton {
+  width: 213px;
+  height: 59px;
+  background-color: #000;
+  color: #FFFFFF;
+  padding: 16px 48px 16px 48px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.bookCallButton {
+  width: 189px;
+  height: 59px;
+  background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
+  color: #FFFFFF;
+  padding: 16px 48px 16px 48px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.imageSection {
+  flex: 1;
+}
+
+.image {
+  max-width: 100%;
+  border-radius: 10px;
+}
