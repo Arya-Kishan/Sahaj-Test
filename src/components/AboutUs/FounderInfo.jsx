@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import founderimg from '../../assests/AboutUs/founderimg.webp'; 
 import linkdinicon from '../../assests/AboutUs/LinkedinIcon.webp';
-import ReadMore from "../ReadMore/ReadMoreButton";
+import ReadMore from "../ReadMoreButton/ReadMoreButton";
 import styles from './founder.module.css';
 
 const FounderInfo=()=>{

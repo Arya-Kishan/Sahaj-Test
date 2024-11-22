@@ -42,8 +42,6 @@
     line-height: 27px;
     letter-spacing: 0.4px;
     text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
     background:none;
     width:90px;
   }
@@ -69,37 +67,14 @@
     line-height: 42.19px;
     letter-spacing: 0.5px;
     text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
 
   }
 
-  .readMoreButton{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 4px;
-    padding: 8px 0 8px 0;
-    height: 49px;
-    border-radius: 5px;
-    border: none;
-    background: none;
- }
 
- .readMoreButton span{
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 27px;
-    letter-spacing: 0.4px;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
- 
- }
   .cardContainer {
     display: flex;
     gap: 32px;
+    justify-content: space-between;
     margin-bottom:30px;
   }
 
@@ -134,17 +109,7 @@
       font-size: 12px;
       font-weight: 300;
     }
-    .readMoreButton span{
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 24px;
-        letter-spacing: 0.4px;
-    }
     
-    .readMoreButton span{
-      font-size: 16px;
-      line-height: 24px;
-    }
     .logo{
       width:108px;
       height:40px;

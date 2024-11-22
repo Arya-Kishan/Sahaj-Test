@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import companyInfoImg from '../../assests/AboutUs/companyInfoImg.webp';
-import ReadMore from "../ReadMore/ReadMoreButton";
+import ReadMore from "../ReadMoreButton/ReadMoreButton";
 import styles from './sectionone.module.css';
 
 const SectionOne=()=>{

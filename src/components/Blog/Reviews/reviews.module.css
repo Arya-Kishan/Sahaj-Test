@@ -1,5 +1,4 @@
 
-
 .reviewSection {
   display: flex;
   flex-direction: column;
@@ -44,8 +43,6 @@ font-size: 32px;
 font-weight: 500;
 line-height: 40.32px;
 text-align: left;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
 
 }
 

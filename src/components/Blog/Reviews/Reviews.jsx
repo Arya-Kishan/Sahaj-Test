@@ -1,9 +1,9 @@
 "use client"
 import styles from './reviews.module.css';
 import Image from 'next/image';
-import GoogleIcon from '../../assests/Blog/GoogleIcon.webp';
-import LinkdinIcon from '../../assests/Blog/LinkedinIcon.webp';
-import starIcon from '../../assests/Blog/starIcon.webp';
+import GoogleIcon from '../../../assests/Blog/GoogleIcon.webp';
+import LinkdinIcon from '../../../assests/Blog/LinkedinIcon.webp';
+import starIcon from '../../../assests/Blog/starIcon.webp';
 const Reviews = () => {
   return (
   

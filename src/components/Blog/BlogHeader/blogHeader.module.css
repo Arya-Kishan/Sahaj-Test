@@ -23,14 +23,14 @@
     gap:12px;
 }
 .infoHeadingMaintext{
-font-family: Roboto;
-font-size: 48px;
-font-weight: 700;
-line-height: 56.25px;
-text-align: left;
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56.25px;
+    text-align: left;
 
 }
-p{
+.infoHeading p{
     margin:0;
     padding:0;
 }

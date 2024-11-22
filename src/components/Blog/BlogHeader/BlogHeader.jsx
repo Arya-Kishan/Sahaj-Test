@@ -1,6 +1,9 @@
+"use client"
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import styles from './blogHeader.module.css';
-import backIcon from '../../assests/Blog/backIcon.svg';
+import backIcon from '../../../assests/Blog/backIcon.svg';
 
 const BlogHeader=()=>{
     return(
@@ -9,13 +12,13 @@ const BlogHeader=()=>{
                 <div className={styles.InfoContanier}>
                   <div className={styles.gobackContainer}>
                     <div className={styles.gobackIconBox}>
-                    <img src={backIcon} alt="backIcon" className={styles.gobackIcon}/>
+                    <Image src={backIcon} alt="backIcon" className={styles.gobackIcon}/>
                     </div>
                    
 
-                    <a href="#" target="_blank" className={styles.gobackLinkText} rel="noopener noreferrer" >
+                    <Link href="#" target="_blank" className={styles.gobackLinkText} rel="noopener noreferrer" >
                         Back to Blogs
-                    </a>
+                    </Link>
                    </div>
                     <div className={styles.infoHeading}>
                         <p className={styles.infoHeadingMaintext}>
