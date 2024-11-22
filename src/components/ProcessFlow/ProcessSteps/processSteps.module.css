@@ -111,7 +111,7 @@
     font-size: 12px;
     color: #fff;
     background: #222;
-    width:200px;
+    width:205px;
     margin-top: -10px;
     /* margin-left: 10.42vw; */
     margin-left: 30%;
@@ -164,7 +164,7 @@
  
   @media (max-width: 768px) { 
     .processContainer{
-      padding: 24px 16px 24px 16px;
+      padding: 24px 16px ;
       gap: 32px;
       opacity: 0px;
     }
@@ -174,7 +174,7 @@
       .processSteps{
         flex-direction: row;
 
-        padding: 40px 0px 40px 0px;
+        padding: 40px 0px ;
         gap: 32px;
         border-radius: 24px;
 
@@ -182,7 +182,7 @@
       .stepHeader{
         display: flex;
         flex-direction: column;
-        height:650px;
+        height:735px;
         padding: 60px 0px;
       }
       .stepDesccriptionContainer{
@@ -208,8 +208,8 @@
         font-size: 12px;
         color: #fff;
         background: #222;
-        width:200px;
-        margin-top: 175px;
+        width:205px;
+        margin-top: 165px;
         padding: 10px 40px ;
         border-radius: 22px;
         border: 1px  solid white;

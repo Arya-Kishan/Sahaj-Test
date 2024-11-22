@@ -1,5 +1,6 @@
 import React from 'react';
-import support from '../../assests/ProcessFlow/support.webp';
+import support from '../../../assests/ProcessFlow/support.webp';
+import Image from "next/image";
 import styles from './support.module.css'
 
 function Support() {
@@ -14,7 +15,7 @@ function Support() {
                 </ul>
             </div>
             <div className={styles.imageSection}>
-                <img src={support} alt="Example" className={styles.image} />
+                <Image src={support} alt="Example" className={styles.image} />
             </div>
        </div>
 
