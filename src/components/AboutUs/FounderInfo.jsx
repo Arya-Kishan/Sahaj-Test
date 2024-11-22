@@ -1,7 +1,9 @@
+"use client"
 import React from "react";
+import Image from "next/image";
 import founderimg from '../../assests/AboutUs/founderimg.webp'; 
 import linkdinicon from '../../assests/AboutUs/LinkedinIcon.webp';
-import arrowUpRight from '../../assests/AboutUs/arrowUpRight.svg';
+import ReadMore from "../ReadMore/ReadMoreButton";
 import styles from './founder.module.css';
 
 const FounderInfo=()=>{
@@ -20,24 +22,21 @@ const FounderInfo=()=>{
                           approaches every client with the same passion and personalized attention 
                           as if it were our own
                         </p>
-
-                        <button class={styles.readMoreButton}>
-                            <span>Read Our Story</span>
-                            <img src={arrowUpRight} alt="icon" class="icon" />
-                        </button>
+                        <ReadMore text={"Read Our Story"} />
+                        
                 
                 </div>
 
                 <div className={styles.founderinfoimg}>
                     <div className={styles.founderimg}>
-                        <img  src={founderimg} alt="FounderImage"/>
+                        <Image  src={founderimg} alt="FounderImage"/>
                     </div>
                     <div className={styles.founderSocials}>
                        <p className={styles.founderSocialsName}>Abhishek</p>
                        <p className={styles.founderSocialsInfo}>Founder of</p>
                        <p className={styles.founderSocialsCompany}>SahajMoney&reg;</p>
                        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-                       <img  src={linkdinicon} alt="linkdinIcon"/> </a>
+                       <Image  src={linkdinicon} alt="linkdinIcon"/> </a>
                     </div>
                     
                 </div>

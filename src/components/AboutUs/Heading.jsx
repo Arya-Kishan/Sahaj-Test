@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from './heading.module.css';
 import logo from '../../assests/AboutUs/logo.webp';
 
@@ -11,10 +12,9 @@ const Heading=()=>{
                             Empower your finances with
                         </p>
                         <div className={styles.infoHeadingLogo}>
-                           <img  src={logo} className={styles.infoHeadingLogoImg} alt="CompanyLogo"/>
+                           <Image  src={logo} className={styles.infoHeadingLogoImg} alt="CompanyLogo"/>
                         </div>
-                       
-                   
+                      
                     </div>
                 
             </div>

@@ -19,7 +19,7 @@
     height: 163px;
     color: white;
     text-align: center;
-    padding: 60px 0px 60px 0px;
+    padding: 60px 0px ;
 }
 .clientsReviewinfoLogo{
     display:inline-block;
@@ -43,12 +43,10 @@ font-weight: 600;
 line-height: 42.19px;
 letter-spacing: 0.5px;
 text-align: center;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
 margin: 0;
 }
 
-@media (max-width: 764px) {
+@media (max-width: 768px) {
     .clientsReviewImgbox{
         min-width: 300px;
         min-height: 500px;

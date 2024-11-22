@@ -31,9 +31,9 @@ const SuggestionCardList = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={styles.heading}>You may also like</h2>
-        <button class={styles.readMoreButton}>
+        <button className={styles.readMoreButton}>
              <span>View all</span>
-             <img src={arrowUpRight} alt="icon" class="icon" />
+             <img src={arrowUpRight} alt="icon" className="icon" />
          </button>
       </div>
       <div className={styles.cardContainer}>
