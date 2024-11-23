@@ -17,6 +17,7 @@
 }
   
 .tabButton {
+    cursor: pointer;
     font-family: Roboto;
     max-width: 210px;
     font-size: 36px;
@@ -29,9 +30,10 @@
 }
   
 .tabButtonActive {
+    cursor: pointer;
     color: #C18823;
     font-family: Roboto;
-    max-width: 210px;
+    width: 240px;
     font-size: 36px;
     font-weight: 600;
     line-height: 42.19px;
@@ -83,26 +85,15 @@
     }
 
     .tabButton {
-        cursor: pointer;
-        border: none;
-        background: none;
-        font-family: Roboto;
         font-size: 20px;
-        font-weight: 200;
         line-height: 30px;
-        letter-spacing: 0.5px;
-        text-align: left;
     }
 
     .tabButtonActive {
-        cursor: pointer;
         color: #C18823;
         transition: background-color 0.3s;
-        font-family: Roboto;
         font-size: 20px;
-        font-weight: 600;
         line-height: 30px;
-        letter-spacing: 0.5px;
     }
   
     .tabContent {

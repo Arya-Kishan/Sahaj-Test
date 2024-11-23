@@ -1,9 +1,9 @@
 "use client"
 import React from "react";
 import Image from "next/image";
-import companyInfoImg from '../../assests/AboutUs/companyInfoImg.webp';
-import ReadMore from "../ReadMoreButton/ReadMoreButton";
-import styles from './sectionone.module.css';
+import companyInfoImg from '../../../assests/AboutUs/companyInfoImg.webp';
+import ReadMore from "../../ReadMoreButton/ReadMoreButton";
+import styles from './companyInfo.module.css'
 
 const SectionOne=()=>{
     return (

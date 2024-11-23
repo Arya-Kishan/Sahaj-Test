@@ -1,10 +1,11 @@
 "use client"
 import React from "react";
 import Image from "next/image";
-import founderimg from '../../assests/AboutUs/founderimg.webp'; 
-import linkdinicon from '../../assests/AboutUs/LinkedinIcon.webp';
-import ReadMore from "../ReadMoreButton/ReadMoreButton";
-import styles from './founder.module.css';
+import Link from "next/link";
+import founderimg from '../../../assests/AboutUs/founderimg.webp'; 
+import linkdinicon from '../../../assests/AboutUs/LinkedinIcon.webp';
+import ReadMore from "@/components/ReadMoreButton/ReadMoreButton";
+import styles from './founderInfo.module.css'
 
 const FounderInfo=()=>{
     return (
@@ -35,8 +36,8 @@ const FounderInfo=()=>{
                        <p className={styles.founderSocialsName}>Abhishek</p>
                        <p className={styles.founderSocialsInfo}>Founder of</p>
                        <p className={styles.founderSocialsCompany}>SahajMoney&reg;</p>
-                       <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-                       <Image  src={linkdinicon} alt="linkdinIcon"/> </a>
+                       <Link href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                       <Image  src={linkdinicon} alt="linkdinIcon"/> </Link>
                     </div>
                     
                 </div>

@@ -1,16 +1,16 @@
 import React from 'react';
-import Heading from './Heading';
-import SectionOne from "./Section1";
-import FounderInfo from "./FounderInfo";
-import ClientsReview from "./ClientsReview";
-import ReviewPortfolio from "./Reviewportfolio";
-import VisionMission from "./VisionMission";
+import Heading from './Heading/Heading';
+import CompanyInfo from "./CompanyInfo/CompanyInfo";
+import FounderInfo from "./FounderInfo/FounderInfo"
+import ClientsReview from "./ClientsReview/ClientsReview";
+import ReviewPortfolio from "./ReviewPorfolio/Reviewportfolio";
+import VisionMission from "./VisionMission/VisionMission";
 
 const AboutUsPage = () => {
   return (
     <>
         <Heading />
-        <SectionOne />
+        <CompanyInfo />
         <VisionMission />
         <FounderInfo />
         <ClientsReview />
