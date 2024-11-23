@@ -1,5 +1,5 @@
 "use client"
-import Services from "@/components/Services/Services"
+import Services from "@/components/Services/individualservices/Services"
 import ReviewsContainer from "@/components/Blog/ReviewsContainer"
 
 function index() {

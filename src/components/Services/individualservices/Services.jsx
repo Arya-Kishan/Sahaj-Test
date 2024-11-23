@@ -2,8 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import styles from "./Services.module.css";
-import image1 from '../../assests/Service/service1.webp';
-import image2 from '../../assests/Service/service2.webp';
+import image1 from '../../../assests/Service/service1.webp';
+import image2 from '../../../assests/Service/service2.webp';
 
 const servicesData = [
   {
@@ -49,6 +49,11 @@ const Services = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
+    <>
+    <div className={styles.expertBox}>
+        <h1>Expert Guidance,
+            <br/> Personalized Plans</h1>
+    </div>
     <div className={styles.services}>
       <div className={styles.tabs}>
         <h3>Services</h3>
@@ -60,7 +65,7 @@ const Services = () => {
             className={`${styles.tabButton} ${activeTab === index ? styles.active : styles.nonactive}`}
             onClick={() => setActiveTab(index)}
           >
-            {service.title}sd
+            {service.title}
           </button>
         ))}
        </div>
@@ -82,6 +87,7 @@ const Services = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
