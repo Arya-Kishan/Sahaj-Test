@@ -1,0 +1,116 @@
+.mainContainer {
+    padding: 100px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    font-family: Roboto;
+  }
+  
+  .optionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .optionContainer h3 {
+    color: #000000;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    font-size: 32px;
+  }
+  
+  .optionBox {
+    display: flex;
+    height: 44px;
+    gap: 16px;
+    flex-wrap: nowrap; 
+    overflow-y: hidden;
+    overflow-x: auto; 
+    white-space: nowrap; 
+    scrollbar-width: none; 
+  }
+  
+  .optionBox::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .optionButton {
+    padding: 10px 20px;
+    border: 1px solid #d6d5d5;
+    border-radius: 24px;
+    background-color: #ffffff;
+    color: #00000080;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .optionButton:hover {
+    border-color: #000;
+  }
+  
+  .selected {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .servicesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .serviceCard {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 16px;
+  }
+  .reversCard{
+    
+    flex-direction: row-reverse;
+  }
+  
+  .serviceText {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 24px;
+  }
+  
+  .serviceText h4 {
+    font-size: 24px;
+    color: #C18823;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .serviceText p {
+    color: #555555;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .readMore {
+    color: #555555;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .readMore:hover {
+    text-decoration: underline;
+  }
+  
+  .cardImage {
+    max-width: 360px;
+    max-height: 335px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  

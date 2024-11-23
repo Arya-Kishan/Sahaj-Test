@@ -70,6 +70,7 @@
   
   .text {
     display: flex;
+    width: 70%;
     flex-direction: column;
     gap: 80px;
   }
@@ -95,8 +96,8 @@
     color: #000000BF;
   }
   
-  .image img {
-    max-width: 100%;
+  .image {
+    width: 360px;
     height: 576px;
     border-radius: 12px;
   }

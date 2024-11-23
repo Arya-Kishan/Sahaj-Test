@@ -9,18 +9,17 @@ function Navbar() {
   return (
     <>
       <nav className={style.nav}>
-        {/* Logo Section */}
         <div className={style.logoBox}>
           <Image className={style.logos} src={logo} alt="Sahaj Logo" />
         </div>
         
-        {/* Dropdown Menus */}
         <div className={style.dropBox}>
           <Dropdown
             title="Services"
             options={[
+              { label: 'Services', path: '/services' },
               { label: 'Individual Services', path: '/individualservices' },
-              { label: 'Service 2', path: '/individualservices' },
+              
               { label: 'Service 3', path: '/individualservices' },
             ]}
           />
@@ -39,13 +38,11 @@ function Navbar() {
             ]}
           />
           
-          {/* About Us Link */}
           <Link href="/about" className={style.aboutus}>
             About Us
           </Link>
         </div>
 
-        {/* Call-to-Action Button */}
         <button className={style.callButton}>Book a call</button>
       </nav>
     </>
