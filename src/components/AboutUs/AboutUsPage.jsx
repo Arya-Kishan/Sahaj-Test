@@ -1,4 +1,4 @@
-import React from 'react';
+"use client"
 import Heading from './Heading/Heading';
 import CompanyInfo from "./CompanyInfo/CompanyInfo";
 import FounderInfo from "./FounderInfo/FounderInfo"

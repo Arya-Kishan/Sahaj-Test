@@ -1,4 +1,3 @@
-import React from 'react';
 import support from '../../../assests/ProcessFlow/support.webp';
 import Image from "next/image";
 import styles from './support.module.css'

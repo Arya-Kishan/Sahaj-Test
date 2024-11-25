@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';

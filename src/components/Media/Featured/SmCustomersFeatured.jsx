@@ -1,5 +1,4 @@
 "use client"
-import React from 'react';
 import Image from "next/image";
 import styles from './featured.module.css';
 import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';

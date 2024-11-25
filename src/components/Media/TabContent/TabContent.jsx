@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import BlogFeatured from '../Featured/BlogFeatured';
 import PressCoverageFeatured from '../Featured/PressCoverageFeatured';
 import PodcastFeatured from '../Featured/PodcastFeatured';

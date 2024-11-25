@@ -1,5 +1,4 @@
 "use client"
-import React from 'react';
 import Image from 'next/image';
 import arrowUpRight from '../../assests/AboutUs/arrowUpRight.svg';
 import styles from "./readMore.module.css"

@@ -1,5 +1,4 @@
 "use client"
-import React from "react";
 import Heading from './BlogHeader/BlogHeader';
 import MainSection from './BlogMainSection/MainSection';
 import SuggestionCardList from './Featured/Suggestion';

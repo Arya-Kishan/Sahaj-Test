@@ -1,5 +1,4 @@
 "use client"
-import React from 'react';
 import Image from "next/image";
 import styles from './pressCoverage.module.css'
 function PressCoverageFeatured({data}) {

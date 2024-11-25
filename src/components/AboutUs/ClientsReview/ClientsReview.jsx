@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import clientsReviewImg from '../../../assests/AboutUs/clientsReview.webp'; 
 import styles from './clientsReview.module.css';

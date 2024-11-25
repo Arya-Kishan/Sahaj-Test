@@ -1,5 +1,5 @@
 "use client"
-import React, { useState} from "react";
+import  { useState} from "react";
 import TabContent from "../TabContent/TabContent";
 import {mediaData} from "../data";
 import { FaSearch} from 'react-icons/fa';

@@ -1,5 +1,4 @@
 "use client"
-import React from 'react';
 import styles from './faq.module.css';
 
 function FAQ() {

@@ -1,5 +1,4 @@
 "use client"
-import React from 'react';
 import Card from './SuggestionCard'
 import cardlogo from '../../../assests/Blog/image.webp';
 import styles from './suggestion.module.css';
