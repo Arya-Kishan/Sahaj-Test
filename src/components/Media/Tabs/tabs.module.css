@@ -1,0 +1,113 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+  }
+  
+  .tabsContainer{
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+  }
+  
+  .tabsHeader{
+      display: flex;
+      align-items: center;
+      gap:5px;
+      justify-content: space-between;
+  }
+  
+  .Heading{
+      font-family: Roboto;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 56.25px;
+      text-align: center;
+  }
+  
+  .searchBox {
+      flex-grow: 1;
+    }
+    
+    .searchInput {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    
+    .searchIcon {
+      cursor: pointer;
+    }
+    .tabs{
+        display: flex;
+        gap: 36px; 
+        overflow-x: auto; 
+        white-space: nowrap;
+        scrollbar-width: none; 
+        -ms-overflow-style: none;
+    }
+  
+  .tabs::-webkit-scrollbar {
+      display: none; 
+    }
+  
+  .tabButton,.activetabButton{
+      font-family: Roboto;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 36px;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      text-align: center;
+      background: none;
+      border: none;
+  
+  }
+  .tabButton{
+      color: var(--Color-black-50, #00000080);
+  }
+  
+  .activetabButton{
+      color:black;
+  }
+  
+  @media (max-width:768px) {
+      .container{
+          margin: 0px;
+          padding: 5px;
+      }
+      .tabsContainer{
+          padding: 32px 0px ;
+          gap: 32px;
+      }
+      .Heading{
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 48px;
+      letter-spacing: 0.5px;
+  
+      }
+      .tabButton,.activetabButton{
+       
+         font-size: 20px;
+      }
+     .tabs{
+  
+     }
+      .activetabButton {
+        position: relative;
+  
+      }
+  
+      .activetabButton::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 5px; 
+        background:var(--Color-black-50, #00000080);
+        border-radius: 3px; 
+      }
+  
+  }

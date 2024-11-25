@@ -33,7 +33,7 @@ function Navbar() {
           <Dropdown
             title="Media"
             options={[
-              { label: 'Blogs', path: '/blog' },
+              { label: 'Blogs', path: `/blog/1` },
               { label: 'Videos', path: '/videos' },
             ]}
           />
