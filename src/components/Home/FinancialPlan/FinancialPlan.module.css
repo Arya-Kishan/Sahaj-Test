@@ -84,8 +84,9 @@
 }
 
 .stepTitle {
-    color: #f8db75;
-    font-weight: bold;
+    width: 70px;
+    height: 28px;
+    background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
 }
 
 .stepSubtitle {
