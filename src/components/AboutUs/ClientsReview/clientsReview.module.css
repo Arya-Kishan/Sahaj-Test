@@ -1,0 +1,91 @@
+
+ .clientsReviewImgbox{
+      width: 100%; 
+   height: 650px; 
+     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+} 
+.clientsReviewImg{
+    width: 100%;
+    height: 100%;
+}
+.clientsReviewinfoHeader{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 163px;
+    color: white;
+    text-align: center;
+    padding: 60px 0px ;
+}
+.clientsReviewinfoLogo{
+    display:inline-block;
+    vertical-align: bottom;
+    width:270px;
+    height: 60px;
+}
+.clientsReviewinfoLogoimg{
+    width:100%;
+    height:100%;
+}
+.clientsReviewinfoHeadeContainer{
+    display: flex;
+    align-items: center;
+     align-items: center;
+}
+.clientsReviewinfoHeadertext{
+font-family: Roboto;
+font-size: 36px;
+font-weight: 600;
+line-height: 42.19px;
+letter-spacing: 0.5px;
+text-align: center;
+margin: 0;
+}
+
+@media (max-width: 768px) {
+    .clientsReviewImgbox{
+        min-width: 300px;
+        min-height: 500px;
+        object-fit: cover;
+       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;  
+  }
+    
+  .clientsReviewImg {
+    width: 100%;
+     height:100%;
+    object-fit: cover;
+    overflow: hidden;
+    object-position: center;
+ 
+}
+.clientsReviewinfoLogo{
+    width:159px;
+    height:37px ;
+    display: inline-block;
+    vertical-align: bottom;
+  } 
+  .clientsReviewinfoLogoimg {
+      max-width: 100%; 
+  }
+  .clientsReviewinfoHeadertext{
+   
+    font-size: 22px;
+    display: inline;
+
+
+}
+.clientsReviewinfoHeadeContainer{
+    display: inline-block;
+    padding: 10px;
+}
+.clientsReviewinfoHeader{
+    padding:0;
+}
+}
