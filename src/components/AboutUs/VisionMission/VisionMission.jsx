@@ -32,97 +32,101 @@ const MissionVision = () => {
 
   return (
     <div className={styles.missionVisionContainer}>
+      <div className={styles.missionVisioninnerContainer}>
+        
       {/* For Large Screens */}
       <div className={`${styles.tabs} ${styles.largeScreen}`}>
      
+     {
+       missionVisionData.map((data,idx)=>(
+         <button
+         key={idx}
+         className={`${styles.tabButton} ${activeTab === data.title ? styles.tabButtonActive : ""}`}
+         onClick={() => setActiveTab(data.title)}
+         >
         {
-          missionVisionData.map((data,idx)=>(
-            <button
-            key={idx}
-            className={`${styles.tabButton} ${activeTab === data.title ? styles.tabButtonActive : ""}`}
-            onClick={() => setActiveTab(data.title)}
-            >
-           {
-            data.heading
-           }
-          </button>
-          ))
+         data.heading
         }
-      </div>
+       </button>
+       ))
+     }
+   </div>
 
-      {/* Content for Large Screens */}
-      <div className={ styles.largeScreen}>
-      {missionVisionData.map(({ title,  content }) => (
-        activeTab === title && (
-          <div className={styles.tabContent} key={title}>
-            
-            <ul>
-              {content.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        )
-      ))}
-      </div>
+   {/* Content for Large Screens */}
+   <div className={ styles.largeScreen}>
+   {missionVisionData.map(({ title,  content }) => (
+     activeTab === title && (
+       <div className={styles.tabContent} key={title}>
+         
+         <ul>
+           {content.map((item, index) => (
+             <li key={index}>{item}</li>
+           ))}
+         </ul>
+       </div>
+     )
+   ))}
+   </div>
 
-      {/* For Small Screens */}
-      <div className={styles.smallScreen}>
-      <>
-      {activeTab === "mission" && (
-    <>
+   {/* For Small Screens */}
+   <div className={styles.smallScreen}>
+   <>
+   {activeTab === "mission" && (
+ <>
 
-      <button
-        className={`${styles.tabButton} ${activeTab === "mission" ? styles.tabButtonActive : ""}`}
-        onClick={() => setActiveTab("mission")}
-      >
-        Our Mission
-      </button>
-      <div className={styles.tabContent}>
-        <ul>
-          {missionVisionData
-            .find(tab => tab.title === "mission")
-            .content.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-        </ul>
-      </div>
-      <button
-        className={styles.tabButton}
-        onClick={() => setActiveTab("vision")}
-      >
-        Our Vision
-      </button>
-    </>
-  )}
-  {activeTab === "vision" && (
-    <>
+   <button
+     className={`${styles.tabButton} ${activeTab === "mission" ? styles.tabButtonActive : ""}`}
+     onClick={() => setActiveTab("mission")}
+   >
+     Our Mission
+   </button>
+   <div className={styles.tabContent}>
+     <ul>
+       {missionVisionData
+         .find(tab => tab.title === "mission")
+         .content.map((item, index) => (
+           <li key={index}>{item}</li>
+         ))}
+     </ul>
+   </div>
+   <button
+     className={styles.tabButton}
+     onClick={() => setActiveTab("vision")}
+   >
+     Our Vision
+   </button>
+ </>
+)}
+{activeTab === "vision" && (
+ <>
 
-      <button
-        className={styles.tabButton}
-        onClick={() => setActiveTab("mission")}
-      >
-        Our Mission
-      </button>
-      <button
-        className={`${styles.tabButton} ${activeTab === "vision" ? styles.tabButtonActive : ""}`}
-        onClick={() => setActiveTab("vision")}
-      >
-        Our Vision
-      </button>
-      <div className={styles.tabContent}>
-        <ul>
-          {missionVisionData
-            .find(tab => tab.title === "vision")
-            .content.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-        </ul>
-      </div>
-    </>
-  )}
+   <button
+     className={styles.tabButton}
+     onClick={() => setActiveTab("mission")}
+   >
+     Our Mission
+   </button>
+   <button
+     className={`${styles.tabButton} ${activeTab === "vision" ? styles.tabButtonActive : ""}`}
+     onClick={() => setActiveTab("vision")}
+   >
+     Our Vision
+   </button>
+   <div className={styles.tabContent}>
+     <ul>
+       {missionVisionData
+         .find(tab => tab.title === "vision")
+         .content.map((item, index) => (
+           <li key={index}>{item}</li>
+         ))}
+     </ul>
+   </div>
+ </>
+)}
 </>
 
+   </div>
+ 
       </div>
     </div>
   );
