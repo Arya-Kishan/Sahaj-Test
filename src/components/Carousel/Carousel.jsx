@@ -96,9 +96,9 @@ const Carousel = () => {
           {slide.logos && (
             <div className={styles.pressLogos}>
               {slide.logos.map((logo, idx) => (
-                <div className={styles.imagesBox}>
+                <div key={idx} className={styles.imagesBox}>
                   <Image
-                    key={idx}
+                    
                     src={logo}
                     alt={`Logo ${idx + 1}`}
                     className={styles.logoImage}
