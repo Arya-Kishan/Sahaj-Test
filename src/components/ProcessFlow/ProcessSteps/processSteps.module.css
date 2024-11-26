@@ -20,14 +20,13 @@
     
     padding: 60px 100px 100px 100px;
     gap: 100px;
-    opacity: 0px;
 
    }
    .processContents{
     display: flex;
     flex-direction: column;
     gap: 40px;
-    opacity: 0px;
+
 
    }
    .processSteps {
@@ -166,7 +165,7 @@
     .processContainer{
       padding: 24px 16px ;
       gap: 32px;
-      opacity: 0px;
+
     }
     .processContents{
       gap:16px;

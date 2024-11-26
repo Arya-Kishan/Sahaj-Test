@@ -30,7 +30,6 @@ justify-content: center;
     width: 180px;
     gap: 10px;
     border-radius: 5px;
-    opacity: 0px;
     font-family: Roboto;
     font-size: 18px;
     font-weight: 600;
@@ -63,7 +62,6 @@ justify-content: center;
       .faqContainer{
         padding: 60px 16px;
         gap: 24px;
-        opacity: 0px;
       }
       
       .faqtextContainer{
