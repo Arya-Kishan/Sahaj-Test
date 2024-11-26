@@ -36,7 +36,7 @@ const FinancialPlan = () => {
                         </ul>
                     </div>
                     <div>
-                    <button className={styles.stepTitle}>Step 02</button>
+                    <button className={styles.stepTitle}><p>Step 02</p></button>
                         <h4 className={styles.stepSubtitle}>Complete formalities</h4>
                         <ul className={styles.stepText}>
                             <li>Our experts will analyze your information and create a customized financial plan.</li>
@@ -44,7 +44,7 @@ const FinancialPlan = () => {
                         </ul>
                     </div>
                     <div>
-                    <button className={styles.stepTitle}>Step 03</button>
+                    <button className={styles.stepTitle}><p>Step 03</p></button>
                         <h4 className={styles.stepSubtitle}>Financial Plan</h4>
                         <ul className={styles.stepText}>
                             <li>Review your financial plan and ask any questions.</li>

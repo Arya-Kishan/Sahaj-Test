@@ -10,7 +10,7 @@ function Navbar() {
     <>
       <nav className={style.nav}>
         <div className={style.logoBox}>
-          <Image className={style.logos} src={logo} alt="Sahaj Logo" />
+          <Link href="/" ><Image className={style.logos} src={logo} alt="Sahaj Logo" /></Link>
         </div>
         
         <div className={style.dropBox}>

@@ -5,111 +5,144 @@
   padding: 40px;
   height: 552px;
   text-align: center;
+  justify-content: center;
   width: 100%;
   margin: auto;
+
 }
 
 .slide {
-  margin-top: 10%;
+  margin-top: 5%;
   display: none;
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
 .slide.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
   opacity: 1;
 }
 
+.rowForm {
+  flex-direction: row !important;
+}
+
 .title {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: black;
+  margin: auto;
+  width: 583px;
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #000000;
 }
 
 .subtitle {
+  width: 440px;
+  margin: auto;
   font-size: 1.2rem;
-  margin-bottom: 20px;
 
 }
 
 .ctaButton {
+  width: 233px;
+  height: 59px;
   background-color: black;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 20px;
 }
 
-.features,
-.pressLogos {
+.headerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  align-items: center;
+  justify-content: center;
+}
+
+.features {
+
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 20px;
 }
 
-.pressLogos img {
-  height: 40px;
+.pressLogos {
+  width: 588px;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  gap: 24px;
 }
 
+.iconBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+
+
+.imagesBox {
+  position: relative;
+  z-index: 10;
+  min-width: 140px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #ffff;
+}
+.logoImage{
+  border-radius: 12px;
+}
 .dotsContainer {
   display: flex;
   justify-content: center;
   margin-top: 20px;
   gap: 10px;
+  position: absolute;
+  margin: auto;
+  bottom: 5%;
+  left: 48%;
 }
 
 .dot {
   width: 12px;
   height: 12px;
-  background-color: #ddd;
+  background-color: #C1882340;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .activeDot {
-  background-color: #333;
+  background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
+  width: 84px;
+  border-radius: 12px;
 }
-.ocean {
-  height: 5%;
-  width: 100%;
+
+.svgtopWave,
+.svgbottomWave {
   position: absolute;
-  top: -26px;
+  padding: 0;
+  width: 100%;
+  top: 0;
   left: 0;
   right: 0;
   rotate: 180deg;
 }
 
-.wave {
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
-  filter: hue-rotate(45deg) saturate(3) brightness(0.7) opacity(0.15); /* Adjusted values to approximate #C1882326 */
-  position: absolute;
-  width: 6400px;
-  top: -198px;
-  left: 0;
-  height: 198px;
+.topsvg,
+.svgbottomWave {
   transform: translate(0, 0, 0);
   animation: wave 7s ease infinite;
-}
-
-.wave:nth-of-type(2) {
-  top: -168px;
-  animation: swell 4s ease infinite;
-  opacity: 0.5; 
-}
-
-@keyframes wave {
-  0% { margin-left: 0; }
-  100% { margin-left: -1600px;}
-}
-@keyframes swell {
-  0%, 100% {
-    transform: translate(0, -30px);
-  }
-  50% {
-    transform: translate(0, 5px);
-  }
+  width: 100%;
 }

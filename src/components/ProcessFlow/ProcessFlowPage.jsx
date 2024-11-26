@@ -11,7 +11,7 @@ const ProcessFlow=()=>{
            <HeadSection />
            <ProcessSteps />
            <Support />
-           <FAQ />
+           <FAQ heading='Find Answers to Your Questions in Our FAQ' buttonText="Visit FAQ"/>
            <ReviewsContainer />
         </div>
     )
