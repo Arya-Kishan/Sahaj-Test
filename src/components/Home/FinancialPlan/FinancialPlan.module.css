@@ -1,4 +1,3 @@
-
 .container {
     background-color: #f3f4f6;
     font-family: Roboto;
@@ -12,11 +11,13 @@
     background-color: #000000;
     color: #FFFFFF;
 }
-.headerTitle{
+
+.headerTitle {
     display: flex;
     flex-direction: column;
     align-items: baseline;
 }
+
 .title {
     font-size: 1.875rem;
     font-weight: 600;
@@ -54,10 +55,10 @@
 
 .videoContainer {
     width: 600px;
-   height: 656px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+    height: 656px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .videoImage {
@@ -81,11 +82,29 @@
 .stepsContainer {
     width: 100%;
     max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
 }
 
 .stepTitle {
-    color: #f8db75;
-    font-weight: bold;
+    border-radius: 24px;
+    text-align: center;
+    padding: 1px;
+    border: none;
+    width: 70px;
+    height: 28px;
+    background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
+}
+
+.stepTitle p {
+    border-radius: 24px;
+    padding: 5px 10px 4px 10px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    text-align: center;
+    color: #000000BF;
 }
 
 .stepSubtitle {
@@ -100,10 +119,11 @@
 }
 
 .learnMoreButton {
+    width: 183px;
     background-color: black;
     color: white;
     font-weight: 500;
-    padding: 0.5rem 1rem;
+    padding: 16px 48px 16px 48px;
     margin-top: 1rem;
     border-radius: 0.375rem;
     border: none;

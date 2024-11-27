@@ -28,7 +28,7 @@ const FinancialPlan = () => {
                     <h2>How we do it?</h2>
 
                     <div>
-                        <h3 className={styles.stepTitle}>Step 01</h3>
+                        <button className={styles.stepTitle}><p>Step 01</p></button>
                         <h4 className={styles.stepSubtitle}>Book a free call</h4>
                         <ul className={styles.stepText}>
                             <li>Tell us about your financial objectives (e.g., retirement planning, debt reduction, investment growth).</li>
@@ -36,7 +36,7 @@ const FinancialPlan = () => {
                         </ul>
                     </div>
                     <div>
-                        <h3 className={styles.stepTitle}>Step 02</h3>
+                    <button className={styles.stepTitle}><p>Step 02</p></button>
                         <h4 className={styles.stepSubtitle}>Complete formalities</h4>
                         <ul className={styles.stepText}>
                             <li>Our experts will analyze your information and create a customized financial plan.</li>
@@ -44,7 +44,7 @@ const FinancialPlan = () => {
                         </ul>
                     </div>
                     <div>
-                        <h3 className={styles.stepTitle}>Step 03</h3>
+                    <button className={styles.stepTitle}><p>Step 03</p></button>
                         <h4 className={styles.stepSubtitle}>Financial Plan</h4>
                         <ul className={styles.stepText}>
                             <li>Review your financial plan and ask any questions.</li>
