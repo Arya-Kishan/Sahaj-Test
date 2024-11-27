@@ -1,7 +1,5 @@
 .container {
-  background: linear-gradient(0deg, #FFFFFF, #FFFFFF),
-    linear-gradient(0deg, rgba(193, 136, 35, 0.06), rgba(193, 136, 35, 0.06));
-
+  background: #C188230F;
   padding: 60px 100px 60px 100px;
   display: flex;
   flex-direction: column;
