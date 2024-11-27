@@ -12,7 +12,11 @@ display: flex;
  justify-content: space-around;
 
 }
-
+.infotext{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
 .infotextheading{
 
 font-family: Roboto;
@@ -47,6 +51,9 @@ margin-left: 62px;
             display: flex;
             gap:24px;
             padding:24px 16px;
+        }
+        .infotext{
+            gap:12px;
         }
         .informationtextContainer{
            flex-direction: column;
