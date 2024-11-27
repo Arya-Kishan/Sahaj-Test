@@ -58,7 +58,6 @@
 }
 .headingContainer{
     gap: 8px;
-    opacity: 0px;
     display: flex;
     flex-direction: column;
 }
