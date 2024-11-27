@@ -19,7 +19,7 @@ const Dropdown = ({ title, options }) => {
         onClick={() => setIsOpen(!isOpen)}
         className={styles.buttons}
       >
-        {title}{" "}
+        <p>{title}</p>
         <span className={styles.icon}>
           {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
         </span>
