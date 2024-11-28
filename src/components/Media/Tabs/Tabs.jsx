@@ -40,7 +40,7 @@ const Tabs = () => {
           {!isSearching ? (
             <p className={styles.Heading}>
             {searchQuery
-              ? `Search results for &quot;${searchQuery}&quot;`
+              ? `Search results for "${searchQuery}"`
               : "Media"}
           </p>
           
@@ -48,7 +48,7 @@ const Tabs = () => {
             <>
               {searchQuery && (
                 <p className={styles.Heading}>
-                  Search results for &quot; {searchQuery}&quot;
+                  Search results for "{searchQuery}"
                 </p>
               )}
               <div className={styles.searchBox}>
