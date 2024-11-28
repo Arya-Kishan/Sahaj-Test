@@ -5,20 +5,27 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Dropdown from '../dropDown/Dropdown';
 import logo from '../../assests/Logo/sahajlogo.webp';
+import BookCallModal from '../BookCall/BookCall';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const openModal =()=>{
+    console.log("clicked")
+    setIsModalOpen(!isMenuOpen);
+
+  }
 
   return (
     <>
       <nav className={style.nav}>
         <div className={style.logoBox}>
           <Link href="/">
-            <Image className={style.logos} src={logo} alt="Sahaj Logo" />
+            <Image  className={style.logos} src={logo} alt="Sahaj Logo" />
           </Link>
         </div>
 
@@ -50,7 +57,7 @@ function Navbar() {
           </Link>
         </div>
 
-        <button className={style.callButton}>Book a call</button>
+        <button className={style.callButton} onClick={openModal}>Book a call</button>
 
         <button className={style.hamburger} onClick={toggleMenu}>
           {isMenuOpen ? '✕' : '☰'}
@@ -91,10 +98,12 @@ function Navbar() {
           <Link href="/about" className={style.mobileAboutus}>
             About Us
           </Link>
-          <button className={style.mobileCallButton}>Book a free call</button>
+          <button className={style.mobileCallButton}  onClick={openModal}>Book a free call</button>
         </div>
       )}
+      <BookCallModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
+
   );
 }
 
