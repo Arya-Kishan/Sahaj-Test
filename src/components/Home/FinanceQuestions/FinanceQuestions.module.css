@@ -47,6 +47,7 @@
   padding: 40px 100px 40px 100px;
   background-color: #FFFFFF;
   font-family: Roboto;
+  gap: 24px;
 }
 
 .textSection {
@@ -79,13 +80,14 @@
 .servicesList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 24px;
 }
-
+.mobileCarouselBox{
+  display: none;
+}
 .service {
   display: flex;
-  gap: 13px;
+  gap: 23px;
 }
 
 .icon {
@@ -147,6 +149,9 @@
   max-width: 100%;
   border-radius: 10px;
 }
+.headsection2{
+  display: none;
+}
 @media (max-width: 768px) {
   .container{
     padding: 16px;
@@ -154,7 +159,12 @@
   .cardsContainer{
     display: none;
   }
- 
+ .mobileCarouselBox{
+  display: block;
+  width: 100%;
+  padding: 20px;
+  height: fit-content;
+ }
   .mobileCarousel{
     background-color: #000000;
     color: #ffff;
@@ -168,6 +178,27 @@
   }
   .question{
     margin-top: 90%;
+  }
+  .container2{
+    flex-direction: column-reverse;
+    padding: 24px 16px 24px 16px;
+    gap: 35px;
+  }
+  .headsection{
+    display: none;
+  }
+  .buttons{
+    flex-direction: column;
+    width: 100%;
+  }
+  .viewServicesButton{
+    width: 100%;
+  }
+  .bookCallButton{
+    width: 100%;
+  }
+  .image{
+    height: 383px;
   }
   
 }

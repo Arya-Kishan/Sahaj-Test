@@ -19,7 +19,7 @@ const FinanceQuestions = () => {
     return (
         <><div className={styles.container}>
             <h2 className={styles.title}>Feeling Overwhelmed by Your Finances?</h2>
-           
+            <div className={styles.mobileCarouselBox} >
                 <Swiper
                     modules={[Navigation, Pagination]}
                     navigation
@@ -34,7 +34,7 @@ const FinanceQuestions = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-           
+            </div>
             <div className={styles.cardsContainer}>
                 {questions.map((question, index) => (
                     <div key={index} className={styles.card}>
@@ -112,6 +112,12 @@ const FinanceQuestions = () => {
                 <div className={styles.imageSection}>
                     <Image src={imageSrc} alt="What we do illustration" className={styles.image} />
                 </div>
+                <div className={styles.headsection2} >
+                        <h2 className={styles.title2}>What we do for you?</h2>
+                        <p className={styles.description}>
+                            Fixed Fee ₹15,000 for the first year, ₹5,000 renewal annually thereafter
+                        </p>
+                    </div>
             </div>
         </>
     );

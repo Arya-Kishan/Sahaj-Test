@@ -162,3 +162,28 @@
     font-size: 0.875rem;
     color: #FFFFFF;
 }
+
+@media (max-width: 720px){
+    .header{
+        flex-direction: column;
+        padding: 16px;
+        gap: 24px;
+    }
+    .mainContent{
+        flex-direction: column;
+        align-items: baseline;
+        padding: 24px 16px 24px 16px;
+    }
+    .videoContainer{
+        width: 100%;
+    }
+    .videoImage{
+        width: 100%;
+        height: 500px;
+    }
+    .footer{
+        flex-wrap: wrap;
+        padding: 24px 0 24px 0;
+        gap: 24px;
+    }
+}
