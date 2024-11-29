@@ -133,41 +133,81 @@ const faqData=[
 
 const FaqPage = () => {
   const [activeFilter, setActiveFilter] = useState(0);
-  const [openQuestions, setOpenQuestions] = useState({}); 
+  const [isSearching,setIsSearching]=useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [openQuestions, setOpenQuestions] = useState({});
+  const [displayedData, setDisplayedData] = useState(faqData);
 
-  const filteredData = activeFilter === 0
-    ? faqData
-    : faqData.filter((data) => data.id === activeFilter);
 
-   useEffect(() => {
-      setOpenQuestions({});
-    }, [activeFilter]);
- 
+  useEffect(() => {
+    let filteredData = activeFilter === 0 ? faqData : faqData.filter((data) => data.id === activeFilter);
+
+    if (searchQuery.trim()) {
+      filteredData = filteredData
+        .map((faq) => {
+          const matchingQuestions = faq.questions.filter((q) =>
+            q.question.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+          if (
+            faq.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            matchingQuestions.length > 0
+          ) {
+            return { ...faq, questions: matchingQuestions };
+          }
+          return null;
+        })
+        .filter((faq) => faq !== null);
+    }
+
+    setDisplayedData(filteredData);
+  }, [activeFilter, searchQuery]);
+
   const toggleAccordion = (sectionId, qNumber) => {
-    const uniqueKey = `${sectionId}-${qNumber}`; 
+    const uniqueKey = `${sectionId}-${qNumber}`;
     setOpenQuestions((prev) => ({
       ...prev,
       [uniqueKey]: !prev[uniqueKey],
     }));
   };
-
-
+const handleToggleSearch=()=>{
+  setIsSearching(!isSearching)
+}
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   return (
     <div className={styles.faqContainer}>
       <div className={styles.filterHeader}>
         <div className={styles.searchContainer}>
-          <p className={styles.faqText}>FAQs</p>
-          <div className={styles.searchBox}>
-            <FaSearch size={24} />
-          </div>
+        <p className={styles.faqText}>
+            {(isSearching && searchQuery) ?`Search results for "${searchQuery}"`:"FAQs"}
+            </p> 
+             <div className={styles.searchBox}>
+               {isSearching && (
+              <input
+                type="text"
+                placeholder="Type something..."
+                value={searchQuery}
+                className={styles.searchInput}
+                onChange={handleSearch}
+              />
+            )}
+            <div role="button" tabIndex={1} onClick={handleToggleSearch}>
+              <FaSearch size={24} />
+            </div>
+            </div>
         </div>
-        <hr className={styles.line}/>
+        <hr className={styles.line} />
         <div className={styles.filters}>
           {filters.map((filter) => (
             <button
               key={filter.id}
-              className={activeFilter===filter.id ? `${styles.filterButton} ${styles.activeButton}`:styles.filterButton}
+              className={
+                activeFilter === filter.id
+                  ? `${styles.filterButton} ${styles.activeButton}`
+                  : styles.filterButton
+              }
               onClick={() => setActiveFilter(filter.id)}
             >
               {filter.option}
@@ -177,47 +217,41 @@ const FaqPage = () => {
       </div>
 
       <div className={styles.filterContent}>
-        {filteredData.map((faq, index) => (
-          <div className={styles.infoContainer} key={index}>
-            <div className={styles.textBox}>
-              <div className={styles.filterName}>
-                <p>{faq.title}</p>
-              </div>
-              {faq.questions.map((q) =>{
+        {displayedData.length > 0 ? (
+          displayedData.map((faq) => (
+            <div className={styles.infoContainer} key={faq.id}>
+              <div className={styles.textBox}>
+                <div className={styles.filterName}>
+                  <p>{faq.title}</p>
+                </div>
+                {faq.questions.map((q) => {
                   const uniqueKey = `${faq.id}-${q.qNumber}`;
                   return (
-                  
                     <div className={styles.accordionContainer} key={uniqueKey}>
-                    <div
-                      className={styles.questionContainer}
-                     
-                      role="button"
-                      tabIndex="0"
-                      onClick={() => toggleAccordion(faq.id, q.qNumber)}
-                    >
-                      <div  className={styles.faqBox}>
+                      <div
+                        className={styles.questionContainer}
+                        role="button"
+                        tabIndex="0"
+                        onClick={() => toggleAccordion(faq.id, q.qNumber)}
+                      >
+                        <div className={styles.faqBox}>
                           <p className={styles.question}>{q.question}</p>
                           {openQuestions[uniqueKey] && (
-                          <p className={styles.answer}>{q.answer}</p>
-                        )}
+                            <p>{q.answer}</p>
+                          )}
+                        </div>
+                        <Image
+                          src={openQuestions[uniqueKey] ? minusCircle : plusCircle}
+                           alt="plus-minus-icon"
+                        />
                       </div>
-                   
-                      <Image
-                        src={openQuestions[uniqueKey] ? minusCircle : plusCircle}
-                        alt="plus-minus-icon"
-                      />
-                    
                     </div>
-                    
-                  </div>
-                  )
-                
-                })
-             }
-            </div>
-            <div className={styles.imageBox}>
-              <Image src={faq.image} alt="Image" className={styles.Img}/>
-              <svg
+                  );
+                })}
+              </div>
+              <div className={styles.imageBox}>
+                <Image src={faq.image} alt="FAQ Image" className={styles.Img} />
+                <svg
                   width="80"
                   height="80"
                   className={styles.videoIcon}
@@ -244,12 +278,16 @@ const FaqPage = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <div className={styles.noData}>No content available</div>
+        )}
       </div>
     </div>
   );
 };
 
 export default FaqPage;
+

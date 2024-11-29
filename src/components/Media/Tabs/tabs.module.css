@@ -12,8 +12,8 @@
   
   .tabsHeader{
       display: flex;
-      align-items: center;
-      gap:5px;
+      /* align-items: center;
+      gap:5px; */
       justify-content: space-between;
   }
   
@@ -26,7 +26,11 @@
   }
   
   .searchBox {
-      flex-grow: 1;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
     }
     
     .searchInput {
@@ -35,9 +39,6 @@
       font-size: 1rem;
     }
     
-    .searchIcon {
-      cursor: pointer;
-    }
     .tabs{
         display: flex;
         gap: 36px; 
