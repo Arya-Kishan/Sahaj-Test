@@ -2,10 +2,10 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import styles from './FinanceQuestions.module.css';
-import { BsFillPatchCheckFill } from "react-icons/bs";
 import imageSrc from '../../../assests/Home/whatdo.webp'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import Link from 'next/link';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -110,7 +110,7 @@ const FinanceQuestions = () => {
                         </div>
                     </div>
                     <div className={styles.buttons}>
-                        <button className={styles.viewServicesButton}>View services</button>
+                        <Link href="/services"><button className={styles.viewServicesButton}>View services</button></Link>
                         <button className={styles.bookCallButton} onClick={() => setIsModalOpen(true)} >Book a call</button>
                     </div>
                 </div>
