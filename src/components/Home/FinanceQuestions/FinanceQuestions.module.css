@@ -86,17 +86,17 @@
   display: none;
 }
 .service {
+  width: fit-content;
+  height: fit-content;
   display: flex;
   gap: 23px;
 }
 
-.icon {
+.icons {
   width: 24px;
   height: 24px;
   margin-top: 5px;
-  /* background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%); */
-  color: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
-
+  
 }
 .mobileBox{
   display: none;

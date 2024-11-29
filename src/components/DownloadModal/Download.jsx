@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import styles from "./Modal.module.css";
 import { IoIosArrowDown } from "react-icons/io";
-import { countryCode } from "./countrycode";
+import { countryCode } from "../BookCall/countrycode";
 
-const BookCallModal = ({ isOpen, onClose }) => {
+const DownloadModal = ({ isOpen, onClose }) => {
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -122,7 +122,7 @@ const BookCallModal = ({ isOpen, onClose }) => {
                             }`}
                         disabled={!isFormValid}
                     >
-                        {isFormValid ? "Book a free call":"Submit"}
+                        Submit
                     </button>
                 </form>
             </div>
@@ -130,4 +130,4 @@ const BookCallModal = ({ isOpen, onClose }) => {
     );
 };
 
-export default BookCallModal;
+export default DownloadModal;

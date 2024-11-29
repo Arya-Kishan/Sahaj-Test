@@ -34,8 +34,8 @@ function Navbar() {
             title="Services"
             options={[
               { label: 'Services', path: '/services' },
-              { label: 'Individual Services', path: '/individualservices' },
-              { label: 'Service 3', path: '/individualservices' },
+              { label: 'Individual Services', path: '/individual/individualservices' },
+              { label: 'Service 3', path: '/individual/individualservices' },
             ]}
           />
           <Dropdown
@@ -48,8 +48,11 @@ function Navbar() {
           <Dropdown
             title="Media"
             options={[
+              { label: 'Podcast', path: '/podcast' },
+              { label: 'Press coverage', path: '/presscoverage' },
+              { label: 'Video channels', path: '/videochannels' },
               { label: 'Blogs', path: '/blog/1' },
-              { label: 'Videos', path: '/videos' },
+              { label: 'SM’s Customers in Media', path: '/customermedia' },
             ]}
           />
           <Link href="/about" className={style.aboutus}>
@@ -91,8 +94,11 @@ function Navbar() {
           <Dropdown
             title="Media"
             options={[
+              { label: 'Podcast', path: '/podcast' },
+              { label: 'Press coverage', path: '/presscoverage' },
+              { label: 'Video channels', path: '/videochannels' },
               { label: 'Blogs', path: '/blog/1' },
-              { label: 'Videos', path: '/videos' },
+              { label: 'SM’s Customers in Media', path: '/customermedia' },
             ]}
           />
           <Link href="/about" className={style.mobileAboutus}>

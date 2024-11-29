@@ -1,5 +1,6 @@
 "use client"
 import styles from './Footer.module.css';
+import Link from 'next/link';
 import Image from 'next/image';
 import sahajLogo from '../../assests/Logo/sahajlogo.webp'
 import { FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
@@ -15,14 +16,14 @@ const Footer = () => {
         </div>
         <div className={styles.footerSection}>
           <h4>Company</h4>
-          <a href="#">About us</a>
-          <a href="#">Sebi Disclosure</a>
+          <Link className={styles.linkText} href="/about">About us</Link>
+          <Link className={styles.linkText} href="#">Sebi Disclosure</Link>
         </div>
         <div className={styles.footerSection}>
           <h4>Resources</h4>
-          <a href="#">Services</a>
-          <a href="#">Media</a>
-          <a href="#">FAQs</a>
+          <Link className={styles.linkText} href="/services">Services</Link>
+          <Link className={styles.linkText} href="/media">Media</Link>
+          <Link className={styles.linkText} href="/faqs">FAQs</Link>
         </div>
         <div className={styles.footerSection}>
           <h4>Get in touch</h4>
@@ -41,9 +42,9 @@ const Footer = () => {
         </div>
         <div className={`${styles.footerSection} ${styles.socialMedia}`}>
           <h4>Follow us</h4>
-          <a href="#"><FaLinkedin /></a>
-          <a href="#"><FaInstagram /></a>
-          <a href="#"><FaYoutube /></a>
+          <Link className={styles.linkText} href="#"><FaLinkedin /></Link>
+          <Link className={styles.linkText} href="#"><FaInstagram /></Link>
+          <Link className={styles.linkText} href="#"><FaYoutube /></Link>
         </div>
       </div>
       <div className={styles.footerBottom}>

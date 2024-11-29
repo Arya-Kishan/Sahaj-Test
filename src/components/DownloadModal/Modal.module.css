@@ -13,10 +13,10 @@
   
   .modalContent {
     background: #FFFFFF;
-    padding: 40px 24px 40px 24px;
+    padding: 100px 60px 100px 60px;
     width: 90%;
     height: fit-content;
-    max-width: 358px;
+    max-width: 500px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -124,7 +124,8 @@
   }
   .submitBTN{
     height: 59px;
-    width: 100%;
+    width: 151px;
+    align-self: flex-end; 
     padding: 10px;
     border-radius: 4px;
     border: none;
