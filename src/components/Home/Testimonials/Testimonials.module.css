@@ -197,3 +197,23 @@
   color: #777;
   margin: 0;
 }
+@media (max-width: 720px){
+  .mainContainer{
+    flex-direction: column;
+    padding: 16px;
+    height: fit-content;
+    gap: 24px;
+  }
+  .reviews{
+    width: 100%;
+    gap: 8px;
+  }
+  .reviewCard{
+  }
+  .leftBox{
+    width: 100%;
+  }
+  .rightBoxContainer{
+    height: 400px;
+  }
+}

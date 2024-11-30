@@ -46,4 +46,18 @@
     color: #00000099;
     margin: 0;
   }
-  
+  @media (max-width: 720px) {
+    .container{
+      padding: 16px;
+    }
+    .features{
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 4px;
+      gap: 12px;
+    }
+    .featureCard{
+      width: fit-content;
+    }
+  }

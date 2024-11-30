@@ -55,7 +55,8 @@
 }
 
 .footerSection a,
-.footerSection p {
+.footerSection p,
+.linkText {
     color: #333;
     text-decoration: none;
     margin: 5px 0;

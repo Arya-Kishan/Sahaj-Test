@@ -1,9 +1,15 @@
 "use client"
+import { useState } from 'react';
 import styles from './FinancialPlan.module.css';
 import Image from 'next/image';
-import image from '../../../assests/Home/FinancialPlan.webp'
+import image from '../../../assests/Home/FinancialPlan.webp';
+import DownloadModal from '@/components/DownloadModal/Download';
 
 const FinancialPlan = () => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+
     return (
         <div className={styles.container}>
             
@@ -14,9 +20,9 @@ const FinancialPlan = () => {
                     See how <span className={styles.highlight}>SahajMoney</span> simplifies financial planning
                 </p>
                 </div>
-                <button className={styles.downloadButton}>Download Now</button>
+                <button className={styles.downloadButton} onClick={() => setIsModalOpen(true)}>Download Now</button>
             </header>
-
+           <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}/>
             
             <div className={styles.mainContent}>
                 <div className={styles.videoContainer}>

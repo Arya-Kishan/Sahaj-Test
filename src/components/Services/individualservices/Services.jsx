@@ -19,6 +19,16 @@ const servicesData = [
   },
   
   {
+    title: "Goal-Based Planning",
+    sections: [
+      { heading: "Assessment", text: "The advisor conducts an in-depth analysis of your risk tolerance, considering factors such as age, income, investment experience, and psychological comfort with market volatility." },
+      { heading: "Portfolio Allocation", text: "Based on your risk profile, the advisor recommends an appropriate mix of assets, balancing growth potential with the level of risk you're comfortable with." },
+      { heading: "Ongoing Review", text: "As your life circumstances or market conditions change, your risk profile may need to be updated, and the advisor will adjust your portfolio accordingly." },
+    ],
+    image: image1,
+  },
+  
+  {
     title: "Investment Plan",
     sections: [
       { heading: "Investment Analysis", text: "Analyze market trends to recommend optimal investment opportunities tailored to individual goals." },

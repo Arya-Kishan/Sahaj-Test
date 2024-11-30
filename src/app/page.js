@@ -15,7 +15,7 @@ export default function Home() {
       <FinanceQuestions/>
       <WhyChooseUs/>
       <FinancialPlan/>
-      <Testimonials/>
+      <Testimonials/>   
     </>
   );
 }

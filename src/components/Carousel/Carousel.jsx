@@ -92,7 +92,7 @@ const Carousel = () => {
               ))}
             </div>
           )}
-
+           
           {slide.logos && (
             <div className={styles.pressLogos}>
               {slide.logos.map((logo, idx) => (
@@ -107,6 +107,8 @@ const Carousel = () => {
               ))}
             </div>
           )}
+          <button className={styles.ctamButton}>{slide.buttonText}</button>
+
         </div>
       ))}
 
