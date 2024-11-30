@@ -1,3 +1,4 @@
+"use client"
 import Header from "@/components/FAQ/Header/Header";
 import FAQ from "@/components/ProcessFlow/FAQ/FAQ";
 import FaqPage from "@/components/FAQ/FQAPage/FaqPage";
