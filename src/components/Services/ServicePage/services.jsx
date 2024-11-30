@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import styles from "./style.module.css";
 import Image from "next/image";
-import servicepic from '../../../assests/Service/service3.webp'
-import servicepic1 from '../../../assests/Service/service4.webp'
+import servicepic from "../../../assests/Service/service3.webp";
+import servicepic1 from "../../../assests/Service/service4.webp";
 
 function ServicesPage() {
-  const [selectedOption, setSelectedOption] = useState(1);
+  const serviceRefs = useRef([]);
 
   const options = [
     { id: 1, option: "All" },
@@ -23,46 +23,48 @@ function ServicesPage() {
 
   const services = [
     {
-      id: 1,
+      id: 2,
       title: "Goal/Retirement/F.I.R.E Planning",
       description:
         "Our risk profiling process helps you identify your comfort level with investment risk, ensuring your financial plan aligns with your preferences.",
-      image: servicepic1, 
-    },
-    {
-      id: 2,
-      title: "Investment plan",
-      description:
-        "Our risk profiling process helps you identify your comfort level with investment risk, ensuring your financial plan aligns with your preferences.",
-      image: servicepic1, 
+      image: servicepic1,
     },
     {
       id: 3,
-      title: "Insurance Planning",
+      title: "Investment plan",
       description:
         "Our risk profiling process helps you identify your comfort level with investment risk, ensuring your financial plan aligns with your preferences.",
-      image: servicepic, 
+      image: servicepic1,
     },
     {
       id: 4,
-      title: "Tax planning",
+      title: "Insurance Planning",
       description:
         "Our risk profiling process helps you identify your comfort level with investment risk, ensuring your financial plan aligns with your preferences.",
-      image: servicepic1, 
+      image: servicepic,
     },
     {
       id: 5,
+      title: "Tax planning",
+      description:
+        "Our risk profiling process helps you identify your comfort level with investment risk, ensuring your financial plan aligns with your preferences.",
+      image: servicepic1,
+    },
+    {
+      id: 6,
       title: "Net worth analysis",
       description:
         "Our risk profiling process helps you identify your comfort level with investment risk, ensuring your financial plan aligns with your preferences.",
-      image: servicepic, 
+      image: servicepic,
     },
   ];
 
-  const filteredServices =
-    selectedOption === 1
-      ? services
-      : services.filter((service) => service.id === selectedOption);
+  const scrollToService = (id) => {
+    const serviceIndex = services.findIndex((service) => service.id === id);
+    if (serviceIndex !== -1 && serviceRefs.current[serviceIndex]) {
+      serviceRefs.current[serviceIndex].scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className={styles.mainContainer}>
@@ -72,12 +74,8 @@ function ServicesPage() {
           {options.map((item) => (
             <button
               key={item.id}
-              onClick={() => setSelectedOption(item.id)}
-              className={
-                selectedOption === item.id
-                  ? `${styles.optionButton} ${styles.selected}`
-                  : styles.optionButton
-              }
+              onClick={() => scrollToService(item.id)}
+              className={styles.optionButton}
             >
               {item.option}
             </button>
@@ -85,15 +83,33 @@ function ServicesPage() {
         </div>
       </div>
       <section className={styles.servicesContainer}>
-        {filteredServices.map((service, index) => (
-          <div key={service.id} className={`${styles.serviceCard} ${index%2!==0? styles.reversCard:""}`}>
+        {services.map((service, index) => (
+          <div
+            key={service.id}
+            ref={(el) => (serviceRefs.current[index] = el)}
+            className={`${styles.serviceCard} ${
+              index % 2 !== 0 ? styles.reversCard : ""
+            }`}
+          >
             <div className={styles.serviceText}>
               <h4>{service.title}</h4>
               <p>{service.description}</p>
-              <Link className={styles.readMore} href={{ pathname: "/individualservices", query: { id: service.id } }}>Read more →</Link>
+              <Link
+                className={styles.readMore}
+                href={{
+                  pathname: "/individual/individualservices",
+                  query: { id: service.id },
+                }}
+              >
+                Read more →
+              </Link>
             </div>
             <div className={styles.serviceImage}>
-              <Image className={styles.cardImage} src={service.image} alt={service.title} />
+              <Image
+                className={styles.cardImage}
+                src={service.image}
+                alt={service.title}
+              />
             </div>
           </div>
         ))}

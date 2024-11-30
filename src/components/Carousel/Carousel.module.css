@@ -4,8 +4,6 @@
   background: #FFFFFF;
   padding: 40px;
   height: 552px;
-  text-align: center;
-  justify-content: center;
   width: 100%;
   margin: auto;
 
@@ -33,7 +31,7 @@
 
 .title {
   margin: auto;
-  width: 583px;
+  width: 100%;
   text-align: center;
   font-size: 48px;
   font-family: Roboto;
@@ -41,7 +39,7 @@
 }
 
 .subtitle {
-  width: 440px;
+  width: 100%;
   margin: auto;
   font-size: 1.2rem;
 
@@ -56,6 +54,10 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.ctamButton {
+  display: none;
 }
 
 .headerBox {
@@ -101,9 +103,12 @@
   border-radius: 12px;
   background: #ffff;
 }
-.logoImage{
+
+.logoImage {
   border-radius: 12px;
+  width: 100%;
 }
+
 .dotsContainer {
   display: flex;
   justify-content: center;
@@ -145,4 +150,67 @@
   transform: translate(0, 0, 0);
   animation: wave 7s ease infinite;
   width: 100%;
+}
+
+@media (max-width: 720px) {
+  .carouselContainer {
+    height: fit-content;
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 32px;
+    text-align: justify;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .headerBox {
+    align-items: baseline;
+    max-width: 325px;
+  }
+
+  .slide.active {
+    padding-bottom: 30px;
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .features {
+
+    flex-direction: column;
+  }
+
+  .ctaButton {
+    display: none;
+  }
+
+  .ctamButton {
+    display: block;
+    width: 233px;
+    height: 59px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .pressLogos {
+    width: 100%;
+  }
+
+  .imagesBox {
+    box-shadow: 0px 0px 5px black;
+    width: 100px;
+    gap: 4px !important;
+  }
+
+  .rowForm {
+    flex-direction: column !important;
+  }
 }

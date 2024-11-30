@@ -1,5 +1,4 @@
 .faqContainer{
-
   padding: 60px 0px;
   display: flex;
   align-items: center;
@@ -25,8 +24,9 @@
       
   }
   .faqButton{
-  
+    
       padding: 16px 48px ;
+      width: 180px;
       gap: 10px;
       border-radius: 5px;
       font-family: Roboto;
@@ -42,13 +42,13 @@
   }
   .svgtopWave, .svgbottomWave{
     width: 100%;
-    height:100%;
+    height:50%;
     position: absolute;
+    overflow: hidden;
   }
   
   .topsvg,
   .bottomsvg {
-  
     position: absolute;
     width: 100%;
     height:100%;
