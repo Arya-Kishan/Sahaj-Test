@@ -3,6 +3,9 @@ import styles from './Testimonials.module.css';
 import Image from 'next/image';
 import profileImage from '../../../assests/Logo/featured.webp';
 import { FcGoogle } from "react-icons/fc";
+import profile from '../../../assests/AboutUs/founderimg.webp'
+import LinkedIn from '../../../assests/AboutUs/LinkedinIcon.webp'
+import mintLogo from "../../../assests/Blog/image.webp"
 
 const Testimonials = () => {
     const testimonials = [
@@ -86,8 +89,8 @@ const Testimonials = () => {
                     </div>
                     <div className={styles.reviewCard}>
                         <div className={styles.logoBox} >
-                            <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                            <Image
+                                src={LinkedIn}
                                 alt="LinkedIn"
                                 className={styles.icon}
                             />
@@ -105,13 +108,13 @@ const Testimonials = () => {
                 <div className={styles.clientInfo}>
 
                     <div className={styles.clientDetails}>
-                        <img
-                            src=""
+                        <Image
+                            src={profile}
                             alt="Client"
                             className={styles.clientImage}
                         />
-                        <img
-                            src=""
+                        <Image
+                            src={mintLogo}
                             alt="Mint"
                             className={styles.companyLogo}
                         />
@@ -132,7 +135,7 @@ const Testimonials = () => {
                         <div key={index} className={styles.card}>
                             <p className={styles.text}>{testimonial.text}</p>
                             <div className={styles.profile}>
-                                <img src={profileImage} alt="Profile" className={styles.avatar} />
+                                <Image src={profile} alt="Profile" className={styles.avatar} />
                                 <div>
                                     <h4 className={styles.name}>{testimonial.name}</h4>
                                     <p className={styles.occupation}>{testimonial.occupation}</p>
@@ -146,7 +149,7 @@ const Testimonials = () => {
                         <div key={index} className={styles.card}>
                             <p className={styles.text}>{testimonial.text}</p>
                             <div className={styles.profile}>
-                                <img src={profileImage} alt="Profile" className={styles.avatar} />
+                                <Image src={profile} alt="Profile" className={styles.avatar} />
                                 <div>
                                     <h4 className={styles.name}>{testimonial.name}</h4>
                                     <p className={styles.occupation}>{testimonial.occupation}</p>

@@ -26,7 +26,7 @@
   .faqButton{
     
       padding: 16px 48px ;
-      width: 180px;
+      width: fit-content;
       gap: 10px;
       border-radius: 5px;
       font-family: Roboto;

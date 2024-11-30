@@ -48,7 +48,7 @@ const BookCallModal = ({ isOpen, onClose }) => {
                     &times;
                 </button>
                 <h2 className={styles.formHeader}>
-                    Fill out the form to get your free plan sent directly to your inbox.
+                    Fill out the form to get your free Call.
                 </h2>
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <label>

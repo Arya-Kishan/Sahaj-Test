@@ -42,7 +42,7 @@ function Navbar() {
             title="How it works"
             options={[
               { label: 'ProcessFlow', path: '/processflow' },
-              { label: 'Step 2', path: '/processflow' },
+              { label: 'FAQs', path: '/faq' },
             ]}
           />
           <Dropdown
@@ -88,7 +88,7 @@ function Navbar() {
             title="How it works"
             options={[
               { label: 'ProcessFlow', path: '/processflow' },
-              { label: 'Step 2', path: '/processflow' },
+              { label: 'FAQs', path: '/faq' },
             ]}
           />
           <Dropdown
