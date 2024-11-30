@@ -37,37 +37,26 @@ const Tabs = () => {
     <div className={styles.container}>
       <div className={styles.tabsContainer}>
         <div className={styles.tabsHeader}>
-          {!isSearching ? (
-            <p className={styles.Heading}>
-            {searchQuery
-              ? `Search results for &quot;${searchQuery}&quot;`
-              : "Media"}
+          <p className={styles.Heading}>
+            {(isSearching && searchQuery) ?`Search results for "${searchQuery}"`:"Media"}
           </p>
-          
-          ) : (
-            <>
-              {searchQuery && (
-                <p className={styles.Heading}>
-                  Search results for &quot; {searchQuery}&quot;
-                </p>
-              )}
               <div className={styles.searchBox}>
+              {isSearching && (
                 <input
-                  type="text"
-                  placeholder="Type something..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className={styles.searchInput}
-                />
-              </div>
-            </>
-          )}
+                type="text"
+                placeholder="Type something..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={styles.searchInput}
+              />
+              )}
+
           <div
-            className={styles.searchIcon}
             onClick={handleSearchToggle}
             role="button"
           >
             <FaSearch size={24} />
+          </div>
           </div>
         </div>
         {!isSearching && (

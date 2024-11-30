@@ -1,0 +1,22 @@
+.headerContainer{
+    padding: 60px 0px ;
+    gap: 62px;
+    background-color: var(--Color-gray, #292929);
+}
+.headerText{
+    font-family: Roboto;
+    color: white;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56.25px;
+    letter-spacing: -1px;
+    text-align: center;
+}
+@media (max-width:768px) {
+    .headerText{
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 42px;
+    }
+    
+}
