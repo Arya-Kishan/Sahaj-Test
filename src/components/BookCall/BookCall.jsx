@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./Modal.module.css";
+import { FaArrowLeft } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
-import { countryCode } from "./countrycode";
+import { FaEarthAmericas } from "react-icons/fa6";
 
 const BookCallModal = ({ isOpen, onClose }) => {
     const [formData, setFormData] = useState({
@@ -9,6 +10,17 @@ const BookCallModal = ({ isOpen, onClose }) => {
         email: "",
         phone: "",
     });
+    const slots = [
+        '09:00 AM',
+        '10:00 AM',
+        '11:00 AM',
+        '12:00 PM',
+        '03:00 PM',
+        '04:00 PM',
+        '05:00 PM',
+        '06:00 PM',
+        '07:00 PM',
+    ];
     const [countryData, setCountryData] = useState("91");
     const [codeDropdown, setOpenClose] = useState(false);
 
@@ -44,87 +56,57 @@ const BookCallModal = ({ isOpen, onClose }) => {
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>
-                <button className={styles.closeButton} onClick={onClose}>
-                    &times;
-                </button>
-                <h2 className={styles.formHeader}>
-                    Fill out the form to get your free Call.
-                </h2>
-                <form className={styles.form} onSubmit={handleSubmit}>
-                    <label>
-                        <p>
-                            Full name<span className={styles.stars}>*</span>
-                        </p>
-                        <input
-                            className={styles.input}
-                            type="text"
-                            name="fullName"
-                            value={formData.fullName}
-                            onChange={handleInputChange}
-                            placeholder="Full name"
-                            required
-                        />
-                    </label>
-                    <label>
-                        <p>
-                            Email address<span className={styles.stars}>*</span>
-                        </p>
-                        <input
-                            className={styles.input}
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            placeholder="yourmail@gmail.com"
-                            required
-                        />
-                    </label>
-                    <label>
-                        Phone
-                        <div className={styles.phoneInput}>
-                            <div
-                                onClick={() => setOpenClose(!codeDropdown)}
-                                className={styles.countryCode}
-                            >
-                                <p>+ {countryData}</p>
-                                <IoIosArrowDown />
-                            </div>
-                            <hr className={styles.verticleLine} />
-                            <input
-                                className={styles.Pinput}
-                                type="tel"
-                                name="phone"
-                                value={formData.phone.replace(`+${countryData}`, "")}
-                                onChange={handleInputChange}
-                                placeholder="Enter your phone number"
-                                required
-                            />
-                            {codeDropdown && (
-                                <div className={styles.dropBox}>
-                                    {countryCode &&
-                                        countryCode.map((ele) => (
-                                            <p
-                                                key={ele.code}
-                                                onClick={() =>
-                                                    handleCountryCodeChange(ele.code)
-                                                }
-                                            >
-                                                + {ele.code} {ele.name}
-                                            </p>
-                                        ))}
-                                </div>
-                            )}
-                        </div>
-                    </label>
-                    <button
-                        type="submit"
-                        className={`${styles.submitBTN} ${isFormValid ? styles.submitActive : styles.submitDisabled
-                            }`}
-                        disabled={!isFormValid}
-                    >
-                        {isFormValid ? "Book a free call":"Submit"}
+                <div className={styles.buttonBox}>
+                    <FaArrowLeft className={styles.backArrow} />
+                    <button className={styles.closeButton} onClick={onClose}>
+                        &times;
                     </button>
-                </form>
+                </div>
+                <section className={styles.section} >
+                    <div className={styles.leftBox}>
+                        <div className={styles.leftBoxHeader}>
+                            <h3>Book Your Appointment</h3>
+                            <p>Schedule a 30-minute consultation with our experts.</p>
+                        </div>
+
+                        <div className={styles.progressBox}>
+                            <div className="">
+                                <h3>1</h3>
+                                <p>Select date and time</p>
+                            </div>
+                            <div className={styles.progressLine} ></div>
+                            <div className="">
+                                <h3>2</h3>
+                                <p>Confirm  your slot</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className={styles.verticleLine} />
+                    <div className={styles.rightBox}>
+                            <div className={styles.selectDate}>
+                            <h3>selectedDate</h3>
+                            <IoIosArrowDown />
+                            </div>
+                            <div className={styles.timezone}>
+                                <p>Select time</p>
+                                <div className={styles.timezoneDropdown}>
+                                <FaEarthAmericas />
+                                    <p>Asia/Kolkata</p>
+                                    <IoIosArrowDown />
+                                </div>
+                            </div>
+                            <div className={styles.slots}>
+                                {slots.map((slot, index) => (
+                                    <button key={index} className={styles.slot}>
+                                        {slot}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    
+                </section>
+
+
             </div>
         </div>
     );
