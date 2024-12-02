@@ -2,11 +2,11 @@
 import Image from "next/image";
 import styles from './featured.module.css';
 import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
-
+import { FaShareAlt } from 'react-icons/fa';
 
 const VideochannelsFeatured=({data}) => {
-    console.log("vv",data);
-    const {image,text}=data;
+  const {image,text}=data;
+
   return (
     <div className={styles.container}>
         <div className={styles.imgContainer}>
@@ -24,7 +24,9 @@ const VideochannelsFeatured=({data}) => {
             <p className={styles.VCdateContainer}>
                 {text.date}
             </p>
-            <p>icon</p>
+            <div className={styles.shareIcon}>
+               <FaShareAlt  size={24}/>
+              </div>
             </div>
             <p className={styles.subHeading}>{text.subHeading}</p>
             <div className={styles.headingContainer}>

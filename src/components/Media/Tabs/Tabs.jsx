@@ -1,24 +1,47 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 import TabContent from "../TabContent/TabContent";
 import { mediaData } from "../data";
 import { FaSearch } from "react-icons/fa";
 import styles from "./tabs.module.css";
 
 const tabs = [
-  { id: "Press coverage", label: "Press coverage" },
-  { id: "Podcast", label: "Podcast" },
-  { id: "Video channels", label: "Video channels" },
-  { id: "Blogs", label: "Blogs" },
-  { id: "SM's Customers in Media", label: "SM's Customers in Media" },
+  { id: "press-coverage", label: "Press Coverage" },
+  { id: "podcast", label: "Podcast" },
+  { id: "video", label: "Video Channels" },
+  { id: "blogs", label: "Blogs" },
+  { id: "customers", label: "SM's Customers in Media" },
 ];
 
 const Tabs = () => {
+  const router = useRouter();
+  const pathname = usePathname(); 
+  const { path } = useParams();
   const [activeTab, setActiveTab] = useState(tabs[0].id);
   const [isSearching, setIsSearching] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleTabChange = (tabId) => setActiveTab(tabId);
+
+  useEffect(() => {
+    if (path && tabs.some((tab) => tab.id === path)) {
+        setActiveTab(path); 
+    } else if (!path) {
+      
+      if (!pathname.includes(tabs[0].id)) {
+        router.push(`/media/${tabs[0].id}`);
+      }
+    }
+
+  }, [path, router, pathname]);
+
+  const handleTabChange = (tabId) => {
+    if (tabId !== activeTab) {
+       router.push(`/media/${tabId}`);
+    }
+  };
 
   const handleSearchToggle = () => {
     if (isSearching) {
@@ -26,9 +49,13 @@ const Tabs = () => {
     }
     setIsSearching(!isSearching);
   };
-
-  const filteredContent = mediaData;
-
+  // const filteredContent = isSearching
+  //   ? mediaData.filter((item) =>
+  //       item.toLowerCase().includes(searchQuery.toLowerCase())
+  //     )
+  //   : 
+  //   mediaData.filter((item) => item.id === activeTab);
+  const filteredContent=mediaData
   const displayContent = filteredContent.length > 0
     ? filteredContent
     : [{ message: "No content found" }];
@@ -38,25 +65,23 @@ const Tabs = () => {
       <div className={styles.tabsContainer}>
         <div className={styles.tabsHeader}>
           <p className={styles.Heading}>
-            {(isSearching && searchQuery) ?`Search results for "${searchQuery}"`:"Media"}
+            {isSearching && searchQuery
+              ? `Search results for "${searchQuery}"`
+              : "Media"}
           </p>
-              <div className={styles.searchBox}>
-              {isSearching && (
-                <input
+          <div className={styles.searchBox}>
+            {isSearching && (
+              <input
                 type="text"
                 placeholder="Type something..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className={styles.searchInput}
               />
-              )}
-
-          <div
-            onClick={handleSearchToggle}
-            role="button"
-          >
-            <FaSearch size={24} />
-          </div>
+            )}
+            <div onClick={handleSearchToggle} role="button">
+              <FaSearch size={24} />
+            </div>
           </div>
         </div>
         {!isSearching && (
@@ -82,7 +107,7 @@ const Tabs = () => {
       ) : (
         <div className={styles.tabsContentContainer}>
           <TabContent
-            data={filteredContent}
+            data={displayContent}
             activeTab={activeTab}
             isSearching={isSearching}
             searchQuery={searchQuery}

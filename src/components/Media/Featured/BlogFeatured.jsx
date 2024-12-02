@@ -2,7 +2,6 @@
 import Image from "next/image";
 import styles from './blogFeatured.module.css'
 const BlogFeatured = ( {data} ) => {
-  console.log(data)
   
     return (
     

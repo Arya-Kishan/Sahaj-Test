@@ -12,8 +12,6 @@
   
   .tabsHeader{
       display: flex;
-      /* align-items: center;
-      gap:5px; */
       justify-content: space-between;
   }
   
@@ -42,6 +40,7 @@
     .tabs{
         display: flex;
         gap: 36px; 
+        cursor: pointer;
         overflow-x: auto; 
         white-space: nowrap;
         scrollbar-width: none; 
@@ -92,9 +91,6 @@
        
          font-size: 20px;
       }
-     .tabs{
-  
-     }
       .activetabButton {
         position: relative;
   
