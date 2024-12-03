@@ -1,55 +1,41 @@
 import { useState, useEffect } from "react";
 import styles from "./Modal.module.css";
 import { FaArrowLeft } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
-import { FaEarthAmericas } from "react-icons/fa6";
+import DateAndTime from "./DateAndTime/DateAndTime";
+import CallForm from "./CallForm/CallForm";
 
 const BookCallModal = ({ isOpen, onClose }) => {
+    const [currentPhase, setCurrentPhase] = useState(1);
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
         phone: "",
+        date:"",
+        timeslot:""
     });
-    const slots = [
-        '09:00 AM',
-        '10:00 AM',
-        '11:00 AM',
-        '12:00 PM',
-        '03:00 PM',
-        '04:00 PM',
-        '05:00 PM',
-        '06:00 PM',
-        '07:00 PM',
-    ];
-    const [countryData, setCountryData] = useState("91");
-    const [codeDropdown, setOpenClose] = useState(false);
-
-    const isFormValid = formData.fullName && formData.email && formData.phone;
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-
-        if (name === "phone") {
-            setFormData({ ...formData, [name]: `+${countryData}${value}` });
-        } else {
-            setFormData({ ...formData, [name]: value });
+    const renderPhase = () => {
+        switch (currentPhase) {
+            case 1:
+                return <DateAndTime handleNext={handleNext} />;
+            case 2:
+                return <CallForm handleNext={handleNext}/>;
+            case 3:
+                return <><h3>Submitted data</h3></>;
+            default:
+                return <h1>Error</h1>;
         }
     };
 
-    const handleCountryCodeChange = (code) => {
-        setCountryData(code);
+    const handleNext = () => {
+        if (currentPhase < 3) setCurrentPhase(currentPhase + 1);
+    };
 
-        setOpenClose(false);
+    const handlePrevious = () => {
+        if (currentPhase > 1) setCurrentPhase(currentPhase - 1);
     };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form Data Submitted:", formData);
-        setFormData({
-            fullName: "",
-            email: "",
-            phone: "",
-        });
-    };
+
+    
+    
 
     if (!isOpen) return null;
 
@@ -57,7 +43,7 @@ const BookCallModal = ({ isOpen, onClose }) => {
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>
                 <div className={styles.buttonBox}>
-                    <FaArrowLeft className={styles.backArrow} />
+                    <FaArrowLeft onClick={handlePrevious} className={styles.backArrow} />
                     <button className={styles.closeButton} onClick={onClose}>
                         &times;
                     </button>
@@ -83,25 +69,8 @@ const BookCallModal = ({ isOpen, onClose }) => {
                     </div>
                     <hr className={styles.verticleLine} />
                     <div className={styles.rightBox}>
-                            <div className={styles.selectDate}>
-                            <h3>selectedDate</h3>
-                            <IoIosArrowDown />
-                            </div>
-                            <div className={styles.timezone}>
-                                <p>Select time</p>
-                                <div className={styles.timezoneDropdown}>
-                                <FaEarthAmericas />
-                                    <p>Asia/Kolkata</p>
-                                    <IoIosArrowDown />
-                                </div>
-                            </div>
-                            <div className={styles.slots}>
-                                {slots.map((slot, index) => (
-                                    <button key={index} className={styles.slot}>
-                                        {slot}
-                                    </button>
-                                ))}
-                            </div>
+                    {renderPhase()}
+                            
                         </div>
                     
                 </section>

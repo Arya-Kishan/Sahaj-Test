@@ -65,6 +65,18 @@
     flex-direction: column;
     gap: 19px;
   }
+  .leftBoxHeader h3{
+    font-size: 24px;
+    font-weight: 600;
+    font-family: Roboto;
+    color: #000000;
+  }
+  .leftBoxHeader p{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Manrope;
+    color: #000000;
+  }
   .progressBox{
     width: 300px;
     height: fit-content;
@@ -99,55 +111,10 @@
     flex-direction: column;
     gap: 34px;
   }
-  .selectDate{
-    width: 100%;
-    padding: 0 10px 0 10px;
-    height: 48px;
-    border: 1px solid #EAEFF2;
-    border-radius: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #FFFFFF;
-    box-shadow: 0px 4.54px 13.61px 0px #00000014;
-
-  }
-  .selectDate h3{
-    font-size: 20px;
-    font-family: Roboto;
-    font-weight: 500;
-    color: #000000;
-  }
+  
   .verticleLine{
     height: 357px;
     border: 1px solid #D9D9D933;
   }
-  .timezone{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .timezoneDropdown{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 30%;
-  }
-  .slots{
-    width: 100%;
-    height: fit-content;
-    display:flex ;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  .slot{
-    width: 112px;
-    height: 52px;
-    border: 1px solid #E0E0E0;
-    border-radius: 8px;
-    padding: 16px;
-    background-color: #FFFFFF;
-    font-size: 16px;
-    font-family: Manrope;
-    font-weight: 400;
-  }
+  
+ 
