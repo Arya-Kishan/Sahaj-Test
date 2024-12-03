@@ -21,7 +21,7 @@ function Navbar() {
   }
 
   return (
-    <>
+    <div className={style.mainContainer}>
       <nav className={style.nav}>
         <div className={style.logoBox}>
           <Link href="/">
@@ -42,7 +42,7 @@ function Navbar() {
             title="How it works"
             options={[
               { label: 'ProcessFlow', path: '/processflow' },
-              { label: 'Step 2', path: '/processflow' },
+              { label: 'FAQs', path: '/faq' },
             ]}
           />
           <Dropdown
@@ -88,7 +88,7 @@ function Navbar() {
             title="How it works"
             options={[
               { label: 'ProcessFlow', path: '/processflow' },
-              { label: 'Step 2', path: '/processflow' },
+              { label: 'FAQs', path: '/faq' },
             ]}
           />
           <Dropdown
@@ -108,7 +108,7 @@ function Navbar() {
         </div>
       )}
       <BookCallModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </>
+    </div>
 
   );
 }
