@@ -2,7 +2,9 @@
   padding: 60px 0px;
   display: flex;
   align-items: center;
-  margin-bottom: 23px;
+  height: 100%;
+  width: 100%;
+  position: relative;
   justify-content: center;
   
   }
@@ -23,10 +25,12 @@
       text-align: center;
       
   }
+  .link{
+    color: white;
+    text-decoration: none;
+  }
   .faqButton{
-    
       padding: 16px 48px ;
-      width: 180px;
       gap: 10px;
       border-radius: 5px;
       font-family: Roboto;
@@ -37,12 +41,12 @@
       text-align: center;
       color: white;
       background-color: rgb(17, 17, 17);
-  
+      cursor: pointer;
   
   }
   .svgtopWave, .svgbottomWave{
     width: 100%;
-    height:50%;
+    height:100%;
     position: absolute;
     overflow: hidden;
   }

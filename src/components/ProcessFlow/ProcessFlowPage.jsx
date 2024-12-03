@@ -11,7 +11,7 @@ const ProcessFlow=()=>{
            <HeadSection />
            <ProcessSteps />
            <Support />
-           <FAQ heading='Find Answers to Your Questions in Our FAQ' buttonText="Visit FAQ"/>
+           <FAQ heading='Find Answers to Your Questions in Our FAQ' buttonText="Visit FAQ" path='/faqs'/>
            <ReviewsContainer />
         </div>
     )

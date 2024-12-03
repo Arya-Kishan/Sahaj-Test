@@ -43,6 +43,7 @@
     text-align: center;
     background:none;
     width:90px;
+    cursor: pointer;
   }
 
   .container {

@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useParams } from "next/navigation";
@@ -18,28 +16,40 @@ const tabs = [
 
 const Tabs = () => {
   const router = useRouter();
-  const pathname = usePathname(); 
+  const pathname = usePathname();
   const { path } = useParams();
   const [activeTab, setActiveTab] = useState(tabs[0].id);
   const [isSearching, setIsSearching] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-
   useEffect(() => {
+   
     if (path && tabs.some((tab) => tab.id === path)) {
-        setActiveTab(path); 
-    } else if (!path) {
-      
-      if (!pathname.includes(tabs[0].id)) {
-        router.push(`/media/${tabs[0].id}`);
-      }
+      setActiveTab(path);
+    } else if (!path && !pathname.includes(tabs[0].id)) {
+      router.push(`/media/${tabs[0].id}`);
     }
 
+  
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get("search") || "";
+    setSearchQuery(query);
   }, [path, router, pathname]);
+
+  useEffect(() => {
+    
+    if (searchQuery) {
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set("search", searchQuery);
+      router.push(`${pathname}?${urlParams.toString()}`, undefined, {
+        shallow: true,
+      });
+    }
+  }, [searchQuery, pathname, router]);
 
   const handleTabChange = (tabId) => {
     if (tabId !== activeTab) {
-       router.push(`/media/${tabId}`);
+      router.push(`/media/${tabId}`);
     }
   };
 
@@ -49,16 +59,9 @@ const Tabs = () => {
     }
     setIsSearching(!isSearching);
   };
-  // const filteredContent = isSearching
-  //   ? mediaData.filter((item) =>
-  //       item.toLowerCase().includes(searchQuery.toLowerCase())
-  //     )
-  //   : 
-  //   mediaData.filter((item) => item.id === activeTab);
-  const filteredContent=mediaData
-  const displayContent = filteredContent.length > 0
-    ? filteredContent
-    : [{ message: "No content found" }];
+
+  const filteredContent = mediaData
+  const displayContent = filteredContent.length > 0 ? filteredContent : [{ message: "No content found" }];
 
   return (
     <div className={styles.container}>
@@ -84,24 +87,20 @@ const Tabs = () => {
             </div>
           </div>
         </div>
-        {!isSearching && (
-          <div className={styles.tabs}>
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => handleTabChange(tab.id)}
-                className={
-                  activeTab === tab.id
-                    ? styles.activetabButton
-                    : styles.tabButton
-                }
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        )}
+
+        <div className={styles.tabs}>
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => handleTabChange(tab.id)}
+              className={activeTab === tab.id ? styles.activetabButton : styles.tabButton}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
       </div>
+
       {displayContent[0]?.message ? (
         <div>{displayContent[0]?.message}</div>
       ) : (
