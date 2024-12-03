@@ -21,7 +21,7 @@ function Navbar() {
   }
 
   return (
-    <>
+    <div className={style.mainContainer}>
       <nav className={style.nav}>
         <div className={style.logoBox}>
           <Link href="/">
@@ -108,7 +108,7 @@ function Navbar() {
         </div>
       )}
       <BookCallModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </>
+    </div>
 
   );
 }

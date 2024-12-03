@@ -1,3 +1,6 @@
+.mainContainer{
+  height: 91px;
+}
 
 .nav {
     width: 100%;
@@ -7,7 +10,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9999;
   }
   
   .logoBox {
