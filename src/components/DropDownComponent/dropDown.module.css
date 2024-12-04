@@ -1,0 +1,84 @@
+
+.dropdown {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+  }
+  
+  .buttons {
+    color: #000000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: Roboto;
+    font-weight: 300;
+    display: flex;
+    align-items: center;  
+    border-radius: 24px;
+    justify-content: center;
+    border: 1px solid #D6D5D5;
+    padding: 10px 12px;
+
+  }
+  
+  .icon {
+  
+    margin-left: 4px;
+    margin-top: 4px;
+  }
+  
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    margin-top: 8px;
+    padding: 8px 0;
+    z-index: 10;
+  }
+  
+  .menuItem {
+    width: 100%;
+    padding: 8px 16px;
+    color: #333;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .menuItem:hover {
+    background-color: #f0f0f0;
+  }
+  @media screen and (max-width: 768px) {
+
+    .buttons{
+      height: 40px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* border-bottom: 1px solid #00000040; */
+    }
+    .buttons p{
+      font-size: 16px;
+      font-weight: 500;
+      color: #000000;
+      font-family: Roboto;
+    }
+    .menu{
+      position: static;
+      box-shadow: none;
+      width: 100%;
+      height: fit-content;
+      padding: 4px;
+      color: #00000080;
+      font-size: 16px;
+    }
+  }
+
+  

@@ -1,13 +1,15 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef,useState } from "react";
 import Link from "next/link";
 import styles from "./style.module.css";
 import Image from "next/image";
 import servicepic from "../../../assests/Service/service3.webp";
 import servicepic1 from "../../../assests/Service/service4.webp";
+import Dropdown from "@/components/DropDownComponent/DropDown";
 
 function ServicesPage() {
+  const [activeOption, setActiveOption] = useState(0)
   const serviceRefs = useRef([]);
 
   const options = [
@@ -81,6 +83,17 @@ function ServicesPage() {
             </button>
           ))}
         </div>
+        <div className={styles.dropDownBox}>
+          <Dropdown
+              title="Select Service"
+              value={activeOption} 
+              onChange={(index) => {
+                setActiveOption(index);
+                scrollToService(options[index]?.id); 
+              }}
+              options={options}
+           />
+         </div>
       </div>
       <section className={styles.servicesContainer}>
         {services.map((service, index) => (

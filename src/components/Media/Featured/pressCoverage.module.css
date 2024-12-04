@@ -35,6 +35,7 @@
       padding: 8px  0px;
       gap: 10px;
       border-radius: 5px;
+      cursor: pointer;
       border:none;
       font-family: Roboto;
       font-size: 18px;
@@ -44,6 +45,9 @@
       text-align: center;
       background:none;
       width:90px;
+    }
+    .viewMore:active{
+      text-decoration: underline;
     }
   
     .container {

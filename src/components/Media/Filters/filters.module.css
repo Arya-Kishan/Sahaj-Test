@@ -9,17 +9,15 @@
     gap: 10px;
     border-radius: 20px;
     border: 1px solid #D6D5D5;
- 
+    cursor: pointer;
     font-family: Roboto;
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
     letter-spacing: 0.4px;
     text-align: center;
-   color: var(--Color-black-50, #00000080);
-
-
-
+    background: none;
+    color: var(--Color-black-50, #00000080);
 }
 .filterButtonActive{
     background: var(--Color-black, #000000);

@@ -23,7 +23,7 @@ const Footer = () => {
           <h4>Resources</h4>
           <Link className={styles.linkText} href="/services">Services</Link>
           <Link className={styles.linkText} href="/media">Media</Link>
-          <Link className={styles.linkText} href="/faq">FAQs</Link>
+          <Link className={styles.linkText} href="/faqs">FAQs</Link>
         </div>
         <div className={styles.footerSection}>
           <h4>Get in touch</h4>

@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
+import Link from "next/link";
+
 const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
   const [visibleCount, setVisibleCount] = useState(3); 
 
@@ -15,7 +17,6 @@ const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
   };
   
 
-  // Filter cards based on search query
   const filteredCards = filteredData.filter((card) => {
     const cardText = [
       card.subheading,
@@ -27,6 +28,7 @@ const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
 
     return cardText.includes(searchQuery.toLowerCase());
   });
+  
   useEffect(() => {
     setVisibleCount(3);
   }, [filteredData, searchQuery]);
@@ -45,7 +47,7 @@ const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
               <Image src={img} alt={heading} className={styles.cardImg} />
-              {activeTab === "Podcast" && (
+              {activeTab === "podcast" && (
                 <svg
                   width="80"
                   height="80"
@@ -74,7 +76,7 @@ const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
                   />
                 </svg>
               )}
-              {activeTab === "Video channels" && (
+              {activeTab === "video" && (
                 <svg
                   width="80"
                   height="80"
@@ -110,17 +112,28 @@ const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
               {description && <p className={styles.description}>{description}</p>}
               <p className={styles.cardDate}>{date}</p>
             </div>
-            {activeTab === "Blogs" && (
+            {activeTab === "blogs" && (
               <div className={styles.blogCardButtonsContainer}>
                 <button className={styles.blogCardButton}>Budgeting</button>
                 <button className={styles.blogCardButton}>Saving</button>
               </div>
             )}
           </div>
-
-            {(activeTab === "Blogs" || activeTab === "Press coverage") && (
+          { activeTab === "blogs" && 
+             
+             <Link
+             className={styles.readMore}
+             href="/blog/individual"
+            >
               <ReadMore text={"Read More"} />
-            )}
+           </Link>
+           }
+
+            { activeTab === "press-coverage" &&
+           
+               <ReadMore text={"Read More"} />
+          
+            }
           </div>
       ))}
 
