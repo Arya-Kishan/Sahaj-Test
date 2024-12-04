@@ -1,7 +1,6 @@
-import React from 'react'
+
 import styles from './secondaryButton.module.css'
 
-//outlined button
 export default function SecondaryButton({ children, className, onClick}) {
 
    return (
