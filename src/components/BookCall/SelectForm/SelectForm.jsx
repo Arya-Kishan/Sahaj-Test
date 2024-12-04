@@ -1,6 +1,11 @@
 import styles from "./style.module.css";
 
-function SelectForm({ handleNext }) {
+function SelectForm({ setConfirmPhase }) {
+
+
+    const handleSubmit=()=>{
+        setConfirmPhase(false)
+    }
     return (
         <div className={styles.container}>
             
@@ -23,7 +28,7 @@ function SelectForm({ handleNext }) {
                     <label htmlFor="other">Other</label>
                 </div>
             </div>
-            <button className={styles.nextButton} onClick={handleNext}>
+            <button className={styles.nextButton} onClick={handleSubmit}>
                 Submit
             </button>
         </div>

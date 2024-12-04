@@ -4,9 +4,11 @@ import { FaArrowLeft } from "react-icons/fa";
 import DateAndTime from "./DateAndTime/DateAndTime";
 import CallForm from "./CallForm/CallForm";
 import SelectForm from "./SelectForm/SelectForm";
+import ConfirmSlot from "./ConfirmSlot/ConfirmSlot";
 
 const BookCallModal = ({ isOpen, onClose }) => {
     const [currentPhase, setCurrentPhase] = useState(1);
+    const [confirmPhase, setConfirmPhase] = useState(true)
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -21,16 +23,14 @@ const BookCallModal = ({ isOpen, onClose }) => {
             case 2:
                 return <CallForm handleNext={handleNext}/>;
             case 3:
-                return <SelectForm handleNext={handleNext} />;
-            case 4:
-                return <h3>confirmation Phase</h3>;
+                return <SelectForm handleNext={handleNext} setConfirmPhase={setConfirmPhase} />;
             default:
                 return <h1>Error</h1>;
         }
     };
 
     const handleNext = () => {
-        if (currentPhase < 4) setCurrentPhase(currentPhase + 1);
+        if (currentPhase < 3) setCurrentPhase(currentPhase + 1);
     };
 
     const handlePrevious = () => {
@@ -45,6 +45,8 @@ const BookCallModal = ({ isOpen, onClose }) => {
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>
+            {confirmPhase ? <>
+                
                 <div className={styles.buttonBox}>
                     <FaArrowLeft onClick={handlePrevious} className={styles.backArrow} />
                     <button className={styles.closeButton} onClick={onClose}>
@@ -79,6 +81,10 @@ const BookCallModal = ({ isOpen, onClose }) => {
                 </section>
 
 
+            
+            </>:<>
+              <ConfirmSlot onClose={onClose}/>
+            </>}
             </div>
         </div>
     );
