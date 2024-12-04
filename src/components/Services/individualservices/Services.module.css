@@ -35,6 +35,9 @@
     align-items: center;
     gap: 9px;
   }
+  .dropDownBox{
+    display: none;
+  }
   
   .tabButton {
     padding: 0.5rem 1rem;
@@ -105,3 +108,32 @@
     color: #00000080;
   }
   
+
+  @media (max-width:768px) {
+    .expertBox{
+      height: auto;
+    }
+    .services {
+      padding: 16px;
+    }
+    .optionBox{
+      display: none;
+    }
+    .dropDownBox{
+      display: block;
+    }
+    .details {
+      flex-direction: column;
+    }
+    
+    .section {
+      flex-direction: column;
+    }
+    .text {
+      width: 100%;
+      gap: 32px;
+    }
+    .text p{
+      color: var(--Color-black-75, #000000BF);
+    }
+  }

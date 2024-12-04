@@ -6,6 +6,7 @@ import Image from "next/image";
 import styles from "./Services.module.css";
 import image1 from '../../../assests/Service/service1.webp';
 import image2 from '../../../assests/Service/service2.webp';
+import Dropdown from "@/components/DropDownComponent/DropDown";
 
 const servicesData = [
   {
@@ -100,20 +101,29 @@ const Services = () => {
         <div className={styles.tabs}>
           <h3>Services</h3>
           <hr />
-          <div className={styles.optionBox}>
-            {options.map((option, index) => (
-              <button
-                key={option.id}
-                className={`${styles.tabButton} ${
-                  activeTab === index ? styles.active : styles.nonactive
-                }`}
-                onClick={() => setActiveTab(index)}
-              >
-                {option.option}
-              </button>
-            ))}
+            <div className={styles.optionBox}>
+              {options.map((option, index) => (
+                <button
+                  key={option.id}
+                  className={`${styles.tabButton} ${
+                    activeTab === index ? styles.active : styles.nonactive
+                  }`}
+                  onClick={() => setActiveTab(index)}
+                >
+                  {option.option}
+                </button>
+              ))}
+            </div>
+            <div className={styles.dropDownBox}>
+              <Dropdown
+              title="All Services"
+              value={activeTab}
+              onChange={(index) => setActiveTab(index)}
+              options={options}
+            />
+            </div>
+           
           </div>
-        </div>
         <div className={styles.content}>
           <h2>{servicesData[activeTab]?.title || "No Data"}</h2>
           <div className={styles.details}>
