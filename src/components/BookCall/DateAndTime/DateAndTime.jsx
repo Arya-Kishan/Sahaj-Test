@@ -3,7 +3,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaEarthAmericas } from "react-icons/fa6";
 import { useState } from 'react';
 
-function DateAndTime({handleNext}) {
+function DateAndTime({ handleNext }) {
     const [selectedtime, setSlot] = useState('')
     const slots = [
         '09:00 AM',
@@ -32,9 +32,9 @@ function DateAndTime({handleNext}) {
             </div>
             <div className={styles.slots}>
                 {slots.map((slot, index) => (
-                    <button key={index} 
-                    className={`${styles.slot} ${selectedtime===index? styles.seletedSlot :""}`}
-                    onClick={()=>setSlot(index)}>
+                    <button key={index}
+                        className={`${styles.slot} ${selectedtime === index ? styles.seletedSlot : ""}`}
+                        onClick={() => setSlot(index)}>
                         {slot}
                     </button>
                 ))}
