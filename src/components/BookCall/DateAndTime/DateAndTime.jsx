@@ -3,8 +3,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaEarthAmericas } from "react-icons/fa6";
 import { useState } from 'react';
 
-function DateAndTime({ handleNext }) {
-    const [selectedtime, setSlot] = useState('')
+function DateAndTime({ handleNext, setFormData, formData }) {
+    const [selectedtime, setSlot] = useState(formData.timeslot)
     const slots = [
         '09:00 AM',
         '10:00 AM',
@@ -16,10 +16,11 @@ function DateAndTime({ handleNext }) {
         '06:00 PM',
         '07:00 PM',
     ];
+    
     return (
         <>
             <div className={styles.selectDate}>
-                <input type="date" name="date" id="" />
+                <input type="date" value={formData.date} onChange={(e)=>setFormData({...formData, date:e.target.value})} name="date" id="" />
                 {/* <IoIosArrowDown /> */}
             </div>
             <div className={styles.timezone}>
@@ -33,13 +34,15 @@ function DateAndTime({ handleNext }) {
             <div className={styles.slots}>
                 {slots.map((slot, index) => (
                     <button key={index}
-                        className={`${styles.slot} ${selectedtime === index ? styles.seletedSlot : ""}`}
-                        onClick={() => setSlot(index)}>
+                        className={`${styles.slot} ${selectedtime === slot ? styles.seletedSlot : ""}`}
+                        onClick={() => {
+                            setSlot(slot)
+                            setFormData({...formData, timeslot:slot})}}>
                         {slot}
                     </button>
                 ))}
             </div>
-            <button className={styles.nextbutton} onClick={handleNext}>Next</button>
+            <button  disabled={formData.date === "" || formData.timeslot === ""}  className={styles.nextbutton} onClick={handleNext}>Next</button>
         </>
     )
 }

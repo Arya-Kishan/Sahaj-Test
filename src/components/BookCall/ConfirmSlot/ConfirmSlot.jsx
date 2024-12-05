@@ -4,12 +4,12 @@ import PrimaryButton from '@/components/Buttons/PrimaryButton/PrimaryButton';
 import SecondaryButton from '@/components/Buttons/SecondaryButton/SecondaryButton';
 import { IoLogoWhatsapp } from "react-icons/io";
 
-function ConfirmSlot({ onClose }) {
+function ConfirmSlot({ ResetData }) {
     return (
         <>
             <div className={styles.headerBox}>
                 <h3><span></span>Don&apos;t leave just yet! Let us assist you.
-                    <span><RxCross1 onClick={onClose} className={styles.cancelbtn} /></span>
+                    <span><RxCross1 onClick={ResetData} className={styles.cancelbtn} /></span>
                 </h3>
                 <p>Need some support? We&apos;re just a click away.</p>
             </div>
