@@ -102,7 +102,7 @@ const BookCallModal = ({ isOpen, onClose }) => {
 
             
             </>:<>
-              <ConfirmSlot ResetData={ResetData}/>
+              <ConfirmSlot ResetData={ResetData} formData={formData}/>
             </>}
             </div>
         </div>
