@@ -13,20 +13,25 @@ function ConfirmSlot({ ResetData, formData }) {
     const [isConfirmed, setConfirm] = useState(false);
 
     const formatDateTime = (date, time) => {
-
         const [hour, minute, period] = time.match(/(\d{2}):(\d{2})\s(AM|PM)/).slice(1);
         const adjustedHour = period === 'PM' && hour !== '12' ? parseInt(hour, 10) + 12 : hour === '12' ? '00' : hour;
         const fullDateTime = new Date(`${date}T${adjustedHour}:${minute}:00`);
-
+    
         const formattedDate = fullDateTime.toLocaleDateString('en-US', {
             month: 'long',
             day: 'numeric',
             year: 'numeric',
         });
-        return `${time} ${formattedDate}`;
+    
+        const formattedTime = fullDateTime.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: '2-digit',
+        });
+    
+        return { formattedDate, formattedTime };
     };
-
-    const formattedDateTime = formatDateTime(formData.date, formData.timeslot);
+    
+    const { formattedDate, formattedTime } = formatDateTime(formData.date, formData.timeslot);
 
     const confirmBooking = () => {
         setConfirm(true)
@@ -67,8 +72,8 @@ function ConfirmSlot({ ResetData, formData }) {
                     <div className={styles.slotDetailsBox}>
                         <div className={styles.sltoData}>
                             <div>
-                            <p><CiCalendar className={styles.slotIcon}/>September 27,  2024</p>
-                            <p><GoClock className={styles.slotIcon} />11 am</p>
+                            <p><CiCalendar className={styles.slotIcon}/>{formattedDate}</p>
+                            <p><GoClock className={styles.slotIcon} />{formattedTime}</p>
                             <p><GoGlobe className={styles.slotIcon}/>Asia/Kolkata</p>
                             </div>
                         </div>
@@ -91,7 +96,7 @@ function ConfirmSlot({ ResetData, formData }) {
                     <div className={styles.progressBox}>
                         <div className={styles.stepBox}>
                             <h3 className={styles.step1}>1</h3>
-                            <p>{formattedDateTime}</p>
+                            <p>{formattedTime} {formattedDate}</p>
                         </div>
                         <div className={styles.progressLine}></div>
                         <div className={styles.stepBox}>
