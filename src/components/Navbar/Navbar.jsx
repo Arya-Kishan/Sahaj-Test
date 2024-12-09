@@ -41,17 +41,17 @@ function Navbar() {
             title="How it works"
             options={[
               { label: 'ProcessFlow', path: '/processflow' },
-              { label: 'FAQs', path: '/faq' },
+              { label: 'FAQs', path: '/faqs' },
             ]}
           />
           <Dropdown
             title="Media"
             options={[
-              { label: 'Podcast', path: '/podcast' },
-              { label: 'Press coverage', path: '/presscoverage' },
-              { label: 'Video channels', path: '/videochannels' },
-              { label: 'Blogs', path: '/blog/1' },
-              { label: 'SM’s Customers in Media', path: '/customermedia' },
+              { label: 'Podcast', path: '/media/podcast' },
+              { label: 'Press coverage', path: '/media/press-coverage' },
+              { label: 'Video channels', path: '/media/video' },
+              { label: 'Blogs', path: '/media/blogs' },
+              { label: 'SM’s Customers in Media', path: '/media/customers' },
             ]}
           />
           <Link href="/about" className={style.aboutus}>
@@ -86,17 +86,17 @@ function Navbar() {
             title="How it works"
             options={[
               { label: 'ProcessFlow', path: '/processflow' },
-              { label: 'FAQs', path: '/faq' },
+              { label: 'FAQs', path: '/faqs' },
             ]}
           />
           <Dropdown
             title="Media"
             options={[
-              { label: 'Podcast', path: '/podcast' },
-              { label: 'Press coverage', path: '/presscoverage' },
-              { label: 'Video channels', path: '/videochannels' },
-              { label: 'Blogs', path: '/blog/1' },
-              { label: 'SM’s Customers in Media', path: '/customermedia' },
+              { label: 'Podcast', path: '/media/podcast' },
+              { label: 'Press coverage', path: '/media/press-coverage' },
+              { label: 'Video channels', path: '/media/video' },
+              { label: 'Blogs', path: '/media/blogs' },
+              { label: 'SM’s Customers in Media', path: '/media/customers' },
             ]}
           />
           <Link href="/about" className={style.mobileAboutus}>

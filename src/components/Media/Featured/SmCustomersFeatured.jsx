@@ -6,7 +6,8 @@ import { FaShareAlt } from 'react-icons/fa';
 
 const SmCustomersFeatured=({data}) => {
   
-    const {image,text}=data;
+  const {image,text}=data;
+
   return (
     <div className={styles.container}>
         <div className={styles.imgContainer}>
@@ -18,7 +19,10 @@ const SmCustomersFeatured=({data}) => {
             <p className={styles.VCdateContainer}>
                 {text.date}
             </p>
-            <FaShareAlt  size={24}/>
+              <div className={styles.shareIcon}>
+               <FaShareAlt  size={24}/>
+              </div>
+            
             </div>
             <p className={styles.subHeading}>{text.subHeading}</p>
             <div className={styles.headingContainer}>

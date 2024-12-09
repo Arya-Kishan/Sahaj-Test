@@ -1,3 +1,4 @@
+"use client";
 import styles from './reviewsContainer.module.css';
 import Reviews from './Reviews';
 import Guidance from './Guidance';

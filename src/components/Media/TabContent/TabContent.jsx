@@ -33,11 +33,11 @@ const TabContent = ({ data,activeTab,isSearching,searchQuery,setSearchQuery }) =
   };
 
   const componentMap = {
-    "Press coverage": PressCoverageFeatured,
-    "Podcast": PodcastFeatured,
-    "Video channels": VideoChannelsFeatured,
-    "Blogs": BlogFeatured,
-    "SM's Customers in Media": SmCustomersFeatured,
+    "press-coverage": PressCoverageFeatured,
+    "podcast": PodcastFeatured,
+    "video": VideoChannelsFeatured,
+    "blogs": BlogFeatured,
+    "customers": SmCustomersFeatured,
   };
 
     function renderFeaturedComponent() {
@@ -61,7 +61,9 @@ const TabContent = ({ data,activeTab,isSearching,searchQuery,setSearchQuery }) =
       }
       
        <div className={styles.filtersFullContainer} >
-        <Filters onFilterChange={handleFilterChange} activeTab={activeTab} />
+       {
+        !isSearching && <Filters onFilterChange={handleFilterChange} activeTab={activeTab} />
+       } 
       </div>
       
       <div className={styles.mediaCardContainer}>

@@ -8,7 +8,7 @@ import cardlogo from "../../assests/Blog/image.webp";
 
 export const mediaData = [
     
-  {  id:"Press coverage",
+  {  id:"press-coverage",
      featured: {
        cards:[
        
@@ -93,7 +93,7 @@ export const mediaData = [
     ]
      
     },
-     { id:"Podcast",
+     { id:"podcast",
        featured: 
       { image: mediaCard,
         text: {
@@ -162,7 +162,7 @@ export const mediaData = [
       ]
     
     },
-    { id:"Video channels",
+    { id:"video",
       featured:  
       { image: videoChannelsFeatured,
         text: {
@@ -238,7 +238,7 @@ export const mediaData = [
 
     },
     {
-      id:"Blogs",
+      id:"blogs",
       featured:{
           image:blogFeatured
       },
@@ -301,7 +301,7 @@ export const mediaData = [
 
     },
     
-    { id:"SM's Customers in Media",
+    { id:"customers",
       featured: { image: sMCustomerFeatured,
         text: {
           date:'20 September, 2024',

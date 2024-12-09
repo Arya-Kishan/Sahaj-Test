@@ -60,10 +60,7 @@
     
   }
   .step {
-    flex: 1;
-    /* padding: 10px; */
-   
-    
+    flex: 1; 
   } 
   .stepDesccriptionContainer{
     display: flex;
@@ -94,7 +91,7 @@
   .line {
     flex: 1;
     margin:18px 0;
-    height:2px;
+    height:1px;
     position: relative;
     background:
       repeating-linear-gradient(90deg,rgb(235, 230, 230) 0 5px,transparent 0 7px)
@@ -110,18 +107,16 @@
     font-size: 12px;
     color: #fff;
     background: #222;
-    width:205px;
-    margin-top: -10px;
-    /* margin-left: 10.42vw; */
-    margin-left: 30%;
-    position:absolute;
-    font-size: 12px;
-    color: #fff;
-    background: #222;
-    padding: 4px 40px ;
+    width:fit-content;
+    padding: 5px 20px ;
     gap: 10px;
     border-radius: 22px;
     border: 1px  solid white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
   }
   .processHeading{
     font-family: Roboto;
@@ -208,7 +203,9 @@
         color: #fff;
         background: #222;
         width:205px;
-        margin-top: 165px;
+        top:80%;
+        /* margin-top: 165px; */
+        margin-left: 100px;
         padding: 10px 40px ;
         border-radius: 22px;
         border: 1px  solid white;
@@ -217,7 +214,7 @@
       }
       .step {
         display: flex;
-        padding: 10px;
+        padding: 30px 0px;
       }
       .description{
         

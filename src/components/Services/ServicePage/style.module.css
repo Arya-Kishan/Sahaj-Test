@@ -34,7 +34,9 @@
   .optionBox::-webkit-scrollbar {
     display: none;
   }
-  
+  .dropDownBox{
+    display: none;
+  }
   .optionButton {
     padding: 10px 20px;
     border: 1px solid #d6d5d5;
@@ -113,4 +115,26 @@
     border-radius: 8px;
     object-fit: cover;
   }
+
+  @media (max-width:768px) {
+    .mainContainer {
+      padding: 16px;
+    }
+    .optionBox {
+      display: none;
+    }
+    .optionContainer h3 {
+      font-size: 24px;
+    } 
+    .dropDownBox{
+      display: block;
+    }
+  .serviceCard {
+    flex-direction: column;
+    
+  } 
   
+  .serviceText {
+    padding: 0px;
+  }
+ }

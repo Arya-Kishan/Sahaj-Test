@@ -1,12 +1,14 @@
 "use client"
+import Link from 'next/link';
 import styles from './faq.module.css';
 
-function FAQ({ heading, buttonText }) {
+function FAQ({ heading, buttonText,path,onClick }) {
+  
   return (
     <div className={styles.faqContainer}>
 
       <div className={styles.svgtopWave}>
-        <svg width="1440" height="243" className={styles.topsvg} viewBox="0 0 1440 243" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="1440" height="221" className={styles.topsvg} viewBox="0 0 1440 221" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path opacity="0.6" fillRule="evenodd" clipRule="evenodd" d="M0 1.94354L39.6 24.1149C80.4 46.2863 159.6 90.629 240 75.8481C320.4 61.0672 399.6 -12.8374 480 1.94354C560.4 16.7245 639.6 120.191 720 127.581C800.4 134.972 879.6 46.2863 960 31.5054C1040.4 16.7245 1119.6 75.8481 1200 105.41C1280.4 134.972 1359.6 134.972 1400.4 134.972H1440V268H1400.4C1359.6 268 1280.4 268 1200 268C1119.6 268 1040.4 268 960 268C879.6 268 800.4 268 720 268C639.6 268 560.4 268 480 268C399.6 268 320.4 268 240 268C159.6 268 80.4 268 39.6 268H0L0 1.94354Z" fill="#C18823" fillOpacity="0.15" />
         </svg>
       </div>
@@ -25,10 +27,20 @@ function FAQ({ heading, buttonText }) {
         <p className={styles.faqtext}>
           {heading}
         </p>
-        <button className={styles.faqButton}>
-          {buttonText}
-        </button>
-      </div>
+         {path ? (
+          <Link href={path} className={styles.link}>
+            <button className={styles.faqButton}>{buttonText}</button>
+          </Link>
+        ) : onClick ? (
+          <button className={styles.faqButton} onClick={onClick}>
+            {buttonText}
+          </button>
+        ) : (
+          <button className={styles.faqButton} disabled>
+            {buttonText}
+          </button>
+        )}
+        </div>
       <div className={styles.faqtextContainerSmallScreen}>
         <p className={styles.faqtext}>
           Find the perfect financial solution for your needs.
