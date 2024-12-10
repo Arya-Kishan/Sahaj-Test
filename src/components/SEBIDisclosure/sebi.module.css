@@ -1,0 +1,21 @@
+.sebiContainer{
+display: flex;
+flex-direction: column;
+padding: 60px 100px;
+gap: 60px;
+
+}
+.tableContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.tableHeading{
+font-family: Roboto;
+font-size: 32px;
+font-weight: 700;
+line-height: 48px;
+letter-spacing: -1px;
+text-align: left;
+
+}
