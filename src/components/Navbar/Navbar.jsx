@@ -33,9 +33,8 @@ function Navbar() {
           <Dropdown
             title="Services"
             options={[
-              { label: 'Services', path: '/services' },
-              { label: 'Individual Services', path: '/individual/individualservices' },
-              { label: 'Service 3', path: '/individual/individualservices' },
+              { label: 'Financial planning', path: '/services' },
+              { label: 'Renewal Service', path: '/services' },
             ]}
           />
           <Dropdown
@@ -79,9 +78,8 @@ function Navbar() {
           <Dropdown
             title="Services"
             options={[
-              { label: 'Services', path: '/services' },
-              { label: 'Individual Services', path: '/individualservices' },
-              { label: 'Service 3', path: '/individualservices' },
+              { label: 'Financial planning', path: '/services' },
+              { label: 'Renewal Service', path: '/services' },
             ]}
           />
           <Dropdown

@@ -3,24 +3,45 @@ import styles from "./Modal.module.css";
 import { FaArrowLeft } from "react-icons/fa";
 import DateAndTime from "./DateAndTime/DateAndTime";
 import CallForm from "./CallForm/CallForm";
+import SelectForm from "./SelectForm/SelectForm";
+import ConfirmSlot from "./ConfirmSlot/ConfirmSlot";
+import CalendarModal from "../modals/CustomCalendar/CalendarModal";
 
 const BookCallModal = ({ isOpen, onClose }) => {
     const [currentPhase, setCurrentPhase] = useState(1);
+    const [confirmPhase, setConfirmPhase] = useState(true)
     const [formData, setFormData] = useState({
-        fullName: "",
+        Name: "",
         email: "",
-        phone: "",
-        date:"",
-        timeslot:""
-    });
+        phoneNumber: "",
+        date:new Date(),
+        timeslot:"",
+        source:""
+    }); 
+    const ResetData =()=>{
+        setCurrentPhase(1);
+        setConfirmPhase(true)
+        setFormData({
+            Name: "",
+            email: "",
+            phoneNumber: "",
+            date:"",
+            timeslot:"",
+            source:""
+        })
+        onClose()
+    }
+    useEffect(()=>{
+        console.log(formData)
+    },[formData])
     const renderPhase = () => {
         switch (currentPhase) {
             case 1:
-                return <DateAndTime handleNext={handleNext} />;
+                return <DateAndTime handleNext={handleNext} setFormData={setFormData} formData={formData} />;
             case 2:
-                return <CallForm handleNext={handleNext}/>;
+                return <CallForm handleNext={handleNext} setFormData={setFormData} formData={formData}/>;
             case 3:
-                return <><h3>Submitted data</h3></>;
+                return <SelectForm handleNext={handleNext} setConfirmPhase={setConfirmPhase} setFormData={setFormData} formData={formData}/>;
             default:
                 return <h1>Error</h1>;
         }
@@ -34,6 +55,8 @@ const BookCallModal = ({ isOpen, onClose }) => {
         if (currentPhase > 1) setCurrentPhase(currentPhase - 1);
     };
 
+   
+
     
     
 
@@ -42,9 +65,11 @@ const BookCallModal = ({ isOpen, onClose }) => {
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>
+            {confirmPhase ? <>
+                {/* <CalendarModal/> */}
                 <div className={styles.buttonBox}>
                     <FaArrowLeft onClick={handlePrevious} className={styles.backArrow} />
-                    <button className={styles.closeButton} onClick={onClose}>
+                    <button className={styles.closeButton} onClick={ResetData}>
                         &times;
                     </button>
                 </div>
@@ -76,6 +101,10 @@ const BookCallModal = ({ isOpen, onClose }) => {
                 </section>
 
 
+            
+            </>:<>
+              <ConfirmSlot ResetData={ResetData} formData={formData}/>
+            </>}
             </div>
         </div>
     );
