@@ -16,21 +16,21 @@ function ConfirmSlot({ ResetData, formData }) {
         const [hour, minute, period] = time.match(/(\d{2}):(\d{2})\s(AM|PM)/).slice(1);
         const adjustedHour = period === 'PM' && hour !== '12' ? parseInt(hour, 10) + 12 : hour === '12' ? '00' : hour;
         const fullDateTime = new Date(`${date}T${adjustedHour}:${minute}:00`);
-    
+
         const formattedDate = fullDateTime.toLocaleDateString('en-US', {
             month: 'long',
             day: 'numeric',
             year: 'numeric',
         });
-    
+
         const formattedTime = fullDateTime.toLocaleTimeString('en-US', {
             hour: 'numeric',
             minute: '2-digit',
         });
-    
+
         return { formattedDate, formattedTime };
     };
-    
+
     const { formattedDate, formattedTime } = formatDateTime(formData.date, formData.timeslot);
 
     const confirmBooking = () => {
@@ -72,9 +72,19 @@ function ConfirmSlot({ ResetData, formData }) {
                     <div className={styles.slotDetailsBox}>
                         <div className={styles.sltoData}>
                             <div>
-                            <p><CiCalendar className={styles.slotIcon}/>{formattedDate}</p>
-                            <p><GoClock className={styles.slotIcon} />{formattedTime}</p>
-                            <p><GoGlobe className={styles.slotIcon}/>Asia/Kolkata</p>
+                                <p className={styles.date}>
+                                    <CiCalendar className={styles.slotIcon} />
+                                    {formData?.date
+                                        ? formData.date.toLocaleDateString('en-US', {
+                                            
+                                            month: 'long',
+                                            day: 'numeric',
+                                            year: 'numeric'
+                                        })
+                                        : 'Select Date'}
+                                </p>
+                                <p><GoClock className={styles.slotIcon} />{formData.timeslot}</p>
+                                <p><GoGlobe className={styles.slotIcon} />Asia/Kolkata</p>
                             </div>
                         </div>
                         <h3>Please check your email for a calendar invitation.</h3>

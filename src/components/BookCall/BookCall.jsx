@@ -5,6 +5,7 @@ import DateAndTime from "./DateAndTime/DateAndTime";
 import CallForm from "./CallForm/CallForm";
 import SelectForm from "./SelectForm/SelectForm";
 import ConfirmSlot from "./ConfirmSlot/ConfirmSlot";
+import CalendarModal from "../modals/CustomCalendar/CalendarModal";
 
 const BookCallModal = ({ isOpen, onClose }) => {
     const [currentPhase, setCurrentPhase] = useState(1);
@@ -13,7 +14,7 @@ const BookCallModal = ({ isOpen, onClose }) => {
         Name: "",
         email: "",
         phoneNumber: "",
-        date:"",
+        date:new Date(),
         timeslot:"",
         source:""
     }); 
@@ -65,7 +66,7 @@ const BookCallModal = ({ isOpen, onClose }) => {
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>
             {confirmPhase ? <>
-                
+                {/* <CalendarModal/> */}
                 <div className={styles.buttonBox}>
                     <FaArrowLeft onClick={handlePrevious} className={styles.backArrow} />
                     <button className={styles.closeButton} onClick={ResetData}>
