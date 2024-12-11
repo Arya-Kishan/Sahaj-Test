@@ -38,4 +38,11 @@
     padding: 10px;
 
   }
+  .tableInput{
+    border: none;
+    font-family: Manrope;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px; 
+  }
   
