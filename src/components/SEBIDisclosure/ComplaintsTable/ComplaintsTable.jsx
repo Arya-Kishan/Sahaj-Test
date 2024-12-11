@@ -1,3 +1,4 @@
+"use client"
 import { useState, useEffect } from 'react';
 import styles from './ComplaintsTable.module.css';
 
@@ -29,7 +30,7 @@ const ComplaintsTable = ({ content }) => {
     <div className={styles.tableContainer}>
       <table className={styles.table}>
         <thead>
-          <tr className={styles.columntr}>
+          <tr className={styles.tr}>
             {content.columns.map((column, index) => (
               <th key={index} className={styles.th}>
                 {column.key}
@@ -56,6 +57,21 @@ const ComplaintsTable = ({ content }) => {
               ))}
             </tr>
           ))}
+       
+          {content.totals && (
+            <tr className={`${styles.tr} ${styles.totaltr}`}>
+              {content.columns.map((column, colIndex) => (
+                <td key={colIndex} className={styles.td}>
+                
+                  {colIndex === 1 
+                    ? <strong>Total</strong> 
+                    : content.totals?.[column.label] != null 
+                      ? <strong>{content.totals[column.label] }</strong> 
+                      : ''}
+                </td>
+              ))}
+            </tr>
+           )}
         </tbody>
       </table>
     </div>

@@ -14,14 +14,14 @@
   }
   
   .th {
-    background-color: #eedfc2;
+    background-color: #f4e8d1;
     text-align: center;
     font-family: Roboto;
     font-size: 20px;
     font-weight: 500;
     line-height: 23.44px;
     letter-spacing: -1px;
-
+    
   }
  .td{
     font-family: Manrope;
@@ -33,16 +33,30 @@
   .tr:hover {
     background-color: #f1f1f1;
   }
-  .columntr{
-    background: #eedfc2;
-    padding: 10px;
-
+  .totaltr{
+    border-top: 1px solid  rgb(219, 201, 201);
   }
-  .tableInput{
+ 
+ .tableInput{
     border: none;
     font-family: Manrope;
     font-size: 18px;
     font-weight: 400;
     line-height: 27px; 
+    text-align: center;
   }
   
+  @media (max-width:768px) {
+
+    .th {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      letter-spacing: 0.4px;
+    }
+    
+    .td{
+      font-size: 14px;
+    }
+    
+  }

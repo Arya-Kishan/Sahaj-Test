@@ -1,21 +1,59 @@
 .sebiContainer{
-display: flex;
-flex-direction: column;
-padding: 60px 100px;
-gap: 60px;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 100px;
+    gap: 60px;
 
 }
+
 .tableContainer{
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
+
 .tableHeading{
-font-family: Roboto;
-font-size: 32px;
-font-weight: 700;
-line-height: 48px;
-letter-spacing: -1px;
-text-align: left;
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -1px;
+    text-align: left;
 
 }
+.note{
+    font-family: Manrope;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    color: var(--Color-black-50, #00000080);
+}
+
+.note span{
+    color: red;
+}
+
+.text{
+    font-family: Manrope;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--Color-black-75, #000000BF);
+}
+
+@media (max-width:768px) {
+
+    .sebiContainer{
+        display: flex;
+        flex-direction: column;
+        padding: 24px 12px;
+        gap: 32px;
+        }
+
+    .tableHeading{
+         font-size: 20px;
+         font-weight: 700;
+         line-height: 23.44px;
+         text-align: left;
+       }
+    
+  }

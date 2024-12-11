@@ -41,9 +41,11 @@
     
 }
 .sebiLinkSpan{
-    display: block;
+    display: block; 
 }
-
+.link{
+    text-decoration: none;
+}
 .viewPdfButton{
     display: inline-flex;
     cursor: pointer;
@@ -68,24 +70,17 @@
  @media (max-width: 764px) {
     .sebiHeader{
         padding: 32px 16px;
-        
-    
     }
     .heading{
-    
         font-size: 28px;
-   
         line-height: 42px;
     }    
     .complaintsContainer{
-       
         gap: 12px;
         padding: 24px 16px ;    
     }
-    .complaintsheading{
-        
-        display: none;
-        
+    .complaintsheading{ 
+        display: none; 
     }
     .smallScreenheading{
         display: block;

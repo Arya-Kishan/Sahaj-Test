@@ -40,8 +40,13 @@ const monthlyComplaintsData={
     { Sr_No:'06', Month:'Mar 2024', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
     { Sr_No:'07', Month:'Apr 2024', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
     { Sr_No:'08', Month:'May 2024', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-  ]
-
+  ],
+  totals: {
+    Carried_forward_from_previous_month: 0,
+    Received:0,
+    Resolved:0,
+    Total_Pendings:0
+  },
 }
 
 const annualComplaintsData={
@@ -60,7 +65,13 @@ const annualComplaintsData={
     { Sr_No:'03', Year:'2019-20', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
     { Sr_No:'04', Year:'2020-21', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
     { Sr_No:'05', Year:'2021-22', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-   ]
+   ],
+   totals: {
+    Carried_forward_from_previous_month:0,
+    Received:0,
+    Resolved:0, 
+    Total_Pendings:0 
+  },
 
 }
 
@@ -73,8 +84,8 @@ const annualComplaintsDisclosureData={
       { label: 'Remarks_any', key: 'Remarks,if any' },
      ],
   data:[
-    { Sr_No:'01', Financial_Year:'FY2020-21', Compliance_Audit_Status:"Pending", Remarks_any:"N/A" },
-    { Sr_No:'02', Financial_Year:'FY2021-22', Compliance_Audit_Status:"Pending", Remarks_any:"N/A"},
+    { Sr_No:'01', Financial_Year:'FY2020-21', Compliance_Audit_Status:"Conducted", Remarks_any:"N/A" },
+    { Sr_No:'02', Financial_Year:'FY2021-22', Compliance_Audit_Status:"Conducted", Remarks_any:"N/A"},
   ]
 
 }
@@ -93,10 +104,19 @@ const Sebi = () => {
         <div className={styles.tableContainer}>
             <p className={styles.tableHeading}>Trend of annual disposal of complaints</p>
             <ComplaintsTable  content={annualComplaintsData}/>
+            <p className={styles.note}>
+              <span>*</span> Inclusive of complaints of previous months/years resolved in the current
+              month/year | ^ Time in days | # Inclusive of complaints pending as on last day of the month/year
+            </p>
         </div>
         <div className={styles.tableContainer}>
             <p className={styles.tableHeading}>Annual Compliance Disclosure</p>
+            <p className={styles.text}>Disclosure with respect to compliance with Annual compliance audit
+               requirement under Regulation 19(3) of SEBI (Investment Advisers) 
+               Regulations, 2013 for the previous and current financial year are as under:
+            </p>
             <ComplaintsTable  content={annualComplaintsDisclosureData}/>
+            
         </div>
     </div>
   )

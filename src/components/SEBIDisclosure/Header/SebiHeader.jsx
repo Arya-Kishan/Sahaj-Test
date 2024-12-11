@@ -21,7 +21,7 @@ const SebiHeader = () => {
                   on the website as shown below. Investors can first contact the intermediary in case of complaints,
                   in our case through the contact us page. The SEBI 'SCORES' website that facilitates 
                   investors in logging any complaints against listed companies or intermediaries can be accessed here :
-                  <span className={styles.sebiLinkSpan}><Link href={"https://scores.gov.in/scores/Welcome.html"}>https://scores.gov.in/scores/Welcome.html</Link></span>
+                  <span className={styles.sebiLinkSpan}><Link href={"https://scores.gov.in/scores/Welcome.html"} className={styles.link}>https://scores.gov.in/scores/Welcome.html</Link></span>
               </p>
             </div>
             <button className={styles.viewPdfButton}>
