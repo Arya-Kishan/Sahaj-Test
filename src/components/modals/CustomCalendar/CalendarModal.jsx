@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { generateDate, months } from "./customCanlendar"
 import cn from "./cn";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
