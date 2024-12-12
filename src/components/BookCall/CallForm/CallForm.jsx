@@ -3,24 +3,24 @@ import styles from "./Modal.module.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { countryCode } from "../countrycode";
 
-const CallForm = ({ handleNext}) => {
-    const [formData, setFormData] = useState({
-        fullName: "",
-        email: "",
-        phone: "",
+const CallForm = ({ handleNext, setFormData, formData}) => {
+    const [formValues, setFormValues] = useState({
+        fullName: formData?.Name,
+        email: formData.email,
+        phone: formData.phoneNumber,
     });
     const [countryData, setCountryData] = useState("91");
     const [codeDropdown, setOpenClose] = useState(false);
 
-    const isFormValid = formData.fullName && formData.email && formData.phone;
+    const isFormValid = formValues.fullName && formValues.email && formValues.phone;
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
         if (name === "phone") {
-            setFormData({ ...formData, [name]: `+${countryData}${value}` });
+            setFormValues({ ...formValues, [name]: `+${countryData}${value}` });
         } else {
-            setFormData({ ...formData, [name]: value });
+            setFormValues({ ...formValues, [name]: value });
         }
     };
 
@@ -31,9 +31,14 @@ const CallForm = ({ handleNext}) => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        setFormData({...formData,
+            Name : formValues.fullName,
+            email:formValues.email,
+            phoneNumber:formValues.phone
+        })
         handleNext()
-        console.log("Form Data Submitted:", formData);
-        setFormData({
+        console.log("Form Data Submitted:", formValues);
+        setFormValues({
             fullName: "",
             email: "",
             phone: "",
@@ -53,7 +58,7 @@ const CallForm = ({ handleNext}) => {
                             className={styles.input}
                             type="text"
                             name="fullName"
-                            value={formData.fullName}
+                            value={formValues.fullName}
                             onChange={handleInputChange}
                             placeholder="Full name"
                             required
@@ -67,7 +72,7 @@ const CallForm = ({ handleNext}) => {
                             className={styles.input}
                             type="email"
                             name="email"
-                            value={formData.email}
+                            value={formValues.email}
                             onChange={handleInputChange}
                             placeholder="yourmail@gmail.com"
                             required
@@ -88,7 +93,7 @@ const CallForm = ({ handleNext}) => {
                                 className={styles.Pinput}
                                 type="tel"
                                 name="phone"
-                                value={formData.phone.replace(`+${countryData}`, "")}
+                                value={formValues.phone.replace(`+${countryData}`, "")}
                                 onChange={handleInputChange}
                                 placeholder="Enter your phone number"
                                 required

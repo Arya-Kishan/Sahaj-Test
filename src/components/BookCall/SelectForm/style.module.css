@@ -1,0 +1,41 @@
+.container {
+    width: 388px;
+    height: 376px;
+    font-family: Manrope;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    padding-top: 50px;
+  }
+  .title{
+    font-size: 18px;
+    font-weight: 500;
+    color: #08090A;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .options div{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .options label{
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000BF;
+  }
+.nextButton{
+    width: fit-content;
+    height: 59px;
+    padding: 16px 48px 16px 48px;
+    border: 1px solid #00000026;
+    background-color: #000000;
+    color: #ffffff;
+    align-self: flex-end;
+    cursor: pointer;
+    border-radius: 5px;
+  }
