@@ -14,34 +14,34 @@ const BookCallModal = ({ isOpen, onClose }) => {
         Name: "",
         email: "",
         phoneNumber: "",
-        date:new Date(),
-        timeslot:"",
-        source:""
-    }); 
-    const ResetData =()=>{
+        date: new Date(),
+        timeslot: "",
+        source: ""
+    });
+    const ResetData = () => {
         setCurrentPhase(1);
         setConfirmPhase(true)
         setFormData({
             Name: "",
             email: "",
             phoneNumber: "",
-            date:"",
-            timeslot:"",
-            source:""
+            date: "",
+            timeslot: "",
+            source: ""
         })
         onClose()
     }
-    useEffect(()=>{
+    useEffect(() => {
         console.log(formData)
-    },[formData])
+    }, [formData])
     const renderPhase = () => {
         switch (currentPhase) {
             case 1:
                 return <DateAndTime handleNext={handleNext} setFormData={setFormData} formData={formData} />;
             case 2:
-                return <CallForm handleNext={handleNext} setFormData={setFormData} formData={formData}/>;
+                return <CallForm handleNext={handleNext} setFormData={setFormData} formData={formData} />;
             case 3:
-                return <SelectForm handleNext={handleNext} setConfirmPhase={setConfirmPhase} setFormData={setFormData} formData={formData}/>;
+                return <SelectForm handleNext={handleNext} setConfirmPhase={setConfirmPhase} setFormData={setFormData} formData={formData} />;
             default:
                 return <h1>Error</h1>;
         }
@@ -55,56 +55,56 @@ const BookCallModal = ({ isOpen, onClose }) => {
         if (currentPhase > 1) setCurrentPhase(currentPhase - 1);
     };
 
-   
 
-    
-    
+
+
+
 
     if (!isOpen) return null;
 
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>
-            {confirmPhase ? <>
-                {/* <CalendarModal/> */}
-                <div className={styles.buttonBox}>
-                    <FaArrowLeft onClick={handlePrevious} className={styles.backArrow} />
-                    <button className={styles.closeButton} onClick={ResetData}>
-                        &times;
-                    </button>
-                </div>
-                <section className={styles.section} >
-                    <div className={styles.leftBox}>
-                        <div className={styles.leftBoxHeader}>
-                            <h3>Book Your Appointment</h3>
-                            <p>Schedule a 30-minute consultation with our experts.</p>
-                        </div>
-
-                        <div className={styles.progressBox}>
-                            <div className="">
-                                <h3>1</h3>
-                                <p>Select date and time</p>
-                            </div>
-                            <div className={styles.progressLine} ></div>
-                            <div className="">
-                                <h3>2</h3>
-                                <p>Confirm  your slot</p>
-                            </div>
-                        </div>
+                {confirmPhase ? <>
+                    {/* <CalendarModal/> */}
+                    <div className={styles.buttonBox}>
+                        <FaArrowLeft onClick={handlePrevious} className={styles.backArrow} />
+                        <button className={styles.closeButton} onClick={ResetData}>
+                            &times;
+                        </button>
                     </div>
-                    <hr className={styles.verticleLine} />
-                    <div className={styles.rightBox}>
-                    {renderPhase()}
-                            
+                    <section className={styles.section} >
+                        <div className={styles.leftBox}>
+                            <div className={styles.leftBoxHeader}>
+                                <h3>Book Your Appointment</h3>
+                                <p>Schedule a 30-minute consultation with our experts.</p>
+                            </div>
+
+                            <div className={styles.progressBox}>
+                                <div className={styles.progressTab}>
+                                    <h3>1</h3>
+                                    <p>Select date and time</p>
+                                </div>
+                                <div className={styles.progressLine} ></div>
+                                <div className={styles.progressTab}>
+                                    <h3>2</h3>
+                                    <p>Confirm  your slot</p>
+                                </div>
+                            </div>
                         </div>
-                    
-                </section>
+                        <hr className={styles.verticleLine} />
+                        <div className={styles.rightBox}>
+                            {renderPhase()}
+
+                        </div>
+
+                    </section>
 
 
-            
-            </>:<>
-              <ConfirmSlot ResetData={ResetData} formData={formData}/>
-            </>}
+
+                </> : <>
+                    <ConfirmSlot ResetData={ResetData} formData={formData} />
+                </>}
             </div>
         </div>
     );

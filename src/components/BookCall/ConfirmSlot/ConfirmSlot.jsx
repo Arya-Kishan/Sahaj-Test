@@ -76,7 +76,7 @@ function ConfirmSlot({ ResetData, formData }) {
                                     <CiCalendar className={styles.slotIcon} />
                                     {formData?.date
                                         ? formData.date.toLocaleDateString('en-US', {
-                                            
+
                                             month: 'long',
                                             day: 'numeric',
                                             year: 'numeric'
@@ -106,7 +106,16 @@ function ConfirmSlot({ ResetData, formData }) {
                     <div className={styles.progressBox}>
                         <div className={styles.stepBox}>
                             <h3 className={styles.step1}>1</h3>
-                            <p>{formattedTime} {formattedDate}</p>
+                            <p>{formData.timeslot}
+                                <span>
+                                     {formData?.date
+                                        ? formData.date.toLocaleDateString('en-US', {
+
+                                            month: 'long',
+                                            day: 'numeric',
+                                            year: 'numeric'
+                                        })
+                                        : 'Select Date'}</span></p>
                         </div>
                         <div className={styles.progressLine}></div>
                         <div className={styles.stepBox}>

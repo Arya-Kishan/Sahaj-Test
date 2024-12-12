@@ -17,7 +17,7 @@ const Footer = () => {
         <div className={styles.footerSection}>
           <h4>Company</h4>
           <Link className={styles.linkText} href="/about">About us</Link>
-          <Link className={styles.linkText} href="#">Sebi Disclosure</Link>
+          <Link className={styles.linkText} href="/sebidisclosure">Sebi Disclosure</Link>
         </div>
         <div className={styles.footerSection}>
           <h4>Resources</h4>
