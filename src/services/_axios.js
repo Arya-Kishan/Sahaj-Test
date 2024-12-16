@@ -5,6 +5,7 @@ import axios, {
 	AxiosRequestHeaders
 } from 'axios';
 import retry from 'retry';
+require("dotenv").config();
 
 export const operation = retry.operation({
 	retries: 3,
@@ -13,9 +14,10 @@ export const operation = retry.operation({
 	maxTimeout: 10000,
 	randomize: true
 });
-
+const apiUrl = process.env.NEXT_APP_BASE_URL;
+console.log('Base URL:', apiUrl);
 const axiosInstance = axios.create({
-	baseURL: process.env.BASE_URL
+	baseURL: process.env.NEXT_APP_BASE_URL
 });
 
 
