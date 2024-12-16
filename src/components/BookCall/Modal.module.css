@@ -117,4 +117,32 @@
     border: 1px solid #D9D9D933;
   }
   
- 
+  @media (max-width: 720px) {
+    .modalOverlay{
+      flex-direction: column;
+    }
+    .modalContent{
+      object-fit: contain;
+      padding: 80px 12px 32px 12px;
+    }
+    .section{
+      flex-direction: column;
+    }
+    .verticleLine{
+      height: 0;
+    }
+    .progressBox{
+      align-self: center;
+      flex-direction: row;
+    }
+    .progressLine{
+      min-height: 0;
+      min-width: 80px;
+      margin: 12px -25px ;
+    }
+    .progressTab{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
