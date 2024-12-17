@@ -111,7 +111,7 @@ const FinanceQuestions = () => {
                     </div>
                     <div className={styles.buttons}>
                         <Link href="/services"><button className={styles.viewServicesButton}>View services</button></Link>
-                        <button className={styles.bookCallButton} onClick={() => setIsModalOpen(true)} >Book a call</button>
+                        <button className={styles.bookCallButton} onClick={() => setIsModalOpen(true)} ><span>Book a call</span></button>
                     </div>
                 </div>
                 <div className={styles.imageSection}>

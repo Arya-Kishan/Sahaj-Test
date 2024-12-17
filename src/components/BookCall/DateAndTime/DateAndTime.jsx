@@ -3,16 +3,26 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaEarthAmericas } from "react-icons/fa6";
 import CalendarModal from '@/components/modals/CustomCalendar/CalendarModal';
 import styles from './date.module.css';
+import { getSlots } from '@/services/bookCall';
 
 function DateAndTime({ handleNext, setFormData, formData }) {
     const [selectedtime, setSlot] = useState(formData.timeslot);
     const [openCalendar, setopenCalendar] = useState(false);
+    const [slots, setSlots] = useState([])
     const calendarRef = useRef(null);
 
-    const slots = [
-        '09:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',
-        '03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM', '07:00 PM',
-    ];
+
+    function formatDate(inputDate) {
+        const date = new Date(inputDate);
+
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = months[date.getMonth()];
+        const year = date.getFullYear();
+
+        return `${day}-${month}-${year}`;
+    }
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -27,10 +37,33 @@ function DateAndTime({ handleNext, setFormData, formData }) {
         };
     }, []);
 
+    const getData = async () => {
+        try {
+            const date = formatDate(formData.date);
+            const { res, err } = await getSlots(date);
+            console.log("API Response:", res); 
+    
+            if (res?.data && Array.isArray(res.data)) {
+                setSlots(res.data);
+            } else {
+                setSlots([]); 
+            }
+        } catch (error) {
+            console.log("Error fetching slots:", error);
+            setSlots([]); 
+        }
+    };
+    
+
+    useEffect(() => {
+        console.log("date changes")
+        getData()
+    }, [formData.date])
+
     return (
         <>
             <div className={styles.selectDate} ref={calendarRef}>
-                <div className={styles.iconDateBox}  onClick={() => setopenCalendar(!openCalendar)}>
+                <div className={styles.iconDateBox} onClick={() => setopenCalendar(!openCalendar)}>
                     {formData?.date ? (
                         <div className={styles.date}>
                             {formData.date.toLocaleDateString('en-US', {
@@ -59,18 +92,22 @@ function DateAndTime({ handleNext, setFormData, formData }) {
                 </div>
             </div>
             <div className={styles.slots}>
-                {slots.map((slot, index) => (
-                    <button
-                        key={index}
-                        className={`${styles.slot} ${selectedtime === slot ? styles.seletedSlot : ""}`}
-                        onClick={() => {
-                            setSlot(slot);
-                            setFormData({ ...formData, timeslot: slot });
-                        }}
-                    >
-                        {slot}
-                    </button>
-                ))}
+                {slots && slots?.length > 0 ? (
+                    slots?.map((slot, index) => (
+                        <button
+                            key={index}
+                            className={`${styles.slot} ${selectedtime === slot ? styles.seletedSlot : ""}`}
+                            onClick={() => {
+                                setSlot(slot);
+                                setFormData({ ...formData, timeslot: slot });
+                            }}
+                        >
+                            {slot}
+                        </button>
+                    ))
+                ) : (
+                    <div className={styles.noSlotsMessage}>Select Date</div>
+                )}
             </div>
             <button
                 disabled={!formData.date || !formData.timeslot}

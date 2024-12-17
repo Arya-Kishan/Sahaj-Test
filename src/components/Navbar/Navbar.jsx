@@ -59,7 +59,7 @@ function Navbar() {
           </Link>
         </div>
 
-        <button className={style.callButton} onClick={openModal}>Book a call</button>
+        <button className={style.callButton} onClick={openModal}><span>Book a call</span></button>
 
         <button className={style.hamburger} onClick={toggleMenu}>
           {isMenuOpen ? '✕' : '☰'}
