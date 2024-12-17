@@ -17,7 +17,6 @@ export default function Home() {
       if (res) {
         console.log(res);
       }
-      throw err;
     } catch (error) {
       console.log(error)
     }

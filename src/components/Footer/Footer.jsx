@@ -1,11 +1,27 @@
 "use client"
 import styles from './Footer.module.css';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import sahajLogo from '../../assests/Logo/sahajlogo.webp'
 import { FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
-
+import { getFooterData } from '@/services/footer';
 const Footer = () => {
+
+const getData = async () => {
+    try {
+      const { res, err } = await getFooterData();
+      if (res) {
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
