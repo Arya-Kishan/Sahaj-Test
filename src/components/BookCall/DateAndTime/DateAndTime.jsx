@@ -41,19 +41,19 @@ function DateAndTime({ handleNext, setFormData, formData }) {
         try {
             const date = formatDate(formData.date);
             const { res, err } = await getSlots(date);
-            console.log("API Response:", res); 
-    
+            console.log("API Response:", res);
+
             if (res?.data && Array.isArray(res.data)) {
                 setSlots(res.data);
             } else {
-                setSlots([]); 
+                setSlots([]);
             }
         } catch (error) {
             console.log("Error fetching slots:", error);
-            setSlots([]); 
+            setSlots([]);
         }
     };
-    
+
 
     useEffect(() => {
         console.log("date changes")

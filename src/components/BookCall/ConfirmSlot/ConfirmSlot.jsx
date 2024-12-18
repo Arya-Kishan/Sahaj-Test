@@ -88,7 +88,7 @@ function ConfirmSlot({ ResetData, formData }) {
                             <h3 className={styles.step1}>1</h3>
                             <p>{formData.timeslot}
                                 <span>
-                                     {formData?.date
+                                    {formData?.date
                                         ? formData.date.toLocaleDateString('en-US', {
 
                                             month: 'long',

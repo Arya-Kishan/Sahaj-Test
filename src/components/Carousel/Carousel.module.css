@@ -108,8 +108,8 @@
 }
 
 .logoImage {
-  border-radius: 12px;
-  width: 100%;
+  max-width: 140px;
+  max-height: 100px;
 }
 
 .dotsContainer {
