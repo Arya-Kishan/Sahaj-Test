@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import ProcessFlow from '@/components/ProcessFlow/ProcessFlowPage';
 import { getProcessFlowData } from "@/services/process_flow" ;
 
-const [processFlowData, setProcessFlowData] = useState([]);
 
+const page = () => {
   const getData = async () => {
+    const [processFlowData, setProcessFlowData] = useState([]);
+
     try {
       const { res, err } = await getProcessFlowData();
       if (res) {
@@ -16,13 +18,11 @@ const [processFlowData, setProcessFlowData] = useState([]);
       console.log(error);
     }
   }
-
+     
   useEffect(() => {
     getData();
   }, [])
 
-
-const page = () => {
   return (
     <>
     <ProcessFlow />
