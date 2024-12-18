@@ -5,9 +5,12 @@ import { getProcessFlowData } from "@/services/process_flow" ;
 
 
 const page = () => {
-  const getData = async () => {
-    const [processFlowData, setProcessFlowData] = useState([]);
 
+  const [processFlowData, setProcessFlowData] = useState([]);
+
+  const getData = async () => {
+  
+    
     try {
       const { res, err } = await getProcessFlowData();
       if (res) {

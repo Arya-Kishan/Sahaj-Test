@@ -4,6 +4,7 @@ import AboutUsPage from '@/components/AboutUs/AboutUsPage';
 import { getAboutUsData } from "@/services/about_us" ;
 
 const page = () => {
+  
   const [aboutUsData, setAboutUsData] = useState([]);
   
     const getData = async () => {
