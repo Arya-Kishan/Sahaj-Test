@@ -1,19 +1,31 @@
-"use client"
-import HeadSection from './HeadSection/HeadSection'
+"use client";
+import HeadSection from './HeadSection/HeadSection';
 import FAQ from './FAQ/FAQ';
 import Support from './Support/Support';
 import ProcessSteps from "./ProcessSteps/ProcessSteps";
 import ReviewsContainer from '../Blog/Reviews/ReviewsContainer';
 
-const ProcessFlow=()=>{
-    return(
+const ProcessFlow = ({ data }) => {
+    
+    const ProcessObject = data && data.length > 0 ? data[0] : null;
+
+    
+    if (!ProcessObject) {
+        return <div>Loading...</div>;
+    }
+
+    const { ProcessVideo, ProcessContent, PrcessSteps } = ProcessObject;
+    console.log("the data are,",ProcessVideo, ProcessContent, PrcessSteps)
+
+    return (
         <div>
-           <HeadSection />
-           <ProcessSteps />
-           <Support />
-           <FAQ heading='Find Answers to Your Questions in Our FAQ' buttonText="Visit FAQ" path='/faqs'/>
-           <ReviewsContainer />
+            <HeadSection />
+            <ProcessSteps ProcessVideo={ProcessVideo} PrcessSteps={PrcessSteps} />
+            <Support ProcessContent={ProcessContent} />
+            <FAQ heading="Find Answers to Your Questions in Our FAQ" buttonText="Visit FAQ" path="/faqs" />
+            <ReviewsContainer />
         </div>
-    )
-}
+    );
+};
+
 export default ProcessFlow;
