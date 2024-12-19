@@ -27,7 +27,14 @@
     width: 118.89px;
     max-height: 32px;
 }
-
+.subLogoBox{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
 
 
 .kk {
@@ -52,6 +59,10 @@
     font-size: 16px;
     margin-bottom: 10px;
     font-family: Manrope;
+}
+.subLogo{
+    height: 26px;
+    width: 96px;
 }
 
 .footerSection a,

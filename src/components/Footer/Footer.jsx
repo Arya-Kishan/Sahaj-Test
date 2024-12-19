@@ -1,6 +1,6 @@
 "use client"
 import styles from './Footer.module.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import sahajLogo from '../../assests/Logo/sahajlogo.webp'
@@ -8,11 +8,14 @@ import { FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { getFooterData } from '@/services/footer';
 const Footer = () => {
 
-const getData = async () => {
+  const [footerData, setFooterData] = useState([])
+
+  const getData = async () => {
     try {
       const { res, err } = await getFooterData();
-      if (res) {
-        console.log(res);
+      if (res?.data) {
+        console.log(res.data);
+        setFooterData(res.data)
       }
     } catch (error) {
       console.log(error)
@@ -26,9 +29,12 @@ const getData = async () => {
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.brands}>
-          <Image src={sahajLogo} alt="Sahaj money logo" />
-          <p className={styles.kk} >Your Financial Future, Simplified.</p>
-          <p>Sahaj Money © 2024</p>
+          <img src={footerData?.FooterLogo} alt="Sahaj money logo" />
+          <p className={styles.kk} >{footerData?.FooterDescription}</p>
+          <div className={styles.subLogoBox}>
+            <img src={footerData?.FooterLogo} className={styles.subLogo} alt="Sahaj money logo" />
+            <p>2024</p>
+          </div>
         </div>
         <div className={styles.footerSection}>
           <h4>Company</h4>
@@ -43,18 +49,16 @@ const getData = async () => {
         </div>
         <div className={styles.footerSection}>
           <h4>Get in touch</h4>
-          <p>H-48, Second Floor, Gali No. 7, New Mahavir Nagar, Delhi – 110 018</p>
-          <p>+918861764646</p>
-          <p>abhishek.kumar13@alumni.iimb.ac.in</p>
-          <p>support@sahajmoney.com</p>
+          <p>{footerData?.GetIntouch?.Address}</p>
+          <p>{footerData?.GetIntouch?.PhoneNumber}</p>
+          <p>{footerData?.GetIntouch?.Websiteurl}</p>
+          <p>{footerData?.GetIntouch?.Email}</p>
         </div>
         <div className={styles.footerSection}>
           <h4>SEBI Regional Office</h4>
-          <p>Northern Regional Office,
-            NBCC Complex, Office Tower - 1,
-            8th Floor, Plate B, East Kidwai Nagar, New Delhi - 110 023</p>
-          <p>+91-11-69012998</p>
-          <p>sebinro@sebi.gov.in</p>
+          <p>{footerData?.SEBI_Regional_Office?.Address}</p>
+          <p>{footerData?.SEBI_Regional_Office?.PhoneNumber}</p>
+          <p>{footerData?.SEBI_Regional_Office?.Websiteurl}</p>
         </div>
         <div className={`${styles.footerSection} ${styles.socialMedia}`}>
           <h4>Follow us</h4>

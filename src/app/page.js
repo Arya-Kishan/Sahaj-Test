@@ -18,7 +18,7 @@ export default function Home() {
     try {
       const { res, err } = await getHomeData();
       if (res?.data) {
-        console.log(res.data.data);
+        // console.log(res.data.data);
         setHomeData(res.data)
 
       }
