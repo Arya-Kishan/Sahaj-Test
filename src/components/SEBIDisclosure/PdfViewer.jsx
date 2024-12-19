@@ -1,23 +1,59 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import "@react-pdf-viewer/core/lib/styles/index.css";
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import { useState, useEffect } from "react";
+import { pdfjs,Document, Page } from "react-pdf";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+import styles from "./pdfViewer.module.css"
 
-const Viewer = dynamic(() => import("@react-pdf-viewer/core").then((mod) => mod.Viewer), { ssr: false });
-const Worker = dynamic(() => import("@react-pdf-viewer/core").then((mod) => mod.Worker), { ssr: false });
-const defaultLayoutPlugin = dynamic(() => import("@react-pdf-viewer/default-layout").then((mod) => mod.defaultLayoutPlugin), { ssr: false });
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString();
 
 const PdfViewer = ({ pdfUrl }) => {
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+
+  const [numPages, setNumPages] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 0);
+
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+  };
+
+
+   useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
-    <div style={{ height: "500px", overflow: "auto", border: "1px solid #ddd" }}>
-      <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
-        <Viewer fileUrl={pdfUrl} plugins={[defaultLayoutPluginInstance]} />
-      </Worker>
+      <div className={styles.pdfContainer}>
+      <div className={styles.pdfViewer}>
+        <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
+          {Array.from({ length: numPages }, (_, index) => (
+            <div key={index} className={styles.pdfPageWrapper}>
+              <Page
+                pageNumber={index + 1}
+                renderMode="svg"
+                 width={
+                  windowWidth <= 768
+                    ? windowWidth * 0.9
+                    : 600 
+                }
+              />
+            </div>
+          ))}
+        </Document>
+      </div>
     </div>
-  );
+  )
 };
 
 export default PdfViewer;
