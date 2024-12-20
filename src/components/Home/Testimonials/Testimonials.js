@@ -1,13 +1,35 @@
 "use client"
 import styles from './Testimonials.module.css';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import profileImage from '../../../assests/Logo/featured.webp';
 import { FcGoogle } from "react-icons/fc";
 import profile from '../../../assests/AboutUs/founderimg.webp'
 import LinkedIn from '../../../assests/AboutUs/LinkedinIcon.webp'
-import mintLogo from "../../../assests/Blog/image.webp"
+import mintLogo from "../../../assests/Blog/image.webp";
+import { getClientReviewData } from '@/services/home';
 
 const Testimonials = () => {
+
+    const [reviewData, setData] = useState([]);
+
+    const getData = async () => {
+        try {
+            const { res, err } = await getClientReviewData()
+            if (res?.data) {
+                console.log(res.data);
+                setData(res?.data)
+            }
+            else {
+                setData([]);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, [])
     const testimonials = [
         {
             text: "Crypto ing TRON kam harmony XRP kava BitTorrent BitTorrent neo. Celsius siacoin hedera polygon solana.",
@@ -80,24 +102,25 @@ const Testimonials = () => {
             <div className={styles.leftBox}>
                 <h2 className={styles.heading}>What our clients say?</h2>
                 <div className={styles.reviews}>
-                    <div className={styles.reviewCard}>
-                        <div className={styles.logoBox} >
-                            <FcGoogle className={styles.icon} />
-                            <p className={styles.reviewCount}>200+ Reviews</p>
-                        </div>
-                        <p className={styles.rating}>4.8 <span>★★★★★</span></p>
-                    </div>
-                    <div className={styles.reviewCard}>
-                        <div className={styles.logoBox} >
-                            <Image
-                                src={LinkedIn}
-                                alt="LinkedIn"
-                                className={styles.icon}
-                            />
-                            <p className={styles.reviewCount}>200+ Reviews</p>
-                        </div>
-                        <p className={styles.rating}>4.8 <span>★★★★★</span></p>
-                    </div>
+                    {reviewData &&
+                        reviewData.map((item, index) => {
+                            return <>
+                            <div key={index}  className={styles.reviewCard}>
+                                <div className={styles.logoBox} >
+                                    <img
+                                        src={item?.CompanyLogo}
+                                        alt="LinkedIn"
+                                        className={styles.icon}
+                                    />
+                                    <p className={styles.reviewCount}>{item?.Content}</p>
+                                </div>
+                                <p className={styles.rating}>{item?.Rating} <span>★★★★★</span></p>
+                            </div>
+                            </>
+                            
+                        })
+                    }
+                    
                 </div>
                 <p className={styles.comment}>
                     Started working on my financial goals with the help of Abhishek couple

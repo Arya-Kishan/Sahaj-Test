@@ -29,8 +29,9 @@
   }
   
   .icon {
-    font-size: 2.5rem;
-    margin: 0;
+   width: 100px;
+   height: 88px;
+   margin: auto;
   }
   
   .title {

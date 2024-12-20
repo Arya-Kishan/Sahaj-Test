@@ -11,7 +11,7 @@ const Carousel = ({bannerData}) => {
 
   useEffect(()=>{
     if(bannerData){
-      console.log(bannerData[0]?.HomeScreenBanner)
+      // console.log(bannerData[0]?.HomeScreenBanner)
       SetSlideData(bannerData[0]?.HomeScreenBanner);
     }
 
