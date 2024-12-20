@@ -20,14 +20,14 @@ const page = () => {
       const getData =  async (apiCall, setter) => {
         try {
           const { res, err } = await apiCall();
-          if (res) {
-            console.log(res.data);
-            setFaqdata(res.data);
-          }
+          
           if (res) {
             console.log( res.data);
             setter(res.data);
           } 
+          else{
+            console.log( err);
+          }
         } catch (error) {
           console.log(error);
         }
@@ -38,7 +38,7 @@ const page = () => {
         getData(() => getTopicFaqData(bodyData), setTopicFaqData);
       }, [])
   
- 
+ console.log("the vv",faqdata)
   return (
     <>
       <Header />
