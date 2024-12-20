@@ -5,24 +5,24 @@ import CalendarModal from '@/components/modals/CustomCalendar/CalendarModal';
 import styles from './date.module.css';
 import { getSlots } from '@/services/bookCall';
 
-function DateAndTime({ handleNext, setFormData, formData }) {
+function DateAndTime({ handleNext, setFormData, formData,formatDate }) {
     const [selectedtime, setSlot] = useState(formData.timeslot);
     const [openCalendar, setopenCalendar] = useState(false);
     const [slots, setSlots] = useState([])
     const calendarRef = useRef(null);
 
 
-    function formatDate(inputDate) {
-        const date = new Date(inputDate);
+    // function formatDate(inputDate) {
+    //     const date = new Date(inputDate);
 
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    //     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-        const day = String(date.getDate()).padStart(2, "0");
-        const month = months[date.getMonth()];
-        const year = date.getFullYear();
+    //     const day = String(date.getDate()).padStart(2, "0");
+    //     const month = months[date.getMonth()];
+    //     const year = date.getFullYear();
 
-        return `${day}-${month}-${year}`;
-    }
+    //     return `${day}-${month}-${year}`;
+    // }
 
     useEffect(() => {
         const handleClickOutside = (event) => {
