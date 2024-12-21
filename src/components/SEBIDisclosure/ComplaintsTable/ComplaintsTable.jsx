@@ -15,7 +15,7 @@ const ComplaintsTable = ({ tableData = {}, totals }) => {
 
             <th className={styles.th}>SR No</th>
             {columns.map((column) => (
-             column !== '_id' &&  <th key={column} className={styles.th}>{column}</th>
+              column !== '_id' && <th key={column} className={styles.th}>{column}</th>
             ))}
           </tr>
         </thead>
@@ -25,25 +25,18 @@ const ComplaintsTable = ({ tableData = {}, totals }) => {
             <tr key={index} className={styles.tr}>
               <td className={styles.td}>{index + 1}</td>
               {columns.map((column) => (
-               column !== '_id' &&  <td key={column} className={styles.td}>{row[column]}</td>
+                column !== '_id' && <td key={column} className={styles.td}>{row[column]}</td>
               ))}
             </tr>
           ))}
 
-
           {totalRow.length > 0 && (
             <tr className={`${styles.tr} ${styles.totaltr}`}>
               <td className={styles.td}></td>
+              <td className={styles.td}><strong>Total</strong></td>
               {columns.map((column, colIndex) => (
-
                 <td key={colIndex} className={styles.td}>
-
-                  {colIndex === 0
-                    ? <strong>Total</strong>
-                    : totals[column] != null
-                      ? <strong>{totals[column]}</strong>
-                      : ''}
-
+                  <strong>{totalRow[colIndex] ?? ''}</strong>
                 </td>
               ))}
             </tr>

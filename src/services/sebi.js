@@ -36,3 +36,12 @@ export const getannualTrendData = async () =>{
         return { err: error, res: null }
      }
 }
+
+export const getcontentData = async () =>{
+   try {
+       const res = await axiosInstance.get(`/api/sebi/content`)
+       return { res: res, err: null }
+    } catch (error) {
+       return { err: error, res: null }
+    }
+}

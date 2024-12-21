@@ -20,7 +20,7 @@ const Sebi = ({lastMonthData,monthTrendData,yearTrendData,annualTrendData}) => {
     console.error('Date formatting error:', error);
     formattedDate = 'Date unavailable'; 
   }
- 
+
   return (
     <div className={styles.sebiContainer}>
          <div className={styles.tableContainer}>
