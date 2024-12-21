@@ -1,109 +1,40 @@
 "use client"
 import ComplaintsTable from "./ComplaintsTable/ComplaintsTable"
 import styles from './sebi.module.css';
+import { format } from 'date-fns';
 
-const lastMonthData={
-    
-    columns : [
-        { label: 'Sr_No', key: 'Sr No.' }, 
-        { label: 'Received_From', key: 'Received From' },
-        { label: 'Pending_as_of_last_month', key: 'Pending as of last month' },
-        { label: 'Resolved', key: 'Resolved*' },
-        { label: 'Total_Pendings', key: 'Total Pendings' },
-        { label: 'Pendingfrom_3_Months', key: 'Pending>3months' }, 
-        { label: 'AvgResolutionTime', key: 'Avg.Resolution Time' },
-      ],
-    data:[
-      { Sr_No:'01',Received_From:'Directly from investors', Pending_as_of_last_month:0, Resolved:0, Total_Pendings :0, Pendingfrom_3_Months: 0, AvgResolutionTime:0, },
-      { Sr_No:'02',Received_From:'SEBI-Scores', Pending_as_of_last_month:0, Resolved:0, Total_Pendings :0, Pendingfrom_3_Months: 0, AvgResolutionTime:0, },
-      { Sr_No:'03',Received_From:'Other Sources', Pending_as_of_last_month:0, Resolved:0, Total_Pendings :0, Pendingfrom_3_Months: 0, AvgResolutionTime:0, },
-    ]
+const Sebi = ({lastMonthData,monthTrendData,yearTrendData,annualTrendData}) => {
+  let formattedDate;
+  try {
+   
+    let date = lastMonthData?.LastMonth ? new Date(lastMonthData.LastMonth) : null;
 
-}
+    // If the date is invalid or unavailable, first day of the previous month will show
+    if (!date || isNaN(date)) {
+      const now = new Date(); 
+      date = new Date(now.getFullYear(), now.getMonth() - 1, 1); 
+    }
 
-const monthlyComplaintsData={
-    
-  columns : [
-      { label: 'Sr_No', key: 'Sr No.' }, 
-      { label: 'Month', key: 'Month' },
-      { label: 'Carried_forward_from_previous_month', key: 'Carried forward from previous month' },
-      { label: 'Received', key: 'Received' },
-      { label: 'Resolved', key: 'Resolved*' },
-      { label: 'Total_Pendings', key: 'Total Pendings' },
-    ],
-  data:[
-    { Sr_No:'01', Month:'Oct 2023', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'02', Month:'Nov 2023', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'03', Month:'Dec 2023', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'04', Month:'Jan 2024', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'05', Month:'Feb 2024', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'06', Month:'Mar 2024', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'07', Month:'Apr 2024', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'08', Month:'May 2024', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-  ],
-  totals: {
-    Carried_forward_from_previous_month: 0,
-    Received:0,
-    Resolved:0,
-    Total_Pendings:0
-  },
-}
-
-const annualComplaintsData={
-    
-  columns : [
-      { label: 'Sr_No', key: 'Sr No.' }, 
-      { label: 'Year', key: 'Year' },
-      { label: 'Carried_forward_from_previous_month', key: 'Carried forward from previous month' },
-      { label: 'Received', key: 'Received' },
-      { label: 'Resolved', key: 'Resolved*' },
-      { label: 'Total_Pendings', key: 'Total Pendings' },
-    ],
-  data:[
-    { Sr_No:'01', Year:'2017-18', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'02', Year:'2018-19', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'03', Year:'2019-20', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'04', Year:'2020-21', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-    { Sr_No:'05', Year:'2021-22', Carried_forward_from_previous_month:0, Received:0,Resolved:0, Total_Pendings :0 },
-   ],
-   totals: {
-    Carried_forward_from_previous_month:0,
-    Received:0,
-    Resolved:0, 
-    Total_Pendings:0 
-  },
-
-}
-
-const annualComplaintsDisclosureData={
-    
-  columns : [
-      { label: 'Sr_No', key: 'Sr No.' }, 
-      { label: 'Financial_Year', key: 'Financial Year' },
-      { label: 'Compliance_Audit_Status', key: 'Compliance Audit Status' },
-      { label: 'Remarks_any', key: 'Remarks,if any' },
-     ],
-  data:[
-    { Sr_No:'01', Financial_Year:'FY2020-21', Compliance_Audit_Status:"Conducted", Remarks_any:"N/A" },
-    { Sr_No:'02', Financial_Year:'FY2021-22', Compliance_Audit_Status:"Conducted", Remarks_any:"N/A"},
-  ]
-
-}
-
-const Sebi = () => {
+    formattedDate = format(date, 'MMMM dd, yyyy');
+  } catch (error) {
+    console.error('Date formatting error:', error);
+    formattedDate = 'Date unavailable'; 
+  }
+ 
   return (
     <div className={styles.sebiContainer}>
-        <div className={styles.tableContainer}>
-            <p className={styles.tableHeading}>Data as of last month : September 2024</p>
-            <ComplaintsTable  content={lastMonthData}/>
+         <div className={styles.tableContainer}>
+            <p className={styles.tableHeading}>Data as of last month :{formattedDate}</p>
+            <ComplaintsTable   tableData={lastMonthData?.Table}/>
         </div>
-        <div className={styles.tableContainer}>
+       <div className={styles.tableContainer}>
             <p className={styles.tableHeading}>Trend of monthly disposal of complaints</p>
-            <ComplaintsTable  content={monthlyComplaintsData}/>
+            <ComplaintsTable   tableData={monthTrendData?.structureData} totals={monthTrendData?.totals}/>
         </div>
+        
         <div className={styles.tableContainer}>
             <p className={styles.tableHeading}>Trend of annual disposal of complaints</p>
-            <ComplaintsTable  content={annualComplaintsData}/>
+            <ComplaintsTable    tableData={yearTrendData?.structureData} totals={yearTrendData?.totals}/>
             <p className={styles.note}>
               <span>*</span> Inclusive of complaints of previous months/years resolved in the current
               month/year | ^ Time in days | # Inclusive of complaints pending as on last day of the month/year
@@ -115,7 +46,7 @@ const Sebi = () => {
                requirement under Regulation 19(3) of SEBI (Investment Advisers) 
                Regulations, 2013 for the previous and current financial year are as under:
             </p>
-            <ComplaintsTable  content={annualComplaintsDisclosureData}/>
+            <ComplaintsTable   tableData={annualTrendData}/>
             
         </div>
     </div>

@@ -42,7 +42,7 @@ const page = () => {
   return (
     <>
       <Sebiheader />
-      <Sebi />
+      <Sebi lastMonthData={lastMonthData?.data} monthTrendData={monthTrendData?.data} yearTrendData={yearTrendData?.data} annualTrendData={annualTrendData?.data}/>
       <InvestorCharter />
       <ReviewsContainer />
     </>
