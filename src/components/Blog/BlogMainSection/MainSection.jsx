@@ -9,33 +9,47 @@ import { FaShareAlt } from 'react-icons/fa';
 import styles from './mainSection.module.css'
 
 
-const MainSection=()=>{
+const MainSection=({data})=>{
+   
+
+    const Item = ({ content }) => {
+        return (
+          <div 
+            dangerouslySetInnerHTML={{ __html: content }} 
+          />
+        );
+      };
 
     return(
         <div className={styles.mainSectionContainer}>
             <div className={styles.maininfoContainer}>
                         <div className={styles.dateContainer}>
-                            Date
+                            {data?.createdAt}
                         </div>
                         <div className={styles.blogHeadingContainer}>
                                 <div className={styles.MainHeading}>
-                                Crypto ipsum bitcoin ethereum dogecoin litecoin.
+                                {data?.title}
                                 </div>
                                 <div className={styles.subHeading}>
-                                Crypto ipsum bitcoin ethereum dogecoin litecoin.
+                                 {data?.BlogPitchLine}
                                 </div>
-                                <button className={styles.textButton}>Lorem ipsum</button>
-                               
-
-                        </div>
+                                <div className={styles.tagsHolder}>
+                                    { data?.Tags?.length>0 && data.Tags.map((tag,index)=>(
+                                        <button className={styles.textButton} key={index}>{tag}</button>
+                                
+                                    )) }
+                                </div>
+                     </div>   </div>
                         <div className={styles.imgBox}>
                                 <Image  src={mainImage} alt="MainBlogImage" className={styles.mainImg}/>
                         </div>
                         <div className={styles.descriptionContainer}>
                             
                                 <div className={styles.detailsCards}>
-                                    <DeatilsCards/>
-                                </div>
+                                  <div className={styles.descriptionContent}>
+                                  <Item content={data?.Content} />
+                                  </div>
+                                
                         
                                 <div className={styles.socials}>
                                     <div className={styles.followIcons}>

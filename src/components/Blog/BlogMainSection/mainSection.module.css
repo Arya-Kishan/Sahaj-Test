@@ -48,8 +48,14 @@
     text-align: center;
      
 }
+.tagsHolder{
+    display: flex;
+   gap:10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
 .textButton{
-  
+   
     padding: 10px 16px;
     gap: 10px;
     border-radius: 20px;
@@ -88,9 +94,19 @@
     flex-direction: column;
     gap:40px;
 }
+.descriptionContent{
+    margin-top: 10px;
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-align: left;
+    color: var(--Color-black-75, #000000BF);
+}
 .socials{
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
 }
 .followText{
     display: inline-block;

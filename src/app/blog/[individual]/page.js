@@ -7,8 +7,15 @@ import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer";
 import { getBlogsData } from '@/services/blogs';
 
 const page = () => {
-  const [mediaData, setMediaData] = useState([]);
+  const [blogData, setBlogData] = useState([]);
+  const [allblogData, setAllBlogData] = useState([]);
   const bodyData= {
+    "page" :1, 
+    "limit" : 10,
+   "tags" : [], 
+   "blog_slug":"mastering-the-art-of-budgeting-a-step-by-step-guide"
+  }
+  const allblogsbodyData= {
     "page" :1, 
     "limit" : 10,
    "tags" : [], 
@@ -21,7 +28,20 @@ const page = () => {
           const { res, err } = await getBlogsData(bodyData);
           if (res) {
             console.log("the res",res.data)
-            setMediaData(res.data.data);
+            setBlogData(res?.data?.data?.item);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      const getAllBlogsData = async () => {
+      
+        
+        try {
+          const { res, err } = await getBlogsData(allblogsbodyData);
+          if (res) {
+            console.log("the res",res.data)
+            setAllBlogData(res?.data?.data?.items);
           }
         } catch (error) {
           console.log(error);
@@ -30,15 +50,16 @@ const page = () => {
          
       useEffect(() => {
        getData();
+       getAllBlogsData();
       }, [])
-      console.log("the blog datails",mediaData)
+      
 
   return (
     <>
        
             <Heading />
-            <MainSection  />
-            <SuggestionCardList />
+            <MainSection  data={blogData}/>
+            <SuggestionCardList data={allblogData}/>
             <ReviewsContainer />
     </>
   );

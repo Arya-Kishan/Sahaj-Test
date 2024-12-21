@@ -15,7 +15,7 @@ const BlogHeader=()=>{
                     </div>
                    
 
-                    <Link href="#" target="_blank" className={styles.gobackLinkText} rel="noopener noreferrer" >
+                    <Link href={"/media/blogs"} target="_blank" className={styles.gobackLinkText} rel="noopener noreferrer" >
                         Back to Blogs
                     </Link>
                    </div>
