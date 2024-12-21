@@ -10,7 +10,7 @@ import styles from './mainSection.module.css'
 
 
 const MainSection=()=>{
-  
+
     return(
         <div className={styles.mainSectionContainer}>
             <div className={styles.maininfoContainer}>
