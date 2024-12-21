@@ -28,7 +28,7 @@ const FinanceQuestions = ({ financeData }) => {
         if (financeData) {
             setFinanceData(financeData[0]?.WhatWeDoForYou);
             setOverwhelmed(financeData[0]?.HomeScreenFinanceLits);
-            // console.log(financeData[0]?.HomeScreenFinanceLits)
+            console.log(financeData[0]?.WhatWeDoForYou)
         }
     }, [financeData])
 
@@ -104,7 +104,7 @@ const FinanceQuestions = ({ financeData }) => {
                     </div>
                 </div>
                 <div className={styles.imageSection}>
-                    <Image src={imageSrc} alt="What we do illustration" className={styles.image} />
+                    <img src={financeInfo?.Image} alt="What we do illustration" className={styles.image} />
                 </div>
                 <div className={styles.headsection2} >
                     <h2 className={styles.title2}>What we do for you?</h2>

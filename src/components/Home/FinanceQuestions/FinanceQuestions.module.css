@@ -194,7 +194,8 @@
 }
 
 .image {
-  max-width: 100%;
+  width: 100%;
+  height: 662px;
   border-radius: 10px;
 }
 .headsection2{
