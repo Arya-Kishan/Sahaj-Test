@@ -7,6 +7,7 @@ import styles from "./Services.module.css";
 import image1 from '../../../assests/Service/service1.webp';
 import image2 from '../../../assests/Service/service2.webp';
 import Dropdown from "@/components/DropDownComponent/DropDown";
+import { getServicesTitles, getServicesData } from "@/services/service";
 
 const servicesData = [
   {
@@ -18,7 +19,7 @@ const servicesData = [
     ],
     image: image1,
   },
-  
+
   {
     title: "Goal-Based Planning",
     sections: [
@@ -28,9 +29,9 @@ const servicesData = [
     ],
     image: image1,
   },
-  
+
   {
-    title: "Investment Plan",
+    title: "Risk profiling",
     sections: [
       { heading: "Investment Analysis", text: "Analyze market trends to recommend optimal investment opportunities tailored to individual goals." },
       { heading: "Portfolio Growth", text: "Strategies for long-term growth to ensure your investments outperform market benchmarks." },
@@ -62,7 +63,7 @@ const servicesData = [
     ],
     image: image2,
   },
-  
+
 ];
 
 const options = [
@@ -78,16 +79,72 @@ const options = [
 
 const Services = () => {
   const searchParams = useSearchParams();
-  const queryId = searchParams.get("id"); 
+  const queryId = searchParams.get("id");
   const [activeTab, setActiveTab] = useState(0);
+  const [serviceOptions, setOptions] = useState([]);
+  const [serviceData, setServicesData] = useState([]);
 
-  
-  useEffect(() => {
-    const parsedId = parseInt(queryId, 10);
-    if (parsedId && parsedId >= 1 && parsedId <= options.length) {
-      setActiveTab(parsedId - 1); 
+
+  const getTitleData = async () => {
+    try {
+      const { res, err } = await getServicesTitles();
+      if (res) {
+        console.log(res?.data);
+        setOptions(res?.data)
+      }
+      else {
+        setOptions([]);
+      }
+    } catch (error) {
+      console.log(error);
     }
-  }, [queryId]);
+  }
+
+
+  useEffect(() => {
+    getTitleData();
+  }, [])
+
+  useEffect(() => {
+    if (queryId) {
+      // Decode query parameter and set the corresponding activeTab
+      const decodedQueryId = decodeURIComponent(queryId).replace("+", " ");
+      const matchedOption = options.find(option => option.option === decodedQueryId);
+      if (matchedOption) {
+        setActiveTab(options.indexOf(matchedOption));
+      }
+    } else {
+      // Default to the first tab if no query parameter
+      setActiveTab(0);
+    }
+  }, [queryId, options]);
+
+  useEffect(() => {
+    if (serviceOptions.length > 0) {
+      // Fetch services data when activeTab changes
+      const selectedService = serviceOptions[activeTab]?.title || "All";
+      getAllServices(selectedService);
+    }
+  }, [activeTab, serviceOptions]);
+
+  const getAllServices = async (serviceTitle = "All") => {
+    const data = {
+      page: 1,
+      limit: 5,
+      servicetitle: serviceTitle
+    };
+    try {
+      const { res, err } = await getServicesData(data);
+      if (res) {
+        console.log(res.data?.items);
+        setServicesData(res?.data?.items);
+      } else {
+        setServicesData([]);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -101,50 +158,62 @@ const Services = () => {
         <div className={styles.tabs}>
           <h3>Services</h3>
           <hr />
-            <div className={styles.optionBox}>
-              {options.map((option, index) => (
+          <div className={styles.optionBox}>
+            {serviceOptions &&
+              serviceOptions?.map((option, index) => (
                 <button
                   key={option.id}
-                  className={`${styles.tabButton} ${
-                    activeTab === index ? styles.active : styles.nonactive
-                  }`}
+                  className={`${styles.tabButton} ${activeTab === index ? styles.active : styles.nonactive
+                    }`}
                   onClick={() => setActiveTab(index)}
                 >
-                  {option.option}
+                  {option.title}ss
                 </button>
               ))}
-            </div>
-            <div className={styles.dropDownBox}>
-              <Dropdown
+          </div>
+          <div className={styles.dropDownBox}>
+            <Dropdown
               title="All Services"
               value={activeTab}
               onChange={(index) => setActiveTab(index)}
               options={options}
             />
-            </div>
-           
           </div>
+
+        </div>
         <div className={styles.content}>
-          <h2>{servicesData[activeTab]?.title || "No Data"}</h2>
-          <div className={styles.details}>
-            <div className={styles.text}>
-              {servicesData[activeTab]?.sections.map((section, idx) => (
-                <div key={idx} className={styles.section}>
-                  <h3>{section.heading}</h3>
-                  <p>{section.text}</p>
+          {serviceData &&
+            serviceData?.map((section, idx) => {
+              return <>
+                <h2>{section?.title}</h2>
+                <div className={styles.details}>
+                  <div className={styles.text}>
+
+                    {section?.ContentSubPointWise?.map((item, i) => {
+                      return <>
+                        <div key={i} className={styles.section}>
+                          <h3>{item?.MainPoint}</h3>
+                          <div className={styles.subPoints} >
+                            {item?.SubPoints.map((ele, idx) => <p key={idx} >{ele}</p>)}
+                          </div>
+                        </div>
+                      </>
+                    })}
+
+                  </div>
+
+                  {servicesData[activeTab] &&
+                    <img
+                      className={styles.image}
+                      src={section?.ServiceImage}
+                      alt={section?.title}
+                    />
+                  }
+
                 </div>
-              ))}
-            </div>
-            
-              {servicesData[activeTab]&&
-                <Image 
-                className={styles.image}
-                src={servicesData[activeTab]?.image}
-                alt={servicesData[activeTab]?.title || "Service"}
-              />
-              }
-            
-          </div>
+
+              </>
+            })}
         </div>
       </div>
     </>
