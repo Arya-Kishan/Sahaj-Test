@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from './blogHeader.module.css';
 import backIcon from '../../../assests/Blog/backIcon.svg';
 
-const BlogHeader=()=>{
+const BlogHeader=({ data })=>{
     return(
  
             <div className={styles.headerInfoContanier}>
@@ -21,14 +21,13 @@ const BlogHeader=()=>{
                    </div>
                     <div className={styles.infoHeading}>
                         <p className={styles.infoHeadingMaintext}>
-                            Blog
+                           {data?.title || "Blog"} 
                          </p>
                          <p className={styles.infoHeadingSubtext}>Undersand Your Risk Tolerance</p>
                     </div>
                 
                 </div>
-           </div>
-                
+           </div>      
       
     )
 }

@@ -57,7 +57,7 @@ const page = () => {
   return (
     <>
        
-            <Heading />
+            <Heading data={blogData} />
             <MainSection  data={blogData}/>
             <SuggestionCardList data={allblogData}/>
             <ReviewsContainer />
