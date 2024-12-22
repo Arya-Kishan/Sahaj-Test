@@ -1,29 +1,61 @@
 "use client";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import companyInfoImg from "../../../assests/AboutUs/companyInfoImg.webp";
 import ReadMore from "../../ReadMoreButton/ReadMoreButton";
 import styles from "./companyInfo.module.css";
+import { getInvestmentData } from "@/services/aboutus";
 
 const SectionOne = () => {
+    const [Data, setData] = useState([]);
+    const getData = async () => {
+        try {
+            const { res, err } = await getInvestmentData();
+            if (res) {
+                console.log(res.data);
+                setData(res?.data);
+            } else {
+                setData([]);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, [])
+
+
     return (
         <div className={styles.sectionOneContainer}>
-            <div className={styles.informationtextContainer}>
-                <div className={styles.infotext}>
-                    <p className={styles.infotextheading}>Our investment philosophy</p>
-                    <p className={styles.infotextbody}>
-                        Sahaj Money was founded in 2015 with a mission to provide transparent 
-                        and unbiased financial advice. Our team of experienced advisors helps clients achieve their financial goals through 
-                        personalized plans and expert guidance. We believe in putting clients&#39; 
-                        interests first and offering transparent pricing.
-                    </p>
+            {Data &&
+                Data?.map((item, index) => {
+                    return <>
+                        <div key={index} className={styles.informationtextContainer}>
+                            <div className={styles.infotext}>
+                                <p className={styles.infotextheading}>{item?.Title}</p>
+                                <p className={styles.infotextbody}>{item?.Content[index]?.SmallMainDescription}</p>
 
-                    <ReadMore text={"Read More"} />
-                </div>
+                                <ReadMore text={"Read More"} />
+                            </div>
 
-                <div className={styles.infoimgBox}>
-                    <Image src={companyInfoImg} className={styles.infoimg} alt="CompanyInfoImage" />
-                </div>
-            </div>
+                            <div className={styles.infoimgBox}>
+                                <iframe
+                                    className={styles.infoimg}
+                                    src={item?.VideoLink}
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen>
+                                </iframe>
+                                {/* <Image src={companyInfoImg} className={styles.infoimg} alt="CompanyInfoImage" /> */}
+                            </div>
+                        </div>
+                    </>
+                })
+
+            }
         </div>
     );
 };
