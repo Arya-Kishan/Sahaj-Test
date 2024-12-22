@@ -124,21 +124,7 @@ console.log("the medddddiaaa",filteredData)
               </div>
             )} 
           </div>
-          { activeTab === "blogs" && 
-             
-             <Link
-             className={styles.readMore}
-             href="/blog/individual"
-            >
-              <ReadMore text={"Read More"} />
-           </Link>
-           }
-
-            { activeTab === "press-coverage" &&
-           
                <ReadMore text={"Read More"} />
-          
-            }
           </div>
       ))}
 

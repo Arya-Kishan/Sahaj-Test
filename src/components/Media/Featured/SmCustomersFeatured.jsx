@@ -6,29 +6,29 @@ import { FaShareAlt } from 'react-icons/fa';
 
 const SmCustomersFeatured=({data}) => {
   
-  const {image,text}=data;
+  const singlefeaturedData=data?.slice(0,1)
 
   return (
     <div className={styles.container}>
         <div className={styles.imgContainer}>
-           <Image src={image} alt="Podcast featured" />
+        {singlefeaturedData[0]?.CoverImage  && <img src={singlefeaturedData[0]?.CoverImage} alt="customermedia featured" />}
 
         </div>
         <div className={styles.textContainer}>
             <div className={styles.subHeadingContainer}>
             <p className={styles.VCdateContainer}>
-                {text.date}
+                     {singlefeaturedData[0]?.createdAt}
             </p>
               <div className={styles.shareIcon}>
                <FaShareAlt  size={24}/>
               </div>
             
             </div>
-            <p className={styles.subHeading}>{text.subHeading}</p>
+            {singlefeaturedData[0]?.MediaCompanyFrom  && <p className={styles.subHeading}>{singlefeaturedData[0]?.MediaCompanyFrom}</p>}
             <div className={styles.headingContainer}>
-               <p className={styles.heading}>{text.Heading}</p> 
+          {singlefeaturedData[0]?.MediaTitle &&      <p className={styles.heading}>{singlefeaturedData[0]?.MediaTitle}</p> } 
                 <p className={styles.descriptioncontainer}>
-               {text.description}
+                {singlefeaturedData[0]?.MediaDescription &&  singlefeaturedData[0]?.MediaDescription} 
             </p>
             </div>
             
