@@ -23,7 +23,7 @@ const BlogHeader=({ data })=>{
                         <p className={styles.infoHeadingMaintext}>
                            {data?.title || "Blog"} 
                          </p>
-                         <p className={styles.infoHeadingSubtext}>Undersand Your Risk Tolerance</p>
+                         <p className={styles.infoHeadingSubtext}>{data?.BlogPitchLine}</p>
                     </div>
                 
                 </div>

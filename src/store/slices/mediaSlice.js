@@ -13,7 +13,7 @@ const initialState = {
   filteredData: {},
   searchQuery: "",
   isSearching: false,
-  activeTab: "customersInMedia",
+  activeTab: "blogs",
 };
 
 const mediaSlice = createSlice({

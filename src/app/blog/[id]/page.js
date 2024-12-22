@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import Heading from '@/components/Blog/BlogHeader/BlogHeader'
 import MainSection from '@/components/Blog/BlogMainSection/MainSection';
 import SuggestionCardList from '@/components/Blog/Featured/Suggestion';
@@ -9,11 +10,14 @@ import { getBlogsData } from '@/services/blogs';
 const page = () => {
   const [blogData, setBlogData] = useState([]);
   const [allblogData, setAllBlogData] = useState([]);
+
+  const { id } = useParams();
+  console.log("the id",id)
   const bodyData= {
     "page" :1, 
     "limit" : 10,
    "tags" : [], 
-   "blog_slug":"mastering-the-art-of-budgeting-a-step-by-step-guide"
+   "blog_slug":id
   }
   const allblogsbodyData= {
     "page" :1, 
