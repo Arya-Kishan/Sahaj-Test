@@ -1,24 +1,20 @@
-"use client"
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './filters.module.css';
 
-const filters = ["All", "Fee and Timeline","Clients", "Process FAQs", "Meetings",  "Others"];
+const Filters = ({ onFilterChange, activeTab, filtersData }) => {
+  const [activeFilter, setActiveFilter] = useState("All");
 
-const Filters = ({ onFilterChange,activeTab}) => {
-  const [activeFilter, setActiveFilter] = useState(filters[0]);
 
-  
-   useEffect(() => {
-     
+  const filters = ["All", ...(filtersData?.map(filter => filter.topic) || [])];
+
+  useEffect(() => {
     setActiveFilter("All"); 
-  }, [activeTab]); 
+  }, [activeTab]);
 
-   const handleActiveFilter = (filter) => {
+  const handleActiveFilter = (filter) => {
     setActiveFilter(filter);
-    onFilterChange(filter); 
+    onFilterChange(filter);
   };
-
-
   
   return (
     <div className={styles.filters}>

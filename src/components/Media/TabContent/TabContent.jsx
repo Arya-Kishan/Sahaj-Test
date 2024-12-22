@@ -9,7 +9,7 @@ import Filters from '../Filters/Filters';
 import MediaCards from '../MediaCards/MediaCards';
 import styles from './tabContent.module.css';
 
-const TabContent = ({ data,activeTab,isSearching,searchQuery,setSearchQuery }) => {
+const TabContent = ({ data,activeTab,isSearching,searchQuery,setSearchQuery,filtersData }) => {
 
   const MediaData = data.find((item) => item.id === activeTab)?.mediaCard || data[0]?.mediaCard;
 
@@ -62,7 +62,7 @@ const TabContent = ({ data,activeTab,isSearching,searchQuery,setSearchQuery }) =
       
        <div className={styles.filtersFullContainer} >
        {
-        !isSearching && <Filters onFilterChange={handleFilterChange} activeTab={activeTab} />
+        !isSearching && <Filters onFilterChange={handleFilterChange} activeTab={activeTab} filtersData={filtersData}/>
        } 
       </div>
       

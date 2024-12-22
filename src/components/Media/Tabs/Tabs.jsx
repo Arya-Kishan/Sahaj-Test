@@ -111,6 +111,7 @@ const Tabs = ({filtersData={}}) => {
             isSearching={isSearching}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
+            filtersData={filtersData}
           />
         </div>
       )}
