@@ -13,7 +13,7 @@ const initialState = {
   filteredData: {},
   searchQuery: "",
   isSearching: false,
-  activeTab: "podcast",
+  activeTab: "videoChannel",
 };
 
 const mediaSlice = createSlice({

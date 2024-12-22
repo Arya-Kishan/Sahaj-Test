@@ -5,12 +5,12 @@ import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import { FaShareAlt } from 'react-icons/fa';
 
 const VideochannelsFeatured=({data}) => {
-  const {image,text}=data;
+  const singlefeaturedData=data?.slice(0,1)
 
   return (
     <div className={styles.container}>
         <div className={styles.imgContainer}>
-           <Image src={image} alt="Video channels featured" />
+           <img src={singlefeaturedData[0]?.CoverImage} alt="Video channels featured" />
             <svg width="80" height="80" className={styles.videoIcon} viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="40" cy="40" r="40" fill="white" fillOpacity="0.2"/>
               <circle cx="40" cy="40" r="30" fill="white" fillOpacity="0.8"/>
@@ -22,17 +22,17 @@ const VideochannelsFeatured=({data}) => {
         <div className={styles.textContainer}>
             <div className={styles.subHeadingContainer}>
             <p className={styles.VCdateContainer}>
-                {text.date}
+                {singlefeaturedData[0]?.createdAt}
             </p>
             <div className={styles.shareIcon}>
                <FaShareAlt  size={24}/>
               </div>
             </div>
-            <p className={styles.subHeading}>{text.subHeading}</p>
+            <p className={styles.subHeading}>{singlefeaturedData[0]?.VideoCompanyFrom}</p>
             <div className={styles.headingContainer}>
-               <p className={styles.heading}>{text.Heading}</p> 
+               <p className={styles.heading}>{singlefeaturedData[0]?.VideoTitle}</p> 
                 <p className={styles.descriptioncontainer}>
-               {text.description}
+               {singlefeaturedData[0]?.VideoDescription}
             </p>
             </div>
             

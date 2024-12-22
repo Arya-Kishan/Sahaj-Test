@@ -81,10 +81,9 @@ console.log("the medddddiaaa",filteredData)
             <div className={styles.textContainer}>
               {cardData.PodcastCompanyFrom && <p className={styles.subheading}>{cardData.PodcastCompanyFrom}</p>}
               <p className={styles.heading}>{cardData.PodcastTitle}</p>
-              {/* {(cardData.Content && activeTab=="blogs" )&& <p className={styles.description}>{cardData.Content}</p>
 
-              }  */}
-              <p className={styles.cardDate}>{cardData.date}</p>
+              {/* <p className={styles.description}>{cardData.PodcastDescription}</p> */}
+              <p className={styles.cardDate}>{cardData.createdAt}</p>
             </div>
           
             {cardData.Tags && (
