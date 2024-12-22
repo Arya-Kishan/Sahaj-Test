@@ -19,8 +19,8 @@ const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
 
   const filteredCards = filteredData.filter((card) => {
     const cardText = [
-      card.subheading,
-      card.heading,
+      // card.subheading,
+      card.Title,
       card.date,
       card.description,
       card.category,
@@ -42,11 +42,11 @@ const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
 
   return (
     <>
-      {visibleData.map(({ id, img, subheading, heading, date, description }) => (
-        <div className={styles.cardfullContainer} key={id}>
+      {visibleData.map(({ id, CoverageImage, subheading, Title, date, Content,Tags,BrandName},index) => (
+        <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-              <Image src={img} alt={heading} className={styles.cardImg} />
+              <img src={CoverageImage} alt={"heading"} className={styles.cardImg} />
               {activeTab === "podcast" && (
                 <svg
                   width="80"
@@ -107,17 +107,22 @@ const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
               )}
             </div>
             <div className={styles.textContainer}>
-              {subheading && <p className={styles.subheading}>{subheading}</p>}
-              <p className={styles.heading}>{heading}</p>
-              {description && <p className={styles.description}>{description}</p>}
+              {BrandName && <p className={styles.subheading}>{BrandName}</p>}
+              <p className={styles.heading}>{Title}</p>
+              {(Content && activeTab=="blogs" )&& <p className={styles.description}>{Content}</p>
+
+              } 
               <p className={styles.cardDate}>{date}</p>
             </div>
-            {activeTab === "blogs" && (
-              <div className={styles.blogCardButtonsContainer}>
-                <button className={styles.blogCardButton}>Budgeting</button>
-                <button className={styles.blogCardButton}>Saving</button>
+          
+            {Tags && (
+              <div className={styles.blogCardButtonsContainer}>{
+                Tags.map((tags,index)=>(
+                  <button className={styles.blogCardButton} key={index}>{tags}</button>
+                ))
+              }
               </div>
-            )}
+            )} 
           </div>
           { activeTab === "blogs" && 
              

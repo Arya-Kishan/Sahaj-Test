@@ -1,5 +1,6 @@
-"use client"
-import  { useState, useEffect } from 'react';
+"use client";
+
+import { useState, useEffect } from 'react';
 import BlogFeatured from '../Featured/BlogFeatured';
 import PressCoverageFeatured from '../Featured/PressCoverageFeatured';
 import PodcastFeatured from '../Featured/PodcastFeatured';
@@ -9,66 +10,78 @@ import Filters from '../Filters/Filters';
 import MediaCards from '../MediaCards/MediaCards';
 import styles from './tabContent.module.css';
 
-const TabContent = ({ data,activeTab,isSearching,searchQuery,setSearchQuery,filtersData }) => {
+const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery, filtersData }) => {
 
   const MediaData = data.find((item) => item.id === activeTab)?.mediaCard || data[0]?.mediaCard;
 
   const [filteredData, setFilteredData] = useState(MediaData);
-   
-  
+  const [activeFilter, setActiveFilter] = useState("All");
 
   useEffect(() => {
     setFilteredData(MediaData);
-
-  }, [activeTab, MediaData,data]); 
+  }, [activeTab, MediaData, data]);
 
   const handleFilterChange = (filter) => {
+    setActiveFilter(filter);
     if (filter === "All") {
-      setFilteredData(MediaData); 
+      setFilteredData(MediaData);
     } else {
-     
-      const filtered = MediaData.filter(item => item.category === filter);
+      const filtered = MediaData.filter((item) => item.category === filter);
       setFilteredData(filtered);
     }
   };
 
+  function getFeaturedItem(data) {
+  
+    const featuredItems = data.filter(item => item.isFeature === true);
+    
+    
+    return featuredItems || null;
+  }
+  
+  const featuredItems = getFeaturedItem(data);
+  
+
   const componentMap = {
-    "press-coverage": PressCoverageFeatured,
+    "pressCoverage": PressCoverageFeatured,
     "podcast": PodcastFeatured,
-    "video": VideoChannelsFeatured,
+    "videoChannel": VideoChannelsFeatured,
     "blogs": BlogFeatured,
-    "customers": SmCustomersFeatured,
+    "customersInMedia": SmCustomersFeatured,
   };
-
-    function renderFeaturedComponent() {
-    const activeData = data.find((item) => item.id === activeTab);
-    if (!activeData) {
-      return <div>No content available for this tab.</div>;
-    }
-
-    const FeaturedComponent = componentMap[activeTab] || componentMap[PressCoverageFeatured];
-    return <FeaturedComponent data={activeData.featured} />;
-  };
-
+  const FeaturedComponent = componentMap[activeTab];
+ 
+console.log("the fillllleters",filtersData)
   return (
     <div className={styles.tabContentContainer}>
+      {!isSearching && (
+        <div className={styles.featuredContainer} id="featuredContainer">
+          <p className={styles.mainheading}>Featured</p>
+         {
+            featuredItems &&  <FeaturedComponent data={featuredItems} />
+          }
+         
+        </div>
+      )}
 
-      {
-        !isSearching && <div className={styles.featuredContainer} id="featuredContainer">
-        <p className={styles.mainheading}>Featured</p>
-        {renderFeaturedComponent()}
+      <div className={styles.filtersFullContainer}>
+        {!isSearching && (
+          <Filters
+            onFilterChange={handleFilterChange}
+            activeTab={activeTab}
+            filtersData={filtersData}
+          />
+        )}
       </div>
-      }
-      
-       <div className={styles.filtersFullContainer} >
-       {
-        !isSearching && <Filters onFilterChange={handleFilterChange} activeTab={activeTab} filtersData={filtersData}/>
-       } 
-      </div>
-      
+
       <div className={styles.mediaCardContainer}>
-        <MediaCards filteredData={filteredData} activeTab={activeTab} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
-       
+        <MediaCards
+          // filteredData={filteredData}
+          filteredData={data}
+          activeTab={activeTab}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
       </div>
     </div>
   );

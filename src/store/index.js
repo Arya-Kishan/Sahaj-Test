@@ -3,7 +3,7 @@ import apiReducer from "./slices/mediaSlice";
 
 const store = configureStore({
   reducer: {
-    api: apiReducer,
+    media: apiReducer,
   },
 });
 
