@@ -1,11 +1,16 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import BlogFeatured from '../Featured/BlogFeatured';
 import PressCoverageFeatured from '../Featured/PressCoverageFeatured';
 import PodcastFeatured from '../Featured/PodcastFeatured';
 import VideoChannelsFeatured from '../Featured/VideoChannelsFeatured';
 import SmCustomersFeatured from '../Featured/SmCustomersFeatured';
+import PodcastMediaCards from '../MediaCards/PodcastMedia';
+import BlogMediaCards from '../MediaCards/BlogMediaCard';
+import PressCoverageMediaCards from '../MediaCards/PressCoverage';
+import SmCustomerMediaCards from '../MediaCards/SmCustomersMediaCard';
+import VideoChanelMediaCards from '../MediaCards/VideoChannel';
 import Filters from '../Filters/Filters';
 import MediaCards from '../MediaCards/MediaCards';
 import styles from './tabContent.module.css';
@@ -43,13 +48,13 @@ const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery,
   
 
   const componentMap = {
-    "pressCoverage": PressCoverageFeatured,
-    "podcast": PodcastFeatured,
-    "videoChannel": VideoChannelsFeatured,
-    "blogs": BlogFeatured,
-    "customersInMedia": SmCustomersFeatured,
+    "pressCoverage": [PressCoverageFeatured,PressCoverageMediaCards],
+    "podcast": [PodcastFeatured,PodcastMediaCards],
+    "videoChannel": [VideoChannelsFeatured,VideoChanelMediaCards],
+    "blogs": [BlogFeatured,BlogMediaCards],
+    "customersInMedia": [SmCustomersFeatured,SmCustomerMediaCards],
   };
-  const FeaturedComponent = componentMap[activeTab];
+  const ActiveMediaComponent = componentMap[activeTab];
  
 console.log("the fillllleters",filtersData)
   return (
@@ -57,10 +62,11 @@ console.log("the fillllleters",filtersData)
       {!isSearching && (
         <div className={styles.featuredContainer} id="featuredContainer">
           <p className={styles.mainheading}>Featured</p>
-         {
-            featuredItems &&  <FeaturedComponent data={featuredItems} />
-          }
-         
+          {
+        featuredItems && ActiveMediaComponent && ActiveMediaComponent[0] && (
+          React.createElement(ActiveMediaComponent[0], { data: featuredItems })
+        )
+      }  
         </div>
       )}
 
@@ -75,13 +81,18 @@ console.log("the fillllleters",filtersData)
       </div>
 
       <div className={styles.mediaCardContainer}>
-        <MediaCards
+        {/* <MediaCards
           // filteredData={filteredData}
           filteredData={data}
           activeTab={activeTab}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
-        />
+        /> */}
+            {
+        featuredItems && ActiveMediaComponent && ActiveMediaComponent[1] && (
+          React.createElement(ActiveMediaComponent[1], { filteredData:data })
+        )
+      } 
       </div>
     </div>
   );

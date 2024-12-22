@@ -6,7 +6,7 @@ import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
 import Link from "next/link";
 
-const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
+const PressCoverageMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
   const [visibleCount, setVisibleCount] = useState(3); 
 
 console.log("the medddddiaaa",filteredData)
@@ -151,4 +151,4 @@ console.log("the medddddiaaa",filteredData)
   );
 };
 
-export default MediaCards;
+export default PressCoverageMediaCards;

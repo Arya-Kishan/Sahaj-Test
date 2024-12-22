@@ -6,7 +6,7 @@ import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
 import Link from "next/link";
 
-const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
+const PodcastMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
   const [visibleCount, setVisibleCount] = useState(3); 
 
 console.log("the medddddiaaa",filteredData)
@@ -26,7 +26,7 @@ console.log("the medddddiaaa",filteredData)
       card.category,
     ].join(' ').toLowerCase();
 
-    return cardText.includes(searchQuery.toLowerCase());
+    return cardText.includes("".toLowerCase());
   });
   
   useEffect(() => {
@@ -42,12 +42,12 @@ console.log("the medddddiaaa",filteredData)
 
   return (
     <>
-      {visibleData.map((cardData,index) => (
+      {filteredData.map((cardData,index) => (
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-              <img src={cardData.CoverageImage || cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} />
-              {activeTab === "podcast" && (
+              <img src={cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} />
+           
                 <svg
                   width="80"
                   height="80"
@@ -75,43 +75,15 @@ console.log("the medddddiaaa",filteredData)
                     strokeLinejoin="round"
                   />
                 </svg>
-              )}
-              {activeTab === "video" && (
-                <svg
-                  width="80"
-                  height="80"
-                  className={styles.videoIcon}
-                  viewBox="0 0 80 80"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="40" cy="40" r="40" fill="white" fillOpacity="0.2" />
-                  <circle cx="40" cy="40" r="30" fill="white" fillOpacity="0.8" />
-                  <path
-                    d="M40.0007 56.6654C49.2054 56.6654 56.6673 49.2034 56.6673 39.9987C56.6673 30.794 49.2054 23.332 40.0007 23.332C30.7959 23.332 23.334 30.794 23.334 39.9987C23.334 49.2034 30.7959 56.6654 40.0007 56.6654Z"
-                    stroke="#C18823"
-                    strokeOpacity="0.75"
-                    strokeWidth="3.33333"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M36.666 33.332L46.666 39.9987L36.666 46.6654V33.332Z"
-                    stroke="#C18823"
-                    strokeOpacity="0.75"
-                    strokeWidth="3.33333"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              )}
+              
+             
             </div>
             <div className={styles.textContainer}>
-              {cardData.BrandName && <p className={styles.subheading}>{cardData.BrandName}</p>}
-              <p className={styles.heading}>{cardData.Title}</p>
-              {(cardData.Content && activeTab=="blogs" )&& <p className={styles.description}>{cardData.Content}</p>
+              {cardData.PodcastCompanyFrom && <p className={styles.subheading}>{cardData.PodcastCompanyFrom}</p>}
+              <p className={styles.heading}>{cardData.PodcastTitle}</p>
+              {/* {(cardData.Content && activeTab=="blogs" )&& <p className={styles.description}>{cardData.Content}</p>
 
-              } 
+              }  */}
               <p className={styles.cardDate}>{cardData.date}</p>
             </div>
           
@@ -151,4 +123,4 @@ console.log("the medddddiaaa",filteredData)
   );
 };
 
-export default MediaCards;
+export default PodcastMediaCards;

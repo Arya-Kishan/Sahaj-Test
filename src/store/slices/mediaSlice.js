@@ -13,7 +13,7 @@ const initialState = {
   filteredData: {},
   searchQuery: "",
   isSearching: false,
-  activeTab: "pressCoverage",
+  activeTab: "podcast",
 };
 
 const mediaSlice = createSlice({

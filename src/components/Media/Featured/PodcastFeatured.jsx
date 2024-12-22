@@ -3,12 +3,13 @@ import Image from "next/image";
 import styles from './featured.module.css'
 
 const PodcastFeatured=({data}) => {
+  const singlefeaturedData=data?.slice(0,1)
 
-    const {image,text}=data;
+
   return (
     <div className={styles.container}>
         <div className={styles.imgContainer}>
-           <Image src={image} alt="Podcast featured" />
+           <img src={singlefeaturedData[0]?.CoverImage} alt="Podcast featured" />
             <svg width="80" height="80" className={styles.podcastIcon} viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="40" cy="40" r="40" fill="white" fillOpacity="0.2"/>
               <circle cx="40" cy="40" r="30" fill="white" fillOpacity="0.8"/>
@@ -19,23 +20,24 @@ const PodcastFeatured=({data}) => {
         </div>
         <div className={styles.textContainer}>
             <div className={styles.subHeadingContainer}>
-                <p className={styles.subHeading}>{text.subHeading}</p>
+                <p className={styles.subHeading}>{singlefeaturedData[0]?.PodcastCompanyFrom}</p>
                  <button className={styles.time}>10 mins</button>
             </div>
             <div className={styles.headingContainer}>
-               <p className={styles.heading}>{text.Heading}</p> 
+               <p className={styles.heading}>{singlefeaturedData[0]?.PodcastTitle}</p> 
                 <p className={styles.descriptioncontainer}>
-               {text.description}
+                {singlefeaturedData[0]?.PodcastDescription}
             </p>
             </div>
             
             <p className={styles.dateContainer}>
-                {text.date}
+                {singlefeaturedData[0]?.createdAt}
             </p>
           
         </div>
       
     </div>
+  
   )
 }
 
