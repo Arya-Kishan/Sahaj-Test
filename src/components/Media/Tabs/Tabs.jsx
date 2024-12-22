@@ -14,7 +14,7 @@ const tabs = [
   { id: "customers", label: "SM's Customers in Media" },
 ];
 
-const Tabs = () => {
+const Tabs = ({filtersData={}}) => {
   const router = useRouter();
   const pathname = usePathname();
   const { path } = useParams();
