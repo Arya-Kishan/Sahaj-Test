@@ -10,7 +10,7 @@ const initialState = {
     customersInMedia: null,
   },
   combinedData: {},
-  filteredData: {},
+  filteredData: [],
   searchQuery: "",
   isSearching: false,
   activeTab: "blogs",
@@ -32,29 +32,47 @@ const mediaSlice = createSlice({
       if (query) {
         state.isSearching = true;
 
-        const filteredData = {};
+        const titleFieldMapping = {
+          pressCoverage: "Title",
+          podcast: "PodcastTitle",
+          videoChannel: "VideoTitle",
+          blogs: "title",
+          customersInMedia: "MediaTitle",
+        };
 
+        const combinedResults = []; 
+
+      
         for (const [key, value] of Object.entries(state.mediaData)) {
           if (value) {
+            const titleField = titleFieldMapping[key] || "title";
             const filteredItems = value.filter((item) =>
-              item.title.toLowerCase().includes(query)
+              item?.[titleField]?.toLowerCase().includes(query)
             );
+
+           
+            state.mediaData[key] = filteredItems.length > 0 ? filteredItems : null;
+
+           
             if (filteredItems.length > 0) {
-              filteredData[key] = filteredItems;
+              combinedResults.push(...filteredItems);
             }
           }
         }
 
-        state.filteredData = filteredData;
+        state.filteredData = combinedResults; 
       } else {
+       
         state.isSearching = false;
-        state.filteredData = {};
+        state.filteredData = [];
+        state.mediaData = { ...state.combinedData };
       }
     },
     clearSearch: (state) => {
       state.searchQuery = "";
       state.isSearching = false;
-      state.filteredData = {};
+      state.filteredData = [];
+      state.mediaData = { ...state.combinedData };
     },
     setActiveTab: (state, action) => {
       state.activeTab = action.payload;
