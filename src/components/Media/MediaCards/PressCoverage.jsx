@@ -26,7 +26,7 @@ console.log("the medddddiaaa",filteredData)
       card.category,
     ].join(' ').toLowerCase();
 
-    return cardText.includes(searchQuery.toLowerCase());
+    return cardText.includes("".toLowerCase());
   });
   
   useEffect(() => {

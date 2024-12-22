@@ -23,15 +23,15 @@ const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery,
   const [activeFilter, setActiveFilter] = useState("All");
 
   useEffect(() => {
-    setFilteredData(MediaData);
+    setFilteredData(data);
   }, [activeTab, MediaData, data]);
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
     if (filter === "All") {
-      setFilteredData(MediaData);
+      setFilteredData(data);
     } else {
-      const filtered = MediaData.filter((item) => item.category === filter);
+      const filtered = data?.filter((item) => item.Topic === filter);
       setFilteredData(filtered);
     }
   };
@@ -90,7 +90,7 @@ console.log("the fillllleters",filtersData)
         /> */}
             {
         featuredItems && ActiveMediaComponent && ActiveMediaComponent[1] && (
-          React.createElement(ActiveMediaComponent[1], { filteredData:data })
+          React.createElement(ActiveMediaComponent[1], { filteredData:filteredData })
         )
       } 
       </div>
