@@ -5,7 +5,7 @@ import Sebiheader from "@/components/SEBIDisclosure/Header/SebiHeader";
 import Sebi from "@/components/SEBIDisclosure/Sebi";
 import InvestorCharter from "@/components/SEBIDisclosure/InvestorCharter/InvestorCharter";
 import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer";
-import { getlastMonthData,getmonthTrendData,getyearTrendData,getannualTrendData} from "@/services/sebi" ;
+import { getlastMonthData,getmonthTrendData,getyearTrendData,getannualTrendData,getcontentData} from "@/services/sebi" ;
 
 const page = () => {
  
@@ -13,6 +13,7 @@ const page = () => {
   const [monthTrendData, setMonthTrendData] = useState([]);
   const [yearTrendData, setYearTrendData] = useState([]);
   const [annualTrendData, setAnnualTrendData] = useState([]);
+  const [contentData, setContentData] = useState([]);
     
   const getData = async (apiCall, setter) => {
 
@@ -36,14 +37,17 @@ const page = () => {
     getData(getmonthTrendData, setMonthTrendData);
     getData(getyearTrendData, setYearTrendData); 
     getData(getannualTrendData, setAnnualTrendData); 
-  }, []);
+    getData(getcontentData, setContentData);
 
+  
+  }, []);
+  
 
   return (
     <>
-      <Sebiheader />
-      <Sebi />
-      <InvestorCharter />
+      <Sebiheader contentData={contentData?.data}/>
+      <Sebi lastMonthData={lastMonthData?.data} monthTrendData={monthTrendData?.data} yearTrendData={yearTrendData?.data} annualTrendData={annualTrendData?.data}/>
+      <InvestorCharter contentData={contentData?.data}/>
       <ReviewsContainer />
     </>
   )

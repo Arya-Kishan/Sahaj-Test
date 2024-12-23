@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from './blogHeader.module.css';
 import backIcon from '../../../assests/Blog/backIcon.svg';
 
-const BlogHeader=()=>{
+const BlogHeader=({ data })=>{
     return(
  
             <div className={styles.headerInfoContanier}>
@@ -15,20 +15,19 @@ const BlogHeader=()=>{
                     </div>
                    
 
-                    <Link href="#" target="_blank" className={styles.gobackLinkText} rel="noopener noreferrer" >
+                    <Link href={"/media/blogs"} target="_blank" className={styles.gobackLinkText} rel="noopener noreferrer" >
                         Back to Blogs
                     </Link>
                    </div>
                     <div className={styles.infoHeading}>
                         <p className={styles.infoHeadingMaintext}>
-                            Blog
+                           {data?.title || "Blog"} 
                          </p>
-                         <p className={styles.infoHeadingSubtext}>Undersand Your Risk Tolerance</p>
+                         <p className={styles.infoHeadingSubtext}>{data?.BlogPitchLine}</p>
                     </div>
                 
                 </div>
-           </div>
-                
+           </div>      
       
     )
 }

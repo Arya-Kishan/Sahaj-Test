@@ -14,7 +14,6 @@ const page = () => {
     try {
       const { res, err } = await getProcessFlowData();
       if (res) {
-        console.log(res);
         setProcessFlowData(res.data);
       }
     } catch (error) {
@@ -28,7 +27,7 @@ const page = () => {
 
   return (
     <>
-    <ProcessFlow />
+      <ProcessFlow data={processFlowData}/>
     </>
   )
 }
