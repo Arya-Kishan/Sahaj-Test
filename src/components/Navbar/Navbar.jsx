@@ -48,10 +48,10 @@ function Navbar() {
             title="Media"
             options={[
               { label: 'Podcast', path: '/media/podcast' },
-              { label: 'Press coverage', path: '/media/press-coverage' },
-              { label: 'Video channels', path: '/media/video' },
+              { label: 'Press coverage', path: '/media/pressCoverage' },
+              { label: 'Video channels', path: '/media/videoChannel' },
               { label: 'Blogs', path: '/media/blogs' },
-              { label: 'SM’s Customers in Media', path: '/media/customers' },
+              { label: 'SM’s Customers in Media', path: '/media/customersInMedia' },
             ]}
           />
           <Link href="/about" className={style.aboutus}>

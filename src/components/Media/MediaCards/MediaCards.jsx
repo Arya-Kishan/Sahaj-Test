@@ -148,9 +148,11 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
             )}
           </div>
           {activeTab === "blogs" && (
-            <Link className={styles.readMore} href="/blog/individual">
+              <Link
+              href={`/blog/${cardData?.Slug}`}
+             >
               <ReadMore text={"Read More"} />
-            </Link>
+             </Link>
           )}
 
           {activeTab === "press-coverage" && <ReadMore text={"Read More"} />}

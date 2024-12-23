@@ -35,7 +35,7 @@ const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery,
     if (activeTab === "All") {
       dispatch(setCombinedData(data));
     }
-  }, [activeTab, data, dispatch]);
+  }, [activeTab, data]);
 
 
   const handleFilterChange = (filter) => {
