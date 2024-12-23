@@ -32,9 +32,6 @@ const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery,
 
   useEffect(() => {
     setFilteredData(data);
-    if (activeTab === "All") {
-      dispatch(setCombinedData(data));
-    }
   }, [activeTab, data]);
 
 
@@ -44,6 +41,7 @@ const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery,
       setFilteredData(data);
       dispatch(setCombinedData(data));
     } else {
+
       const filtered = data?.filter((item) => item.Topic === filter);
       setFilteredData(filtered);
       dispatch(setCombinedData(filtered));

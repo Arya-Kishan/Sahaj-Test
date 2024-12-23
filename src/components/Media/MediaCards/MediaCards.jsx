@@ -47,8 +47,6 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
 
     setVisibleCount(3);
 
-
-    dispatch(setCombinedData(filteredCards));
   }, [filteredData, searchQuery, dispatch]);
 
   const visibleData = isMobile ? filteredCards.slice(0, visibleCount) : filteredCards;
