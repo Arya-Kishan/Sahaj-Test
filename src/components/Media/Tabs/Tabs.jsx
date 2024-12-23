@@ -44,8 +44,7 @@ const Tabs = ({ filtersData }) => {
     } else if (!path && !pathname.includes(tabs[0].id)) {
       router.push(`/media/${tabs[0].id}`);
     }
-    console.log("th meddd",mediaData,filteredData);
-    console.log("the fillllll",combinedData);
+    
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get("search") || "";
     dispatch(setSearchQuery(query)); 

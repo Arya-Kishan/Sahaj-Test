@@ -15,7 +15,7 @@ const ProcessFlow = ({ data }) => {
     }
 
     const { ProcessVideo, ProcessContent, PrcessSteps } = ProcessObject;
-    console.log("the data are,",ProcessVideo, ProcessContent, PrcessSteps)
+   
 
     return (
         <div>

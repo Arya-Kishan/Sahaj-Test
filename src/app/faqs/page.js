@@ -38,7 +38,6 @@ const page = () => {
         getData(() => getTopicFaqData(bodyData), setTopicFaqData);
       }, [])
   
- console.log("the vv",faqdata)
   return (
     <>
       <Header />

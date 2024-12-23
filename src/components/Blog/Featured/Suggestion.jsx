@@ -14,8 +14,6 @@ const SuggestionCardList = ({data={}}) => {
 
  let recentItems = sortedItems.slice(0, 3)|| data;
  
- console.log("rrr",recentItems);
-  console.log("section the data in main",data)
   const router = useRouter(); 
 
  

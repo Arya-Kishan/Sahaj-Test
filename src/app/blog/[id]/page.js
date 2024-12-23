@@ -12,7 +12,7 @@ const page = () => {
   const [allblogData, setAllBlogData] = useState([]);
 
   const { id } = useParams();
-  console.log("the id",id)
+ 
   const bodyData= {
     "page" :1, 
     "limit" : 10,

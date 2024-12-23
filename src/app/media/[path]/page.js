@@ -20,7 +20,7 @@ const fetchAndStoreData = async (apiCall, key, dispatch) => {
     const { res } = await apiCall();
     if (res) {
       dispatch(setMediaData({ key, data: res.data?.data?.items }));
-      // console.log("Fetched data for:", key, res.data?.data?.items);
+
     }
   } catch (error) {
     console.error(`Fetch error for ${key}:`, error);

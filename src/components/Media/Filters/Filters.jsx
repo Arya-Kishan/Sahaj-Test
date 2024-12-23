@@ -5,7 +5,7 @@ const Filters = ({ onFilterChange, activeTab, filtersData }) => {
   const [activeFilter, setActiveFilter] = useState("All");
 
 
-  const filters = ["All", ...(filtersData?.map(filter => filter.topic) || [])];
+  const filters = ["All", ...(filtersData?.map(filter => filter.TopicName) || [])];
 
   useEffect(() => {
     setActiveFilter("All"); 

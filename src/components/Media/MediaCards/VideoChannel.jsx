@@ -10,7 +10,6 @@ import FormateDate from "../FormateDate";
 const VideoChanelMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
     const [visibleCount, setVisibleCount] = useState(3);
 
-    console.log("the medddddiaaa", filteredData)
     const isMobile = useIsMobile();
 
     const handleLoadMore = () => {
