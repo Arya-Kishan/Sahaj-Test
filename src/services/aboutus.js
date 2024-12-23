@@ -25,3 +25,11 @@ export const getInvestmentData = async () =>{
         return { err: error, res: null }
      }
 }
+export const getSingleInvestmentData = async (data) =>{
+    try {
+        const res = await axiosInstance.post(`/about/singlecontent`, data)
+        return { res: res?.data, err: null }
+     } catch (error) {
+        return { err: error, res: null }
+     }
+}

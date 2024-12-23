@@ -42,13 +42,16 @@ const SectionOne = () => {
 
                             <div className={styles.infoimgBox}>
                                 <iframe
+                                    width={300}
+                                    height={300}
                                     className={styles.infoimg}
                                     src={item?.VideoLink}
                                     title="YouTube video player"
-                                    frameborder="0"
+                                    frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen>
+                                    allowFullScreen>
                                 </iframe>
+
                                 {/* <Image src={companyInfoImg} className={styles.infoimg} alt="CompanyInfoImage" /> */}
                             </div>
                         </div>
