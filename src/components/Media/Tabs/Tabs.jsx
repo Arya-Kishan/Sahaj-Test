@@ -117,6 +117,7 @@ const Tabs = ({ filtersData }) => {
   const handleClearSearch = () => {
     dispatch(setSearchQuery("")); 
     dispatch(setIsSearching(false)); 
+    displayContent=activeTabData
   };
 
   const activeTabData = mediaData[activeTab] || [];
