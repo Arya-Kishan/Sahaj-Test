@@ -4,7 +4,10 @@ import arrowUpRight from '../../../assests/AboutUs/arrowUpRight.svg';
 import Link from 'next/link';
 import styles from './sebiheader.module.css';
 
-const SebiHeader = () => {
+const SebiHeader = ({contentData = {} }) => {
+ 
+  const { title = "Default Title", description = "Default Description", link = "#",PDFlink='#' } = contentData || {};
+
   return (
     <>
          <div className={styles.sebiHeader}>
@@ -12,20 +15,19 @@ const SebiHeader = () => {
          </div>
          <section className={styles.complaintsContainer}>
             <div className={styles.complaintsHeader}>
-              <p className={styles.complaintsheading}>Regulatory Complaints Disclosure</p>
+              <p className={styles.complaintsheading}>{title}</p>
               <p className={styles.smallScreenheading}>Our Story</p>
             </div>
             <div className={styles.description}>
-              <p>
-                  SEBI mandates all RIA&apos;s to display the complaint status
-                  on the website as shown below. Investors can first contact the intermediary in case of complaints,
-                  in our case through the contact us page. The SEBI &apos;SCORES&apos; website that facilitates 
-                  investors in logging any complaints against listed companies or intermediaries can be accessed here :
-                  <span className={styles.sebiLinkSpan}><Link href={"https://scores.gov.in/scores/Welcome.html"} className={styles.link}>https://scores.gov.in/scores/Welcome.html</Link></span>
+              <p> {description}
+                  <span className={styles.sebiLinkSpan}>
+                    <Link href={link} className={styles.link}>
+                   {link}</Link>
+                 </span>
               </p>
             </div>
             <button className={styles.viewPdfButton}>
-                 <span>View PDF</span>
+                 <Link href={PDFlink} className={styles.viewPdflink}>View PDF</Link>
                 <Image src={arrowUpRight} alt="icon" className="icon" /> 
             </button>
          </section>

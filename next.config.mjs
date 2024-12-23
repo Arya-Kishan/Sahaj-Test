@@ -5,6 +5,7 @@ const nextConfig = {
       test: /\.pdf$/,
       type: 'asset/resource',
     });
+    config.resolve.alias.canvas = false;
     return config;
   },
   env: {

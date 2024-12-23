@@ -1,24 +1,38 @@
 "use client"
-import Image from "next/image";
+import { useState } from 'react';
 import styles from './suggestion.module.css';
 
 
 const Card = ({ title, logo,description }) => {
-  const handleViewMore = () => {
-   
-    console.log(`Viewing more about: ${title}`);
+  const handleViewMore = () => setIsExpanded((prev) => !prev);
+  
+
+  const Item = ({ content }) => {
+    return (
+      <div 
+        dangerouslySetInnerHTML={{ __html: content }} 
+      />
+    );
   };
+  const [isExpanded, setIsExpanded] = useState(false);
+
 
   return (
     <div className={styles.card}>
       <div className={styles.logo}>
-        <Image src={logo} alt="cardlogo"  />
+        <img src={logo} alt="cardlogo" width={100} height={100}/>
        
         </div>
       <h3 className={styles.title}>{title}</h3>
-      <p className={styles.description}>{description}</p>
+     
+      <div className={styles.description}  style={{
+          height: isExpanded ? 'auto' : '100px', 
+          overflow: 'hidden', 
+          textOverflow: 'ellipsis', 
+        }}><Item content={description} /></div>
+    
       <button className={styles.viewMore} onClick={handleViewMore}>
-        View more
+        {isExpanded ? 'Show Less' : 'View More'}
       </button>
     </div>
   );

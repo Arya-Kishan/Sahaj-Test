@@ -27,7 +27,12 @@
     letter-spacing: 0.2px;
     text-align: left;
     color: var(--Color-black-75, #000000BF);
-
+    width: 300px; 
+    height: 300px; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+    
   }
   
   .viewMore {

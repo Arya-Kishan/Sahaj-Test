@@ -1,19 +1,24 @@
-"use client"
-import style from "./investorCharter.module.css"
-// import PdfViewer from "../PdfViewer";
+"use client";
 
-const InvestorCharter = () => {
+import style from "./investorCharter.module.css";
+import PdfViewer from "../PdfViewer";
+
+const InvestorCharter = ({contentData={}}) => {
+  const {PDFlink='#' } = contentData || {};
   return (
     <>
-        <div className={style.heading}>
-          <p>SEBI&apos;s Investor Charter</p>
-        </div>
-        <section className={style.pdfContainer} >
-        {/* <PdfViewer pdfUrl={"https://pdfobject.com/pdf/sample.pdf"}/> */}
-      </section>
-      
-    </>
-  )
-}
+    <div className={style.heading}>
+      <p>SEBI's Investor Charter</p>
+    </div>
+    <section className={style.pdfContainer}>
+      {PDFlink !== '#' ? (
+        <PdfViewer pdfUrl={PDFlink} />
+      ) : (
+        <p>No PDF available at the moment.</p>
+      )}
+    </section>
+  </>
+  );
+};
 
-export default InvestorCharter
+export default InvestorCharter;

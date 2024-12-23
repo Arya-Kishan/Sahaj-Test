@@ -58,13 +58,15 @@
     background: none;
 }
 
- .viewPdfButton span{
+ .viewPdflink{
+    text-decoration: none;
     font-family: Roboto;
     font-size: 18px;
     font-weight: 600;
     line-height: 27px;
     letter-spacing: 0.4px;
     text-align: center;
+    color:#000000
  }
  
  @media (max-width: 764px) {
