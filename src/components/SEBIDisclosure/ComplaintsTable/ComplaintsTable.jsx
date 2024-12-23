@@ -13,9 +13,9 @@ const ComplaintsTable = ({ tableData = {}, totals }) => {
         <thead>
           <tr className={styles.tr}>
 
-            <th className={styles.th}>SR No</th>
+            <th className={styles.th}><strong>SR No</strong></th>
             {columns.map((column) => (
-              column !== '_id' && <th key={column} className={styles.th}>{column}</th>
+              column !== '_id' && <th key={column} className={styles.th}><strong>{column}</strong></th>
             ))}
           </tr>
         </thead>
