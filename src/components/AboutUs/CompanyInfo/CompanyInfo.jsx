@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import companyInfoImg from "../../../assests/AboutUs/companyInfoImg.webp";
 import ReadMore from "../../ReadMoreButton/ReadMoreButton";
@@ -36,8 +36,8 @@ const SectionOne = () => {
                             <div className={styles.infotext}>
                                 <p className={styles.infotextheading}>{item?.Title}</p>
                                 <p className={styles.infotextbody}>{item?.Content[index]?.SmallMainDescription}</p>
-
-                                <ReadMore text={"Read More"} />
+                                <Link href="/about/investmentphilosophy" ><ReadMore text={"Read More"} /></Link>
+                                
                             </div>
 
                             <div className={styles.infoimgBox}>

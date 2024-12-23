@@ -41,7 +41,7 @@ const FounderInfo = () => {
                     <div className={styles.founderinfotext}>
                         <p className={styles.founderinfotextHeading}>{item?.Title}</p>
                         <p className={styles.founderinfotextBody}>{item?.Content}</p>
-                        <ReadMore text={"Read Our Story"} />
+                        <Link href='/about/financialfuture'><ReadMore text={"Read Our Story"} /></Link>
 
 
                     </div>

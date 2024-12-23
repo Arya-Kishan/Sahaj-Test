@@ -33,3 +33,11 @@ export const getSingleInvestmentData = async (data) =>{
         return { err: error, res: null }
      }
 }
+export const getSingleFounderData = async (data) =>{
+    try {
+        const res = await axiosInstance.post(`/about/singlefounder`, data)
+        return { res: res?.data, err: null }
+     } catch (error) {
+        return { err: error, res: null }
+     }
+}

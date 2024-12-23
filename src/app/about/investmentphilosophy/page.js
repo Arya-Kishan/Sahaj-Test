@@ -15,7 +15,7 @@ function page() {
         try {
             const {res, err} = await getSingleInvestmentData(data);
             if(res){
-                console.log(res?.data);
+                // console.log(res?.data);
                 setContent(res?.data);
             }
             else{
