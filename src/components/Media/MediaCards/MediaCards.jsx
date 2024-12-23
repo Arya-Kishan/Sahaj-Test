@@ -14,6 +14,7 @@ import {
   setMediaData,
   setCombinedData,
 } from "../../../store/slices/mediaSlice";
+import FormateDate from "../FormateDate";
 
 const MediaCards = ({ filteredData = [], activeTab }) => {
   const [visibleCount, setVisibleCount] = useState(3);
@@ -133,7 +134,7 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
                   cardData.MediaTitle}
               </p>
 
-              <p className={styles.cardDate}>{cardData?.createdAt}</p>
+              <p className={styles.cardDate}>{FormateDate(cardData?.createdAt)}</p>
             </div>
 
             {cardData.Tags && (

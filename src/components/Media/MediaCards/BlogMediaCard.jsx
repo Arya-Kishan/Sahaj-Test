@@ -28,12 +28,6 @@ const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
 
         return cardText.includes("".toLowerCase());
     });
-    const date = new Date('2024-12-22T09:08:22.263Z');
-
-    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    const formattedDate = date.toLocaleDateString('en-US', options);
-    
-    console.log(formattedDate);
 
     useEffect(() => {
         setVisibleCount(3);
