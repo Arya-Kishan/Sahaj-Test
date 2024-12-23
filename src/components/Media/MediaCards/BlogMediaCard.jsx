@@ -20,10 +20,10 @@ const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
     const filteredCards = filteredData.filter((card) => {
         const cardText = [
             // card.subheading,
-            card.Title,
-            card.date,
-            card.description,
-            card.category,
+            card?.title,
+            // card.date,
+            // card.description,
+            // card.category,
         ].join(' ').toLowerCase();
 
         return cardText.includes("".toLowerCase());
@@ -46,19 +46,19 @@ const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
                 <div className={styles.cardfullContainer} key={index}>
                     <div className={styles.cardContainer}>
                         <div className={styles.imgContainer}>
-                            <img src={cardData.BlogImage} alt={"CoverImage"} className={styles.cardImg} />
+                            <img src={cardData?.BlogImage} alt={"CoverImage"} className={styles.cardImg} />
                         </div>
                         <div className={styles.textContainer}>
-                            <p className={styles.heading}>{cardData.title}</p>
-                            <p className={styles.description}>{cardData.BlogPitchLine}</p>
+                            <p className={styles.heading}>{cardData?.title}</p>
+                            <p className={styles.description}>{cardData?.BlogPitchLine}</p>
 
 
-                            <p className={styles.cardDate}>{cardData.createdAt}</p>
+                            <p className={styles.cardDate}>{cardData?.createdAt}</p>
                         </div>
 
-                        {cardData.Tags && (
+                        {cardData?.Tags && (
                             <div className={styles.blogCardButtonsContainer}>{
-                                cardData.Tags.map((tags, index) => (
+                                cardData?.Tags.map((tags, index) => (
                                     <button className={styles.blogCardButton} key={index}>{tags}</button>
                                 ))
                             }

@@ -17,14 +17,14 @@ import styles from './tabContent.module.css';
 
 const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery, filtersData }) => {
 
-  const MediaData = data.find((item) => item.id === activeTab)?.mediaCard || data[0]?.mediaCard;
 
-  const [filteredData, setFilteredData] = useState(MediaData);
+
+  const [filteredData, setFilteredData] = useState(data);
   const [activeFilter, setActiveFilter] = useState("All");
-
+ 
   useEffect(() => {
     setFilteredData(data);
-  }, [activeTab, MediaData, data]);
+  }, [activeTab,data]);
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
@@ -38,7 +38,7 @@ const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery,
 
   function getFeaturedItem(data) {
   
-    const featuredItems = data.filter(item => item.isFeature === true);
+    const featuredItems = data?.filter(item => item.isFeature === true);
     
     
     return featuredItems || null;
@@ -81,13 +81,6 @@ console.log("the fillllleters",filtersData)
       </div>
 
       <div className={styles.mediaCardContainer}>
-        {/* <MediaCards
-          // filteredData={filteredData}
-          filteredData={data}
-          activeTab={activeTab}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        /> */}
             {
         featuredItems && ActiveMediaComponent && ActiveMediaComponent[1] && (
           React.createElement(ActiveMediaComponent[1], { filteredData:filteredData })
