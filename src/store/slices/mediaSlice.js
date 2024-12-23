@@ -1,114 +1,117 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  mediaData: {
-    pressCoverage: [],
-    podcast: [],
-    videoChannel: [],
-    blogs: [],
-    customersInMedia: [],
-  },
-  combinedData: {}, 
-  filteredData: [],
-  searchQuery: "",
-  isSearching: false,
-  activeTab: "blogs",
+    mediaData: {
+        pressCoverage: [],
+        podcast: [],
+        videoChannel: [],
+        blogs: [],
+        customersInMedia: [],
+    },
+    combinedData: [],
+    filteredData: [],
+    searchQuery: "",
+    isSearching: false,
+    activeTab: "blogs",
 };
 
 const mediaSlice = createSlice({
-  name: "media",
-  initialState,
-  reducers: {
-    
-    setMediaData: (state, action) => {
-      const { key, data } = action.payload;
-      state.mediaData[key] = data;
-      state.combinedData = { ...state.mediaData };
-    },
+    name: "media",
+    initialState,
+    reducers: {
+
+        setMediaData: (state, action) => {
+            const { key, data } = action.payload;
+            state.mediaData[key] = data;
+            state.combinedData = Object.values(state.mediaData).flat();
+        },
 
 
-    setActiveTab: (state, action) => {
-      state.activeTab = action.payload;
-    },
+        setCombinedData: (state, action) => {
+            state.combinedData = action.payload;
+        },
 
-   
-    setSearchQuery: (state, action) => {
-      const query = action.payload.toLowerCase();
-      state.searchQuery = query;
 
-      if (query) {
-        state.isSearching = true;
+        setActiveTab: (state, action) => {
+            state.activeTab = action.payload;
+        },
 
-        const titleFieldMapping = {
-          pressCoverage: "Title",
-          podcast: "PodcastTitle",
-          videoChannel: "VideoTitle",
-          blogs: "title",
-          customersInMedia: "MediaTitle",
-        };
+        setSearchQuery: (state, action) => {
+            const query = action.payload.toLowerCase();
+            state.searchQuery = query;
 
-        const combinedResults = [];
+            if (query) {
+                state.isSearching = true;
 
-       
-        for (const [key, value] of Object.entries(state.mediaData)) {
-          if (value && Array.isArray(value)) {
-            const titleField = titleFieldMapping[key];
-            const filteredItems = value.filter((item) =>
-              item?.[titleField]?.toLowerCase().includes(query)
-            );
+                const titleFieldMapping = {
+                    pressCoverage: "Title",
+                    podcast: "PodcastTitle",
+                    videoChannel: "VideoTitle",
+                    blogs: "title",
+                    customersInMedia: "MediaTitle",
+                };
 
-      
-            state.mediaData[key] = filteredItems.length > 0 ? filteredItems : [];
+                const combinedResults = [];
 
-          
-            if (filteredItems.length > 0) {
-              combinedResults.push(...filteredItems);
+
+                for (const [key, value] of Object.entries(state.mediaData)) {
+                    if (value && Array.isArray(value)) {
+                        const titleField = titleFieldMapping[key];
+                        const filteredItems = value.filter((item) =>
+                            item?.[titleField]?.toLowerCase().includes(query)
+                        );
+
+                        if (filteredItems.length > 0) {
+                            combinedResults.push(...filteredItems);
+                        }
+                    }
+                }
+
+                state.filteredData = combinedResults;
+                state.combinedData = combinedResults;
+            } else {
+
+                state.isSearching = false;
+                state.filteredData = [];
+                state.combinedData = Object.values(state.mediaData).flat();
             }
-          }
-        }
+        },
 
-       
-        state.filteredData = combinedResults;
-      } else {
 
-        state.isSearching = false;
-        state.filteredData = [];
-      }
+        clearSearch: (state) => {
+            state.isSearching = false;
+            state.filteredData = [];
+            state.searchQuery = "";
+            state.combinedData = Object.values(state.mediaData).flat();
+        },
+
+
+        setFilteredData: (state, action) => {
+            state.filteredData = action.payload;
+        },
+
+
+        updateSingleKeyFilteredData: (state, action) => {
+            const { key, filteredData } = action.payload;
+            state.mediaData[key] = filteredData;
+        },
+
+
+        setIsSearching: (state, action) => {
+            state.isSearching = action.payload;
+        },
     },
-
-    clearSearch: (state) => {
-      state.isSearching = false;
-      state.filteredData = []; 
-      state.searchQuery = ""; 
-      state.mediaData = { ...state.combinedData }; 
-    },
-
-   
-    setFilteredData: (state, action) => {
-      state.filteredData = action.payload;
-    },
-
-   
-    updateSingleKeyFilteredData: (state, action) => {
-      const { key, filteredData } = action.payload;
-      state.mediaData[key] = filteredData;
-    },
-
-   
-    setIsSearching: (state, action) => {
-      state.isSearching = action.payload;
-    },
-  },
 });
 
 export const {
-  setMediaData,
-  setActiveTab,
-  setSearchQuery,
-  clearSearch,
-  setFilteredData,
-  updateSingleKeyFilteredData,
-  setIsSearching,
+    setMediaData,
+    setActiveTab,
+    setSearchQuery,
+    clearSearch,
+    setFilteredData,
+    setCombinedData,
+    updateSingleKeyFilteredData,
+    setIsSearching,
 } = mediaSlice.actions;
 
 export default mediaSlice.reducer;

@@ -1,41 +1,55 @@
-"use client"
+"use client";
 import Image from "next/image";
-import { useState, useEffect } from 'react';
-import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
-import styles from './mediaCards.module.css';
-import { useIsMobile } from './useIsMobile';
+import { useState, useEffect } from "react";
+import ReadMore from "@/components/ReadMoreButton/ReadMoreButton";
+import styles from "./mediaCards.module.css";
+import { useIsMobile } from "./useIsMobile";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
+import {
+  setActiveTab,
+  setSearchQuery,
+  setFilteredData,
+  setIsSearching,
+  setMediaData,
+  setCombinedData,
+} from "../../../store/slices/mediaSlice";
 
-const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
-  const [visibleCount, setVisibleCount] = useState(3); 
+const MediaCards = ({ filteredData = [], activeTab }) => {
+  const [visibleCount, setVisibleCount] = useState(3);
 
-  
-
-console.log("the medddddiaaa",filteredData)
+  const filteredDataRedux = useSelector((state) => state.media.filteredData);
+  const isSearching = useSelector((state) => state.media.isSearching);
+  const combinedData = useSelector((state) => state.media.combinedData);
+  const searchQuery = useSelector((state) => state.media.searchQuery);
   const isMobile = useIsMobile();
+  const dispatch = useDispatch();
+
+  console.log("Redux Data:", isSearching, combinedData, filteredDataRedux, filteredData);
 
   const handleLoadMore = () => {
-    setVisibleCount((prevCount) => prevCount + 3); 
+    setVisibleCount((prevCount) => prevCount + 3);
   };
-  
+
 
   const filteredCards = filteredData.filter((card) => {
     const cardText = [
-      // card.subheading,
-      card.Title,
-      card.date,
-      card.description,
-      card.category,
-    ].join(' ').toLowerCase();
+      card.Title || card.PodcastTitle || card.title || card.VideoTitle || card.MediaTitle,
+    ]
+      .join(" ")
+      .toLowerCase();
 
-    return cardText.includes(searchQuery.toLowerCase());
+    return cardText.includes(searchQuery?.toLowerCase());
   });
-  
-  useEffect(() => {
-    setVisibleCount(3);
-  }, [filteredData, searchQuery]);
 
- 
+  useEffect(() => {
+
+    setVisibleCount(3);
+
+
+    dispatch(setCombinedData(filteredCards));
+  }, [filteredData, searchQuery, dispatch]);
+
   const visibleData = isMobile ? filteredCards.slice(0, visibleCount) : filteredCards;
 
   if (filteredCards.length === 0) {
@@ -44,11 +58,19 @@ console.log("the medddddiaaa",filteredData)
 
   return (
     <>
-      {visibleData.map((cardData,index) => (
+      {visibleData.map((cardData, index) => (
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-              <img src={cardData.CoverageImage || cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} />
+              <img
+                src={
+                  cardData?.CoverageImage ||
+                  cardData.CoverImage ||
+                  cardData?.BlogImage
+                }
+                alt={"CoverImage"}
+                className={styles.cardImg}
+              />
               {activeTab === "podcast" && (
                 <svg
                   width="80"
@@ -58,8 +80,20 @@ console.log("the medddddiaaa",filteredData)
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <circle cx="40" cy="40" r="40" fill="white" fillOpacity="0.2" />
-                  <circle cx="40" cy="40" r="30" fill="white" fillOpacity="0.8" />
+                  <circle
+                    cx="40"
+                    cy="40"
+                    r="40"
+                    fill="white"
+                    fillOpacity="0.2"
+                  />
+                  <circle
+                    cx="40"
+                    cy="40"
+                    r="30"
+                    fill="white"
+                    fillOpacity="0.8"
+                  />
                   <path
                     d="M28 48V40C28 36.8174 29.2643 33.7652 31.5147 31.5147C33.7652 29.2643 36.8174 28 40 28C43.1826 28 46.2348 29.2643 48.4853 31.5147C50.7357 33.7652 52 36.8174 52 40V48"
                     stroke="#C18823"
@@ -78,77 +112,55 @@ console.log("the medddddiaaa",filteredData)
                   />
                 </svg>
               )}
-              {activeTab === "video" && (
-                <svg
-                  width="80"
-                  height="80"
-                  className={styles.videoIcon}
-                  viewBox="0 0 80 80"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="40" cy="40" r="40" fill="white" fillOpacity="0.2" />
-                  <circle cx="40" cy="40" r="30" fill="white" fillOpacity="0.8" />
-                  <path
-                    d="M40.0007 56.6654C49.2054 56.6654 56.6673 49.2034 56.6673 39.9987C56.6673 30.794 49.2054 23.332 40.0007 23.332C30.7959 23.332 23.334 30.794 23.334 39.9987C23.334 49.2034 30.7959 56.6654 40.0007 56.6654Z"
-                    stroke="#C18823"
-                    strokeOpacity="0.75"
-                    strokeWidth="3.33333"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M36.666 33.332L46.666 39.9987L36.666 46.6654V33.332Z"
-                    stroke="#C18823"
-                    strokeOpacity="0.75"
-                    strokeWidth="3.33333"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              )}
             </div>
             <div className={styles.textContainer}>
-              {cardData.BrandName && <p className={styles.subheading}>{cardData.BrandName}</p>}
-              <p className={styles.heading}>{cardData.Title}</p>
-              {(cardData.Content && activeTab=="blogs" )&& <p className={styles.description}>{cardData.Content}</p>
+              {(cardData?.BrandName ||
+                cardData?.PodcastCompanyFrom ||
+                cardData.VideoCompanyFrom ||
+                cardData.MediaCompanyFrom) && (
+                  <p className={styles.subheading}>
+                    {cardData?.BrandName ||
+                      cardData?.PodcastCompanyFrom ||
+                      cardData.VideoCompanyFrom ||
+                      cardData.MediaCompanyFrom}
+                  </p>
+                )}
+              <p className={styles.heading}>
+                {cardData?.Title ||
+                  cardData.PodcastTitle ||
+                  cardData.title ||
+                  cardData.VideoTitle ||
+                  cardData.MediaTitle}
+              </p>
 
-              } 
-              <p className={styles.cardDate}>{cardData.date}</p>
+              <p className={styles.cardDate}>{cardData?.createdAt}</p>
             </div>
-          
-            {cardData.Tags && (
-              <div className={styles.blogCardButtonsContainer}>{
-                cardData.Tags.map((tags,index)=>(
-                  <button className={styles.blogCardButton} key={index}>{tags}</button>
-                ))
-              }
-              </div>
-            )} 
-          </div>
-          { activeTab === "blogs" && 
-             
-             <Link
-             className={styles.readMore}
-             href="/blog/individual"
-            >
-              <ReadMore text={"Read More"} />
-           </Link>
-           }
 
-            { activeTab === "press-coverage" &&
-           
-               <ReadMore text={"Read More"} />
-          
-            }
+            {cardData.Tags && (
+              <div className={styles.blogCardButtonsContainer}>
+                {cardData.Tags.map((tags, index) => (
+                  <button className={styles.blogCardButton} key={index}>
+                    {tags}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
+          {activeTab === "blogs" && (
+            <Link className={styles.readMore} href="/blog/individual">
+              <ReadMore text={"Read More"} />
+            </Link>
+          )}
+
+          {activeTab === "press-coverage" && <ReadMore text={"Read More"} />}
+        </div>
       ))}
 
-        {isMobile && visibleCount < filteredCards.length && (
-          <button onClick={handleLoadMore} className={styles.loadMoreButton}>
-            Load More
-          </button>
-        )}
+      {isMobile && visibleCount < filteredCards.length && (
+        <button onClick={handleLoadMore} className={styles.loadMoreButton}>
+          Load More
+        </button>
+      )}
     </>
   );
 };

@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTab, setSearchQuery, setFilteredData,setIsSearching, setMediaData } from "../../../store/slices/mediaSlice";
+import { setActiveTab, setSearchQuery, setFilteredData, setIsSearching, setMediaData,setCombinedData } from "../../../store/slices/mediaSlice";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import styles from "./tabs.module.css";
 import TabContent from "../TabContent/TabContent";
+
 const tabs = [
   { id: "pressCoverage", label: "Press Coverage" },
   { id: "podcast", label: "Podcast" },
@@ -27,7 +28,8 @@ const Tabs = ({ filtersData }) => {
   const mediaData = useSelector((state) => state.media.mediaData);
   const filteredData = useSelector((state) => state.media.filteredData);
   const isSearching = useSelector((state) => state.media.isSearching);
-
+  const combinedData= useSelector((state) => state.media.combinedData);
+ 
   const titleFieldMapping = {
     pressCoverage: "Title",
     podcast: "PodcastTitle",
@@ -37,21 +39,19 @@ const Tabs = ({ filtersData }) => {
   };
 
   useEffect(() => {
-   
     if (path && tabs.some((tab) => tab.id === path)) {
       dispatch(setActiveTab(path));
     } else if (!path && !pathname.includes(tabs[0].id)) {
       router.push(`/media/${tabs[0].id}`);
     }
-
-  
+    console.log("th meddd",mediaData,filteredData);
+    console.log("the fillllll",combinedData);
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get("search") || "";
     dispatch(setSearchQuery(query)); 
   }, [path, router, pathname, dispatch]);
 
   useEffect(() => {
-   
     if (searchQuery) {
       const urlParams = new URLSearchParams(window.location.search);
       urlParams.set("search", searchQuery);
@@ -61,7 +61,6 @@ const Tabs = ({ filtersData }) => {
   }, [searchQuery, pathname, router, dispatch]);
 
   useEffect(() => {
-    
     const filtered = mediaData[activeTab]?.filter((item) => {
       const titleField = titleFieldMapping[activeTab];
       return item?.[titleField]?.toLowerCase().includes(searchQuery.toLowerCase());
@@ -73,40 +72,35 @@ const Tabs = ({ filtersData }) => {
       dispatch(setFilteredData([]));
     }
   }, [searchQuery, activeTab, mediaData, dispatch]);
-
-  // const handleTabChange = (tabId) => {
-  //   if (tabId !== activeTab) {
-  //     router.push(`/media/${tabId}`);
-  //     dispatch(setActiveTab(tabId));
-
-  //     // Keep the filtered data when switching tabs unless there are search results
-  //     if (!searchQuery) {
-  //       dispatch(setFilteredData([])); // Reset filtered data if no search query
-  //     }
-  //   }
-  // };
-
+  const combinedResults = [];
   const handleTabChange = (tabId) => {
     if (tabId !== activeTab) {
-      
       dispatch(setActiveTab(tabId));
       router.push(`/media/${tabId}`);
-  
+      
      
-      const titleField = titleFieldMapping[tabId];
-      const filtered = mediaData[tabId]?.filter((item) =>
-        item?.[titleField]?.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-  
-     
-      if (searchQuery) {
-        dispatch(setMediaData(filtered || [])); 
+      if (tabId === "All") {
+      
+        for (const key of Object.keys(mediaData)) {
+          combinedResults.push(...mediaData[key]);
+        }
+      
+      
+        dispatch(setFilteredData(combinedResults));
+        dispatch(setCombinedData(combinedResults));
+        
       } else {
-        dispatch(setMediaData([])); 
-      }
+        const titleField = titleFieldMapping[tabId];
+        const filtered = mediaData[tabId]?.filter((item) =>
+          item?.[titleField]?.toLowerCase().includes(searchQuery.toLowerCase())
+        );
   
-      
-      
+        if (searchQuery) {
+          dispatch(setFilteredData(filtered || [])); 
+        } else {
+          dispatch(setFilteredData(filtered || [])); 
+        }
+      }
     }
   };
   
@@ -117,20 +111,20 @@ const Tabs = ({ filtersData }) => {
   const handleClearSearch = () => {
     dispatch(setSearchQuery("")); 
     dispatch(setIsSearching(false)); 
-    displayContent=activeTabData
   };
 
   const activeTabData = mediaData[activeTab] || [];
   let displayContent;
- 
+
+  if (isSearching) {
+    displayContent = filteredData;
+  } else {
+    displayContent = activeTabData;
+  }
+
   
-   if(isSearching ){
-    displayContent=filteredData
-   }
-   else{
-    displayContent=activeTabData
-   }
-   
+  const dynamicTabs = isSearching ? [{ id: "All", label: "All" }, ...tabs] : tabs;
+
   return (
     <div className={styles.container}>
       <div className={styles.tabsContainer}>
@@ -160,7 +154,7 @@ const Tabs = ({ filtersData }) => {
         </div>
 
         <div className={styles.tabs}>
-          {tabs.map((tab) => (
+          {dynamicTabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => handleTabChange(tab.id)}
@@ -173,18 +167,27 @@ const Tabs = ({ filtersData }) => {
       </div>
 
       <div className={styles.tabsContentContainer}>
-      
-        <TabContent
+        {
+          (isSearching && activeTab==="All") ? <TabContent
           activeTab={activeTab}
           isSearching={isSearching}
           searchQuery={searchQuery}
-          setSearchQuery={dispatch(()=>setSearchQuery())} 
-          data={displayContent}  
+          setSearchQuery={dispatch(() => setSearchQuery())} 
+          data={combinedData}  
           filtersData={filtersData}
-        />
+        />:  <TabContent
+        activeTab={activeTab}
+        isSearching={isSearching}
+        searchQuery={searchQuery}
+        setSearchQuery={dispatch(() => setSearchQuery())} 
+        data={displayContent}  
+        filtersData={filtersData}
+      />
+        }
       </div>
     </div>
   );
 };
 
 export default Tabs;
+
