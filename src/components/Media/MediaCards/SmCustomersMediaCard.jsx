@@ -5,6 +5,7 @@ import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
 import Link from "next/link";
+import FormateDate from "../FormateDate";
 
 const SmCustomerMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
   const [visibleCount, setVisibleCount] = useState(3); 
@@ -52,7 +53,7 @@ console.log("the medddddiaaa",filteredData)
               {cardData.MediaCompanyFrom && <p className={styles.subheading}>{cardData.MediaCompanyFrom}</p>}
               <p className={styles.heading}>{cardData.MediaTitle}</p>
               {/* <p className={styles.description}>{cardData.MediaDescription}</p> */}
-              <p className={styles.cardDate}>{cardData.createdAt}</p>
+              <p className={styles.cardDate}>{FormateDate(cardData.createdAt)}</p>
             </div>
           
             {cardData.Tags && (

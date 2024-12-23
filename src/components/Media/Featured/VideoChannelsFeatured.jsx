@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from './featured.module.css';
 import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import { FaShareAlt } from 'react-icons/fa';
+import FormateDate from "../FormateDate"
 
 const VideochannelsFeatured=({data}) => {
   const singlefeaturedData=data?.slice(0,1)
@@ -22,7 +23,7 @@ const VideochannelsFeatured=({data}) => {
         <div className={styles.textContainer}>
             <div className={styles.subHeadingContainer}>
             <p className={styles.VCdateContainer}>
-                {singlefeaturedData[0]?.createdAt}
+                {FormateDate(singlefeaturedData[0]?.createdAt)}
             </p>
             <div className={styles.shareIcon}>
                <FaShareAlt  size={24}/>

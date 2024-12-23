@@ -2,6 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from './blogFeatured.module.css'
+import FormateDate from "../FormateDate";
+
 const BlogFeatured = ({ data }) => {
   const singlefeaturedData = data?.slice(0, 1)
   return (
@@ -15,7 +17,7 @@ const BlogFeatured = ({ data }) => {
             alt="Blog Featured"
           />
           <div className={styles.textContainer}>
-            <div className={styles.date}>{singlefeaturedData[0]?.createdAt}</div>
+            <div className={styles.date}>{FormateDate(singlefeaturedData[0]?.createdAt)}</div>
             <h1 className={styles.title} >{singlefeaturedData[0]?.title}</h1>
             <div>{singlefeaturedData[0]?.BlogPitchLine}</div>
 

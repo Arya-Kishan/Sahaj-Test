@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
-import styles from './featured.module.css'
+import styles from './featured.module.css';
+import FormateDate from "../FormateDate";
 
 const PodcastFeatured=({data}) => {
   const singlefeaturedData=data?.slice(0,1)
@@ -31,7 +32,7 @@ const PodcastFeatured=({data}) => {
             </div>
             
             <p className={styles.dateContainer}>
-                {singlefeaturedData[0]?.createdAt}
+                {FormateDate(singlefeaturedData[0]?.createdAt)}
             </p>
           
         </div>

@@ -5,7 +5,7 @@ import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
 import Link from "next/link";
-
+import FormateDate from "../FormateDate";
 const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
     const [visibleCount, setVisibleCount] = useState(3);
 
@@ -28,6 +28,12 @@ const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
 
         return cardText.includes("".toLowerCase());
     });
+    const date = new Date('2024-12-22T09:08:22.263Z');
+
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    
+    console.log(formattedDate);
 
     useEffect(() => {
         setVisibleCount(3);
@@ -39,7 +45,7 @@ const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
     if (filteredCards.length === 0) {
         return <p className={styles.noDataMessage}>No items to display.</p>;
     }
-
+    
     return (
         <>
             {filteredData.map((cardData, index) => (
@@ -53,7 +59,7 @@ const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
                             <p className={styles.description}>{cardData?.BlogPitchLine}</p>
 
 
-                            <p className={styles.cardDate}>{cardData?.createdAt}</p>
+                            <p className={styles.cardDate}>{FormateDate(cardData?.createdAt)}</p>
                         </div>
 
                         {cardData?.Tags && (

@@ -9,6 +9,8 @@ import Link from "next/link";
 const MediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
   const [visibleCount, setVisibleCount] = useState(3); 
 
+  
+
 console.log("the medddddiaaa",filteredData)
   const isMobile = useIsMobile();
 
@@ -33,7 +35,7 @@ console.log("the medddddiaaa",filteredData)
     setVisibleCount(3);
   }, [filteredData, searchQuery]);
 
-  
+ 
   const visibleData = isMobile ? filteredCards.slice(0, visibleCount) : filteredCards;
 
   if (filteredCards.length === 0) {

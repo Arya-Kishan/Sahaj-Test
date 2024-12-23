@@ -130,8 +130,7 @@ const Tabs = ({ filtersData }) => {
    else{
     displayContent=activeTabData
    }
-
-
+   
   return (
     <div className={styles.container}>
       <div className={styles.tabsContainer}>

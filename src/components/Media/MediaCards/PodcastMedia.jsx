@@ -5,6 +5,7 @@ import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
 import Link from "next/link";
+import FormateDate from "../FormateDate";
 
 const PodcastMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
   const [visibleCount, setVisibleCount] = useState(3); 
@@ -83,7 +84,7 @@ console.log("the medddddiaaa",filteredData)
               <p className={styles.heading}>{cardData.PodcastTitle}</p>
 
               {/* <p className={styles.description}>{cardData.PodcastDescription}</p> */}
-              <p className={styles.cardDate}>{cardData.createdAt}</p>
+              <p className={styles.cardDate}>{FormateDate(cardData.createdAt)}</p>
             </div>
           
             {cardData.Tags && (

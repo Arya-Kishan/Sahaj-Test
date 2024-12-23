@@ -5,6 +5,7 @@ import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
 import Link from "next/link";
+import FormateDate from "../FormateDate";
 
 const VideoChanelMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
   const [visibleCount, setVisibleCount] = useState(3); 
@@ -79,7 +80,7 @@ console.log("the medddddiaaa",filteredData)
               {cardData.VideoCompanyFrom && <p className={styles.subheading}>{cardData.VideoCompanyFrom}</p>}
               <p className={styles.heading}>{cardData.VideoTitle}</p>
               {/* <p className={styles.description}>{cardData.VideoDescription}</p> */}
-              <p className={styles.cardDate}>{cardData.createdAt}</p>
+              <p className={styles.cardDate}>{FormateDate(cardData.createdAt)}</p>
             </div>
           
             {cardData.Tags && (
