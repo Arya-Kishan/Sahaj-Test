@@ -4,11 +4,10 @@ import style from "./investorCharter.module.css";
 import PdfViewer from "../PdfViewerWrapper";
 
 const InvestorCharter = ({ contentData = {} }) => {
-
   return (
     <>
       <div className={style.heading}>
-        <p>SEBI's Investor Charter</p>
+        <p>SEBI&apos;s Investor Charter</p> {/* Use &apos; for apostrophe */}
       </div>
       <section className={style.pdfContainer}>
         {contentData?.PDFlink ? (
