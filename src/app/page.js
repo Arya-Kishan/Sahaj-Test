@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import styles from "./page.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Carousel from "@/components/Carousel/Carousel";
 import FeaturedIn from "@/components/Home/Featured/Featured";
 import FinanceQuestions from "@/components/Home/FinanceQuestions/FinanceQuestions";
@@ -11,15 +11,23 @@ import Testimonials from "@/components/Home/Testimonials/Testimonials";
 import { getHomeData } from "@/services/home";
 
 export default function Home() {
+ 
+  const [homeData, setHomeData] = useState([])
+
   const getData = async () => {
     try {
       const { res, err } = await getHomeData();
-      if (res) {
-        console.log(res);
+      if (res?.data) {
+        // console.log(res.data.data);
+        setHomeData(res.data)
+
       }
-      throw err;
+      else{
+        setHomeData([])
+      }
     } catch (error) {
       console.log(error)
+      setHomeData([])
     }
   }
   useEffect(() => {
@@ -29,11 +37,11 @@ export default function Home() {
   return (
     <>
 
-      <Carousel />
-      <FeaturedIn />
-      <FinanceQuestions />
+      <Carousel bannerData = {homeData?.data || []} />
+      <FeaturedIn  featuredData = {homeData?.data || []} />
+      <FinanceQuestions financeData = {homeData?.data || []} />
       <WhyChooseUs />
-      <FinancialPlan />
+      <FinancialPlan financePlanData={homeData?.data || []}/>
       <Testimonials />
     </>
   );

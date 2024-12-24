@@ -5,7 +5,6 @@ import DateAndTime from "./DateAndTime/DateAndTime";
 import CallForm from "./CallForm/CallForm";
 import SelectForm from "./SelectForm/SelectForm";
 import ConfirmSlot from "./ConfirmSlot/ConfirmSlot";
-import CalendarModal from "../modals/CustomCalendar/CalendarModal";
 
 const BookCallModal = ({ isOpen, onClose }) => {
     const [currentPhase, setCurrentPhase] = useState(1);
@@ -31,13 +30,25 @@ const BookCallModal = ({ isOpen, onClose }) => {
         })
         onClose()
     }
+    function formatDate(inputDate) {
+        const date = new Date(inputDate);
+
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = months[date.getMonth()];
+        const year = date.getFullYear();
+
+        return `${day}-${month}-${year}`;
+    }
+    
     useEffect(() => {
         console.log(formData)
     }, [formData])
     const renderPhase = () => {
         switch (currentPhase) {
             case 1:
-                return <DateAndTime handleNext={handleNext} setFormData={setFormData} formData={formData} />;
+                return <DateAndTime handleNext={handleNext} setFormData={setFormData} formData={formData} formatDate={formatDate}/>;
             case 2:
                 return <CallForm handleNext={handleNext} setFormData={setFormData} formData={formData} />;
             case 3:
@@ -103,7 +114,7 @@ const BookCallModal = ({ isOpen, onClose }) => {
 
 
                 </> : <>
-                    <ConfirmSlot ResetData={ResetData} formData={formData} />
+                    <ConfirmSlot ResetData={ResetData} formData={formData} formatDate={formatDate}/>
                 </>}
             </div>
         </div>

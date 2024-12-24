@@ -2,13 +2,13 @@ import Image from "next/image";
 import styles from './heading.module.css';
 import logo from '../../../assests/AboutUs/logo.webp';
 
-const Heading=()=>{
+const Heading=({allData})=>{
     return(
         <div>
             <div className={styles.InfoContanier}>
                     <div className={styles.infoHeading}>
                         <p className={styles.infoHeadingtext}>
-                            Empower your finances with
+                            {allData?.PitchLine}
                         </p>
                         <div className={styles.infoHeadingLogo}>
                            <Image  src={logo} className={styles.infoHeadingLogoImg} alt="CompanyLogo"/>

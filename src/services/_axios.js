@@ -14,10 +14,10 @@ export const operation = retry.operation({
 	maxTimeout: 10000,
 	randomize: true
 });
-const apiUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const apiUrl = process.env.NEXT_APP_BASE_URL;
 console.log('Base URL:', apiUrl);
 const axiosInstance = axios.create({
-	baseURL: process.env.NEXT_PUBLIC_BASE_URL
+	baseURL: process.env.NEXT_APP_BASE_URL
 });
 
 

@@ -18,21 +18,59 @@
 .reviewPortfolioButtonbox{
     text-align: center;
 }
-.reviewPortfolioButton{
-    padding: 16px 48px 16px 48px;
-    gap: 10px;
+
+.reviewPortfolioButton {
+    cursor: pointer;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    width: 189px;
+    height: 59px;
+    background: linear-gradient(215.91deg, #f8db75 22.43%, #a4730f 80.57%);
     border-radius: 5px;
-    background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
-    text-align: center;
-    margin-bottom: 30px;
-    color:white;
-    font-family: Roboto;
+    color: #ffffff;
     font-size: 18px;
+    font-family: Roboto, sans-serif;
     font-weight: 600;
-    line-height: 27px;
-    letter-spacing: 0.4px;
-    text-align: center;
-}
+    transition: color 0.4s ease;
+  }
+  
+  .reviewPortfolioButton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    transition: all 0.4s ease-in-out;
+    z-index: 0;
+  
+  }
+  
+  .reviewPortfolioButton:hover::before {
+    left: 0;
+  }
+  
+  .reviewPortfolioButton:hover {
+    border: 2px solid transparent;
+    border-image: linear-gradient(215.91deg, #f8db75 22.43%, #a4730f 80.57%);
+    border-image-slice: 1;
+  }
+  
+  .reviewPortfolioButton>span {
+    position: relative;
+    z-index: 1;
+    
+  }
+  
+  .reviewPortfolioButton:hover>span {
+    border-radius: 5px !important;
+    background: linear-gradient(215.91deg, #f8db75 22.43%, #a4730f 80.57%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+  }
 @media (max-width: 768px) {
     .reviewPortfolioinfoHeadertext{
         font-family: Roboto;

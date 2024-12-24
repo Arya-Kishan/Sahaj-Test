@@ -15,7 +15,7 @@ const ReviewPortfolio=()=>{
            
             <div className={styles.reviewPortfolioButtonbox}>
               <button onClick={()=>setIsModalOpen(true)}  className={styles.reviewPortfolioButton} >
-                Book a free call
+               <span> Book a free call</span>
               </button>
             </div>
             <BookCallModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

@@ -25,7 +25,12 @@
   gap: 26px;
   opacity: 1;
 }
-
+.sideImage {
+  background-image: url(../../assests/AboutUs/clientsReview.webp);
+  background-position: 300px center; 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+}
 .rowForm {
   flex-direction: row !important;
 }
@@ -108,8 +113,8 @@
 }
 
 .logoImage {
-  border-radius: 12px;
-  width: 100%;
+  max-width: 140px;
+  max-height: 100px;
 }
 
 .dotsContainer {

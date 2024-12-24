@@ -1,0 +1,37 @@
+.header {
+    background-color: #292929;
+    padding: 60px 100px 100px 100px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .backLink {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .textContainer {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .heading {
+    font-size: 48px;
+    font-weight: 700;
+    font-family: Roboto;
+    color: #FFFFFF;
+  }
+  
+  .subHeading {
+    font-size: 20px;
+    font-family: Manrope;
+    font-weight: 400;
+    color: #FFFFFF;
+  }
+  
