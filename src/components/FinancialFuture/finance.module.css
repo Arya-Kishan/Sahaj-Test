@@ -1,0 +1,67 @@
+.mainBox {
+    width: 100%;
+    height: auto;
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.founderBox {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+.founderHeader{
+    text-align: center;
+}
+.founderInfo{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.founderDetails{
+    width: 776px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.founderInfo img{
+    width: 432px;
+    height: 380px;
+    border-radius: 12px;
+}
+.founderHeader h3{
+    margin-bottom: 24px;
+    font-size: 48px;
+    font-family: Roboto;
+    font-weight: 700;
+}
+.founderDetails ul{
+    font-size: 16px;
+    font-family: Manrope;
+    font-weight: 400;
+    color: #000000BF;
+}
+.featurIn{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+.imageBox{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+}

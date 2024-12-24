@@ -1,4 +1,5 @@
 .selectDate{
+  border: 1px solid red;
     width: 100%;
     padding: 0 10px 0 10px;
     height: 48px;
@@ -53,7 +54,7 @@
     width: 30%;
   }
   .slots{
-    width: 100%;
+    width: 376px;
     height: 120px;
     display:flex ;
     flex-wrap: wrap;

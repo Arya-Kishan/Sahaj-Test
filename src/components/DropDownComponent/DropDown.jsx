@@ -28,7 +28,8 @@ const Dropdown = ({ value, onChange, options,title }) => {
 
       {isOpen && (
         <div className={styles.menu}>
-          {options.map((option, index) => (
+          {options &&
+          options?.map((option, index) => (
             <button
               key={option.id}
               className={`${styles.menuItem} ${
@@ -36,7 +37,7 @@ const Dropdown = ({ value, onChange, options,title }) => {
               }`}
               onClick={() => handleOptionClick(index)}
             >
-              {option.option}
+              {option?.title}
             </button>
           ))}
         </div>

@@ -137,3 +137,8 @@ margin-left: 24px;  margin: 15px 0px 0px 0px;
   background-color: #C1882340;
   color: #000000;
 }
+.disabled {
+  color: #ccc; 
+  pointer-events: none; 
+  cursor: not-allowed; 
+}
