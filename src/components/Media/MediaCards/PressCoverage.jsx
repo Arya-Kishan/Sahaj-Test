@@ -15,26 +15,19 @@ const PressCoverageMediaCards = ({ filteredData = [], activeTab, searchQuery }) 
     setVisibleCount((prevCount) => prevCount + 3); 
   };
   
-  const filteredCards = filteredData.filter((card) => {
-    const cardText = [
-      card.Title,
-      // card.date,
-      // card.description,
-      // card.category,
-    ].join(' ').toLowerCase();
-
-    return cardText.includes("".toLowerCase());
-  });
+ 
 
   useEffect(() => {
     setVisibleCount(3);
   }, [filteredData, searchQuery]);
 
-  const visibleData = isMobile ? filteredCards.slice(0, visibleCount) : filteredCards;
+ 
+  const visibleData = isMobile ? filteredData.slice(0, visibleCount) : filteredData;
 
-  if (filteredCards.length === 0) {
+  if (visibleData.length === 0) {
     return <p className={styles.noDataMessage}>No items to display.</p>;
-  }
+}
+
 
   const handleReadMoreClick = (link) => {
     if (link) {
@@ -68,11 +61,11 @@ const PressCoverageMediaCards = ({ filteredData = [], activeTab, searchQuery }) 
         </div>
       ))}
 
-      {isMobile && visibleCount < filteredCards.length && (
-        <button onClick={handleLoadMore} className={styles.loadMoreButton}>
-          Load More
-        </button>
-      )}
+       {isMobile && visibleCount < filteredData.length && (
+                <button onClick={handleLoadMore} className={styles.loadMoreButton}>
+                    Load More
+                </button>
+        )}
     </>
   );
 };

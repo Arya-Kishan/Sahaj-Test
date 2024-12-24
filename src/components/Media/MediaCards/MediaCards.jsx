@@ -33,15 +33,6 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
   };
 
 
-  const filteredCards = filteredData.filter((card) => {
-    const cardText = [
-      card.Title || card.PodcastTitle || card.title || card.VideoTitle || card.MediaTitle,
-    ]
-      .join(" ")
-      .toLowerCase();
-
-    return cardText.includes(searchQuery?.toLowerCase());
-  });
 
   useEffect(() => {
 
@@ -49,10 +40,11 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
 
   }, [filteredData, searchQuery, dispatch]);
 
-  const visibleData = isMobile ? filteredCards.slice(0, visibleCount) : filteredCards;
 
-  if (filteredCards.length === 0) {
-    return <p className={styles.noDataMessage}>No items to display.</p>;
+  const visibleData = isMobile ? filteredData.slice(0, visibleCount) : filteredData;
+
+  if (visibleData.length === 0) {
+      return <p className={styles.noDataMessage}>No items to display.</p>;
   }
 
   return (
@@ -157,9 +149,9 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
         </div>
       ))}
 
-      {isMobile && visibleCount < filteredCards.length && (
-        <button onClick={handleLoadMore} className={styles.loadMoreButton}>
-          Load More
+     {isMobile && visibleCount < filteredData.length && (
+                <button onClick={handleLoadMore} className={styles.loadMoreButton}>
+                    Load More
         </button>
       )}
     </>
