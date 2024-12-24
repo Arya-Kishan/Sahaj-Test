@@ -92,24 +92,21 @@ const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery,
 
       <div className={styles.mediaCardContainer}>
 
-        {filteredData?.length > 0 && ActiveMediaComponent && ActiveMediaComponent[1] ? (
-          React.createElement(ActiveMediaComponent[1], { filteredData })
-        ) : 
-        // <p className={styles.noDataMessage}>No data available for this search</p>}
-        null}
 
         {activeTab === "All" ? (
           combinedData?.length > 0 ? (
-
             <MediaCards filteredData={combinedData} />
           ) : (
-           // <p className={styles.noDataMessage}
-
-            // >No data available for the All tab.</p>
-            <></>
+            <p className={styles.noDataMessage}>No data available for the All tab.</p>
           )
-        ) : null}
+        ) : (filteredData?.length > 0 && ActiveMediaComponent && ActiveMediaComponent[1] ? (
+          React.createElement(ActiveMediaComponent[1], { filteredData })
+        ) : (
+          <p className={styles.noDataMessage}>No data available for this search</p>
+        ))}
       </div>
+
+
     </div>
   );
 };
