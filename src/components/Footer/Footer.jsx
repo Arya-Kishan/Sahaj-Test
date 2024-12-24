@@ -67,6 +67,14 @@ const Footer = () => {
           <Link className={styles.linkText} href="#"><FaYoutube /></Link>
         </div>
       </div>
+      <div className={styles.footersebiDescription}>
+        <p>   Registration granted by SEBI, membership of BSE Administration and Supervision 
+              Limited (BASL) and certification from National Institute of Securities Markets (NISM)
+              in no way guarantee performance of the Investment Adviser or provide any assurance 
+              of returns to investors. Investment in securities market are subject to market risks. 
+              Read all the related documents carefully before investing.
+        </p>
+      </div>
       <div className={styles.footerBottom}>
         <div className={styles.termBox}>
           <p>All rights reserved</p>
@@ -76,7 +84,7 @@ const Footer = () => {
             <p>Cookies</p>
           </div>
         </div>
-
+        
       </div>
     </footer>
   );
