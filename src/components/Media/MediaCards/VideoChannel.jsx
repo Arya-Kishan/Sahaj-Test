@@ -21,9 +21,9 @@ const VideoChanelMediaCards = ({ filteredData = [], activeTab, searchQuery }) =>
         const cardText = [
             // card.subheading,
             card.Title,
-            card.date,
-            card.description,
-            card.category,
+            // card.date,
+            // card.description,
+            // card.category,
         ].join(' ').toLowerCase();
 
         return cardText.includes("".toLowerCase());
@@ -117,17 +117,17 @@ const VideoChanelMediaCards = ({ filteredData = [], activeTab, searchQuery }) =>
                             {cardData.VideoCompanyFrom && <p className={styles.subheading}>{cardData.VideoCompanyFrom}</p>}
                             <p className={styles.heading}>{cardData.VideoTitle}</p>
                             {/* <p className={styles.description}>{cardData.VideoDescription}</p> */}
-                            <p className={styles.cardDate}>{FormateDate(cardData.createdAt)}</p>
+                            <p className={styles.cardDateVideo}>{FormateDate(cardData.createdAt)}</p>
                         </div>
 
-                        {cardData.Tags && (
+                        {/* {cardData.Tags && (
                             <div className={styles.blogCardButtonsContainer}>{
                                 cardData.Tags.map((tags, index) => (
                                     <button className={styles.blogCardButton} key={index}>{tags}</button>
                                 ))
                             }
                             </div>
-                        )}
+                        )} */}
                     </div>
                 </div>
             ))}

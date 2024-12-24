@@ -111,7 +111,7 @@ const PodcastMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
               <p className={styles.heading}>{cardData.PodcastTitle}</p>
               <p className={styles.cardDate}>{FormateDate(cardData.createdAt)}</p>
             </div>
-            {cardData.Tags && (
+            {/* {cardData.Tags && (
               <div className={styles.blogCardButtonsContainer}>
                 {cardData.Tags.map((tags, index) => (
                   <button className={styles.blogCardButton} key={index}>
@@ -119,7 +119,7 @@ const PodcastMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
                   </button>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
         </div>
       ))}

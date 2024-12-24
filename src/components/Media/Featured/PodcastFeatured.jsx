@@ -45,7 +45,7 @@ const PodcastFeatured = ({ data }) => {
           </p>
         </div>
         
-        <p className={styles.dateContainer}>
+        <p className={styles.podcastdateContainer}>
           {FormateDate(singlefeaturedData[0]?.createdAt)}
         </p>
       </div>
