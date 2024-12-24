@@ -12,10 +12,10 @@
     
 }
 .imgContainer img{
-    /* width: 100%;
-    height: 100%; */
-    width: 600px;
-    height:350px;
+    width: 100%;
+    height: 100%;
+    /* width: 600px;
+    height:350px; */
     object-fit: cover;
 }
 .podcastIcon, .videoIcon{
@@ -30,13 +30,13 @@
     display: flex;
     flex-direction: column;
     gap:10px;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
 .videotextContainer{
     display: flex;
     flex-direction: column;
     gap:25px;
-   
+   /* justify-content: space-evenly; */
 }
 .videoimg{
     width: 600px;

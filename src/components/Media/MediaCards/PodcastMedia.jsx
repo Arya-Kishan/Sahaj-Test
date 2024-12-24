@@ -33,9 +33,7 @@ const PodcastMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-              <img src={cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} />
-
-            
+            {cardData.CoverImage &&   <Image src={cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238} />}
               {cardData.PodCastLink ? (
                 <Link href={cardData.PodcastLink || "#"} passHref>
                   <svg

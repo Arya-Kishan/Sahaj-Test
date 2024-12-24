@@ -9,7 +9,7 @@ function PressCoverageFeatured({ data = [] }) {
       {data.map((card, index) => (
         <div className={styles.card} key={index}>
           <div className={styles.logo}>
-            <img src={card.BrandLogo} alt="cardlogo" />
+            <Image src={card.BrandLogo} alt="cardlogo" width={100} height={100} />
           </div>
           <h3 className={styles.title}>{card.Title}</h3>
           <p className={styles.description}>{card.Content}</p>

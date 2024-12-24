@@ -20,7 +20,7 @@ const SmCustomersFeatured = ({ data }) => {
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         {singlefeaturedData[0]?.CoverImage && (
-          <img src={singlefeaturedData[0]?.CoverImage} alt="customermedia featured" />
+          <Image src={singlefeaturedData[0]?.CoverImage} alt="customermedia featured"  width={600} height={350}/>
         )}
       </div>
       <div className={styles.textContainer}>

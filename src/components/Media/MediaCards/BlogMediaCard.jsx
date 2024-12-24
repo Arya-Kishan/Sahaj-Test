@@ -33,7 +33,8 @@ const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
                 <div className={styles.cardfullContainer} key={index}>
                     <div className={styles.cardContainer}>
                         <div className={styles.imgContainer}>
-                            <img src={cardData?.BlogImage} alt={"CoverImage"} className={styles.cardImg} />
+                            {cardData?.BlogImage &&  <Image src={cardData?.BlogImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/>}
+                           
                         </div>
                         <div className={styles.textContainer}>
                             <p className={styles.heading}>{cardData?.title}</p>

@@ -13,7 +13,7 @@ const PodcastFeatured = ({ data }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
-        <img src={singlefeaturedData[0]?.CoverImage} alt="Podcast featured" />
+       {singlefeaturedData[0]?.CoverImage ?<Image src={singlefeaturedData[0]?.CoverImage} alt="Podcast featured"  width={600} height={350}/>:<h1>No Image Available</h1>} 
   
         {podcastLink ? (
           <Link href={podcastLink||"#"} passHref>

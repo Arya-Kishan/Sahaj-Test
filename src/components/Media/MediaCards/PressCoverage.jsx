@@ -1,5 +1,5 @@
 "use client"
-//import Image from "next/image";
+import Image from "next/image";
 import { useState, useEffect } from 'react';
 import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
@@ -41,7 +41,8 @@ const PressCoverageMediaCards = ({ filteredData = [], activeTab, searchQuery }) 
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-              <img src={cardData.CoverageImage || cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} />
+              {cardData.CoverageImage && <Image src={cardData.CoverageImage || cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/>}
+     
             </div>
             <div className={styles.textContainer}>
               {cardData.BrandName && <p className={styles.subheading}>{cardData?.BrandName}</p>}

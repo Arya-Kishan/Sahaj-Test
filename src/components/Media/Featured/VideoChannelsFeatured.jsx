@@ -25,7 +25,7 @@ const VideochannelsFeatured = ({ data }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
-        {singlefeaturedData[0]?.CoverImage && <img src={singlefeaturedData[0]?.CoverImage} alt="Video channels featured"  className={styles.videoimg}/>}
+        {singlefeaturedData[0]?.CoverImage && <Image src={singlefeaturedData[0]?.CoverImage} alt="Video channels featured"  width={600}  height={350}  className={styles.videoimg}/>}
         {singlefeaturedData[0]?.VideoLink ? (
           <Link href={singlefeaturedData[0]?.VideoLink} passHref>
          

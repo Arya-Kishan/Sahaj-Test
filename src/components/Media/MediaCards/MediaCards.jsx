@@ -53,15 +53,21 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-              <img
-                src={
-                  cardData?.CoverageImage ||
+            {
+                 (cardData?.CoverageImage ||
                   cardData.CoverImage ||
-                  cardData?.BlogImage
+                  cardData?.BlogImage) &&   <Image
+                  src={
+                    cardData?.CoverageImage ||
+                    cardData.CoverImage ||
+                    cardData?.BlogImage
+                  }
+                  alt={"CoverImage"}
+                  className={styles.cardImg}
+                  width={350} height={238}
+                />
                 }
-                alt={"CoverImage"}
-                className={styles.cardImg}
-              />
+             
               {activeTab === "podcast" && (
                 <svg
                   width="80"
