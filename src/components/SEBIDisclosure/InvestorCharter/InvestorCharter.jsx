@@ -8,7 +8,7 @@ const InvestorCharter = ({ contentData = {} }) => {
   return (
     <>
       <div className={style.heading}>
-        <p>SEBI's Investor Charter</p>
+        <p>SEBI&apos;s Investor Charter</p>
       </div>
       <section className={style.pdfContainer}>
         {contentData?.PDFlink ? (
