@@ -101,6 +101,8 @@
 }
 
 .companyLogo {
+  width: 164px;
+  height: 61px;
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -197,6 +199,70 @@
   color: #777;
   margin: 0;
 }
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+
+.clientInfo {
+  text-align: center;
+}
+
+.clientDetails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.clientImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.companyLogo {
+  width: 50px;
+  height: 50px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.activeDot {
+  background: #000;
+}
+.slide {
+  display: none; 
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.activeSlide {
+  display: block; 
+  opacity: 1;
+}
+
 @media (max-width: 720px){
   .mainContainer{
     flex-direction: column;

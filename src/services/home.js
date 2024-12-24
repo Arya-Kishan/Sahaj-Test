@@ -26,3 +26,19 @@ export const getClientReviewData = async () =>{
         return { err: error, res: null }
      }
 }
+export const getAllReviewData = async () =>{
+    try {
+        const res = await axiosInstance.get(`/review/getallreview`)
+        return { res: res.data, err: null }
+     } catch (error) {
+        return { err: error, res: null }
+     }
+}
+export const getFeatureListData = async () =>{
+    try {
+        const res = await axiosInstance.get(`/review/featurelist`)
+        return { res: res.data, err: null }
+     } catch (error) {
+        return { err: error, res: null }
+     }
+}
