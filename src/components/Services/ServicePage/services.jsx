@@ -28,7 +28,7 @@ function ServicesPage() {
   const getAllServices = async (title = "All") => {
     const data = {
       page: 1,
-      limit: 5,
+      limit: 10,
       servicetitle: title,
     };
     try {
@@ -103,7 +103,7 @@ function ServicesPage() {
                 className={styles.readMore}
                 href={{
                   pathname: "/individual/individualservices",
-                  query: { id: service?.title },
+                  query: { id: service?._id },
                 }}
               >
                 Read more →
