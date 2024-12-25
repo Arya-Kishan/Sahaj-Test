@@ -25,7 +25,29 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     position: relative;
   }
-  
+  .successBox{
+    margin-top: -10%;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .successBox h3{
+    font-size: 18px;
+    color: #000000BF;
+    font-family: Manrope;
+    font-weight: 600;
+    text-align: center;
+  }
+  .box1{
+    width: 80px;
+    height: 80px;
+    background-color: #FFF5E5;
+    border-radius: 50%;
+  }
   .closeButton {
     position: absolute;
     top: 10px;
