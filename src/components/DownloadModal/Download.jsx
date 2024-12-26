@@ -4,7 +4,7 @@ import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
 import { countryCode } from "../BookCall/countrycode";
 import { downloadData } from "@/services/download";
-import checkLogo from "../../../public/logos/check.png" 
+import checkLogo from "../../../public/logos/Featuredicon.png" 
 
 const DownloadModal = ({ isOpen, onClose }) => {
     const [formData, setFormData] = useState({
