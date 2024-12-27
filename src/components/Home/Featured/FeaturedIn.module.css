@@ -44,6 +44,7 @@
     height: 80px;
     
   }
+ 
   @media (max-width: 720px) {
     .container{
       overflow: hidden;

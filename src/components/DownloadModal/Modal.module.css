@@ -57,6 +57,9 @@
     font-size: 24px;
     cursor: pointer;
   }
+  .errorText{
+    color: red;
+  }
   .stars{
     color: red;
   }
