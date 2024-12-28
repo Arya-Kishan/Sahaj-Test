@@ -64,9 +64,9 @@ const Footer = () => {
         </div>
         <div className={`${styles.footerSection} ${styles.socialMedia}`}>
           <h4>Follow us</h4>
-          <Link className={styles.linkText} href="#"><Image src={linkedinIcon}/></Link>
-          <Link className={styles.linkText} href="#"><Image src={instagramIcon}/></Link>
-          <Link className={styles.linkText} href="#"><Image src={youtubeIcon}/></Link>
+          <Link className={styles.linkText} href="#"><Image src={linkedinIcon} alt="linkdinIcon"/></Link>
+          <Link className={styles.linkText} href="#"><Image src={instagramIcon} alt="instagramIcon"/></Link>
+          <Link className={styles.linkText} href="#"><Image src={youtubeIcon} alt="youtubeIcon"/></Link>
         </div>
       </div>
       <div className={styles.footersebiDescription}>
@@ -81,9 +81,14 @@ const Footer = () => {
         <div className={styles.termBox}>
           <p>All rights reserved</p>
           <div className={styles.policyBox}  >
+            <Link href={"/termsofservices"}>
             <p>Terms of services</p>
+            </Link>
+           
             <p>Privacy policies</p>
+            <Link href={"/cookiepolicy"}>
             <p>Cookies</p>
+            </Link>
           </div>
         </div>
         
