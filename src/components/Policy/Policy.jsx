@@ -1,8 +1,9 @@
-import React from 'react'
+
 import styles from './Policy.module.css'
 import google from './images/google1.jpg'
 import linkedin from './images/linkin.jpg'
 import Image from 'next/image'
+import ReviewsContainer from '../Blog/Reviews/ReviewsContainer'
 
 const PrivacyPolicy = () => {
   return (
@@ -148,7 +149,7 @@ const PrivacyPolicy = () => {
       
     </div>
 
-    <div className={styles.container}>
+    {/* <div className={styles.container}>
     <div className={styles.leftSection}>
       <div className={styles.review}>
         <div className={styles.logoSection}>
@@ -194,7 +195,8 @@ const PrivacyPolicy = () => {
         <button className={styles.reviewButton}>Review your portfolio</button>
       </div>
     </div>
-    </div>
+    </div> */}
+  <ReviewsContainer/>
   </>
   )
 }
