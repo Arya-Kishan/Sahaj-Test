@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import sahajLogo from '../../assests/Logo/sahajlogo.webp'
-import { FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
+import instagramIcon from "../../assests/Home/instagramIcon.webp";
+import youtubeIcon from "../../assests/Home/youtubeIcon.webp"
+import linkedinIcon from "../../assests/Home/linkedinIcon.webp"
 import { getFooterData } from '@/services/footer';
 const Footer = () => {
 
@@ -62,9 +64,9 @@ const Footer = () => {
         </div>
         <div className={`${styles.footerSection} ${styles.socialMedia}`}>
           <h4>Follow us</h4>
-          <Link className={styles.linkText} href="#"><FaLinkedin /></Link>
-          <Link className={styles.linkText} href="#"><FaInstagram /></Link>
-          <Link className={styles.linkText} href="#"><FaYoutube /></Link>
+          <Link className={styles.linkText} href="#"><Image src={linkedinIcon}/></Link>
+          <Link className={styles.linkText} href="#"><Image src={instagramIcon}/></Link>
+          <Link className={styles.linkText} href="#"><Image src={youtubeIcon}/></Link>
         </div>
       </div>
       <div className={styles.footersebiDescription}>
