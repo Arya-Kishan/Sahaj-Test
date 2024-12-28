@@ -1,6 +1,6 @@
 .container {
-    background-color: #000;
-    color: #fff;
+    background-color: #FFFFFF;
+    color: #000000;
     padding: 20px;
     text-align: center;
   }
@@ -21,13 +21,13 @@
   .line {
     flex-grow: 1;
     border: none;
-    border-top: 1px solid #fff;
+    border-top: 1px solid #000000;
     margin-left: 10px;
   }
   .line1 {
     width: 48%;
     border: none;
-    border-top: 1px solid #fff;
+    border-top: 1px solid #000000;
     margin-left: 10px;
   }
   
@@ -44,6 +44,7 @@
     height: 80px;
     
   }
+ 
   @media (max-width: 720px) {
     .container{
       overflow: hidden;

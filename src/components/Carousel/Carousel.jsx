@@ -1,14 +1,31 @@
 "use client"
+import { useSelector, useDispatch } from "react-redux";
+import { toggleBookCallModal } from "@/store/slices/modalSlice";
 import React, { useState, useEffect } from "react";
 import styles from "./Carousel.module.css";
-import bgImage from "../../assests/AboutUs/clientsReview.webp"
 
 
 
 const Carousel = ({ bannerData }) => {
+  const dispatch = useDispatch()
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [slideData, SetSlideData] = useState([])
+  const [slideData, SetSlideData] = useState([]);
 
+
+  const openModal = () => {
+    console.log('Book a call clicked');
+    dispatch(toggleBookCallModal());
+  };
+
+  const handleStepClick = (index) => {
+    if (index === 0) {
+        openModal();
+    } else if (index === 1) {
+        window.location.href = '/media/pressCoverage';
+    } else if (index === 2) {
+        window.location.href = '/services';
+    }
+};
 
   useEffect(() => {
     if (bannerData) {
@@ -30,7 +47,7 @@ const Carousel = ({ bannerData }) => {
   const goToSlide = (index) => {
     setCurrentSlide(index);
   };
-
+  
   return (
     <div className={`${styles.carouselContainer} ${currentSlide === 2 ? styles.sideImage : ""}`}  >
       <div className={styles.svgtopWave}>
@@ -64,7 +81,7 @@ const Carousel = ({ bannerData }) => {
             <div className={styles.headerBox}>
               <h1 className={styles.title}>{slide.Title}</h1>
               <p className={styles.subtitle}>{slide.Description}</p>
-              <button className={styles.ctaButton}>{slide.ButtonText}</button>
+              <button className={styles.ctaButton} onClick={()=>handleStepClick(index)} >{slide.ButtonText}</button>
             </div>
 
 

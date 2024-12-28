@@ -9,7 +9,7 @@ import mintLogo from "../../../assests/Blog/image.webp";
 import { getClientReviewData, getAllReviewData, getFeatureListData } from '@/services/home';
 
 
-const Testimonials = () => {
+const Testimonials = ({ref}) => {
 
     const [reviewData, setData] = useState([]);
     const [reviewAllData, setAllData] = useState([]);
@@ -91,7 +91,7 @@ const Testimonials = () => {
 
 
     return (
-        <div className={styles.mainContainer}>
+        <div ref={ref} className={styles.mainContainer}>
             <div className={styles.leftBox}>
                 <h2 className={styles.heading}>What our clients say?</h2>
                 <div className={styles.reviews}>

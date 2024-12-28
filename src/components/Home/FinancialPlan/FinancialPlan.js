@@ -6,7 +6,7 @@ import image from '../../../assests/Home/FinancialPlan.webp';
 import DownloadModal from '@/components/DownloadModal/Download';
 import logo  from "@/assests/Home/logo.webp"
 
-const FinancialPlan = ({ financePlanData }) => {
+const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
     const [companyGrowth, setGrowthData] = useState([])
     const [howWeDoData, setHowDo] = useState([])
     const [isPlaying, setIsPlaying] = useState(false);
@@ -24,9 +24,17 @@ const FinancialPlan = ({ financePlanData }) => {
     const handlePlayButtonClick = () => {
         setIsPlaying(true); 
     };
-    const videoLink = "https://sahajmoney-bucket.s3.ap-south-1.amazonaws.com/file-1734507872562.mp4";
+   
 
-
+    const handleStepClick = (index) => {
+        if (index === 0) {
+            scrollToTestimonials();
+        } else if (index === 1) {
+            window.location.href = '/media';
+        } else if (index === 2) {
+            window.location.href = '/services';
+        }
+    };
 
     return (
         <div className={styles.container}>
@@ -104,7 +112,7 @@ const FinancialPlan = ({ financePlanData }) => {
                             <div className={styles.stat} key={index}>
                                 <p className={styles.statTitle}>{item?.GrowthTitle}</p>
                                 <h3 className={styles.statNumber}>{item?.Achievement}</h3>
-                                <p className={styles.statDescription}>{item?.Description}</p>
+                                <p className={styles.statDescription} onClick={()=>handleStepClick(index)} >{item?.Description}</p>
                             </div>
                         </>
                     })

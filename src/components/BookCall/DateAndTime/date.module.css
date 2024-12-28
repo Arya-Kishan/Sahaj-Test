@@ -104,3 +104,7 @@
   .seletedSlot{
     border: 1px solid  #C18823;
   }
+  .noSlotsMessage{
+    text-align: center;
+    margin: auto;
+  }
