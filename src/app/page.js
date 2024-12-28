@@ -9,6 +9,8 @@ import FinancialPlan from "@/components/Home/FinancialPlan/FinancialPlan";
 import WhyChooseUs from "@/components/Home/WhyChooseUs/WhyChooseUs";
 import Testimonials from "@/components/Home/Testimonials/Testimonials";
 import { getHomeData } from "@/services/home";
+import ReviewPortfolio from "@/components/AboutUs/ReviewPorfolio/Reviewportfolio";
+
 
 export default function Home() {
  
@@ -43,6 +45,7 @@ export default function Home() {
       <WhyChooseUs />
       <FinancialPlan financePlanData={homeData?.data || []}/>
       <Testimonials />
+      <ReviewPortfolio/>   
     </>
   );
 }

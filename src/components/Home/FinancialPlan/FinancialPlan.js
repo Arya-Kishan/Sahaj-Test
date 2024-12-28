@@ -4,6 +4,7 @@ import styles from './FinancialPlan.module.css';
 import Image from 'next/image';
 import image from '../../../assests/Home/FinancialPlan.webp';
 import DownloadModal from '@/components/DownloadModal/Download';
+import logo  from "@/assests/Home/logo.webp"
 
 const FinancialPlan = ({ financePlanData }) => {
     const [companyGrowth, setGrowthData] = useState([])
@@ -34,7 +35,7 @@ const FinancialPlan = ({ financePlanData }) => {
                 <div className={styles.headerTitle}>
                     <h1 className={styles.title}>Download Your Free Financial Plan</h1>
                     <p className={styles.subtitle}>
-                        See how <span className={styles.highlight}>SahajMoney</span> simplifies financial planning
+                        See how <Image  src={logo} className={styles.highlight} alt="logo"/> simplifies financial planning
                     </p>
                 </div>
                 <button className={styles.downloadButton} onClick={() => setIsModalOpen(true)}>Download Now</button>
