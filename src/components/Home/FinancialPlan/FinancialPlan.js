@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from './FinancialPlan.module.css';
 import Image from 'next/image';
 import image from '../../../assests/Home/FinancialPlan.webp';
@@ -100,7 +101,7 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
                     }
 
 
-                    <button className={styles.learnMoreButton}>Learn more</button>
+                    <Link href='/processflow' ><button className={styles.learnMoreButton}>Learn more</button></Link>
                 </div>
             </div>
 

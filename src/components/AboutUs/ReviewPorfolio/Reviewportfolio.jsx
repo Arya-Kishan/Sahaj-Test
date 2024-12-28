@@ -1,11 +1,9 @@
 "use client"
 import styles from './reviewPortfolio.module.css';
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleBookCallModal } from '@/store/slices/modalSlice';
 
 const ReviewPortfolio=()=>{
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
   const openModal = () => {

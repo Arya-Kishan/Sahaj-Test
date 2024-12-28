@@ -19,10 +19,9 @@
 
 .slide.active {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 26px;
+  justify-content: space-between;
+  padding: 0 50px 0 50px;
   opacity: 1;
 }
 .sideImage {
@@ -35,19 +34,15 @@
   flex-direction: row !important;
 }
 
-.title {
-  margin: auto;
-  width: 100%;
-  text-align: center;
-  font-size: 48px;
-  font-family: Roboto;
-  color: #000000;
-}
+
 
 .subtitle {
   width: 100%;
   margin: auto;
-  font-size: 1.2rem;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000000BF;
 
 }
 
@@ -72,14 +67,19 @@
   display: flex;
   flex-direction: column;
   gap: 26px;
-  align-items: center;
-  justify-content: center;
-}
+  max-width: 700px;
 
+}
+.title {
+  max-width: 100%;
+  font-size: 48px;
+  font-family: Roboto;
+  font-weight: 600;
+  color: #000000;
+}
 .features {
 
   display: flex;
-  justify-content: center;
   gap: 20px;
 }
 
@@ -95,11 +95,12 @@
 .iconBox {
   display: flex;
   gap: 8px;
-  align-items: center;
 }
-
-
-
+.infoimg{
+  width: 100%;
+  min-height: 338px;
+  border-radius: 12px;
+}
 .imagesBox {
   position: relative;
   z-index: 10;
@@ -116,7 +117,11 @@
   max-width: 140px;
   max-height: 100px;
 }
-
+.videoBox{
+  min-width: 400px;
+  min-height: 338px;
+  border-radius: 12px;
+}
 .dotsContainer {
   display: flex;
   justify-content: center;
@@ -159,6 +164,46 @@
   animation: wave 7s ease infinite;
   width: 100%;
 }
+.videoContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.videoWrapper {
+  position: relative;
+  min-width: 400px;
+  min-height: 338px;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-top: 56.25%; 
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  width: 64px;
+  height: 64px;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.playButton:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
 
 @media (max-width: 720px) {
   .carouselContainer {
