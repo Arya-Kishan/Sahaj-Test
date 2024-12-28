@@ -21,12 +21,12 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
 
   const filteredDataRedux = useSelector((state) => state.media.filteredData);
   const isSearching = useSelector((state) => state.media.isSearching);
-  const combinedData = useSelector((state) => state.media.combinedData);
+ const combinedData = useSelector((state) => state.media.combinedData);
   const searchQuery = useSelector((state) => state.media.searchQuery);
   const isMobile = useIsMobile();
   const dispatch = useDispatch();
 
-  console.log("Redux Data:", isSearching, combinedData, filteredDataRedux, filteredData);
+
 
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 3);
@@ -42,6 +42,7 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
 
 
   const visibleData = isMobile ? filteredData.slice(0, visibleCount) : filteredData;
+ 
 
   if (visibleData.length === 0) {
       return <p className={styles.noDataMessage}>No items to display.</p>;

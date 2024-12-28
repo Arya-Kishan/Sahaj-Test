@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTab, setSearchQuery, setFilteredData, setIsSearching, setMediaData,setCombinedData } from "../../../store/slices/mediaSlice";
+import { setActiveTab, setSearchQuery, setFilteredData, setIsSearching, setMediaData,setCombinedData,clearSearch } from "../../../store/slices/mediaSlice";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import styles from "./tabs.module.css";
 import TabContent from "../TabContent/TabContent";
@@ -31,11 +31,11 @@ const Tabs = ({ filtersData }) => {
   const combinedData= useSelector((state) => state.media.combinedData);
  
   const titleFieldMapping = {
-    pressCoverage: "Title",
-    podcast: "PodcastTitle",
-    videoChannel: "VideoTitle",
-    blogs: "title",
-    customersInMedia: "MediaTitle",
+    pressCoverage:[ "Title","BrandName"],
+    podcast:[ "PodcastTitle","PodcastCompanyFrom"],
+    videoChannel: ["VideoTitle","VideoCompanyFrom"],
+    blogs: ["title","BlogPitchLine",],
+    customersInMedia: ["MediaTitle","MediaCompanyFrom"],
   };
 
   useEffect(() => {
@@ -59,14 +59,17 @@ const Tabs = ({ filtersData }) => {
     dispatch(setSearchQuery(searchQuery)); 
   }, [searchQuery, pathname, router, dispatch]);
 
+
   useEffect(() => {
     const filtered = mediaData[activeTab]?.filter((item) => {
-      const titleField = titleFieldMapping[activeTab];
-      return item?.[titleField]?.toLowerCase().includes(searchQuery.toLowerCase());
+      const titleFields = titleFieldMapping[activeTab] || [];
+      return titleFields.some((field) => 
+        item?.[field]?.toLowerCase().includes(searchQuery.toLowerCase())
+      );
     });
-
+  
     if (searchQuery) {
-      dispatch(setFilteredData(filtered)); 
+      dispatch(setFilteredData(filtered || []));
     } else {
       dispatch(setFilteredData([]));
     }
@@ -76,51 +79,53 @@ const Tabs = ({ filtersData }) => {
     if (tabId !== activeTab) {
       dispatch(setActiveTab(tabId));
       router.push(`/media/${tabId}`);
-      
-     
+  
       if (tabId === "All") {
-      
-        for (const key of Object.keys(mediaData)) {
-          combinedResults.push(...mediaData[key]);
-        }
-      
-      
-        dispatch(setFilteredData(combinedResults));
-        dispatch(setCombinedData(combinedResults));
+        // Combine and filter data across all tabs
+        const combinedFilteredResults = Object.keys(mediaData).reduce((acc, key) => {
+          const titleFields = titleFieldMapping[key] || [];
+          const filtered = mediaData[key]?.filter((item) =>
+            titleFields.some((field) =>
+              item?.[field]?.toLowerCase().includes(searchQuery.toLowerCase())
+            )
+          );
+          return [...acc, ...(filtered || [])];
+        }, []);
+  
+        // Dispatch the combined results for "All"
+        dispatch(setFilteredData(combinedFilteredResults));
+        dispatch(setCombinedData(combinedFilteredResults));
         
       } else {
-        const titleField = titleFieldMapping[tabId];
+       
+        const titleFields = titleFieldMapping[tabId] || [];
         const filtered = mediaData[tabId]?.filter((item) =>
-          item?.[titleField]?.toLowerCase().includes(searchQuery.toLowerCase())
+          titleFields.some((field) =>
+            item?.[field]?.toLowerCase().includes(searchQuery.toLowerCase())
+          )
         );
   
-        if (searchQuery) {
-          dispatch(setFilteredData(filtered || [])); 
-        } else {
-          dispatch(setFilteredData(filtered || [])); 
-        }
+        dispatch(setFilteredData(filtered || []));
       }
     }
   };
+  
   
   const handleSearchToggle = () => {
     dispatch(setIsSearching(!isSearching));
   };
 
-  const handleClearSearch = () => {
-    dispatch(setSearchQuery("")); 
-    dispatch(setIsSearching(false)); 
-  };
+ 
 
   const activeTabData = mediaData[activeTab] || [];
   let displayContent;
 
-  if (isSearching) {
+
+  if (isSearching && searchQuery) {
     displayContent = filteredData;
   } else {
     displayContent = activeTabData;
   }
-
   
   const dynamicTabs = isSearching ? [{ id: "All", label: "All" }, ...tabs] : tabs;
 
@@ -145,7 +150,7 @@ const Tabs = ({ filtersData }) => {
               <FaSearch size={24} />
             </div>
             {isSearching && searchQuery && (
-              <div onClick={handleClearSearch} role="button" className={styles.clearSearch}>
+              <div onClick={()=>dispatch(clearSearch())} role="button" className={styles.clearSearch}>
                 <FaTimes size={20} />
               </div>
             )}
@@ -172,7 +177,7 @@ const Tabs = ({ filtersData }) => {
           isSearching={isSearching}
           searchQuery={searchQuery}
           setSearchQuery={dispatch(() => setSearchQuery())} 
-          data={combinedData}  
+          data={filteredData}  
           filtersData={filtersData}
         />:  <TabContent
         activeTab={activeTab}

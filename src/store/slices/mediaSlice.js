@@ -34,50 +34,23 @@ const mediaSlice = createSlice({
 
         setActiveTab: (state, action) => {
             state.activeTab = action.payload;
-        },
+        }, 
 
         setSearchQuery: (state, action) => {
             const query = action.payload.toLowerCase();
             state.searchQuery = query;
-
+        
             if (query) {
                 state.isSearching = true;
-
-                const titleFieldMapping = {
-                    pressCoverage: "Title",
-                    podcast: "PodcastTitle",
-                    videoChannel: "VideoTitle",
-                    blogs: "title",
-                    customersInMedia: "MediaTitle",
-                };
-
-                const combinedResults = [];
-
-
-                for (const [key, value] of Object.entries(state.mediaData)) {
-                    if (value && Array.isArray(value)) {
-                        const titleField = titleFieldMapping[key];
-                        const filteredItems = value.filter((item) =>
-                            item?.[titleField]?.toLowerCase().includes(query)
-                        );
-
-                        if (filteredItems.length > 0) {
-                            combinedResults.push(...filteredItems);
-                        }
-                    }
-                }
-
-                state.filteredData = combinedResults;
-                state.combinedData = combinedResults;
-            } else {
+            }
+             else {
 
                 state.isSearching = false;
-                state.filteredData = [];
+                //state.filteredData = [];
                 state.combinedData = Object.values(state.mediaData).flat();
             }
         },
-
-
+        
         clearSearch: (state) => {
             state.isSearching = false;
             state.filteredData = [];
