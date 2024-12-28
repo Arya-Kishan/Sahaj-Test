@@ -10,7 +10,7 @@ import { getHomeData } from "@/services/home";
 
 export default function Home() {
   const [homeData, setHomeData] = useState([]);
-  const testimonialsRef = useRef(null); // Reference for Testimonials
+  const testimonialsRef = useRef(null); 
 
   const getData = async () => {
     try {

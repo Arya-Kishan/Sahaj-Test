@@ -2,7 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import ScrollToTopButton from "@/components/ScrollButton/ScrollButton";
-import ReduxProvider from "@/components/ReduxProvider"; // Use the custom ReduxProvider
+import ReduxProvider from "@/components/ReduxProvider";
 
 export const metadata = {
   title: "Create Next App",
