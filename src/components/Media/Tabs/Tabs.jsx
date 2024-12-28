@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTab, setSearchQuery, setFilteredData, setIsSearching, setMediaData,setCombinedData,clearSearch } from "../../../store/slices/mediaSlice";
+import { setActiveTab, setSearchQuery, setFilteredData, setIsSearching,clearSearch } from "../../../store/slices/mediaSlice";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import styles from "./tabs.module.css";
 import TabContent from "../TabContent/TabContent";
@@ -28,8 +28,7 @@ const Tabs = ({ filtersData }) => {
   const mediaData = useSelector((state) => state.media.mediaData);
   const filteredData = useSelector((state) => state.media.filteredData);
   const isSearching = useSelector((state) => state.media.isSearching);
-  const combinedData= useSelector((state) => state.media.combinedData);
- 
+
   const titleFieldMapping = {
     pressCoverage:[ "Title","BrandName"],
     podcast:[ "PodcastTitle","PodcastCompanyFrom"],
@@ -39,15 +38,16 @@ const Tabs = ({ filtersData }) => {
   };
 
   useEffect(() => {
-    if (path && tabs.some((tab) => tab.id === path)) {
-      dispatch(setActiveTab(path));
-    } else if (!path && !pathname.includes(tabs[0].id)) {
-      router.push(`/media/${tabs[0].id}`);
-    }
+
+      if (path && tabs.some((tab) => tab.id === path)) {
+        dispatch(setActiveTab(path));
+      } else if (!path && !pathname.includes(tabs[0].id)) {
+        router.push(`/media/${tabs[0].id}`);
+      }
     
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get("search") || "";
-    dispatch(setSearchQuery(query)); 
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get("search") || "";
+      dispatch(setSearchQuery(query)); 
   }, [path, router, pathname, dispatch]);
 
   useEffect(() => {
@@ -74,40 +74,14 @@ const Tabs = ({ filtersData }) => {
       dispatch(setFilteredData([]));
     }
   }, [searchQuery, activeTab, mediaData, dispatch]);
-  const combinedResults = [];
+
   const handleTabChange = (tabId) => {
+    
     if (tabId !== activeTab) {
-      dispatch(setActiveTab(tabId));
-      router.push(`/media/${tabId}`);
-  
-      if (tabId === "All") {
-        // Combine and filter data across all tabs
-        const combinedFilteredResults = Object.keys(mediaData).reduce((acc, key) => {
-          const titleFields = titleFieldMapping[key] || [];
-          const filtered = mediaData[key]?.filter((item) =>
-            titleFields.some((field) =>
-              item?.[field]?.toLowerCase().includes(searchQuery.toLowerCase())
-            )
-          );
-          return [...acc, ...(filtered || [])];
-        }, []);
-  
-        // Dispatch the combined results for "All"
-        dispatch(setFilteredData(combinedFilteredResults));
-        dispatch(setCombinedData(combinedFilteredResults));
-        
-      } else {
-       
-        const titleFields = titleFieldMapping[tabId] || [];
-        const filtered = mediaData[tabId]?.filter((item) =>
-          titleFields.some((field) =>
-            item?.[field]?.toLowerCase().includes(searchQuery.toLowerCase())
-          )
-        );
-  
-        dispatch(setFilteredData(filtered || []));
-      }
-    }
+        dispatch(setActiveTab(tabId));
+        router.push(`/media/${tabId}`);
+     }
+     
   };
   
   
@@ -115,11 +89,8 @@ const Tabs = ({ filtersData }) => {
     dispatch(setIsSearching(!isSearching));
   };
 
- 
-
   const activeTabData = mediaData[activeTab] || [];
   let displayContent;
-
 
   if (isSearching && searchQuery) {
     displayContent = filteredData;

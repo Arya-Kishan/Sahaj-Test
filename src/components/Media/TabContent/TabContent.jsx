@@ -25,9 +25,6 @@ const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery,
   const [activeFilter, setActiveFilter] = useState("All");
 
 
-  useEffect(() => {
-    console.log("Combined Data Updated:", combinedData, activeTab,data);
-  }, [combinedData, activeTab]);
 
   useEffect(() => {
     setFilteredData(data);

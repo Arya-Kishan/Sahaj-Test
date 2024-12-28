@@ -6,42 +6,46 @@ import styles from "./mediaCards.module.css";
 import { useIsMobile } from "./useIsMobile";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import {
-  setActiveTab,
-  setSearchQuery,
-  setFilteredData,
-  setIsSearching,
-  setMediaData,
-  setCombinedData,
-} from "../../../store/slices/mediaSlice";
 import FormateDate from "../FormateDate";
 
-const MediaCards = ({ filteredData = [], activeTab }) => {
+const MediaCards = ({ filteredData = [],  }) => {
   const [visibleCount, setVisibleCount] = useState(3);
-
-  const filteredDataRedux = useSelector((state) => state.media.filteredData);
-  const isSearching = useSelector((state) => state.media.isSearching);
- const combinedData = useSelector((state) => state.media.combinedData);
+  const [filteredResults,setFilteredResults]=useState(filteredData)
+  const combinedData = useSelector((state) => state.media.combinedData);
   const searchQuery = useSelector((state) => state.media.searchQuery);
+  const activeTab = useSelector((state) => state.media.activeTab);
   const isMobile = useIsMobile();
   const dispatch = useDispatch();
-
-
 
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 3);
   };
 
-
-
   useEffect(() => {
-
+  
     setVisibleCount(3);
 
   }, [filteredData, searchQuery, dispatch]);
 
+  useEffect(()=>{
+    
+      function filterObjectsBySearchQuery(objects, searchQuery) {
+        return objects.filter((obj) => {
+          const keys = Object.keys(obj).slice(0, 2); 
+          return keys.some((key) => {
+            const value = obj[key];
+            return value && value.toLowerCase().includes(searchQuery.toLowerCase());
+          });
+        });
+      }
+      let tempfilteredResults = filterObjectsBySearchQuery(combinedData,searchQuery);
+      setFilteredResults(tempfilteredResults)
+     
+    
 
-  const visibleData = isMobile ? filteredData.slice(0, visibleCount) : filteredData;
+  },[combinedData, searchQuery])
+
+  const visibleData = isMobile ? filteredResults.slice(0, visibleCount) : filteredResults;
  
 
   if (visibleData.length === 0) {
