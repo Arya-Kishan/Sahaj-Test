@@ -29,14 +29,7 @@ const Tabs = ({ filtersData }) => {
   const filteredData = useSelector((state) => state.media.filteredData);
   const isSearching = useSelector((state) => state.media.isSearching);
 
-  const titleFieldMapping = {
-    pressCoverage:[ "Title","BrandName"],
-    podcast:[ "PodcastTitle","PodcastCompanyFrom"],
-    videoChannel: ["VideoTitle","VideoCompanyFrom"],
-    blogs: ["title","BlogPitchLine",],
-    customersInMedia: ["MediaTitle","MediaCompanyFrom"],
-  };
-
+ 
   useEffect(() => {
 
       if (path && tabs.some((tab) => tab.id === path)) {
@@ -59,13 +52,16 @@ const Tabs = ({ filtersData }) => {
     dispatch(setSearchQuery(searchQuery)); 
   }, [searchQuery, pathname, router, dispatch]);
 
-
+//search object will include all the keys of data, even only few keys are displaying in UI 
   useEffect(() => {
     const filtered = mediaData[activeTab]?.filter((item) => {
-      const titleFields = titleFieldMapping[activeTab] || [];
-      return titleFields.some((field) => 
-        item?.[field]?.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      return Object.keys(item).some((key) => {
+        const value = item[key];
+        return (
+          typeof value === "string" &&
+          value.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      });
     });
   
     if (searchQuery) {
@@ -74,7 +70,8 @@ const Tabs = ({ filtersData }) => {
       dispatch(setFilteredData([]));
     }
   }, [searchQuery, activeTab, mediaData, dispatch]);
-
+  
+ 
   const handleTabChange = (tabId) => {
     
     if (tabId !== activeTab) {

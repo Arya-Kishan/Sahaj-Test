@@ -31,7 +31,7 @@ const MediaCards = ({ filteredData = [],  }) => {
   }, [filteredData, searchQuery, dispatch]);
 
 
-//the search results will include  all keys of object   even we are not showing everything in card
+//the search results will include  all keys of object   even we are not showing everything in dispaly cards
 
   useEffect(() => {
     function filterObjectsBySearchQuery(objects, searchQuery) {
