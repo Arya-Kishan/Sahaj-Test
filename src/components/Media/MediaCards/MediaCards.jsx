@@ -16,6 +16,9 @@ const MediaCards = ({ filteredData = [],  }) => {
   const activeTab = useSelector((state) => state.media.activeTab);
   const isMobile = useIsMobile();
   const dispatch = useDispatch();
+  console.log("the combined data",combinedData)
+  console.log("the intial filtered data",filteredData)
+  console.log("the search filtered data",filteredResults)
 
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 3);
@@ -27,23 +30,27 @@ const MediaCards = ({ filteredData = [],  }) => {
 
   }, [filteredData, searchQuery, dispatch]);
 
-  useEffect(()=>{
-    
-      function filterObjectsBySearchQuery(objects, searchQuery) {
-        return objects.filter((obj) => {
-          const keys = Object.keys(obj).slice(0, 2); 
-          return keys.some((key) => {
-            const value = obj[key];
-            return value && value.toLowerCase().includes(searchQuery.toLowerCase());
-          });
-        });
-      }
-      let tempfilteredResults = filterObjectsBySearchQuery(combinedData,searchQuery);
-      setFilteredResults(tempfilteredResults)
-     
-    
 
-  },[combinedData, searchQuery])
+//the search results will include  all keys of object   even we are not showing everything in card
+
+  useEffect(() => {
+    function filterObjectsBySearchQuery(objects, searchQuery) {
+      return objects.filter((obj) => {
+        return Object.keys(obj).some((key) => {
+          const value = obj[key];
+          return (
+            typeof value === "string" &&
+            value.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+        });
+      });
+    }
+  
+    const tempFilteredResults = filterObjectsBySearchQuery(combinedData, searchQuery);
+    setFilteredResults(tempFilteredResults);
+  
+  }, [combinedData, searchQuery]); 
+  
 
   const visibleData = isMobile ? filteredResults.slice(0, visibleCount) : filteredResults;
  
