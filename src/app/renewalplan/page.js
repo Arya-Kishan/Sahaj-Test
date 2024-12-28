@@ -3,20 +3,20 @@ import ServicesPage from "@/components/Services/ServicePage/services"
 import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer"
 import ServiceHeader from "@/components/Services/Header/ServiceHeader"
 import FAQ from "@/components/ProcessFlow/FAQ/FAQ"
-function Services() {
+function RenewalServices() {
 
   
 
 
   return (
     <>
-      <ServiceHeader title="Financial plan creation" type={false} />
+      <ServiceHeader title="Renewal plan" type={true} />
       <ServicesPage />
-      <FAQ heading='Learn More About Renewal Plans' buttonText="View renewal plan" path="/renewalplan" />
+      <FAQ heading='Learn More About Renewal Plans' buttonText="View Financial plan" path="/services" />
       <ReviewsContainer />
 
     </>
   )
 }
 
-export default Services
+export default RenewalServices;
