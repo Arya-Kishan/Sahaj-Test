@@ -12,7 +12,7 @@ import ReviewPortfolio from "@/components/AboutUs/ReviewPorfolio/Reviewportfolio
 
 export default function Home() {
   const [homeData, setHomeData] = useState([]);
-  const testimonialsRef = useRef(null); // Reference for Testimonials
+  const testimonialsRef = useRef(null); 
 
   const getData = async () => {
     try {
@@ -47,7 +47,7 @@ export default function Home() {
       <WhyChooseUs /> 
       <FinancialPlan financePlanData={homeData?.data || []} scrollToTestimonials={scrollToTestimonials} />
       <Testimonials ref={testimonialsRef} /> 
-      <ReviewPortfolio/>  
+      <ReviewPortfolio />
     </>
   );
 }
