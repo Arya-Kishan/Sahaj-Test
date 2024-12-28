@@ -69,13 +69,17 @@ const DownloadModal = ({ isOpen, onClose }) => {
             phone: "",
         });
     };
+    const hangleClose=()=>{
+        onClose();
+        setResponse(false);
+    }
 
     if (!isOpen) return null;
 
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>
-                <button className={styles.closeButton} onClick={onClose}>
+                <button className={styles.closeButton} onClick={hangleClose}>
                     &times;
                 </button>
                 {responseTrue ? (
