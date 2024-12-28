@@ -7,6 +7,7 @@ import FinancialPlan from "@/components/Home/FinancialPlan/FinancialPlan";
 import WhyChooseUs from "@/components/Home/WhyChooseUs/WhyChooseUs";
 import Testimonials from "@/components/Home/Testimonials/Testimonials";
 import { getHomeData } from "@/services/home";
+import ReviewPortfolio from "@/components/AboutUs/ReviewPorfolio/Reviewportfolio";
 
 export default function Home() {
   const [homeData, setHomeData] = useState([]);
@@ -45,6 +46,7 @@ export default function Home() {
       <WhyChooseUs />
       <FinancialPlan financePlanData={homeData?.data || []} scrollToTestimonials={scrollToTestimonials} />
       <Testimonials ref={testimonialsRef} /> 
+      <ReviewPortfolio/>
     </>
   );
 }
