@@ -83,14 +83,14 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
                 </div>
 
                 <div className={styles.stepsContainer}>
-                    <h2>How we do it?</h2>
+                    <p className={styles.stepHeading}>How we do it?</p>
 
                     {howWeDoData &&
                         howWeDoData?.Content?.map((item, index) => {
                             return <>
                                 <div key={index}>
                                     <button className={styles.stepTitle}><p>{`Step 0${index+1}`}</p></button>
-                                    <h4 className={styles.stepSubtitle}>{item.title}ss</h4>
+                                    <h4 className={styles.stepSubtitle}>{item.title}</h4>
                                     <ul className={styles.stepText}>
                                         {item?.Points &&
                                             item?.Points?.map((ele, ind) => <li key={ind} className={styles.serviceDescription}>{ele.point}</li>)
