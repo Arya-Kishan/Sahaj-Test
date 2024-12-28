@@ -1,9 +1,8 @@
-
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import ScrollToTopButton from "@/components/ScrollButton/ScrollButton";
-import ReduxProvider from "@/components/ReduxProvider";
+import ReduxProvider from "@/components/ReduxProvider"; // Use the custom ReduxProvider
 
 export const metadata = {
   title: "Create Next App",
@@ -13,11 +12,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body >
-      <Navbar/>
-        <ScrollToTopButton/>
-        <ReduxProvider>{children}</ReduxProvider>
-        <Footer/>    
+      <body>
+        <ReduxProvider>
+          <Navbar />
+          <ScrollToTopButton />
+          {children}
+          <Footer />
+        </ReduxProvider>
       </body>
     </html>
   );

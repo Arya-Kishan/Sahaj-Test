@@ -1,4 +1,6 @@
 'use client';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleBookCallModal } from '@/store/slices/modalSlice';
 import { useState } from 'react';
 import style from './style.module.css';
 import Image from 'next/image';
@@ -8,24 +10,25 @@ import logo from '../../assests/Logo/sahajlogo.webp';
 import BookCallModal from '../BookCall/BookCall';
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const isBookCallModalOpen = useSelector((state) => state.modal.isBookCallModalOpen);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const openModal =()=>{
-    console.log("clicked")
-    setIsModalOpen(!isMenuOpen);
 
-  }
+  const openModal = () => {
+    console.log('Book a call clicked');
+    dispatch(toggleBookCallModal());
+  };
 
   return (
     <div className={style.mainContainer}>
       <nav className={style.nav}>
         <div className={style.logoBox}>
           <Link href="/">
-            <Image  className={style.logos} src={logo} alt="Sahaj Logo" />
+            <Image className={style.logos} src={logo} alt="Sahaj Logo" />
           </Link>
         </div>
 
@@ -59,7 +62,9 @@ function Navbar() {
           </Link>
         </div>
 
-        <button className={style.callButton} onClick={openModal}><span>Book a call</span></button>
+        <button className={style.callButton} onClick={openModal}>
+          <span>Book a call</span>
+        </button>
 
         <button className={style.hamburger} onClick={toggleMenu}>
           {isMenuOpen ? '✕' : '☰'}
@@ -69,8 +74,8 @@ function Navbar() {
       {isMenuOpen && (
         <div className={style.mobileMenu}>
           <div className={style.mobilelogo}>
-          <Image className={style.mobilelogos} src={logo} alt="Sahaj Logo" />
-          <p onClick={toggleMenu}>✕</p>
+            <Image className={style.mobilelogos} src={logo} alt="Sahaj Logo" />
+            <p onClick={toggleMenu}>✕</p>
           </div>
           <Link href="/" className={style.mobileAboutus}>
             Home
@@ -102,12 +107,13 @@ function Navbar() {
           <Link href="/about" className={style.mobileAboutus}>
             About Us
           </Link>
-          <button className={style.mobileCallButton}  onClick={openModal}>Book a free call</button>
+          <button className={style.mobileCallButton} onClick={openModal}>
+            Book a free call
+          </button>
         </div>
       )}
-      <BookCallModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <BookCallModal isOpen={isBookCallModalOpen} onClose={() => dispatch(toggleBookCallModal())} />
     </div>
-
   );
 }
 
