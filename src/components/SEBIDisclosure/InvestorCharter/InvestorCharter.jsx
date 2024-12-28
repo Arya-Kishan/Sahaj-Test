@@ -7,7 +7,7 @@ const InvestorCharter = ({ contentData = {} }) => {
   return (
     <>
       <div className={style.heading}>
-        <p>SEBI&apos;s Investor Charter</p> {/* Use &apos; for apostrophe */}
+        <p>SEBI&apos;s Investor Charter</p>
       </div>
       <section className={style.pdfContainer}>
         {contentData?.PDFlink ? (
