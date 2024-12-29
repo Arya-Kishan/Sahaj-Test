@@ -72,7 +72,7 @@ const Footer = () => {
           <p>All rights reserved</p>
           <div className={styles.policyBox}  >
             <p>Terms of services</p>
-            <p>Privacy policies</p>
+            <Link  className={styles.linkText1} href={"/privacyPolicy"}>Privacy policies</Link>
             <p>Cookies</p>
           </div>
         </div>

@@ -74,6 +74,13 @@
     font-size: 14px;
 }
 
+.linkText1 {
+    color: white;
+    text-decoration: none;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
 .footerSection a:hover {
     text-decoration: underline !important;
     text-decoration-color: #FFA500 !important;

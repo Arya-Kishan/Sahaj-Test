@@ -45,13 +45,21 @@
   .timezone{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    
+    
   }
   .timezoneDropdown{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    margin-left: 20px;
     width: 30%;
+  }
+
+  .dropdownSelect {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
   }
   .slots{
     width: 376px;
