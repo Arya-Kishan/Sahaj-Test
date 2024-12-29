@@ -14,7 +14,7 @@ const Footer = () => {
     try {
       const { res, err } = await getFooterData();
       if (res?.data) {
-        console.log(res.data);
+        console.log("this is footer",res.data);
         setFooterData(res.data)
       }
     } catch (error) {
@@ -62,11 +62,19 @@ const Footer = () => {
         </div>
         <div className={`${styles.footerSection} ${styles.socialMedia}`}>
           <h4>Follow us</h4>
-          <Link className={styles.linkText} href="#"><FaLinkedin /></Link>
-          <Link className={styles.linkText} href="#"><FaInstagram /></Link>
-          <Link className={styles.linkText} href="#"><FaYoutube /></Link>
+          {footerData?.FollowUs?.length>0&&
+            footerData?.FollowUs.map((foll)=>(
+              <Link href={foll?.link}>
+                <img src={foll?.image}  className={`${styles.follows_logo}`}/> 
+              </Link>
+            ))
+       
+          }
+
+
         </div>
       </div>
+      <p className={`${styles.footer_content}`}>{footerData?.FooterContent}</p>
       <div className={styles.footerBottom}>
         <div className={styles.termBox}>
           <p>All rights reserved</p>
