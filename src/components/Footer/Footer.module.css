@@ -10,7 +10,7 @@
     padding: 40px 100px 40px 100px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid #333;
+    /* border-bottom: 2px solid #333; */
 }
 
 .brands {
@@ -115,9 +115,27 @@
     gap:24px;
 }
 
+.follows_logo{
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.footer_content{
+    padding: 40px 100px 40px 100px;
+    font-weight: 400;
+    color: #00000080;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-family: Manrope;
+}
+
 @media (max-width: 768px) {
     .footerContent {
         flex-direction: column;
+        padding: 16px;
+    }
+    .footer_content{
         padding: 16px;
     }
 
