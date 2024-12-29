@@ -86,9 +86,11 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
                     <p className={styles.stepHeading}>How we do it?</p>
 
                     {howWeDoData &&
-                        howWeDoData?.Content?.map((item, index) => {
-                            return <>
-                                <div key={index}>
+                        howWeDoData?.Content?.map((item, index) =>
+                            
+                            (
+                         
+                                <div key={index} >
                                     <button className={styles.stepTitle}><p>{`Step 0${index+1}`}</p></button>
                                     <h4 className={styles.stepSubtitle}>{item.title}</h4>
                                     <ul className={styles.stepText}>
@@ -97,8 +99,8 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
                                         }
                                     </ul>
                                 </div>
-                            </>
-                        })
+                         
+                             ))
                     }
 
 
@@ -108,15 +110,16 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
 
             <div className={styles.footer}>
                 {companyGrowth &&
-                    companyGrowth?.map((item, index) => {
-                        return <>
+                    companyGrowth?.map((item, index) => 
+                        (
+                     
                             <div className={styles.stat} key={index}>
                                 <p className={styles.statTitle}>{item?.GrowthTitle}</p>
                                 <h3 className={styles.statNumber}>{item?.Achievement}</h3>
                                 <p className={styles.statDescription} onClick={()=>handleStepClick(index)} >{item?.Description}</p>
                             </div>
-                        </>
-                    })
+                       
+                    ))
                 }
 
             </div>

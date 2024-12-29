@@ -65,12 +65,12 @@ function ConfirmSlot({ ResetData, formData, formatDate }) {
                                         <path d="M12.1816 18.3304L16.05 22.3197C17.8703 17.0907 19.3863 14.7962 22.8197 11.6816" stroke="white" stroke-width="1.41667" stroke-linecap="round" stroke-linejoin="round" />
                                         <defs>
                                             <linearGradient id="paint0_linear_922_46674" x1="25.374" y1="7.69363" x2="10.3401" y2="28.4551" gradientUnits="userSpaceOnUse">
-                                                <stop stop-color="#F8DB75" />
-                                                <stop offset="1" stop-color="#A4730F" />
+                                                <stop stopColor="#F8DB75" />
+                                                <stop offset="1" stopColor="#A4730F" />
                                             </linearGradient>
                                             <linearGradient id="paint1_linear_922_46674" x1="25.374" y1="7.69363" x2="10.3401" y2="28.4551" gradientUnits="userSpaceOnUse">
-                                                <stop stop-color="#F8DB75" />
-                                                <stop offset="1" stop-color="#A4730F" />
+                                                <stop stopColor="#F8DB75" />
+                                                <stop offset="1" stopColor="#A4730F" />
                                             </linearGradient>
                                         </defs>
                                     </svg>

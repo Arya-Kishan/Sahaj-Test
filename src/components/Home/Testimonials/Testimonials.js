@@ -96,22 +96,20 @@ const Testimonials = ({ref}) => {
                 <h2 className={styles.heading}>What our clients say?</h2>
                 <div className={styles.reviews}>
                     {reviewData &&
-                        reviewData.map((item, index) => {
-                            return <>
-                                <div key={index} className={styles.reviewCard}>
-                                    <div className={styles.logoBox} >
-                                        <img
-                                            src={item?.CompanyLogo}
-                                            alt="LinkedIn"
-                                            className={styles.icon}
-                                        />
-                                        <p className={styles.reviewCount}>{item?.Content}</p>
-                                    </div>
-                                    <p className={styles.rating}>{item?.Rating} <span>★★★★★</span></p>
+                        reviewData.map((item, index) => 
+                        (
+                            <div key={index} className={styles.reviewCard}>
+                                <div className={styles.logoBox} >
+                                    <img
+                                        src={item?.CompanyLogo}
+                                        alt="LinkedIn"
+                                        className={styles.icon}
+                                    />
+                                    <p className={styles.reviewCount}>{item?.Content}</p>
                                 </div>
-                            </>
-
-                        })
+                                <p className={styles.rating}>{item?.Rating} <span>★★★★★</span></p>
+                            </div>
+                        ))
                     }
 
                 </div>
