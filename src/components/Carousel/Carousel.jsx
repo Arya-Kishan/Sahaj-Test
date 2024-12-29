@@ -34,15 +34,15 @@ const Carousel = ({ bannerData }) => {
     }
   }, [bannerData]);
 
-  // useEffect(() => {
-  //   if (!slideData?.length || isPaused) return;
+  useEffect(() => {
+    if (!slideData?.length || isPaused) return;
 
-  //   const interval = setInterval(() => {
-  //     setCurrentSlide((prev) => (prev + 1) % slideData.length);
-  //   }, 5000);
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideData.length);
+    }, 5000);
 
-  //   return () => clearInterval(interval);
-  // }, [slideData, isPaused]);
+    return () => clearInterval(interval);
+  }, [slideData, isPaused]);
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
