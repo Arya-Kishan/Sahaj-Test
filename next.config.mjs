@@ -9,7 +9,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['sahajmoney-bucket.s3.ap-south-1.amazonaws.com']
+    domains: ['sahajmoney-bucket.s3.ap-south-1.amazonaws.com','sahajmoney.com']
 },
 
   env: {

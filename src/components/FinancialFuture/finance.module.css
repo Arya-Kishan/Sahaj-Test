@@ -20,7 +20,24 @@
     gap: 40px;
 }
 .founderHeader{
-    text-align: center;
+   display: flex;
+   flex-direction: column;
+   gap:24px;
+   text-align: center;
+}
+.SmallMainTitle{
+
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56.25px;
+}
+.SmallMainDescription{
+
+    font-family: Manrope;
+    font-size: 20px;
+    font-weight: 400;
+
 }
 .founderInfo{
     width: 100%;
@@ -30,17 +47,41 @@
     justify-content: space-between;
 }
 .founderDetails{
-    width: 776px;
+    /* width: 776px; */
     height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
-.founderInfo img{
+.founderDetailsHeading{
+
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+
+}
+.founderDetailsContentContainer{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    color: var(--Color-black-75, #000000BF);
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+}
+.founderDetailsContent{
+
+    
+
+
+}
+/* .founderInfo img{
     width: 432px;
     height: 380px;
     border-radius: 12px;
-}
+} */
 .founderHeader h3{
     margin-bottom: 24px;
     font-size: 48px;
