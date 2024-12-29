@@ -1,13 +1,12 @@
 .carouselContainer {
   position: relative;
   overflow: hidden;
-  background: #FFFFFF;
+  background: #ffffff;
   padding: 40px;
   height: 552px;
   width: 100%;
   margin: auto;
   z-index: 3;
-
 }
 
 .slide {
@@ -26,15 +25,14 @@
 }
 .sideImage {
   background-image: url(../../assests/AboutUs/clientsReview.webp);
-  background-position: 300px center; 
-  background-size: cover; 
-  background-repeat: no-repeat; 
+  background-position-x: 100px;
+  background-position-y: -55px;
+  background-size: 93% 110%;
+  background-repeat: no-repeat;
 }
 .rowForm {
   flex-direction: row !important;
 }
-
-
 
 .subtitle {
   width: 100%;
@@ -42,8 +40,7 @@
   font-family: Roboto;
   font-size: 20px;
   font-weight: 500;
-  color: #000000BF;
-
+  color: #000000bf;
 }
 
 .ctaButton {
@@ -68,7 +65,6 @@
   flex-direction: column;
   gap: 26px;
   max-width: 700px;
-
 }
 .title {
   max-width: 100%;
@@ -78,7 +74,6 @@
   color: #000000;
 }
 .features {
-
   display: flex;
   gap: 20px;
 }
@@ -96,7 +91,7 @@
   display: flex;
   gap: 8px;
 }
-.infoimg{
+.infoimg {
   width: 100%;
   min-height: 338px;
   border-radius: 12px;
@@ -117,7 +112,7 @@
   max-width: 140px;
   max-height: 100px;
 }
-.videoBox{
+.videoBox {
   min-width: 400px;
   min-height: 338px;
   border-radius: 12px;
@@ -136,13 +131,13 @@
 .dot {
   width: 12px;
   height: 12px;
-  background-color: #C1882340;
+  background-color: #c1882340;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .activeDot {
-  background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
+  background: linear-gradient(215.91deg, #f8db75 22.43%, #a4730f 80.57%);
   width: 84px;
   border-radius: 12px;
 }
@@ -177,7 +172,7 @@
   min-height: 338px;
   border-radius: 12px;
   overflow: hidden;
-  padding-top: 56.25%; 
+  padding-top: 56.25%;
 }
 
 .video {
@@ -203,7 +198,6 @@
 .playButton:hover {
   transform: translate(-50%, -50%) scale(1.1);
 }
-
 
 @media (max-width: 720px) {
   .carouselContainer {
@@ -233,7 +227,6 @@
   }
 
   .features {
-
     flex-direction: column;
   }
 
@@ -245,6 +238,7 @@
     display: block;
     width: 233px;
     height: 59px;
+    margin-top: 260px;
     background-color: black;
     color: white;
     border: none;
