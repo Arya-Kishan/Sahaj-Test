@@ -9,6 +9,7 @@ import Testimonials from "@/components/Home/Testimonials/Testimonials";
 import { getHomeData } from "@/services/home";
 import ReviewPortfolio from "@/components/AboutUs/ReviewPorfolio/Reviewportfolio";
 
+
 export default function Home() {
   const [homeData, setHomeData] = useState([]);
   const testimonialsRef = useRef(null); 
@@ -43,10 +44,10 @@ export default function Home() {
       <Carousel bannerData={homeData?.data || []} />
       <FeaturedIn featuredData={homeData?.data || []} />
       <FinanceQuestions financeData={homeData?.data || []} />
-      <WhyChooseUs />
+      <WhyChooseUs /> 
       <FinancialPlan financePlanData={homeData?.data || []} scrollToTestimonials={scrollToTestimonials} />
       <Testimonials ref={testimonialsRef} /> 
-      <ReviewPortfolio/>
+      <ReviewPortfolio />
     </>
   );
 }

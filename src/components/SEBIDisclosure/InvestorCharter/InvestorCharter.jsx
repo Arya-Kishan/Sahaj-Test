@@ -4,7 +4,6 @@ import style from "./investorCharter.module.css";
 import PdfViewer from "../PdfViewerWrapper";
 
 const InvestorCharter = ({ contentData = {} }) => {
-
   return (
     <>
       <div className={style.heading}>

@@ -17,28 +17,17 @@ const SmCustomerMediaCards = ({ filteredData = [], activeTab, searchQuery }) => 
   };
   
 
-  const filteredCards = filteredData.filter((card) => {
-    const cardText = [
-      // card.subheading,
-      card.Title,
-      card.date,
-      card.description,
-      card.category,
-    ].join(' ').toLowerCase();
-
-    return cardText.includes("".toLowerCase());
-  });
   
   useEffect(() => {
     setVisibleCount(3);
   }, [filteredData, searchQuery]);
 
   
-  const visibleData = isMobile ? filteredCards.slice(0, visibleCount) : filteredCards;
+  const visibleData = isMobile ? filteredData.slice(0, visibleCount) :  filteredData;
 
-  if (filteredCards.length === 0) {
+  if (visibleData.length === 0) {
     return <p className={styles.noDataMessage}>No items to display.</p>;
-  }
+}
 
   return (
     <>
@@ -46,7 +35,8 @@ const SmCustomerMediaCards = ({ filteredData = [], activeTab, searchQuery }) => 
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-              <img src={cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} />
+            {cardData.CoverImage &&  <Image src={cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/> }
+             
             </div>
             <div className={styles.textContainer}>
               {cardData.MediaCompanyFrom && <p className={styles.subheading}>{cardData.MediaCompanyFrom}</p>}
@@ -55,14 +45,14 @@ const SmCustomerMediaCards = ({ filteredData = [], activeTab, searchQuery }) => 
               <p className={styles.cardDate}>{FormateDate(cardData.createdAt)}</p>
             </div>
           
-            {cardData.Tags && (
+            {/* {cardData.Tags && (
               <div className={styles.blogCardButtonsContainer}>{
                 cardData.Tags.map((tags,index)=>(
                   <button className={styles.blogCardButton} key={index}>{tags}</button>
                 ))
               }
               </div>
-            )} 
+            )}  */}
           </div>
           
 
@@ -70,7 +60,7 @@ const SmCustomerMediaCards = ({ filteredData = [], activeTab, searchQuery }) => 
           </div>
       ))}
 
-        {isMobile && visibleCount < filteredCards.length && (
+        {isMobile && visibleCount < filteredData.length && (
           <button onClick={handleLoadMore} className={styles.loadMoreButton}>
             Load More
           </button>
