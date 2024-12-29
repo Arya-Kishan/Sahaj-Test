@@ -260,4 +260,17 @@
   .rowForm {
     flex-direction: column !important;
   }
+  .sideImage {
+    background-position-x: -400px;
+    background-position-y: -10px;
+    background-size: 200% 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .sideImage {
+    background-position-x: -400px;
+    background-position-y: -10px;
+    background-size: 300% 100%;
+  }
 }
