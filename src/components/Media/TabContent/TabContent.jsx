@@ -17,17 +17,13 @@ import styles from './tabContent.module.css';
 import { setCombinedData } from "../../../store/slices/mediaSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery, filtersData }) => {
+const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery, filtersData}) => {
   const dispatch = useDispatch();
   const combinedData = useSelector((state) => state.media.combinedData);
 
   const [filteredData, setFilteredData] = useState(data);
   const [activeFilter, setActiveFilter] = useState("All");
 
-
-  useEffect(() => {
-    console.log("Combined Data Updated:", combinedData, activeTab);
-  }, [combinedData, activeTab]);
 
 
   useEffect(() => {

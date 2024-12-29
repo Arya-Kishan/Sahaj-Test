@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import sahajLogo from '../../assests/Logo/sahajlogo.webp'
-import { FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
+import instagramIcon from "../../assests/Home/instagramIcon.webp";
+import youtubeIcon from "../../assests/Home/youtubeIcon.webp"
+import linkedinIcon from "../../assests/Home/linkedinIcon.webp"
 import { getFooterData } from '@/services/footer';
 const Footer = () => {
 
@@ -61,30 +63,40 @@ const Footer = () => {
           <p>{footerData?.SEBI_Regional_Office?.Websiteurl}</p>
         </div>
         <div className={`${styles.footerSection} ${styles.socialMedia}`}>
-          <h4>Follow us</h4>
-          {footerData?.FollowUs?.length>0&&
-            footerData?.FollowUs.map((foll)=>(
-              <Link href={foll?.link}>
-                <img src={foll?.image}  className={`${styles.follows_logo}`}/> 
+        <h4>Follow us</h4>
+        {footerData?.FollowUs?.length>0&&
+            footerData?.FollowUs.map((foll,index)=>(
+              <Link href={foll?.link} key={index}>
+                <Image src={foll?.image}  className={`${styles.follows_logo}` } width={34} height={34} alt="social media icons"/> 
               </Link>
             ))
        
           }
-
-
         </div>
       </div>
-      <p className={`${styles.footer_content}`}>{footerData?.FooterContent}</p>
+      <div className={styles.footersebiDescription}>
+        <p>   Registration granted by SEBI, membership of BSE Administration and Supervision 
+              Limited (BASL) and certification from National Institute of Securities Markets (NISM)
+              in no way guarantee performance of the Investment Adviser or provide any assurance 
+              of returns to investors. Investment in securities market are subject to market risks. 
+              Read all the related documents carefully before investing.
+        </p>
+      </div>
       <div className={styles.footerBottom}>
         <div className={styles.termBox}>
           <p>All rights reserved</p>
           <div className={styles.policyBox}  >
+            <Link href={"/termsofservices"}>
             <p>Terms of services</p>
+            </Link>
+           
             <p>Privacy policies</p>
+            <Link href={"/cookiepolicy"}>
             <p>Cookies</p>
+            </Link>
           </div>
         </div>
-
+        
       </div>
     </footer>
   );

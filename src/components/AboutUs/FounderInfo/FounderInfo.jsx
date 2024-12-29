@@ -35,9 +35,9 @@ const FounderInfo = () => {
             </div>
             <div className={styles.founderinformationtext}>
                {founderData &&
-               founderData?.map((item, index)=>{
-                return <>
-                 <div className={styles.founderinformationtextContainer}>
+               founderData?.map((item, index)=>(
+               
+                 <div className={styles.founderinformationtextContainer} key={index}>
                     <div className={styles.founderinfotext}>
                         <p className={styles.founderinfotextHeading}>{item?.Title}</p>
                         <p className={styles.founderinfotextBody}>{item?.Content}</p>
@@ -59,8 +59,10 @@ const FounderInfo = () => {
 
                     </div>
                 </div>
-                </>
-               })
+            
+               )
+                
+               )
 
                }
 
