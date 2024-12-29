@@ -16,7 +16,7 @@ const Footer = () => {
     try {
       const { res, err } = await getFooterData();
       if (res?.data) {
-        console.log(res.data);
+        console.log("this is footer",res.data);
         setFooterData(res.data)
       }
     } catch (error) {
@@ -63,10 +63,15 @@ const Footer = () => {
           <p>{footerData?.SEBI_Regional_Office?.Websiteurl}</p>
         </div>
         <div className={`${styles.footerSection} ${styles.socialMedia}`}>
-          <h4>Follow us</h4>
-          <Link className={styles.linkText} href="#"><Image src={linkedinIcon} alt="linkdinIcon"/></Link>
-          <Link className={styles.linkText} href="#"><Image src={instagramIcon} alt="instagramIcon"/></Link>
-          <Link className={styles.linkText} href="#"><Image src={youtubeIcon} alt="youtubeIcon"/></Link>
+        <h4>Follow us</h4>
+        {footerData?.FollowUs?.length>0&&
+            footerData?.FollowUs.map((foll,index)=>(
+              <Link href={foll?.link} key={index}>
+                <Image src={foll?.image}  className={`${styles.follows_logo}` } width={34} height={34} alt="social media icons"/> 
+              </Link>
+            ))
+       
+          }
         </div>
       </div>
       <div className={styles.footersebiDescription}>
