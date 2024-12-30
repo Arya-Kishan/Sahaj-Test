@@ -7,7 +7,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 const Dropdown = ({ title, options }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  const dropdownRef = useRef(null); // Ref for the dropdown element
+  const dropdownRef = useRef(null); 
 
   const handleOptionClick = (path) => {
     router.push(path);
@@ -16,7 +16,7 @@ const Dropdown = ({ title, options }) => {
 
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      setIsOpen(false); // Close dropdown if click is outside
+      setIsOpen(false); 
     }
   };
 
