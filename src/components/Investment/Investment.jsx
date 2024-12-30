@@ -12,6 +12,7 @@ import { FaShareAlt } from 'react-icons/fa';
 
 const  Investment=({ content }) =>{
      const [isModalOpen, setIsModalOpen] = useState(false);
+     const [titleReverse, setTitleReverse]=useState(false)
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
@@ -45,6 +46,8 @@ const  Investment=({ content }) =>{
     
         window.open(shareUrl, '_blank');
       };
+      console.log("the title isss",content)
+      
     return (
         <div className={styles.mainContainer}>
             {content?.Content?.map((ele, index) => (
@@ -57,10 +60,55 @@ const  Investment=({ content }) =>{
                     {ele?.MainContent?.map((item, itemIndex) => (
                         <div key={itemIndex} className={styles.subSection}>
 
-                            <p className={styles.subHeader}>{item?.title}</p>
+{(item?.Points?.length === 0 && item?.ContentParagraph?.length === 0) && (
+    <p className={`${styles.subHeader} ${item?.reverse ? styles.reverse : ''}`}>
+        {item?.title}
+    </p>
+)}
                             {item?.Content && <p className={styles.subContent}>{item?.Content}</p>}
                             <div  className={`${styles.contentContainer} ${itemIndex % 2 !== 0 ? styles.rowreversecontainer : ''}`}>
-                            <div className={`${styles.pointbox} ${itemIndex % 2 !== 0 ? styles.rowreverse : ''}`}>
+                         { (item?.Points?.length > 0  || item?.ContentParagraph.length > 0) &&  <div className={`${styles.pointbox} ${itemIndex % 2 == 0 ? styles.rowreverse : ''}`}>
+                                <div className={styles.ulContainer}>
+                                <h4 className={styles.subHeader} >{item?.title}</h4>
+                                
+                                    {(item?.Points?.length > 0 )&& (
+                                        <ul className={styles.listBox}>
+                                            {item.Points.map((point, pointIndex) => (
+                                                <li key={pointIndex}>{point}</li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                     {( item?.ContentParagraph.length > 0)&& (
+                                        <ul className={styles.listBox}>
+                                            {item?.ContentParagraph.map((point, pointIndex) => (
+                                                <li key={pointIndex}>{point}</li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+
+                                <div className={styles.imageBox}>
+                                    {item?.Image && (
+                                        <img
+                                            src={item.Image}
+                                            alt={item.title}
+                                            className={styles.image}
+                                            // width={470}
+                                            // height={220}
+                                          
+                                            // width={1200} 
+                                            // height={800} 
+                                           // unoptimized
+                                          
+                                           
+                                        />
+                                    )}
+                                </div>
+                            </div> }  
+
+                      
+                        
+                            {/* <div className={`${styles.pointbox} ${itemIndex % 2 !== 0 ? styles.rowreverse : ''}`}>
                                 <div className="">
                                 <h4 className={styles.subHeader} >{item?.title}</h4>
                                 
@@ -85,7 +133,7 @@ const  Investment=({ content }) =>{
                                         />
                                     )}
                                 </div>
-                            </div>
+                            </div> */}
                             {/* <div className={styles.description}>some contrnt ssssssssssssssssssssssssssssssssssss</div> */}
                             </div>
                 
