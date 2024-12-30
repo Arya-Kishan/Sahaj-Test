@@ -50,6 +50,14 @@
     border-right: none;
     border-radius: 4px 0 0 4px;
   }
+  .error{
+    margin-top: 70px;
+    position: absolute;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    color: red;
+  }
   
   .Pinput {
     width: 80%;
