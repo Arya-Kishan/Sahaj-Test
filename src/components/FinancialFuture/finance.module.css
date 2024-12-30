@@ -123,17 +123,18 @@ height:100%;
     margin-top: -30px;
 }
 .imageBox{
-    width: 100%;
+ 
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
-  
+   align-items: center;
     gap: 10px;
-        /* justify-content: center; */
     
 }
 .imgIndex{
     margin: 8px;
+    width:250px;
+    height: 40px;
  
 }
 .socials{
@@ -267,5 +268,13 @@ gap: 24px;
     }
     .founderInfo{
         flex-direction: column;
+    }
+    .imageBox{
+        flex-direction: column;
+
+    }
+    .ulPoints{
+        margin-left: 20px;
+
     }
 }

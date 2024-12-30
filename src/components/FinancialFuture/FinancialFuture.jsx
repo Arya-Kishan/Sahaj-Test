@@ -67,7 +67,7 @@ const FinancialFuture = ({ content }) => {
                                                 <div className={styles.founderDetailsContentContainer}>
                                                     <p>{ele?.Content || ele?.ContentParagraph}</p>
                                                     {ele?.Points ? <>
-                                                        <ul>
+                                                        <ul className={styles.ulPoints}>
                                                             {ele?.Points.map((list, i) => <li key={i}>{list}</li>)}
                                                         </ul>
                                                     </> : ''}
