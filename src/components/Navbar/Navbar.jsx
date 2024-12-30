@@ -113,8 +113,7 @@ function Navbar() {
         </div>
       )}
       <BookCallModal isOpen={isBookCallModalOpen} onClose={() => dispatch(toggleBookCallModal())} />
-    </div>
-    
+    </div>  
   );
 }
 
