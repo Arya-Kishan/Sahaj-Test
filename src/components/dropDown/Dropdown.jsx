@@ -1,28 +1,43 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation"; 
 import styles from "./Dropdown.module.css";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const Dropdown = ({ title, options }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter(); 
+  const router = useRouter();
+  const dropdownRef = useRef(null); // Ref for the dropdown element
 
   const handleOptionClick = (path) => {
-    router.push(path); 
+    router.push(path);
     setIsOpen(false);
   };
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false); // Close dropdown if click is outside
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
-    <div className={styles.dropdown}>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={styles.buttons}
-      >
+    <div ref={dropdownRef} className={styles.dropdown}>
+      <button onClick={toggleDropdown} className={styles.buttons}>
         <p>{title}</p>
-        <span className={styles.icon}>
-          {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
-        </span>
+        <IoIosArrowDown
+          className={`${styles.icon} ${isOpen ? styles.rotate : ""}`}
+        />
       </button>
 
       {isOpen && (

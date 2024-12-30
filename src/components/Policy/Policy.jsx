@@ -5,8 +5,9 @@ import ReviewsContainer from '../Blog/Reviews/ReviewsContainer'
 const PrivacyPolicy = () => {
   return (
     <>
-
-      <header className={styles.header}>Privacy Policy</header>
+       <div className={styles.header}>
+      <header className={styles.header1} >Privacy Policy</header>
+      </div>
       <div className={styles.privacyPolicy}>
         <h1 className={styles.title}>Privacy Policy</h1>
         <p className={styles.date}>Effective Date: Dec 20, 2024</p>
