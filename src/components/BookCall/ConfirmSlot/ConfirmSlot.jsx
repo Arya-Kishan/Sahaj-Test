@@ -124,7 +124,7 @@ function ConfirmSlot({ ResetData, formData, formatDate }) {
                     <div className={styles.progressBox}>
                         <div className={styles.stepBox}>
                             <h3 className={styles.step1}>1</h3>
-                            <p>{formData.timeslot}
+                            <p>{formData.timeslot}{" "}
                                 <span>
                                     {formData?.date
                                         ? formData.date.toLocaleDateString('en-US', {
