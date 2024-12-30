@@ -28,7 +28,7 @@ const SectionOne = () => {
 
 
     return (
-        <div className={styles.sectionOneContainer}>
+        <div  className={styles.sectionOneContainer}>
             {Data &&
                 Data?.map((item, index) => 
                    (
@@ -42,10 +42,9 @@ const SectionOne = () => {
 
                         <div className={styles.infoimgBox}>
                             <iframe
-                                width={300}
-                                height={300}
+                                
                                 className={styles.infoimg}
-                                src={item?.VideoLink}
+                                src={item?.VideoLink || "https://www.youtube.com/watch?v=JJ"}
                                 title="YouTube video player"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
