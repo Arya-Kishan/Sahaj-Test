@@ -71,12 +71,7 @@
     font-weight: 400;
     text-align: left;
 }
-.founderDetailsContent{
 
-    
-
-
-}
 /* .founderInfo img{
     width: 432px;
     height: 380px;
@@ -105,4 +100,27 @@
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
+}
+@media (max-width:768px) {
+
+    .SmallMainTitle {
+
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 42px;
+        
+
+    }
+
+    .SmallMainDescription {
+
+        font-size: 16px;
+    }
+   
+    .subHeader {
+
+        font-size: 16px;
+        line-height: 24px;
+
+    }
 }

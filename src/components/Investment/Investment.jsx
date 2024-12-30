@@ -1,4 +1,5 @@
 import styles from "./Investment.module.css";
+import Image from "next/image";
 
 function Investment({ content }) {
     return (
@@ -6,15 +7,16 @@ function Investment({ content }) {
             {content?.Content?.map((ele, index) => (
                 <div key={index} className={styles.section}>
                     <div className={styles.heading}>
-                        <h3>{ele?.SmallMainTitle}</h3>
-                        <p>{ele?.SmallDescription}</p>
+                        <p className={styles.SmallMainTitle}>{ele?.SmallMainTitle}</p>
+                        <p className={styles.SmallDescription}>{ele?.SmallDescription}</p>
                     </div>
 
                     {ele?.MainContent?.map((item, itemIndex) => (
                         <div key={itemIndex} className={styles.subSection}>
 
-                            <h4 className={styles.subHeader}>{item?.title}</h4>
-                            {item?.Content && <p>{item?.Content}</p>}
+                            <p className={styles.subHeader}>{item?.title}</p>
+                            {item?.Content && <p className={styles.subContent}>{item?.Content}</p>}
+                            <div  className={`${styles.contentContainer} ${itemIndex % 2 !== 0 ? styles.rowreversecontainer : ''}`}>
                             <div className={`${styles.pointbox} ${itemIndex % 2 !== 0 ? styles.rowreverse : ''}`}>
                                 <div className="">
                                 <h4 className={styles.subHeader} >{item?.title}</h4>
@@ -30,15 +32,20 @@ function Investment({ content }) {
 
                                 <div className={styles.imageBox}>
                                     {item?.Image && (
-                                        <img
+                                        <Image
                                             src={item.Image}
                                             alt={item.title}
                                             className={styles.image}
+                                            width={470}
+                                            height={250}
+                                           
                                         />
                                     )}
                                 </div>
                             </div>
-
+                            <div className={styles.description}>some contrnt ssssssssssssssssssssssssssssssssssss</div>
+                            </div>
+                
                         </div>
                     ))}
                 </div>

@@ -9,7 +9,8 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['sahajmoney-bucket.s3.ap-south-1.amazonaws.com','sahajmoney.com']
+    //for tetsing adding (img.freepik.com) should be removed later
+    domains: ['sahajmoney-bucket.s3.ap-south-1.amazonaws.com','sahajmoney.com','img.freepik.com']
 },
 
   env: {

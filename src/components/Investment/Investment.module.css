@@ -1,6 +1,6 @@
-.mainContainer{
+.mainContainer {
     width: 100%;
-    height:fit-content ;
+    height: fit-content;
     padding: 100px;
     display: flex;
     flex-direction: column;
@@ -8,7 +8,12 @@
     justify-content: center;
 }
 
-.heading{
+/* .section{
+    display: flex;
+    flex-direction: column;
+    gap:40px;
+} */
+.heading {
     margin: auto;
     width: 80%;
     display: flex;
@@ -17,49 +22,108 @@
     align-items: center;
     justify-content: center;
 }
-.heading h3{
-    width: 800px;
-    font-size: 48px;
+
+.SmallMainTitle {
+
+    max-width: 800px;
     font-family: Roboto;
+    font-size: 48px;
     font-weight: 700;
+    line-height: 56.25px;
     text-align: center;
+
 }
-.heading p{
+
+.SmallDescription {
     font-size: 20px;
     font-family: Manrope;
     font-weight: 400;
     color: #000000;
+
 }
-.subSection{
-}
-.pointbox{
+
+.subSection {}
+
+.pointbox {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
     gap: 8px;
 }
-.imageBox{
+
+.imageBox {
     width: 477px;
     height: 212px;
     border-radius: 12px;
 }
-.image{
+
+.image {
     width: 100%;
     height: 100%;
     border-radius: 12px;
 }
-.listBox{
+
+.listBox {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-.subHeader{
+
+.subHeader {
     font-size: 24px;
     font-family: Roboto;
     font-weight: 600;
     margin-bottom: 8px;
+    line-height: 36px;
 }
-.rowreverse{
+
+.subContent {
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--Color-black-75, #000000BF);
+
+}
+
+.rowreverse {
     flex-direction: row;
+}
+
+.description {
+    border: 2px solid red;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.rowreversecontainer {
+    flex-direction: column-reverse;
+}
+
+@media (max-width:768px) {
+
+    .SmallMainTitle {
+
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 36px;
+        letter-spacing: -0.5px;
+
+    }
+
+    .SmallDescription {
+
+        font-size: 16px;
+    }
+
+    .subHeader {
+
+        font-size: 16px;
+        line-height: 24px;
+
+    }
 }

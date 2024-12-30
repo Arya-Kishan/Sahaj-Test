@@ -56,4 +56,14 @@
     font-weight: 400;
     color: #FFFFFF;
   }
-  
+  @media (max-width:768px) {
+    .heading {
+      font-size: 28px;
+      line-height: 42px;
+    }
+    
+    .subHeading {
+      font-size: 16px;
+    }
+    
+  }

@@ -20,7 +20,7 @@ function FinancialFuture({ content }) {
                                         <div className={styles.founderDetails}>
                                             <p className={styles.founderDetailsHeading}>{ele?.title}</p>
                                             <div className={styles.founderDetailsContentContainer}>
-                                                <p className={styles.founderDetailsContent}>{ele?.Content}</p>
+                                                <p>{ele?.Content}</p>
                                                 {ele?.Points ? <>
                                                 <ul>
                                                     {ele?.Points.map((list, i)=><li key={i}>{list}</li>)}
