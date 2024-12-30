@@ -93,14 +93,6 @@ const  Investment=({ content }) =>{
                                             src={item.Image}
                                             alt={item.title}
                                             className={styles.image}
-                                            // width={470}
-                                            // height={220}
-                                          
-                                            // width={1200} 
-                                            // height={800} 
-                                           // unoptimized
-                                          
-                                           
                                         />
                                     )}
                                 </div>

@@ -12,6 +12,7 @@ function Philosophy() {
        const data = {
             Title:"Our investment philosophy"
         }
+               
         try {
             const {res, err} = await getSingleInvestmentData(data);
             if(res){
