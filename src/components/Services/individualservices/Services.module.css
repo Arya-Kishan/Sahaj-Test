@@ -1,7 +1,7 @@
 .services {
     padding: 100px;
     background-color: #ffffff;
-    font-family: Roboto;
+    font-family: "Roboto";
   }
   .expertBox{
     width: 100%;
@@ -103,7 +103,7 @@
   }
   .section p {
     font-size: 20px;
-    font-family: Manrope;
+    font-family: "Manrope";
     font-weight: 400;
     color: #000000BF;
   }
@@ -117,6 +117,7 @@
     width: 360px;
     height: 576px;
     border-radius: 12px;
+    object-fit: cover;
   }
   .nonactive{
     color: #00000080;
