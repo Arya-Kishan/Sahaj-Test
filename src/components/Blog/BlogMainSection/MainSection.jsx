@@ -77,7 +77,17 @@ const MainSection = ({ data }) => {
                     </div>
                 </div>   </div>
             <div className={styles.imgBox}>
-                <img src={data?.BlogImage} alt="MainBlogImage" className={styles.mainImg}/>
+            {data?.BlogImage ? (
+            <Image 
+                src={data?.BlogImage} 
+                alt="MainBlogImage" 
+                className={styles.mainImg} 
+                width={800}
+                height= {400}
+            />
+            ) : (
+            <div>No Image Available</div>
+            )}
             </div>
             <div className={styles.descriptionContainer}>
 

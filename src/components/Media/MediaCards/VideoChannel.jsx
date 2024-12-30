@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image";
 import { useState, useEffect } from 'react';
-import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
 import Link from "next/link";
@@ -16,37 +15,24 @@ const VideoChanelMediaCards = ({ filteredData = [], activeTab, searchQuery }) =>
         setVisibleCount((prevCount) => prevCount + 3);
     };
 
-
-    const filteredCards = filteredData.filter((card) => {
-        const cardText = [
-            // card.subheading,
-            card.Title,
-            card.date,
-            card.description,
-            card.category,
-        ].join(' ').toLowerCase();
-
-        return cardText.includes("".toLowerCase());
-    });
-
     useEffect(() => {
         setVisibleCount(3);
     }, [filteredData, searchQuery]);
 
 
-    const visibleData = isMobile ? filteredCards.slice(0, visibleCount) : filteredCards;
+    const visibleData = isMobile ? filteredData.slice(0, visibleCount) : filteredData;
 
-    if (filteredCards.length === 0) {
+    if (visibleData.length === 0) {
         return <p className={styles.noDataMessage}>No items to display.</p>;
     }
 
     return (
         <>
-            {filteredData.map((cardData, index) => (
+            {visibleData.map((cardData, index) => (
                 <div className={styles.cardfullContainer} key={index}>
                     <div className={styles.cardContainer}>
                         <div className={styles.imgContainer}>
-                            <img src={cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} />
+                        {cardData.CoverImage &&    <Image src={cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/> } 
 
                             {cardData.VideoLink ? (
                                 <Link href={cardData?.VideoLink} passHref>
@@ -117,22 +103,22 @@ const VideoChanelMediaCards = ({ filteredData = [], activeTab, searchQuery }) =>
                             {cardData.VideoCompanyFrom && <p className={styles.subheading}>{cardData.VideoCompanyFrom}</p>}
                             <p className={styles.heading}>{cardData.VideoTitle}</p>
                             {/* <p className={styles.description}>{cardData.VideoDescription}</p> */}
-                            <p className={styles.cardDate}>{FormateDate(cardData.createdAt)}</p>
+                            <p className={styles.cardDateVideo}>{FormateDate(cardData.createdAt)}</p>
                         </div>
 
-                        {cardData.Tags && (
+                        {/* {cardData.Tags && (
                             <div className={styles.blogCardButtonsContainer}>{
                                 cardData.Tags.map((tags, index) => (
                                     <button className={styles.blogCardButton} key={index}>{tags}</button>
                                 ))
                             }
                             </div>
-                        )}
+                        )} */}
                     </div>
                 </div>
             ))}
 
-            {isMobile && visibleCount < filteredCards.length && (
+            {isMobile && visibleCount < filteredData.length && (
                 <button onClick={handleLoadMore} className={styles.loadMoreButton}>
                     Load More
                 </button>

@@ -10,7 +10,8 @@
     padding: 40px 100px 40px 100px;
     display: flex;
     justify-content: space-between;
-    /* border-bottom: 2px solid #333; */
+    border-bottom: 2px solid var(--Color-gold-15, #C1882326);
+
 }
 
 .brands {
@@ -114,6 +115,14 @@
     display: flex;
     gap:24px;
 }
+.footersebiDescription{
+    padding:40px 100px 40px 100px;
+    gap: 10px;
+    border-radius: 12px 0px 0px 0px;
+    font-family: Manrope;
+    font-weight: 300;
+    text-align: left;    
+}
 
 .follows_logo{
     width: 30px;
@@ -141,6 +150,9 @@
 
     .footerBottom {
         flex-direction: column;
+        padding: 16px;
+    }
+    .footersebiDescription{
         padding: 16px;
     }
     .termBox{

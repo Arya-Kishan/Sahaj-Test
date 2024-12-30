@@ -6,53 +6,57 @@ import styles from "./mediaCards.module.css";
 import { useIsMobile } from "./useIsMobile";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import {
-  setActiveTab,
-  setSearchQuery,
-  setFilteredData,
-  setIsSearching,
-  setMediaData,
-  setCombinedData,
-} from "../../../store/slices/mediaSlice";
 import FormateDate from "../FormateDate";
 
-const MediaCards = ({ filteredData = [], activeTab }) => {
+const MediaCards = ({ filteredData = [],  }) => {
   const [visibleCount, setVisibleCount] = useState(3);
-
-  const filteredDataRedux = useSelector((state) => state.media.filteredData);
-  const isSearching = useSelector((state) => state.media.isSearching);
+  const [filteredResults,setFilteredResults]=useState(filteredData)
   const combinedData = useSelector((state) => state.media.combinedData);
   const searchQuery = useSelector((state) => state.media.searchQuery);
+  const activeTab = useSelector((state) => state.media.activeTab);
   const isMobile = useIsMobile();
   const dispatch = useDispatch();
-
-  console.log("Redux Data:", isSearching, combinedData, filteredDataRedux, filteredData);
+  console.log("the combined data",combinedData)
+  console.log("the intial filtered data",filteredData)
+  console.log("the search filtered data",filteredResults)
 
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 3);
   };
 
-
-  const filteredCards = filteredData.filter((card) => {
-    const cardText = [
-      card.Title || card.PodcastTitle || card.title || card.VideoTitle || card.MediaTitle,
-    ]
-      .join(" ")
-      .toLowerCase();
-
-    return cardText.includes(searchQuery?.toLowerCase());
-  });
-
   useEffect(() => {
-
+  
     setVisibleCount(3);
 
   }, [filteredData, searchQuery, dispatch]);
 
-  const visibleData = isMobile ? filteredCards.slice(0, visibleCount) : filteredCards;
 
-  if (filteredCards.length === 0) {
-    return <p className={styles.noDataMessage}>No items to display.</p>;
+//the search results will include  all keys of object   even we are not showing everything in dispaly cards
+
+  useEffect(() => {
+    function filterObjectsBySearchQuery(objects, searchQuery) {
+      return objects.filter((obj) => {
+        return Object.keys(obj).some((key) => {
+          const value = obj[key];
+          return (
+            typeof value === "string" &&
+            value.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+        });
+      });
+    }
+  
+    const tempFilteredResults = filterObjectsBySearchQuery(combinedData, searchQuery);
+    setFilteredResults(tempFilteredResults);
+  
+  }, [combinedData, searchQuery]); 
+  
+
+  const visibleData = isMobile ? filteredResults.slice(0, visibleCount) : filteredResults;
+ 
+
+  if (visibleData.length === 0) {
+      return <p className={styles.noDataMessage}>No items to display.</p>;
   }
 
   return (
@@ -61,15 +65,21 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-              <img
-                src={
-                  cardData?.CoverageImage ||
+            {
+                 (cardData?.CoverageImage ||
                   cardData.CoverImage ||
-                  cardData?.BlogImage
+                  cardData?.BlogImage) &&   <Image
+                  src={
+                    cardData?.CoverageImage ||
+                    cardData.CoverImage ||
+                    cardData?.BlogImage
+                  }
+                  alt={"CoverImage"}
+                  className={styles.cardImg}
+                  width={350} height={238}
+                />
                 }
-                alt={"CoverImage"}
-                className={styles.cardImg}
-              />
+             
               {activeTab === "podcast" && (
                 <svg
                   width="80"
@@ -157,9 +167,9 @@ const MediaCards = ({ filteredData = [], activeTab }) => {
         </div>
       ))}
 
-      {isMobile && visibleCount < filteredCards.length && (
-        <button onClick={handleLoadMore} className={styles.loadMoreButton}>
-          Load More
+     {isMobile && visibleCount < filteredData.length && (
+                <button onClick={handleLoadMore} className={styles.loadMoreButton}>
+                    Load More
         </button>
       )}
     </>

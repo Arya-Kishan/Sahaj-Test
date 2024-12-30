@@ -9,44 +9,32 @@ import FormateDate from "../FormateDate";
 const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
     const [visibleCount, setVisibleCount] = useState(3);
 
-   
+
     const isMobile = useIsMobile();
 
     const handleLoadMore = () => {
         setVisibleCount((prevCount) => prevCount + 3);
     };
 
-
-    const filteredCards = filteredData.filter((card) => {
-        const cardText = [
-            // card.subheading,
-            card?.title,
-            // card.date,
-            // card.description,
-            // card.category,
-        ].join(' ').toLowerCase();
-
-        return cardText.includes("".toLowerCase());
-    });
-
     useEffect(() => {
         setVisibleCount(3);
     }, [filteredData, searchQuery]);
 
 
-    const visibleData = isMobile ? filteredCards.slice(0, visibleCount) : filteredCards;
+    const visibleData = isMobile ? filteredData.slice(0, visibleCount) : filteredData;
 
-    if (filteredCards.length === 0) {
+    if (visibleData.length === 0) {
         return <p className={styles.noDataMessage}>No items to display.</p>;
     }
-    
+
     return (
         <>
-            {filteredData.map((cardData, index) => (
+            {visibleData.map((cardData, index) => (
                 <div className={styles.cardfullContainer} key={index}>
                     <div className={styles.cardContainer}>
                         <div className={styles.imgContainer}>
-                            <img src={cardData?.BlogImage} alt={"CoverImage"} className={styles.cardImg} />
+                            {cardData?.BlogImage &&  <Image src={cardData?.BlogImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/>}
+                           
                         </div>
                         <div className={styles.textContainer}>
                             <p className={styles.heading}>{cardData?.title}</p>
@@ -73,7 +61,7 @@ const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
                 </div>
             ))}
 
-            {isMobile && visibleCount < filteredCards.length && (
+            {isMobile && visibleCount < filteredData.length && (
                 <button onClick={handleLoadMore} className={styles.loadMoreButton}>
                     Load More
                 </button>

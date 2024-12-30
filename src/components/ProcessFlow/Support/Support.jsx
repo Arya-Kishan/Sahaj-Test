@@ -1,5 +1,6 @@
 "use client"
 
+import Image from 'next/image';
 import styles from './support.module.css';
 
 function Support({ ProcessContent }) {
@@ -19,12 +20,13 @@ function Support({ ProcessContent }) {
           </ul>
         </div>
         <div className={styles.imageSection}>
-         <img
+         <Image
             src={imageSrc}
             alt="Ongoing Support"
             className={styles.image}
             width={611}
             height={249}
+            unoptimized
           />
         </div>
       </div>

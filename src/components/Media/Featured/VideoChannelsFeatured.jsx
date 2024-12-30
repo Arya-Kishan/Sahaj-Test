@@ -25,7 +25,7 @@ const VideochannelsFeatured = ({ data }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
-        {singlefeaturedData[0]?.CoverImage && <img src={singlefeaturedData[0]?.CoverImage} alt="Video channels featured" />}
+        {singlefeaturedData[0]?.CoverImage && <Image src={singlefeaturedData[0]?.CoverImage} alt="Video channels featured"  width={600}  height={350}  className={styles.videoimg}/>}
         {singlefeaturedData[0]?.VideoLink ? (
           <Link href={singlefeaturedData[0]?.VideoLink} passHref>
          
@@ -75,7 +75,7 @@ const VideochannelsFeatured = ({ data }) => {
           </svg>
         )}
       </div>
-      <div className={styles.textContainer}>
+      <div className={styles.videotextContainer}>
         <div className={styles.subHeadingContainer}>
           <p className={styles.VCdateContainer}>{FormateDate(singlefeaturedData[0]?.createdAt)}</p>
           <div className={styles.shareIcon}>
@@ -87,7 +87,7 @@ const VideochannelsFeatured = ({ data }) => {
           <p className={styles.heading}>{singlefeaturedData[0]?.VideoTitle}</p>
           <p className={styles.descriptioncontainer}>{singlefeaturedData[0]?.VideoDescription}</p>
         </div>
-        <ReadMore text={"Learn More"} />
+      
       </div>
     </div>
   );
