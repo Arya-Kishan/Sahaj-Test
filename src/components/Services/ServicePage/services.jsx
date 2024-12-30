@@ -96,7 +96,7 @@ function ServicesPage() {
         </ul>
         </div>
         <div className={styles.expertBox}>
-        <div class={styles.content}>
+        <div className={styles.content}>
           <p className={styles.headline}>Download Your Free Financial Plan</p>
           <p className={styles.para}>See how <span className={styles.head}>Sahaj<span className={styles.money}>Money</span></span> simplifies financial planning </p></div>
   <button className={styles.downloadButton} onClick={() => setIsModalOpen(true)} >Download Now</button>
