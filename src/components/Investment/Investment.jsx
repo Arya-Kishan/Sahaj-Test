@@ -8,7 +8,7 @@ function Investment({ content }) {
                 <div key={index} className={styles.section}>
                     <div className={styles.heading}>
                         <p className={styles.SmallMainTitle}>{ele?.SmallMainTitle}</p>
-                        <p className={styles.SmallDescription}>{ele?.SmallDescription}</p>
+                        <p className={styles.SmallDescription}>{ele?.SmallMainDescription}</p>
                     </div>
 
                     {ele?.MainContent?.map((item, itemIndex) => (
@@ -18,7 +18,7 @@ function Investment({ content }) {
                             {item?.Content && <p className={styles.subContent}>{item?.Content}</p>}
                             <div  className={`${styles.contentContainer} ${itemIndex % 2 !== 0 ? styles.rowreversecontainer : ''}`}>
                             <div className={`${styles.pointbox} ${itemIndex % 2 !== 0 ? styles.rowreverse : ''}`}>
-                                <div className="">
+                                <div className={styles.ulContainer}>
                                 <h4 className={styles.subHeader} >{item?.title}</h4>
                                 
                                     {item?.Points?.length > 0 && (
@@ -43,7 +43,7 @@ function Investment({ content }) {
                                     )}
                                 </div>
                             </div>
-                            <div className={styles.description}>some contrnt ssssssssssssssssssssssssssssssssssss</div>
+                            {/* <div className={styles.description}>some contrnt ssssssssssssssssssssssssssssssssssss</div> */}
                             </div>
                 
                         </div>

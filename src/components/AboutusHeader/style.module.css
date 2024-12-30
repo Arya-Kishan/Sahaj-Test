@@ -57,6 +57,9 @@
     color: #FFFFFF;
   }
   @media (max-width:768px) {
+    .header {
+      padding: 32px 16px;
+    }
     .heading {
       font-size: 28px;
       line-height: 42px;

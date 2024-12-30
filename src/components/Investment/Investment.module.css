@@ -8,23 +8,27 @@
     justify-content: center;
 }
 
-/* .section{
+.section{
     display: flex;
     flex-direction: column;
     gap:40px;
-} */
+    width:100%;
+    margin-bottom: 10px;
+}
 .heading {
     margin: auto;
-    width: 80%;
+    /* width: 80%; */
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 16px;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
 }
 
 .SmallMainTitle {
-
+    display: flex;
+    flex-direction: column;
     max-width: 800px;
     font-family: Roboto;
     font-size: 48px;
@@ -42,10 +46,15 @@
 
 }
 
-.subSection {}
+.subSection {
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+}
 
 .pointbox {
     display: flex;
+    width: 100%;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
@@ -53,8 +62,9 @@
 }
 
 .imageBox {
-    width: 477px;
-    height: 212px;
+    /* width: 477px;
+    height: 212px; */
+    width:100%;
     border-radius: 12px;
 }
 
@@ -71,6 +81,8 @@
 }
 
 .subHeader {
+    /* display: flex;
+    flex-direction: column; */
     font-size: 24px;
     font-family: Roboto;
     font-weight: 600;
@@ -79,6 +91,9 @@
 }
 
 .subContent {
+    display: flex;
+    flex-direction: column;
+    /* max-width: 1000px; */
     font-family: Manrope;
     font-size: 16px;
     font-weight: 400;
@@ -103,11 +118,34 @@
 .rowreversecontainer {
     flex-direction: column-reverse;
 }
-
+.ulContainer{
+    display: flex;
+    flex-direction: column;
+}
 @media (max-width:768px) {
+    .heading {
+        /* max-width: 500px; */
+    }
+    .mainContainer {
+       
+padding: 24px 16px 24px 16px;
+gap: 24px;
+
+
+    }
+    .section{
+        padding: 0px;
+    }
+    .subSection{
+        align-items: center;
+        width:80%;
+
+    }
 
     .SmallMainTitle {
-
+        flex-direction: column;
+        /* width: 500px; */
+        width:80%;
         font-size: 24px;
         font-weight: 600;
         line-height: 36px;
@@ -118,6 +156,7 @@
     .SmallDescription {
 
         font-size: 16px;
+        max-width: 500px;
     }
 
     .subHeader {
@@ -125,5 +164,22 @@
         font-size: 16px;
         line-height: 24px;
 
+    }
+    .subContent {
+       
+       text-align: center;
+      padding: 5px;
+      width:80%;
+    
+    }
+    .ulContainer{
+        align-items: center;
+        text-align: center;
+    }
+    .pointbox {
+        flex-direction: column;
+    }
+    .listBox{
+        align-items: center;
     }
 }

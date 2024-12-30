@@ -15,7 +15,7 @@ function Philosophy() {
         try {
             const {res, err} = await getSingleInvestmentData(data);
             if(res){
-                // console.log(res?.data);
+                console.log("investment philosophy data",res?.data);
                 setContent(res?.data);
             }
             else{
