@@ -13,8 +13,8 @@ const WhyChooseUs = () => {
     try {
       const { res, err } = await getWhyChooseUsData();
       if (res?.data) {
-        // console.log(res?.data.data);
-        setData(res?.data?.data)
+        console.log(res?.data?.data[0]?.reasons);
+        setData(res?.data?.data[0]?.reasons)
       }
       else{
         setData([])
