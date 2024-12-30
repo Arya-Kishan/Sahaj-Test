@@ -77,21 +77,6 @@ const FinancialFuture = ({ content }) => {
                                            {ele?.Image && <div className={styles.founderImageBox}>
                                                 <img src={ele?.Image} alt="image" srcSet="" />
                                             </div>} 
-                                        
-                                            {/* {ele?.ImageList?.length > 0 && (
-                                                <div className={styles.featurIn}>
-                                                   
-                                                    <div className={styles.imageBox}>
-                                                        {ele.ImageList.map((imgs, imgIndex) => (
-                                                            <div key={imgIndex} className={styles.imgIndex}>
-                                                                <Image src={imgs.FileLink} alt={`Featured image ${imgIndex + 1}`} width={250} height={40} />
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )} */}
-
-
                                         </div>
                                         {ele?.ImageList?.length > 0 && (
                                                 <div className={styles.featurIn}>
