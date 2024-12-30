@@ -123,7 +123,7 @@ const Carousel = ({ bannerData }) => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
-                  <Image
+                  {/* <Image
                     src={playlogo}
                     alt="play button"
                     className={styles.playButton}
@@ -132,7 +132,7 @@ const Carousel = ({ bannerData }) => {
                       const player = new YT.Player(iframe);
                       player.playVideo();
                     }}
-                  />
+                  /> */}
                 </div>
               </div>
             ) : (
