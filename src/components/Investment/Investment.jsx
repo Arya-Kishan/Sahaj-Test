@@ -96,9 +96,15 @@ const  Investment=({ content }) =>{
        <div className={styles.socials}>
                         <div className={styles.followIcons}>
                             <div className={styles.followText} >Follow Us</div>
-                            <Image src={lindinimg} alt="LinkedinIconImage" />
-                            <Image src={instagramIcon} alt="instagramIconImage" />
-                            <Image src={EllipseIcon} alt="EllipseIconImage" />
+                          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                                                         <Image src={lindinimg} alt="Linkedin Icon" />
+                                                     </a>
+                                                     <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                                                         <Image src={instagramIcon} alt="Instagram Icon" />
+                                                     </a>
+                                                     <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+                                                         <Image src={EllipseIcon} alt="Ellipse Icon" />
+                                                     </a>
                         </div>
                         <div className={styles.shareIcons} onClick={toggleModal}>
                             <FaShareAlt size={24} />
