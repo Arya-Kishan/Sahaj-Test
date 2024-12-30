@@ -1,36 +1,39 @@
-"use client"
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import styles from './FinanceQuestions.module.css';
-import imageSrc from '../../../assests/Home/whatdo.webp'
+"use client";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import styles from "./FinanceQuestions.module.css";
+import imageSrc from "../../../assests/Home/whatdo.webp";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import Link from 'next/link';
+import Link from "next/link";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import BookCallModal from '@/components/BookCall/BookCall';
+import BookCallModal from "@/components/BookCall/BookCall";
 
 const questions = [
-    "Will I ever be able to save enough?",
-    "How can I ensure a comfortable retirement with limited savings?",
-    "Am I on the right track to achieve my financial goals?",
-    "How can I simplify my finances and reduce stress?"
+  "Will I ever be able to save enough?",
+  "How can I ensure a comfortable retirement with limited savings?",
+  "Am I on the right track to achieve my financial goals?",
+  "How can I simplify my finances and reduce stress?",
 ];
 
 const FinanceQuestions = ({ financeData }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [financeInfo, setFinanceData] = useState([])
-    const [overwhelmed, setOverwhelmed] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [financeInfo, setFinanceData] = useState([]);
+  const [overwhelmed, setOverwhelmed] = useState([]);
 
-
-    useEffect(() => {
-        if (financeData) {
-            setFinanceData(financeData[0]?.WhatWeDoForYou);
-            setOverwhelmed(financeData[0]?.HomeScreenFinanceLits);
-            console.log(financeData[0]?.WhatWeDoForYou)
-        }
-    }, [financeData])
+  useEffect(() => {
+    if (financeData) {
+      setFinanceData(financeData[0]?.WhatWeDoForYou);
+      setOverwhelmed(
+        financeData[0]?.HomeScreenFinanceLits?.list
+          ? financeData[0]?.HomeScreenFinanceLits?.list
+          : []
+      );
+      console.log(financeData[0]?.WhatWeDoForYou);
+    }
+  }, [financeData]);
 
     return (
         <><div className={styles.container}>

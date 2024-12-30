@@ -43,15 +43,15 @@ function Navbar() {
           <Dropdown
             title="How it works"
             options={[
-              { label: 'ProcessFlow', path: '/processflow' },
+              { label: 'Our Process', path: '/processflow' },
               { label: 'FAQs', path: '/faqs' },
             ]}
           />
           <Dropdown
             title="Media"
             options={[
-              { label: 'Podcast', path: '/media/podcast' },
               { label: 'Press coverage', path: '/media/pressCoverage' },
+              { label: 'Podcast', path: '/media/podcast' },
               { label: 'Video channels', path: '/media/videoChannel' },
               { label: 'Blogs', path: '/media/blogs' },
               { label: 'SM’s Customers in Media', path: '/media/customersInMedia' },
@@ -90,15 +90,15 @@ function Navbar() {
           <Dropdown
             title="How it works"
             options={[
-              { label: 'ProcessFlow', path: '/processflow' },
+              { label: 'Our Process', path: '/processflow' },
               { label: 'FAQs', path: '/faqs' },
             ]}
           />
           <Dropdown
             title="Media"
             options={[
-              { label: 'Podcast', path: '/media/podcast' },
               { label: 'Press coverage', path: '/media/press-coverage' },
+              { label: 'Podcast', path: '/media/podcast' },
               { label: 'Video channels', path: '/media/video' },
               { label: 'Blogs', path: '/media/blogs' },
               { label: 'SM’s Customers in Media', path: '/media/customers' },

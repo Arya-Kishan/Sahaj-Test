@@ -1,0 +1,76 @@
+.header {
+    padding: 60px 100px 60px 100px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    line-height: 56.25px;
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    gap: 16px;
+}
+
+.heading {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    letter-spacing: -0.5px;
+
+}
+
+.subheading {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23.44px;
+    letter-spacing: -0.5px;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23.44px;
+    letter-spacing: -0.5px;
+
+
+}
+
+.answer {
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--Color-black-75, #000000BF);
+
+}
+
+.subquestion {
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.subanswer {
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--Color-black-75, #000000BF);
+    margin-left: 25px;
+    
+}
+
+.questionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

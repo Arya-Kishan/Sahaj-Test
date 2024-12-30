@@ -1,5 +1,6 @@
 "use client"
 import { useState } from 'react';
+import Image from 'next/image';
 import styles from './suggestion.module.css';
 
 
@@ -20,8 +21,8 @@ const Card = ({ title, logo,description }) => {
   return (
     <div className={styles.card}>
       <div className={styles.logo}>
-        <img src={logo} alt="cardlogo" width={100} height={100}/>
-       
+        {  logo? <Image src={logo} alt="cardlogo" width={100} height={100}/> : <h1>logo</h1>  }
+        
         </div>
       <h3 className={styles.title}>{title}</h3>
      
