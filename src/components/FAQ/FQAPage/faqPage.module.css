@@ -39,7 +39,7 @@
 .filters{
     display: flex;
     flex-wrap: wrap;
-    gap: 32px;
+    gap: 9px;
 }
 .filterButton{
     padding: 10px 12px;
