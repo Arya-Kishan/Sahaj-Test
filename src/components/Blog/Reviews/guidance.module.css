@@ -1,18 +1,18 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 .financialGuidanceContanier{
     display: flex;
     flex-direction: column;
     gap:55px;
 }
 .financialGuidanceHeading{
-    font-family: Roboto;
+    font-family: "Roboto";
     font-size: 32px;
     font-weight: 700;
     line-height: 48px;
     letter-spacing: 0.2px;
 }
 .financialGuidancedescription{
-    font-family: Manrope;
+    font-family: "Manrope";
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 0.2px;
@@ -20,7 +20,7 @@
 }
 .financialGuidancedescription span{
     display: block;
-    font-family: Manrope;
+    font-family: "Manrope";
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 0.2px;
@@ -35,7 +35,7 @@
     background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
     margin-bottom: 30px;
     color:white;
-    font-family: Roboto;
+    font-family: "Roboto";
     font-size: 18px;
     font-weight: 600;
     line-height: 27px;

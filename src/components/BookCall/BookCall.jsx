@@ -13,7 +13,7 @@ const BookCallModal = ({ isOpen, onClose }) => {
         Name: "",
         email: "",
         phoneNumber: "",
-        date: new Date(),
+        date: "",
         timeslot: "",
         source: ""
     });
@@ -41,14 +41,14 @@ const BookCallModal = ({ isOpen, onClose }) => {
 
         return `${day}-${month}-${year}`;
     }
-    
+
     useEffect(() => {
         console.log(formData)
     }, [formData])
     const renderPhase = () => {
         switch (currentPhase) {
             case 1:
-                return <DateAndTime handleNext={handleNext} setFormData={setFormData} formData={formData} formatDate={formatDate}/>;
+                return <DateAndTime handleNext={handleNext} setFormData={setFormData} formData={formData} formatDate={formatDate} />;
             case 2:
                 return <CallForm handleNext={handleNext} setFormData={setFormData} formData={formData} />;
             case 3:
@@ -94,7 +94,22 @@ const BookCallModal = ({ isOpen, onClose }) => {
                             <div className={styles.progressBox}>
                                 <div className={styles.progressTab}>
                                     <h3>1</h3>
-                                    <p>Select date and time</p>
+                                    {formData?.date ? (
+                                        <div className={styles.date}>
+                                            <p>{formData.timeslot}{" "}
+                                                <span>
+                                                    {formData?.date
+                                                        ? formData.date.toLocaleDateString('en-US', {
+
+                                                            month: 'long',
+                                                            day: 'numeric',
+                                                            year: 'numeric'
+                                                        })
+                                                        : 'Select Date'}</span></p>
+                                        </div>
+                                    ) : (
+                                        <div className={styles.placeholder}>Select Date</div>
+                                    )}
                                 </div>
                                 <div className={styles.progressLine} ></div>
                                 <div className={styles.progressTab}>
@@ -114,7 +129,7 @@ const BookCallModal = ({ isOpen, onClose }) => {
 
 
                 </> : <>
-                    <ConfirmSlot ResetData={ResetData} formData={formData} formatDate={formatDate}/>
+                    <ConfirmSlot ResetData={ResetData} formData={formData} formatDate={formatDate} />
                 </>}
             </div>
         </div>

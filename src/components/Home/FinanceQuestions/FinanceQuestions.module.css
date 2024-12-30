@@ -98,9 +98,8 @@
 }
 
 .icons {
-  width: 24px;
-  height: 24px;
-  margin-top: 5px;
+  width: 24px !important;
+  height: 38px !important;
   
 }
 .mobileBox{

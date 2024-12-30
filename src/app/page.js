@@ -40,7 +40,6 @@ export default function Home() {
 
   return (
     <>
-
       <Carousel bannerData={homeData?.data || []} />
       <FeaturedIn featuredData={homeData?.data || []} />
       <FinanceQuestions financeData={homeData?.data || []} />

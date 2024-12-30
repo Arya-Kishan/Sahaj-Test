@@ -44,7 +44,7 @@ const ScrollToTopButton = () => {
     >
       <span
         className={`${styles.arrow} ${
-          isScrolledUp ? styles.up : styles.down
+          isScrolledUp ? "" : ""
         }`}
       >
         ↑

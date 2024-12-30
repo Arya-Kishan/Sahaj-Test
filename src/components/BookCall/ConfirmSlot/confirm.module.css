@@ -37,7 +37,6 @@
     justify-content: center;
     gap: 8px;
   }
-  .step1{}
   .stepBox{
     width: fit-content;
     height: fit-content;
@@ -50,9 +49,9 @@
    position: absolute;
     margin-top: -4%;
     border: 1px dashed #000000;
-    width: 14%;
+    width: 13%;
     align-self: center;
-    margin-left: 4.5%;
+    margin-left: 2%;
     border-radius: 10px;
   }
   .stepBox h3{

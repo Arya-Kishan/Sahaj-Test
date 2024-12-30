@@ -5,8 +5,22 @@ import Link from "next/link";
 import styles from "./style.module.css";
 import Dropdown from "@/components/DropDownComponent/DropDown";
 import { getServicesTitles, getServicesData } from "@/services/service";
+import logo from '../../../assests/Service/svg.png';
+import Image from "next/image";
+import DownloadModal from '@/components/DownloadModal/Download';
+
+const services = [
+  "Goal plan/F.I.R.E/Retirement plan",
+  "Investment Plan",
+  "Insurance Plan",
+  "Tax Plan",
+  "Net worth analysis",
+  "Cash analysis",
+  "Risk Planning",
+];
 
 function ServicesPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeOption, setActiveOption] = useState(0);
   const [serviceOptions, setOptions] = useState([]);
   const [serviceData, setServicesData] = useState([]);
@@ -65,7 +79,29 @@ function ServicesPage() {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.optionContainer}>
-        <h3>What is included in 1st year</h3>
+        <div className={styles.container2}>
+        <h3 className={styles.header}>What is included in 1st year</h3>
+      
+        <ul className={styles.serviceList}>
+          {services.map((service, index) => (
+            <li key={index} className={styles.serviceListItem}>
+              <Image
+                src={logo}
+                alt="tick image"
+                className={styles.ticklogo}
+              />
+              <h4 className={styles.serviceTitle}>{service}</h4>
+            </li>
+          ))}
+        </ul>
+        </div>
+        <div className={styles.expertBox}>
+        <div className={styles.content}>
+          <p className={styles.headline}>Download Your Free Financial Plan</p>
+          <p className={styles.para}>See how <span className={styles.head}>Sahaj<span className={styles.money}>Money</span></span> simplifies financial planning </p></div>
+  <button className={styles.downloadButton} onClick={() => setIsModalOpen(true)} >Download Now</button>
+  <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        </div>
         <div className={styles.optionBox}>
           {serviceOptions.map((item) => (
             <button
