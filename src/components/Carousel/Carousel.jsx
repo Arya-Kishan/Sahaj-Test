@@ -140,7 +140,7 @@ const Carousel = ({ bannerData }) => {
             )}
 
             {currentSlide === 2 ? <>
-              <div style={{ border: "1px solid black" }} className={styles.sidesImage}></div></> : ""}
+              <div  className={styles.sidesImage}></div></> : ""}
             {slide?.Images.length > 0 ? (
               <div className={styles.pressLogos}>
                 {slide?.Images?.map((logo, idx) => (
