@@ -67,7 +67,7 @@ const CookiePolicy = () => {
 
                 <div className={styles.questionContainer}>
                     <p className={styles.question}>Managing Cookies:</p>
-                    <p className={styles.answer}>You can manage or disable cookies through your browser settings. However, please note that some features of the website may not work properly if you disable cookies. For more detailed instructions on how to control cookies in different browsers, please refer to the "Help" section of your browser or visit the relevant support page for your browser.</p>
+                    <p className={styles.answer}>You can manage or disable cookies through your browser settings. However, please note that some features of the website may not work properly if you disable cookies. For more detailed instructions on how to control cookies in different browsers, please refer to the &quot;Help&quot; section of your browser or visit the relevant support page for your browser.</p>
                 </div>
 
                 <div className={styles.questionContainer}>
