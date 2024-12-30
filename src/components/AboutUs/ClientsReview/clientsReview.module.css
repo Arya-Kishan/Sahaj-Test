@@ -1,15 +1,17 @@
 
- .clientsReviewImgbox{
-      width: 100%; 
-   height: 650px; 
-     overflow: hidden;
+.clientsReviewImgbox {
+    width: 100%;
+    height: auto; 
+    overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center;  
-} 
-.clientsReviewImg{
+    align-items: center;
+}
+
+.clientsReviewImg {
     width: 100%;
-    height: 100%;
+    height: 650px; 
+    object-fit: cover; 
 }
 .clientsReviewinfoHeader{
     background-color: black;

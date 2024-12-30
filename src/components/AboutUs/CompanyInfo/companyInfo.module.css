@@ -4,6 +4,18 @@
     flex-direction: column;
     gap: 16px;
 }
+.informationtextContainer{
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ width: 100%; 
+box-sizing: border-box;
+}
+.infotext{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 
 .informationtextContainer {
     display: flex;

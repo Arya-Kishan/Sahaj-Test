@@ -29,33 +29,33 @@ const MainSection = ({ data }) => {
     const shareToPlatform = (platform) => {
         const currentUrl = window.location.href;
         let shareUrl = '';
-    
+
         switch (platform) {
-          case 'copy':
-            navigator.clipboard.writeText(currentUrl);
-            alert('Link copied to clipboard!');
-            return;
-          case 'facebook':
-            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
-            break;
-          case 'messenger':
-            shareUrl = `https://www.facebook.com/dialog/send?link=${encodeURIComponent(currentUrl)}`;
-            break;
-          case 'email':
-            shareUrl = `mailto:?subject=Check this out&body=${encodeURIComponent(currentUrl)}`;
-            break;
-          case 'whatsapp':
-            shareUrl = `https://wa.me/?text=${encodeURIComponent(currentUrl)}`;
-            break;
-          case 'twitter':
-            shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}`;
-            break;
-          default:
-            return;
+            case 'copy':
+                navigator.clipboard.writeText(currentUrl);
+                alert('Link copied to clipboard!');
+                return;
+            case 'facebook':
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+                break;
+            case 'messenger':
+                shareUrl = `https://www.facebook.com/dialog/send?link=${encodeURIComponent(currentUrl)}`;
+                break;
+            case 'email':
+                shareUrl = `mailto:?subject=Check this out&body=${encodeURIComponent(currentUrl)}`;
+                break;
+            case 'whatsapp':
+                shareUrl = `https://wa.me/?text=${encodeURIComponent(currentUrl)}`;
+                break;
+            case 'twitter':
+                shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}`;
+                break;
+            default:
+                return;
         }
-    
+
         window.open(shareUrl, '_blank');
-      };
+    };
     return (
         <div className={styles.mainSectionContainer}>
             <div className={styles.maininfoContainer}>
@@ -77,17 +77,17 @@ const MainSection = ({ data }) => {
                     </div>
                 </div>   </div>
             <div className={styles.imgBox}>
-            {data?.BlogImage ? (
-            <Image 
-                src={data?.BlogImage} 
-                alt="MainBlogImage" 
-                className={styles.mainImg} 
-                width={800}
-                height= {400}
-            />
-            ) : (
-            <div>No Image Available</div>
-            )}
+                {data?.BlogImage ? (
+                    <Image
+                        src={data?.BlogImage}
+                        alt="MainBlogImage"
+                        className={styles.mainImg}
+                        width={800}
+                        height={400}
+                    />
+                ) : (
+                    <div>No Image Available</div>
+                )}
             </div>
             <div className={styles.descriptionContainer}>
 
@@ -100,14 +100,20 @@ const MainSection = ({ data }) => {
                     <div className={styles.socials}>
                         <div className={styles.followIcons}>
                             <div className={styles.followText} >Follow Us</div>
-                            <Image src={lindinimg} alt="LinkedinIconImage" />
-                            <Image src={instagramIcon} alt="instagramIconImage" />
-                            <Image src={EllipseIcon} alt="EllipseIconImage" />
+                            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                                <Image src={lindinimg} alt="Linkedin Icon" />
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                                <Image src={instagramIcon} alt="Instagram Icon" />
+                            </a>
+                            <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+                                <Image src={EllipseIcon} alt="Ellipse Icon" />
+                            </a>
                         </div>
                         <div className={styles.shareIcons} onClick={toggleModal}>
                             <FaShareAlt size={24} />
 
-                             {isModalOpen && (
+                            {isModalOpen && (
                                 <div className={styles.modalOverlay} onClick={toggleModal}>
                                     <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
                                         <button className={styles.closeButton} onClick={toggleModal}>
