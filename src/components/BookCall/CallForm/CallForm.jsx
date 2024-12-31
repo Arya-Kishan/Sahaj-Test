@@ -88,7 +88,7 @@ const CallForm = ({ handleNext, setFormData, formData }) => {
                 />
             </label>
             <label>
-                Phone
+               <p> Phone<span className={styles.stars}>*</span></p>
                 <div className={styles.phoneInput}>
                     <div
                         onClick={() => setOpenClose(!codeDropdown)}

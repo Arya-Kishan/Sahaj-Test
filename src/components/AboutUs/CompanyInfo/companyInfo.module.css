@@ -4,6 +4,19 @@
     flex-direction: column;
     gap: 16px;
 }
+.informationtextContainer{
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ width: 100%; 
+box-sizing: border-box;
+}
+.infotext{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 600px;
+}
 
 .informationtextContainer {
     display: flex;
@@ -38,7 +51,8 @@
 }
 
 .infoimgBox {
-    width: 567px;
+    width:100%;
+    max-width: 567px;
     height: 328px;
     gap: 0px;
     border-radius: 12px;
@@ -52,7 +66,16 @@
     height: 100%;
     border-radius: 12px;
 }
+@media (max-width: 1200px) {
+    .informationtextContainer {
+        flex-direction: column;
+    }
+    .infoimgBox {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
 
+}
 
 @media (max-width: 768px) {
     .sectionOneContainer {

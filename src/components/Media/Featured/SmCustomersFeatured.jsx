@@ -1,19 +1,33 @@
 "use client"
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import styles from './featured.module.css';
 import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import { FaShareAlt } from 'react-icons/fa';
 import FormateDate from "../FormateDate";
 
+
 const SmCustomersFeatured = ({ data }) => {
 
   const singlefeaturedData = data?.slice(0, 1);
   const videoLink = singlefeaturedData[0]?.PostCastLink ;
+  const router = useRouter();
 
   const handleReadMoreClick = () => {
+   
+  
     if (videoLink) {
       window.open(videoLink, '_blank'); 
+    } else {
+     
+      router.push('/invalid-link'); 
     }
+  };
+  
+  const handleShareClick = () => {
+    const message = "Check this out!";  // it can be customized later
+    const shareLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(shareLink, '_blank');
   };
 
   return (
@@ -28,7 +42,7 @@ const SmCustomersFeatured = ({ data }) => {
           <p className={styles.VCdateContainer}>
             {FormateDate(singlefeaturedData[0]?.createdAt)}
           </p>
-          <div className={styles.shareIcon}>
+          <div className={styles.shareIcon} onClick={handleShareClick}>
             <FaShareAlt size={24} />
           </div>
         </div>
