@@ -36,6 +36,7 @@
     align-items: center;
     gap: 31px;
     margin-top: 20px;
+    flex-wrap: wrap;
   }
   
   .logo {
