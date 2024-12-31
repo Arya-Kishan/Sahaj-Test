@@ -5,7 +5,7 @@ import cn from "./cn";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import style from "./calendar.module.css";
 
-function CalendarModal({ setFormData, formData }) {
+function CalendarModal({ setFormData, formData, setopenCalendar }) {
   const days = ["S", "M", "T", "W", "T", "F", "S"];
   const currentDate = dayjs();
   const [today, setToday] = useState(currentDate);
@@ -16,10 +16,16 @@ function CalendarModal({ setFormData, formData }) {
     return difference >= 0 && difference <= 4; 
   };
 
-  useEffect(() => {
-    const formattedDate = `${selectDate.format("DD-MM-YYYY")}`;
-    setFormData({ ...formData, date: selectDate.toDate() });
-  }, [selectDate]);
+  // useEffect(() => {
+  //   const formattedDate = `${selectDate.format("DD-MM-YYYY")}`;
+  //   setFormData({ ...formData, date: selectDate.toDate() });
+    
+  // }, [selectDate]);
+  const handleDateSelect = (date) => {
+    const formattedDate = `${date.format("DD-MM-YYYY")}`;
+    setFormData({ ...formData, date: date.toDate() });
+    setopenCalendar(false);
+  };
 
   return (
     <div className={style.flexcontainer}>
@@ -70,7 +76,10 @@ function CalendarModal({ setFormData, formData }) {
                       `${style.customtailwindstyles}`
                     )}
                     onClick={() => {
-                      if (selectable) setSelectDate(date); 
+                      if (selectable) {
+                        setSelectDate(date);
+                        handleDateSelect(date); // Pass the selected date directly
+                      }
                     }}
                   >
                     {date.date()}

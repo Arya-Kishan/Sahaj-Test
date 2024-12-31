@@ -85,7 +85,7 @@ function DateAndTime({ handleNext, setFormData, formData, formatDate }) {
                 </div>
                 <div className={styles.calendarBox}>
                     {openCalendar ? (
-                        <CalendarModal formData={formData} setFormData={setFormData} />
+                        <CalendarModal formData={formData} setopenCalendar={setopenCalendar} setFormData={setFormData} />
                     ) : null}
                 </div>
             </div>
@@ -120,7 +120,9 @@ function DateAndTime({ handleNext, setFormData, formData, formatDate }) {
                         </button>
                     ))
                 ) : (
-                    <div className={styles.noSlotsMessage}>Select Date</div>
+                    <div className={styles.noSlotsMessage}>
+                        <h3>Slots Not Available</h3>
+                    </div>
                 )}
             </div>
             <button

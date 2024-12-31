@@ -8,6 +8,7 @@ import { getInvestmentData } from "@/services/aboutus";
 
 const SectionOne = () => {
     const [Data, setData] = useState([]);
+
     const getData = async () => {
         try {
             const { res, err } = await getInvestmentData();
@@ -20,45 +21,48 @@ const SectionOne = () => {
         } catch (error) {
             console.error(error);
         }
-    }
+    };
 
     useEffect(() => {
         getData();
-    }, [])
+    }, []);
 
-
+    const item = Data[1];
+    function transformYouTubeLink(link) {
+        if (link.includes("watch?v=")) {
+            console.log(link.replace("watch?v=", "embed/"))
+            return link.replace("watch?v=", "embed/");
+        }
+        return link;
+    }
     return (
         <div className={styles.sectionOneContainer}>
-            {Data &&
-                Data?.map((item, index) => {
-                    return <>
-                        <div key={index} className={styles.informationtextContainer}>
-                            <div className={styles.infotext}>
-                                <p className={styles.infotextheading}>{item?.Title}</p>
-                                <p className={styles.infotextbody}>{item?.Content[index]?.SmallMainDescription}</p>
-                                <Link href="/about/investmentphilosophy" ><ReadMore text={"Read More"} /></Link>
-                                
-                            </div>
+            {item && (
+                <div className={styles.informationtextContainer}>
+                    <div className={styles.infotext}>
+                        <p className={styles.infotextheading}>{item?.Title}</p>
+                        <p className={styles.infotextbody}>
+                            {item?.Content?.[0]?.SmallMainDescription}
+                        </p>
+                        <Link href="/about/investmentphilosophy">
+                            <ReadMore text={"Read More"} />
+                        </Link>
+                    </div>
 
-                            <div className={styles.infoimgBox}>
-                                <iframe
-                                    width={300}
-                                    height={300}
-                                    className={styles.infoimg}
-                                    src={item?.VideoLink}
-                                    title="YouTube video player"
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowFullScreen>
-                                </iframe>
-
-                                {/* <Image src={companyInfoImg} className={styles.infoimg} alt="CompanyInfoImage" /> */}
-                            </div>
-                        </div>
-                    </>
-                })
-
-            }
+                    <div className={styles.infoimgBox}>
+                        {item?.VideoLink &&
+                            <iframe
+                                className={styles.infoimg}
+                                src={transformYouTubeLink(item?.VideoLink)}
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                            ></iframe>
+                        }
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

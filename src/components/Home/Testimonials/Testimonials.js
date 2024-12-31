@@ -9,7 +9,7 @@ import mintLogo from "../../../assests/Blog/image.webp";
 import { getClientReviewData, getAllReviewData, getFeatureListData } from '@/services/home';
 
 
-const Testimonials = () => {
+const Testimonials = ({ref}) => {
 
     const [reviewData, setData] = useState([]);
     const [reviewAllData, setAllData] = useState([]);
@@ -91,27 +91,25 @@ const Testimonials = () => {
 
 
     return (
-        <div className={styles.mainContainer}>
+        <div ref={ref} className={styles.mainContainer}>
             <div className={styles.leftBox}>
                 <h2 className={styles.heading}>What our clients say?</h2>
                 <div className={styles.reviews}>
                     {reviewData &&
-                        reviewData.map((item, index) => {
-                            return <>
-                                <div key={index} className={styles.reviewCard}>
-                                    <div className={styles.logoBox} >
-                                        <img
-                                            src={item?.CompanyLogo}
-                                            alt="LinkedIn"
-                                            className={styles.icon}
-                                        />
-                                        <p className={styles.reviewCount}>{item?.Content}</p>
-                                    </div>
-                                    <p className={styles.rating}>{item?.Rating} <span>★★★★★</span></p>
+                        reviewData.map((item, index) => 
+                        (
+                            <div key={index} className={styles.reviewCard}>
+                                <div className={styles.logoBox} >
+                                    <img
+                                        src={item?.CompanyLogo}
+                                        alt="LinkedIn"
+                                        className={styles.icon}
+                                    />
+                                    <p className={styles.reviewCount}>{item?.Content}</p>
                                 </div>
-                            </>
-
-                        })
+                                <p className={styles.rating}>{item?.Rating} <span>★★★★★</span></p>
+                            </div>
+                        ))
                     }
 
                 </div>

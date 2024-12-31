@@ -19,9 +19,12 @@
   }
   
   .icon {
-  
+    transition: transform 0.3s ease;
     margin-left: 4px;
     margin-top: 4px;
+  }
+  .rotate {
+    transform: rotate(180deg);
   }
   
   .menu {

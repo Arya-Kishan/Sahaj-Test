@@ -1,11 +1,13 @@
 "use client"
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from './FinancialPlan.module.css';
 import Image from 'next/image';
 import image from '../../../assests/Home/FinancialPlan.webp';
 import DownloadModal from '@/components/DownloadModal/Download';
+import logo  from "@/assests/Home/logo.webp"
 
-const FinancialPlan = ({ financePlanData }) => {
+const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
     const [companyGrowth, setGrowthData] = useState([])
     const [howWeDoData, setHowDo] = useState([])
     const [isPlaying, setIsPlaying] = useState(false);
@@ -23,9 +25,17 @@ const FinancialPlan = ({ financePlanData }) => {
     const handlePlayButtonClick = () => {
         setIsPlaying(true); 
     };
-    const videoLink = "https://sahajmoney-bucket.s3.ap-south-1.amazonaws.com/file-1734507872562.mp4";
+   
 
-
+    const handleStepClick = (index) => {
+        if (index === 0) {
+            scrollToTestimonials();
+        } else if (index === 1) {
+            window.location.href = '/media';
+        } else if (index === 2) {
+            window.location.href = '/services';
+        }
+    };
 
     return (
         <div className={styles.container}>
@@ -34,7 +44,7 @@ const FinancialPlan = ({ financePlanData }) => {
                 <div className={styles.headerTitle}>
                     <h1 className={styles.title}>Download Your Free Financial Plan</h1>
                     <p className={styles.subtitle}>
-                        See how <span className={styles.highlight}>SahajMoney</span> simplifies financial planning
+                        See how <Image  src={logo} className={styles.highlight} alt="logo"/> simplifies financial planning
                     </p>
                 </div>
                 <button className={styles.downloadButton} onClick={() => setIsModalOpen(true)}>Download Now</button>
@@ -73,40 +83,43 @@ const FinancialPlan = ({ financePlanData }) => {
                 </div>
 
                 <div className={styles.stepsContainer}>
-                    <h2>How we do it?</h2>
+                    <p className={styles.stepHeading}>How we do it?</p>
 
                     {howWeDoData &&
-                        howWeDoData?.Content?.map((item, index) => {
-                            return <>
-                                <div key={index}>
-                                    <button className={styles.stepTitle}><p>Step 01</p></button>
-                                    <h4 className={styles.stepSubtitle}>{item.title}ss</h4>
+                        howWeDoData?.Content?.map((item, index) =>
+                            
+                            (
+                         
+                                <div key={index} >
+                                    <button className={styles.stepTitle}><p>{`Step 0${index+1}`}</p></button>
+                                    <h4 className={styles.stepSubtitle}>{item.title}</h4>
                                     <ul className={styles.stepText}>
                                         {item?.Points &&
                                             item?.Points?.map((ele, ind) => <li key={ind} className={styles.serviceDescription}>{ele.point}</li>)
                                         }
                                     </ul>
                                 </div>
-                            </>
-                        })
+                         
+                             ))
                     }
 
 
-                    <button className={styles.learnMoreButton}>Learn more</button>
+                    <Link href='/processflow' ><button className={styles.learnMoreButton}>Learn more</button></Link>
                 </div>
             </div>
 
             <div className={styles.footer}>
                 {companyGrowth &&
-                    companyGrowth?.map((item, index) => {
-                        return <>
+                    companyGrowth?.map((item, index) => 
+                        (
+                     
                             <div className={styles.stat} key={index}>
                                 <p className={styles.statTitle}>{item?.GrowthTitle}</p>
                                 <h3 className={styles.statNumber}>{item?.Achievement}</h3>
-                                <p className={styles.statDescription}>{item?.Description}</p>
+                                <p className={styles.statDescription} onClick={()=>handleStepClick(index)} >{item?.Description}</p>
                             </div>
-                        </>
-                    })
+                       
+                    ))
                 }
 
             </div>

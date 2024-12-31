@@ -1,9 +1,17 @@
 "use client"
 import Link from 'next/link';
 import styles from './faq.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleBookCallModal } from '@/store/slices/modalSlice';
 
 function FAQ({ heading, buttonText,path,onClick }) {
-  
+  const dispatch = useDispatch();
+
+  const openModal = () => {
+    console.log('Book a call clicked');
+    dispatch(toggleBookCallModal());
+  };
+
   return (
     <div className={styles.faqContainer}>
 
@@ -36,7 +44,7 @@ function FAQ({ heading, buttonText,path,onClick }) {
             {buttonText}
           </button>
         ) : (
-          <button className={styles.faqButton} disabled>
+          <button className={styles.faqButton} onClick={openModal} >
             {buttonText}
           </button>
         )}

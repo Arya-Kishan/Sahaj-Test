@@ -47,30 +47,34 @@ function ServicesPage() {
     getTitleData();
     getAllServices();
   }, []);
-
+   
   const scrollToService = (id) => {
     const serviceIndex = serviceData.findIndex((service) => service._id === id);
-    if (serviceIndex !== -1 && serviceRefs.current[serviceIndex]) {
-      serviceRefs.current[serviceIndex].scrollIntoView({ behavior: "smooth" });
   
-      setTimeout(() => {
-        window.scrollBy({
-          top: -50, 
-          behavior: "smooth",
-        });
-      }, 300); 
+    if (serviceIndex !== -1 && serviceRefs.current[serviceIndex]) {
+     
+      const elementTop = serviceRefs.current[serviceIndex].getBoundingClientRect().top + window.scrollY;
+   
+      window.scrollTo({
+        top: elementTop - 40, 
+        behavior: "smooth",
+      });
+    } else {
+      console.error("Service not found or ref missing:", id);
     }
   };
-
+  
   return (
     <div className={styles.mainContainer}>
       <div className={styles.optionContainer}>
         <h3>What is included in 1st year</h3>
         <div className={styles.optionBox}>
-          {serviceOptions.map((item) => (
+          {serviceOptions.map((item,id) => (
             <button
-              key={item._id}
-              onClick={() => scrollToService(item._id)}
+              key={id}
+              onClick={() => {scrollToService(item._id)
+                console.log("the id is,",id,item._id)
+              }}
               className={styles.optionButton}
             >
               {item.title}

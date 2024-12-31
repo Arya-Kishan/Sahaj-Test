@@ -1,6 +1,6 @@
 .filters{
     display: flex;
-    gap: 32px;
+    gap: 9px;
     flex-wrap: wrap;
 }
 .filterButton{

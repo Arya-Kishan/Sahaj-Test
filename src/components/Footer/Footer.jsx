@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import sahajLogo from '../../assests/Logo/sahajlogo.webp'
-import { FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
+import instagramIcon from "../../assests/Home/instagramIcon.webp";
+import youtubeIcon from "../../assests/Home/youtubeIcon.webp"
+import linkedinIcon from "../../assests/Home/linkedinIcon.webp"
 import { getFooterData } from '@/services/footer';
 const Footer = () => {
 
@@ -14,7 +16,7 @@ const Footer = () => {
     try {
       const { res, err } = await getFooterData();
       if (res?.data) {
-        console.log(res.data);
+        console.log("this is footer",res.data);
         setFooterData(res.data)
       }
     } catch (error) {
@@ -38,13 +40,21 @@ const Footer = () => {
         </div>
         <div className={styles.footerSection}>
           <h4>Company</h4>
-          <Link className={styles.linkText} href="/about">About us</Link>
-          <Link className={styles.linkText} href="/sebidisclosure">Sebi Disclosure</Link>
+         <div className={styles.footerresponsive}>
+         <div className={styles.footerresponsive1}>
+         <Link className={styles.linkText} href="/about">About us</Link>
+         </div>
+         <Link className={styles.linkText} href="/sebidisclosure">Sebi Disclosure</Link>
+         </div>
         </div>
         <div className={styles.footerSection}>
           <h4>Resources</h4>
+          <div className={styles.footerresponsive2}>
+            <div className={styles.footerresponsive1}>
           <Link className={styles.linkText} href="/services">Services</Link>
+           </div>
           <Link className={styles.linkText} href="/media">Media</Link>
+          </div>
           <Link className={styles.linkText} href="/faqs">FAQs</Link>
         </div>
         <div className={styles.footerSection}>
@@ -61,22 +71,45 @@ const Footer = () => {
           <p>{footerData?.SEBI_Regional_Office?.Websiteurl}</p>
         </div>
         <div className={`${styles.footerSection} ${styles.socialMedia}`}>
-          <h4>Follow us</h4>
-          <Link className={styles.linkText} href="#"><FaLinkedin /></Link>
-          <Link className={styles.linkText} href="#"><FaInstagram /></Link>
-          <Link className={styles.linkText} href="#"><FaYoutube /></Link>
+        <h4>Follow us</h4>
+       <div className={styles.footerlogo}>
+       {footerData?.FollowUs?.length>0&&
+            footerData?.FollowUs.map((foll,index)=>(
+              <Link href={foll?.link} key={index}>
+                <Image src={foll?.image}  className={`${styles.follows_logo}` } width={34} height={34} alt="social media icons"/> 
+              </Link>
+            ))
+       
+          }
+       </div>
         </div>
+      </div>
+      <div className={styles.footersebiDescription}>
+        <p>   Registration granted by SEBI, membership of BSE Administration and Supervision 
+              Limited (BASL) and certification from National Institute of Securities Markets (NISM)
+              in no way guarantee performance of the Investment Adviser or provide any assurance 
+              of returns to investors. Investment in securities market are subject to market risks. 
+              Read all the related documents carefully before investing.
+        </p>
       </div>
       <div className={styles.footerBottom}>
         <div className={styles.termBox}>
           <p>All rights reserved</p>
           <div className={styles.policyBox}  >
+            <Link href={"/termsofservices"}>
             <p>Terms of services</p>
-            <Link  className={styles.linkText1} href={"/privacyPolicy"}>Privacy policies</Link>
+            </Link>
+            <Link href={"/privacyPolicy"}>
+            <p>Privacy policies</p>
+            </Link>
+           
+            
+            <Link href={"/cookiepolicy"}>
             <p>Cookies</p>
+            </Link>
           </div>
         </div>
-
+        
       </div>
     </footer>
   );

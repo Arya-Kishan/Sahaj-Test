@@ -7,13 +7,35 @@
     gap: 40px;
   }
   
-  .backLink {
+  /* .backLink {
     font-size: 14px;
     color: #aaa;
     margin-bottom: 10px;
     cursor: pointer;
-  }
-  
+  } */
+  .gobackContainer{
+    display: flex;
+    gap:8px;
+    align-items: center;
+} 
+.gobackIconBox{
+    width:16px;
+    height: 16px;
+} 
+.gobackIcon{
+    width:100%;
+    height:100%;
+}    
+.gobackLinkText{
+    text-decoration: none;
+    color:white;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.09px;
+    text-align: left;
+
+}
   .textContainer {
     text-align: left;
     display: flex;
@@ -34,4 +56,17 @@
     font-weight: 400;
     color: #FFFFFF;
   }
-  
+  @media (max-width:768px) {
+    .header {
+      padding: 32px 16px;
+    }
+    .heading {
+      font-size: 28px;
+      line-height: 42px;
+    }
+    
+    .subHeading {
+      font-size: 16px;
+    }
+    
+  }

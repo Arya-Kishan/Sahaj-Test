@@ -101,7 +101,7 @@ const Services = () => {
         <div className={styles.content}>
           {serviceData?.map((section, idx) => (
             <div key={idx}>
-              <h2>{section?.title}</h2>
+              <h2 className={styles.mainHeading} >{section?.title}</h2>
               <div className={styles.details}>
                 <div className={styles.text}>
                   {section?.ContentSubPointWise?.map((item, i) => (
