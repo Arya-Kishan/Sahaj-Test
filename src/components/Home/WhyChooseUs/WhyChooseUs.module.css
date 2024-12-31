@@ -59,6 +59,7 @@
       gap: 12px;
     }
     .featureCard{
-      width: fit-content;
+      /* width: fit-content; */
+      width: 145px;
     }
   }
