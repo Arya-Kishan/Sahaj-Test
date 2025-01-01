@@ -47,6 +47,14 @@ const Carousel = ({ bannerData }) => {
   const goToSlide = (index) => {
     setCurrentSlide(index);
   };
+  function transformYouTubeLink(link) {
+    if (link.includes("watch?v=")) {
+      console.log(link.replace("watch?v=", "embed/"))
+      return link.replace("watch?v=", "embed/");
+    }
+    return link;
+  }
+const kk ="https://www.youtube.com/watch?v=jibvfAgrZFM&rco=1"
 
   return (
     <div
@@ -159,6 +167,7 @@ const Carousel = ({ bannerData }) => {
             </div>
 
             {slide?.VideoLink ? (
+             
               <div
                 className={styles.videoContainer}
                 onMouseEnter={() => setIsPaused(true)}
@@ -168,7 +177,7 @@ const Carousel = ({ bannerData }) => {
                   <iframe
                     id="videoPlayer"
                     className={styles.video}
-                    src={slide?.VideoLink}
+                    src={transformYouTubeLink(slide?.VideoLink)}
                     title="YouTube video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

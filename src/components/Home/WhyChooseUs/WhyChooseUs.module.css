@@ -29,8 +29,8 @@
   }
   
   .icon {
-   width: 100px;
-   height: 88px;
+   max-width: fit-content;
+   max-height: 80px;
    margin: auto;
   }
   

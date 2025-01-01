@@ -1,42 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
 .mainContainer {
+    padding: 100px;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     gap: 60px;
     font-family: Roboto;
   }
-  .expertBox{
-    width: 100% !important;
-    background-color: #292929;
-    padding: 60px 0 60px 0;
-    text-align: center;
-    color: #FFFFFF;
-    font-size: 48px;
-    font-weight: 700;
-    font-family: Roboto;
-    display: flex;
-    justify-content: space-between;
-    padding:100px;
-}
-.downloadButton{
-  display: flex;
-padding: 16px 48px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-border-radius: 5px;
-border: 0px solid var(--Color-black-15, rgba(0, 0, 0, 0.15));
-color: white;
-font-family: Roboto;
-font-size: 18px;
-font-style: normal;
-font-weight: 600;
-line-height: 150%; /* 27px */
-letter-spacing: -0.5px;
-background: var(--gold-gradient, linear-gradient(216deg, #F8DB75 22.43%, #A4730F 80.57%));
-}
+  
   .optionContainer {
    width: 100%;
    display: contents;
@@ -46,54 +16,15 @@ background: var(--gold-gradient, linear-gradient(216deg, #F8DB75 22.43%, #A4730F
     display: flex;
     flex-direction: column;
     gap: 40px;
-    margin-left: 100px;
   }
-  .content{
-    padding-left: 100px;
-    padding-right: 100px;
-  }
+  
   .optionContainer h3 {
     color: #000000;
     font-weight: 600;
     font-family: "Roboto", sans-serif;
     font-size: 32px;
-
   }
-  .headline{
-    color: #FFF;
-text-align: center;
-
-/* SM/headline/medium */
-font-family: "Roboto";
-font-size: 36px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-letter-spacing: -1px;
-margin-bottom: 10px;
-  }
-  .para{
-    color: #FFF;
-text-align: start;
-font-family: "Roboto";
-font-size: 20px;
-font-style: normal;
-font-weight: 500;
-line-height: var(--Title-Large-Line-Height, 28px); /* 140% */
-letter-spacing: 0.2px;
-  }
-  .money{
-    color: var(--Color-California-Gold, #C18823);
-font-family: Roboto;
-font-size: 20px;
-font-style: normal;
-font-weight: 500;
-line-height: var(--Title-Large-Line-Height, 28px);
-letter-spacing: 0.2px;
-  }
-  .head{
-    background-color: black;
-  }
+  
   .optionBox {
     display: flex;
     height: 44px;
@@ -103,10 +34,6 @@ letter-spacing: 0.2px;
     overflow-x: auto; 
     white-space: nowrap; 
     scrollbar-width: none; 
-    padding-left:100px;
-    margin-top: 100px;
-    padding-right: 100px;
-    margin-right:100px;
   }
   
   .optionBox::-webkit-scrollbar {
@@ -126,26 +53,7 @@ letter-spacing: 0.2px;
     cursor: pointer;
     transition: all 0.3s ease;
   }
- .serviceListItem{
-  display: flex;
-  margin-bottom: 25px;
- }
- .ticklogo{
-  margin-right: 16px;
- }
- .serviceTitle{
-  color: #000;
-
-/* SM/Bodytext/large */
-font-family: "Manrope";
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: var(--Title-Large-Line-Height, 28px); /* 140% */
- }
- .serviceList{
-  gap: 25px;
- }
+  
   .optionButton:hover {
     border-color: #000;
   }
@@ -162,8 +70,6 @@ line-height: var(--Title-Large-Line-Height, 28px); /* 140% */
   }
   
   .serviceCard {
-    margin-left:100px;
-    margin-right:100px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -186,25 +92,15 @@ line-height: var(--Title-Large-Line-Height, 28px); /* 140% */
   }
   
   .serviceText h4 {
-    align-self: stretch;
-    color: var(--Color-California-Gold, #C18823);
-font-family: Roboto;
-font-size: 32px;
-font-style: normal;
-font-weight: 700;
-line-height: 150%; /* 48px */
-letter-spacing: -0.5px;
+    font-size: 24px;
+    color: #C18823;
+    font-weight: 600;
     margin-bottom: 10px;
   }
   
   .serviceText p {
-    color: #555;
-align-self: stretch;/* SM/Bodytext/medium */
-font-family: Manrope;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 150%; /* 27px */
+    color: #555555;
+    font-size: 18px;
     margin-bottom: 10px;
   }
   
@@ -226,24 +122,11 @@ line-height: 150%; /* 27px */
   }
 
   @media (max-width:768px) {
-    .container2{
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      margin-left: 10px;
-    }
-    .serviceList{
-      display: none;
-    }
     .mainContainer {
       padding: 16px;
     }
     .optionBox {
       display: none;
-    }
-    .header{
-      font-size: 12px;
     }
     .optionContainer h3 {
       font-size: 24px;
@@ -253,32 +136,10 @@ line-height: 150%; /* 27px */
     }
   .serviceCard {
     flex-direction: column;
-    margin-left:10px;
-    margin-right:10px;
+    
   } 
- 
+  
   .serviceText {
     padding: 0px;
   }
-  .expertBox{
-   display: block;
-   padding:20px;
-}
-.content{
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.para{
-  margin-bottom: 10px;
-  font-size: 16px;
-  text-align: center;
-}
-.headline{
-  font-size: 24px;
-}
-.downloadButton{
-  display: flex;
-  justify-items: center;
-  margin-left: 40px;
-}
  }

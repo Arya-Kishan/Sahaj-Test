@@ -8,7 +8,7 @@ import { getInvestmentData } from "@/services/aboutus";
 
 const SectionOne = () => {
     const [Data, setData] = useState([]);
-    
+
     const getData = async () => {
         try {
             const { res, err } = await getInvestmentData();
@@ -27,8 +27,14 @@ const SectionOne = () => {
         getData();
     }, []);
 
-    // const item = Data[1]; 
-
+    //const item = Data[1];
+    function transformYouTubeLink(link) {
+        if (link.includes("watch?v=")) {
+            console.log(link.replace("watch?v=", "embed/"))
+            return link.replace("watch?v=", "embed/");
+        }
+        return link;
+    }
     return (
         <div className={styles.sectionOneContainer}>
           
@@ -46,14 +52,16 @@ const SectionOne = () => {
                     </div>
 
                     <div className={styles.infoimgBox}>
-                        <iframe
-                            className={styles.infoimg}
-                            src={item?.VideoLink || "https://www.youtube.com/watch?v=JJ"}
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                        ></iframe>
+                        {item?.VideoLink &&
+                            <iframe
+                                className={styles.infoimg}
+                                src={transformYouTubeLink(item?.VideoLink)}
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                            ></iframe>
+                        }
                     </div>
                 </div>
                 )
