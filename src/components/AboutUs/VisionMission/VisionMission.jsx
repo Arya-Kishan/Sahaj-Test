@@ -10,7 +10,7 @@ const MissionVision = ({ allData }) => {
   return (
     <div className={styles.missionVisionContainer}>
       <div className={styles.missionVisioninnerContainer}>
-        
+
         <div className={`${styles.tabs} ${styles.largeScreen}`}>
           {allData?.OurMission?.map((data, idx) => (
             <button
@@ -42,15 +42,14 @@ const MissionVision = ({ allData }) => {
             activeTab === data.Title1 && (
 
               <div key={data._id}>
-                  {activeTab===data.Title1 && data.Title1==="vision" && 
-                  
-                <button
-                className={`${styles.tabButton} }`}
-                onClick={() => setActiveTab("mission")}
-              >
-                Our Mission
-              </button>
-              }
+                {data.Title1 === "vision" && (
+                  <button
+                    className={styles.tabButton}
+                    onClick={() => setActiveTab("mission")}
+                  >
+                    Our Mission
+                  </button>
+                )}
                 <button
                   className={`${styles.tabButton} ${activeTab === data.Title1 ? styles.tabButtonActive : ""}`}
                   onClick={() => setActiveTab(data.Title1)}
@@ -65,7 +64,7 @@ const MissionVision = ({ allData }) => {
                   </ul>
                 </div>
                 {allData.OurMission.findIndex((item) => item.Title1 === activeTab) <
-                allData.OurMission.length - 1 ? (
+                  allData.OurMission.length - 1 ? (
                   <button
                     className={styles.tabButton}
                     onClick={() =>
