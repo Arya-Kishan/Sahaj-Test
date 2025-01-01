@@ -20,6 +20,7 @@
   
 .tabButton {
     cursor: pointer;
+    display: block;
     font-family: Roboto;
     max-width: 210px;
     font-size: 36px;

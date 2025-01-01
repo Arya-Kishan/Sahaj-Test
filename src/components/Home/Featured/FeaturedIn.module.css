@@ -44,12 +44,15 @@
     height: 80px;
     
   }
+  
+  @media (max-width: 1300px) {
+    .container{
+      overflow: hidden;
+      width:100%;
+    }
+  }
  
   @media (max-width: 720px) {
-    .container{
-      text-align: left;
-      overflow: hidden;
-    }
     .line1 {
       flex-grow: 0;
       width:10%;

@@ -40,7 +40,17 @@ const MissionVision = ({ allData }) => {
         <div className={styles.smallScreen}>
           {allData?.OurMission?.map((data) => (
             activeTab === data.Title1 && (
+
               <div key={data._id}>
+                  {activeTab===data.Title1 && data.Title1==="vision" && 
+                  
+                <button
+                className={`${styles.tabButton} }`}
+                onClick={() => setActiveTab("mission")}
+              >
+                Our Mission
+              </button>
+              }
                 <button
                   className={`${styles.tabButton} ${activeTab === data.Title1 ? styles.tabButtonActive : ""}`}
                   onClick={() => setActiveTab(data.Title1)}
