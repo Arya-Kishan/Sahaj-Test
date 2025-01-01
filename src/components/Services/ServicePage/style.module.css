@@ -39,6 +39,7 @@ background: var(--gold-gradient, linear-gradient(216deg, #F8DB75 22.43%, #A4730F
 }
   .optionContainer {
    width: 100%;
+   display: contents;
   }
   .container2{
     padding: 100px;
