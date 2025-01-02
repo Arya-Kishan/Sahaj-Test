@@ -18,3 +18,12 @@ export const getServicesData = async (data) =>{
         return { err: error, res: null }
      }
 }
+
+export const getMainPageServicesData = async () =>{
+   try {
+       const res = await axiosInstance.get(`/allservice/getallservices`)
+       return { res: res?.data, err: null }
+    } catch (error) {
+       return { err: error, res: null }
+    }
+}

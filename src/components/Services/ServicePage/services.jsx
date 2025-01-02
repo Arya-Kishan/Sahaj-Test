@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./style.module.css";
 import Dropdown from "@/components/DropDownComponent/DropDown";
-import { getServicesTitles, getServicesData } from "@/services/service";
+import { getServicesTitles, getServicesData} from "@/services/service";
 
-function ServicesPage() {
+function ServicesPage({data={}}) {
   const [activeOption, setActiveOption] = useState(0);
   const [serviceOptions, setOptions] = useState([]);
   const [serviceData, setServicesData] = useState([]);
@@ -47,9 +47,11 @@ function ServicesPage() {
     getTitleData();
     getAllServices();
   }, []);
-   
+  
+  const displayData = data?.Services || serviceData;
+
   const scrollToService = (id) => {
-    const serviceIndex = serviceData.findIndex((service) => service._id === id);
+    const serviceIndex = displayData.findIndex((service) => service._id === id);
   
     if (serviceIndex !== -1 && serviceRefs.current[serviceIndex]) {
      
@@ -67,9 +69,9 @@ function ServicesPage() {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.optionContainer}>
-        <h3>What is included in 1st year</h3>
+        <h3>{data?.serviceText || "What is included in 1st year"}</h3>
         <div className={styles.optionBox}>
-          {serviceOptions.map((item,id) => (
+          {displayData?.map((item,id) => (
             <button
               key={id}
               onClick={() => {scrollToService(item._id)
@@ -94,7 +96,7 @@ function ServicesPage() {
         </div>
       </div>
       <section className={styles.servicesContainer}>
-        {serviceData.map((service, index) => (
+        {displayData?.map((service, index) => (
           <div
             key={service._id}
             ref={(el) => (serviceRefs.current[index] = el)}
