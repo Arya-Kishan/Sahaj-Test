@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./style.module.css";
 import Dropdown from "@/components/DropDownComponent/DropDown";
-import { getServicesTitles, getServicesData} from "@/services/service";
+import { getServicesTitles, getServicesData,getMainPageServicesData} from "@/services/service";
 
 function ServicesPage({data={}}) {
   const [activeOption, setActiveOption] = useState(0);
   const [serviceOptions, setOptions] = useState([]);
   const [serviceData, setServicesData] = useState([]);
+  const [mainServicePageData,setMainServicePageData]=useState({})
   const serviceRefs = useRef([]);
 
   const getTitleData = async () => {
@@ -43,15 +44,33 @@ function ServicesPage({data={}}) {
     }
   };
 
+  
+    const getMainPageServices = async () => {
+     
+      try {
+        const { res, err } = await getMainPageServicesData();
+        if (res) {
+          setMainServicePageData(res?.data || {});
+          console.log("the main page  service data is",res.data)
+        } else {
+          setMainServicePageData({});
+        }
+      } catch (error) {
+        console.error("Error fetching services data:", error);
+      }
+    };
+ 
+
   useEffect(() => {
     getTitleData();
     getAllServices();
+    getMainPageServices();
   }, []);
   
-  const displayData = data?.Services || serviceData;
+  // const displayData = data?.Services || serviceData;
 
   const scrollToService = (id) => {
-    const serviceIndex = displayData.findIndex((service) => service._id === id);
+    const serviceIndex = mainServicePageData?.Services?.findIndex((service) => service._id === id);
   
     if (serviceIndex !== -1 && serviceRefs.current[serviceIndex]) {
      
@@ -69,9 +88,9 @@ function ServicesPage({data={}}) {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.optionContainer}>
-        <h3>{data?.serviceText || "What is included in 1st year"}</h3>
+        <h3>{mainServicePageData?.serviceText || "What is included in 1st year"}</h3>
         <div className={styles.optionBox}>
-          {displayData?.map((item,id) => (
+          {mainServicePageData?.Services?.map((item,id) => (
             <button
               key={id}
               onClick={() => {scrollToService(item._id)
@@ -96,7 +115,7 @@ function ServicesPage({data={}}) {
         </div>
       </div>
       <section className={styles.servicesContainer}>
-        {displayData?.map((service, index) => (
+        {mainServicePageData?.Services?.map((service, index) => (
           <div
             key={service._id}
             ref={(el) => (serviceRefs.current[index] = el)}
