@@ -14,7 +14,7 @@ const FounderInfo = () => {
         try {
             const { res, err } = await getFounderData();
             if (res) {
-                // console.log(res.data);
+                 console.log("the founder data",res.data);
                 setData(res?.data);
             } else {
                 setData([]);
@@ -40,7 +40,9 @@ const FounderInfo = () => {
                  <div className={styles.founderinformationtextContainer} key={index}>
                     <div className={styles.founderinfotext}>
                         <p className={styles.founderinfotextHeading}>{item?.Title}</p>
-                        <p className={styles.founderinfotextBody}>{item?.Content}</p>
+                        {item?.Content[0]?.ContentParagraph?.map((discription,i)=>(
+                            <p className={styles.founderinfotextBody} key={i}>{discription}</p>
+                        ))}
                         <Link href='/about/financialfuture'><ReadMore text={"Read Our Story"} /></Link>
 
 

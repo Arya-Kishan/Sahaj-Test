@@ -67,17 +67,18 @@ function ServicesPage({data={}}) {
     getMainPageServices();
   }, []);
   
-  // const displayData = data?.Services || serviceData;
 
   const scrollToService = (id) => {
     const serviceIndex = mainServicePageData?.Services?.findIndex((service) => service._id === id);
   
     if (serviceIndex !== -1 && serviceRefs.current[serviceIndex]) {
-     
       const elementTop = serviceRefs.current[serviceIndex].getBoundingClientRect().top + window.scrollY;
+  
    
+      const offset = window.innerWidth <= 768 ? 350 : 80;
+  
       window.scrollTo({
-        top: elementTop - 40, 
+        top: elementTop - offset,
         behavior: "smooth",
       });
     } else {

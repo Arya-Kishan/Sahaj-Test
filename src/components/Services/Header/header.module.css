@@ -37,6 +37,13 @@ font-family: Roboto;
 .para span{
     color: #C18823;
 }
+.textContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:32px;
+    padding: 20px ;
+}
 .downloadButton{
     cursor: pointer;
     color: #FFFFFF;
@@ -56,8 +63,8 @@ font-family: Roboto;
         font-size: 28px;
         line-height: 42px;  
     }
-    .Section{
-        padding:40px;
+    .textContainer{
+        padding:40px 16px;
         gap:32px;
         text-align: center;
     }
@@ -67,8 +74,9 @@ font-family: Roboto;
         
     }
     .para{
-        font-size: 16px;
-        
-        }
-
+        font-size: 16px;   
+    }
+    .downloadButton{
+        margin: 5px;
+    }
 }

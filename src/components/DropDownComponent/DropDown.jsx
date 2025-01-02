@@ -20,7 +20,7 @@ const Dropdown = ({ value, onChange, options,title }) => {
         className={styles.buttons}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <p>{isInitial ? title : options[value]?.option}</p>
+        <p>{isInitial ? title : options[value]?.title}</p>
         <span className={styles.icon}>
           {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
         </span>
@@ -31,7 +31,7 @@ const Dropdown = ({ value, onChange, options,title }) => {
           {options &&
           options?.map((option, index) => (
             <button
-              key={option.id}
+              key={index}
               className={`${styles.menuItem} ${
                 value === index ? styles.active : ""
               }`}
