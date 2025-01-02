@@ -49,14 +49,7 @@ function FAQ({ heading, buttonText,path,onClick }) {
           </button>
         )}
         </div>
-      <div className={styles.faqtextContainerSmallScreen}>
-        <p className={styles.faqtext}>
-          Find the perfect financial solution for your needs.
-        </p>
-        <button className={styles.faqButton}>
-          Book a free call
-        </button>
-      </div>
+      
 
 
     </div>

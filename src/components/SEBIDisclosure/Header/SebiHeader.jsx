@@ -19,12 +19,7 @@ const SebiHeader = ({contentData = {} }) => {
               <p className={styles.smallScreenheading}>Our Story</p>
             </div>
             <div className={styles.description}>
-              <p> {description}
-                  <span className={styles.sebiLinkSpan}>
-                    <Link href={link} className={styles.link}>
-                   {link}</Link>
-                 </span>
-              </p>
+              <p> {description}{link}</p>
             </div>
             <button className={styles.viewPdfButton}>
                  <Link href={PDFlink} className={styles.viewPdflink}>View PDF</Link>

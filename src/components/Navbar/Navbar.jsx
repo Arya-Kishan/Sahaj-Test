@@ -21,7 +21,10 @@ function Navbar() {
   const openModal = () => {
     console.log('Book a call clicked');
     dispatch(toggleBookCallModal());
+    
   };
+
+
 
   return (
     <div className={style.mainContainer}>
