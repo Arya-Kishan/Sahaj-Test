@@ -40,13 +40,21 @@ const Footer = () => {
         </div>
         <div className={styles.footerSection}>
           <h4>Company</h4>
-          <Link className={styles.linkText} href="/about">About us</Link>
-          <Link className={styles.linkText} href="/sebidisclosure">Sebi Disclosure</Link>
+         <div className={styles.footerresponsive}>
+         <div className={styles.footerresponsive1}>
+         <Link className={styles.linkText} href="/about">About us</Link>
+         </div>
+         <Link className={styles.linkText} href="/sebidisclosure">Sebi Disclosure</Link>
+         </div>
         </div>
         <div className={styles.footerSection}>
           <h4>Resources</h4>
+          <div className={styles.footerresponsive2}>
+            <div className={styles.footerresponsive1}>
           <Link className={styles.linkText} href="/services">Services</Link>
+           </div>
           <Link className={styles.linkText} href="/media">Media</Link>
+          </div>
           <Link className={styles.linkText} href="/faqs">FAQs</Link>
         </div>
         <div className={styles.footerSection}>
@@ -64,7 +72,8 @@ const Footer = () => {
         </div>
         <div className={`${styles.footerSection} ${styles.socialMedia}`}>
         <h4>Follow us</h4>
-        {footerData?.FollowUs?.length>0&&
+       <div className={styles.footerlogo}>
+       {footerData?.FollowUs?.length>0&&
             footerData?.FollowUs.map((foll,index)=>(
               <Link href={foll?.link} key={index}>
                 <Image src={foll?.image}  className={`${styles.follows_logo}` } width={34} height={34} alt="social media icons"/> 
@@ -72,6 +81,7 @@ const Footer = () => {
             ))
        
           }
+       </div>
         </div>
       </div>
       <div className={styles.footersebiDescription}>
