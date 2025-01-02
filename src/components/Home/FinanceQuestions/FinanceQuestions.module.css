@@ -143,6 +143,10 @@
   font-weight: 600;
   font-size: 16px;
 }
+.descriptionSpan{
+  color:#C39934;
+
+}
 
 .servicesList {
   display: flex;
@@ -265,6 +269,7 @@
 @media (max-width: 768px) {
   .container{
     padding: 16px;
+    margin-top: 30px;
   }
   .cardsContainer{
     display: none;
@@ -297,6 +302,14 @@
   .headsection{
     display: none;
   }
+
+  .headsection2{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    width:100%
+  }
+
   .buttons{
     flex-direction: column;
     width: 100%;

@@ -4,8 +4,8 @@
   background-color: #FFFFFF;
   display: flex;
   justify-content: center;
-  width: 100%;
-  max-width: 50%;
+  /* width: 100%;
+  max-width: 50%; */
   align-items: center;
   flex-direction: column;
   border-radius: 12px;
@@ -141,4 +141,12 @@ margin-left: 24px;  margin: 15px 0px 0px 0px;
   color: #ccc; 
   pointer-events: none; 
   cursor: not-allowed; 
+}
+@media (max-width:768px) {
+  .flexcontainer {
+    margin-top: 30px;
+    margin-left: -15px;
+    
+  }
+  
 }

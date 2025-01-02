@@ -149,7 +149,7 @@ function ConfirmSlot({ ResetData, formData, formatDate }) {
                         <IoLogoWhatsapp className={styles.whatsAppLogo} />
                         <div className={styles.whatsAppText}>
                             <h3>Need more assistance? Reach out to us on WhatsApp.</h3>
-                            <p>WhatsApp us now</p>
+                            <p className={styles.whatsAppTextPara}>WhatsApp us now</p>
                         </div>
                     </div>
                 </>}

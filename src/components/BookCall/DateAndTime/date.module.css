@@ -2,7 +2,7 @@
   border: 1px solid red;
     width: 100%;
     padding: 0 10px 0 10px;
-    height: 48px;
+    height: 68px;
     border: 1px solid #EAEFF2;
     border-radius: 13px;
     display: flex;
@@ -111,8 +111,19 @@
   }
   .seletedSlot{
     border: 1px solid  #C18823;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.0); 
+    transition: all 0.3s ease;
   }
   .noSlotsMessage{
     text-align: center;
     margin: auto;
+  }
+  @media (max-width:768px) {
+    .slot{
+      width: 95px;
+    }
+    .nextbutton{
+      width: 100%;
+    }
   }

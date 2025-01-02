@@ -39,3 +39,12 @@
     cursor: pointer;
     border-radius: 5px;
   }
+  @media (max-width:768px) {
+    .container {
+      width:100%;
+    }
+    .nextButton{
+      width:100%;
+    }
+    
+  }
