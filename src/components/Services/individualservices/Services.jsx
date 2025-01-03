@@ -81,6 +81,12 @@ const Services = () => {
     getMainPageServices();
   }, []);
 console.log("active tab",activeTab)
+
+const newServiceOptions = mainServicePageData?.Services?.map(service => ({
+  _id: service._id,
+  title: service.title
+})) || [];
+
   return (
     <>
       <div className={styles.expertBox}>
@@ -109,17 +115,23 @@ console.log("active tab",activeTab)
               </button>
             ))}
           </div>
-          <div className={styles.dropDownBox}>
-            <Dropdown
-              title={serviceOptions[activeTab]?.title}
-              value={activeTab}
-              onChange={(index) =>
-                 {setActiveTab(index)
-                 getAllServices(serviceOptions[index]?._id)
+        
+         {newServiceOptions && (
+            <div className={styles.dropDownBox}>
+              <Dropdown
+                title={"Select Services"}
+                value={activeTab}
+                onChange={(index) => {
+                 
+                    setActiveTab(index);
+                  
+                    getAllServices(newServiceOptions[index]?._id);
+              
                 }}
-              options={serviceOptions}
-            />
-          </div>
+                options={newServiceOptions}
+              />
+            </div>
+          )}
         </div>
         <div className={styles.content}>
           {serviceData?.map((section, idx) => (

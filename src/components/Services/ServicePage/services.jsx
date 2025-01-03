@@ -85,6 +85,12 @@ function ServicesPage() {
       console.error("Service not found or ref missing:", id);
     }
   };
+
+const newServiceOptions = mainServicePageData?.Services?.map(service => ({
+  _id: service._id,
+  title: service.title
+})) || [];
+
   
   return (
     <div className={styles.mainContainer}>
@@ -103,17 +109,19 @@ function ServicesPage() {
             </button>
           ))}
         </div>
+        {newServiceOptions && 
         <div className={styles.dropDownBox}>
-          <Dropdown
-            title="Select Service"
-            value={activeOption}
-            onChange={(index) => {
-              setActiveOption(index);
-              scrollToService(serviceOptions[index]?._id);
-            }}
-            options={serviceOptions}
-          />
-        </div>
+        <Dropdown
+          title="Select Service"
+          value={activeOption}
+          onChange={(index) => {
+            setActiveOption(index);
+            scrollToService(newServiceOptions[index]?._id);
+          }}
+          options={newServiceOptions}
+        />
+      </div>}
+        
       </div>
       <section className={styles.servicesContainer}>
         {mainServicePageData?.Services?.map((service, index) => (
