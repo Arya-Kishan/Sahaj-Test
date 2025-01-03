@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import companyInfoImg from "../../../assests/AboutUs/companyInfoImg.webp";
 import ReadMore from "../../ReadMoreButton/ReadMoreButton";
 import styles from "./companyInfo.module.css";
 import { getInvestmentData } from "@/services/aboutus";
