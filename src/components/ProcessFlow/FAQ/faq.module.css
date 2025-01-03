@@ -1,107 +1,69 @@
-.faqContainer{
-  padding: 60px 0px;
+.faqContainer {
+  padding: 40px 15px; 
   display: flex;
   align-items: center;
-  height: 100%;
+  justify-content: center;
+  height: auto;
   width: 100%;
   position: relative;
-  justify-content: center;
-  
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topsvg,
+.bottomsvg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 120%;
+  min-height: 120%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+} 
+
+.faqtextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+.faqtext {
+  font-family: Roboto, sans-serif;
+  font-size: 36px; 
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+} 
+
+ .faqButton {
+  padding: 16px 48px;
+  border-radius: 5px;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  background-color: rgb(17, 17, 17);
+  cursor: pointer;
+  width: 100%; 
+} 
+
+ .link {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .faqtext {
+    font-size: 24px; 
+    line-height: 36px;
+    letter-spacing: 0.2px;
   }
-  .faqtextContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap:16px;
-    z-index: 2;
-  }
-  .faqtext{
-   
-      font-family: Roboto;
-      font-size: 36px;
-      font-weight: 600;
-      line-height: 42.19px;
-      letter-spacing: 0.5px;
-      text-align: center;
-      
-  }
-  .link{
-    color: white;
-    text-decoration: none;
-  }
-  .faqButton{
-      padding: 16px 48px ;
-      width: fit-content;
-      gap: 10px;
-      border-radius: 5px;
-      font-family: Roboto;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 27px;
-      letter-spacing: 0.4px;
-      text-align: center;
-      color: white;
-      background-color: rgb(17, 17, 17);
-      cursor: pointer;
-  
-  }
-  .svgtopWave, .svgbottomWave{
-    width: 100%;
-    height:100%;
-    position: absolute;
-    overflow: hidden;
-  }
-  
-  .topsvg,
-  .bottomsvg {
-    position: absolute;
-    width: 100%;
-    height:100%;
-  }
-  .faqtextContainerSmallScreen{
-    display: none;
-  }
-  
-  @media (max-width: 768px) {
-        .faqContainer{
-          padding: 60px 16px;
-          gap: 24px;
-        }
-        
-        .faqtextContainerSmallScreen{
-          display: block;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap:16px;
-          z-index: 1;
-          padding: 60px 16px;
-  
-        }
-        .faqtext{
-          font-family: Roboto;
-          font-size: 24px;
-          font-weight: 600;
-          line-height: 36px;
-          letter-spacing: 0.2;
-          text-align: center;
-  
-        }
-        .faqButton{
-        
-          padding: 16px 48px;
-          gap: 10px;
-          border-radius: 5px;
-          width: 100%;
-  
-        }
-  
-        .topsvg,
-        .bottomsvg {
-  
-            position: absolute;
-            width: 100%;
-            height:100%;
-            object-fit: cover;
-        }
-   }
+} 
+

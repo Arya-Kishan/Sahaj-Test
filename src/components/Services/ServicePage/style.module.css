@@ -55,7 +55,8 @@
   }
   
   .optionButton:hover {
-    border-color: #000;
+   background-color: #000;
+   color: white;
   }
   
   .selected {
@@ -113,13 +114,30 @@
   .readMore:hover {
     text-decoration: underline;
   }
+  .serviceImage {
+    width: 100%; 
+    max-width: 360px;
+    height: auto;
+    overflow: hidden; 
+    display: flex;
+    max-height: 335px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+  }
   
   .cardImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+  }
+
+  /* .cardImage {
     max-width: 360px;
     max-height: 335px;
     border-radius: 8px;
     object-fit: cover;
-  }
+  } */
 
   @media (max-width:768px) {
     .mainContainer {

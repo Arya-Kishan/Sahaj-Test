@@ -4,76 +4,57 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./style.module.css";
 import Dropdown from "@/components/DropDownComponent/DropDown";
-import { getServicesTitles, getServicesData } from "@/services/service";
 
-function ServicesPage() {
+function ServicesPage({mainServicePageData={}}) {
   const [activeOption, setActiveOption] = useState(0);
-  const [serviceOptions, setOptions] = useState([]);
-  const [serviceData, setServicesData] = useState([]);
   const serviceRefs = useRef([]);
 
-  const getTitleData = async () => {
-    try {
-      const { res, err } = await getServicesTitles();
-      if (res) {
-        setOptions(res?.data || []);
-      } else {
-        setOptions([]);
-      }
-    } catch (error) {
-      console.error("Error fetching service titles:", error);
-    }
-  };
+  
 
-  const getAllServices = async (title = "All") => {
-    const data = {
-      page: 1,
-      limit: 10,
-      servicetitle: title,
-    };
-    try {
-      const { res, err } = await getServicesData(data);
-      if (res) {
-        setServicesData(res?.data?.items || []);
-      } else {
-        setServicesData([]);
-      }
-    } catch (error) {
-      console.error("Error fetching services data:", error);
-    }
-  };
-
-  useEffect(() => {
-    getTitleData();
-    getAllServices();
-  }, []);
-   
   const scrollToService = (id) => {
-    const serviceIndex = serviceData.findIndex((service) => service._id === id);
+    let serviceIndex;
+
+    if (id === "all") {
+      serviceIndex = 0; 
+    }
+    else{
+    serviceIndex = mainServicePageData?.Services?.findIndex((service) => service._id === id);
   
     if (serviceIndex !== -1 && serviceRefs.current[serviceIndex]) {
-     
       const elementTop = serviceRefs.current[serviceIndex].getBoundingClientRect().top + window.scrollY;
+  
    
+      const offset = window.innerWidth <= 768 ? 350 : 80;
+  
       window.scrollTo({
-        top: elementTop - 40, 
+        top: elementTop - offset,
         behavior: "smooth",
       });
     } else {
       console.error("Service not found or ref missing:", id);
     }
-  };
+  }
   
+  };
+
+const newServiceOptions = mainServicePageData?.Services?.map(service => ({
+  _id: service._id,
+  title: service.title
+})) || [];
+
+const optionsWithAll = [
+  { _id: "all", title: "All" }, 
+  ...newServiceOptions, 
+];
   return (
     <div className={styles.mainContainer}>
       <div className={styles.optionContainer}>
-        <h3>What is included in 1st year</h3>
+        <h3>{mainServicePageData?.serviceText || "What is included in 1st year"}</h3>
         <div className={styles.optionBox}>
-          {serviceOptions.map((item,id) => (
+          {optionsWithAll?.map((item,id) => (
             <button
               key={id}
               onClick={() => {scrollToService(item._id)
-                console.log("the id is,",id,item._id)
               }}
               className={styles.optionButton}
             >
@@ -81,20 +62,22 @@ function ServicesPage() {
             </button>
           ))}
         </div>
+        {optionsWithAll && 
         <div className={styles.dropDownBox}>
-          <Dropdown
-            title="Select Service"
-            value={activeOption}
-            onChange={(index) => {
-              setActiveOption(index);
-              scrollToService(serviceOptions[index]?._id);
-            }}
-            options={serviceOptions}
-          />
-        </div>
+        <Dropdown
+          title="All Services"
+          value={activeOption}
+          onChange={(index) => {
+            setActiveOption(index);
+            scrollToService(optionsWithAll[index]?._id);
+          }}
+          options={optionsWithAll}
+        />
+      </div>}
+        
       </div>
       <section className={styles.servicesContainer}>
-        {serviceData.map((service, index) => (
+        {mainServicePageData?.Services?.map((service, index) => (
           <div
             key={service._id}
             ref={(el) => (serviceRefs.current[index] = el)}
@@ -107,7 +90,7 @@ function ServicesPage() {
                 className={styles.readMore}
                 href={{
                   pathname: "/individual/individualservices",
-                  query: { id: service?._id },
+                  query: { id: service?._id, title: service?.MainTitle },
                 }}
               >
                 Read more →

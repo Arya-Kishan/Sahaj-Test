@@ -187,4 +187,9 @@
 .dropBox::-webkit-scrollbar-corner {
     background: transparent; 
 }
-  
+  @media (max-width:768px) {
+    .modalContent {
+      padding: 25px;
+    }
+    
+  }
