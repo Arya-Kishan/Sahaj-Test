@@ -8,7 +8,6 @@ function index() {
   return (
     <>
     <Services/>
-    <FAQ  heading={"Find Answers to Your Questions in Our Frequently asked questions "} buttonText={"Book a free call"}/>
     <ReviewsContainer/>
     </>
   )

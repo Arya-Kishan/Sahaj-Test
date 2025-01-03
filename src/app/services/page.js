@@ -29,9 +29,9 @@ function Services() {
 
   return (
     <>
-      <ServiceHeader title={mainServicePageData?.MainTitle} banner={mainServicePageData?.Banner} type={false} />
-      <ServicesPage />
-      <FAQ heading={mainServicePageData?.footer?.text} buttonText={mainServicePageData?.footer?.buttonText} path="/renewalplan" />
+      <ServiceHeader title={mainServicePageData[0]?.MainTitle} banner={mainServicePageData[0]?.Banner} type={false} />
+      <ServicesPage  mainServicePageData={mainServicePageData[0]}/>
+      <FAQ heading={mainServicePageData[0]?.footer?.text} buttonText={mainServicePageData[0]?.footer?.buttonText} path="/renewalplan" />
       <ReviewsContainer />
 
     </>

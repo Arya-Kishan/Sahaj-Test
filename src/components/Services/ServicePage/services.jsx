@@ -4,68 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./style.module.css";
 import Dropdown from "@/components/DropDownComponent/DropDown";
-import { getServicesTitles, getServicesData,getMainPageServicesData} from "@/services/service";
 
-function ServicesPage() {
+function ServicesPage({mainServicePageData={}}) {
   const [activeOption, setActiveOption] = useState(0);
-  const [serviceOptions, setOptions] = useState([]);
-  const [serviceData, setServicesData] = useState([]);
-  const [mainServicePageData,setMainServicePageData]=useState({})
   const serviceRefs = useRef([]);
 
-  const getTitleData = async () => {
-    try {
-      const { res, err } = await getServicesTitles();
-      if (res) {
-        setOptions(res?.data || []);
-      } else {
-        setOptions([]);
-      }
-    } catch (error) {
-      console.error("Error fetching service titles:", error);
-    }
-  };
-
-  const getAllServices = async (title = "All") => {
-    const data = {
-      page: 1,
-      limit: 10,
-      servicetitle: title,
-    };
-    try {
-      const { res, err } = await getServicesData(data);
-      if (res) {
-        setServicesData(res?.data?.items || []);
-      } else {
-        setServicesData([]);
-      }
-    } catch (error) {
-      console.error("Error fetching services data:", error);
-    }
-  };
-
-  
-    const getMainPageServices = async () => {
-     
-      try {
-        const { res, err } = await getMainPageServicesData();
-        if (res) {
-          setMainServicePageData(res?.data || {});
-          console.log("the main page  service data is",res.data)
-        } else {
-          setMainServicePageData({});
-        }
-      } catch (error) {
-        console.error("Error fetching services data:", error);
-      }
-    };
- 
-
-  useEffect(() => {
-    getTitleData();
-    getAllServices();
-    getMainPageServices();
-  }, []);
   
 
   const scrollToService = (id) => {
@@ -137,7 +80,7 @@ const newServiceOptions = mainServicePageData?.Services?.map(service => ({
                 className={styles.readMore}
                 href={{
                   pathname: "/individual/individualservices",
-                  query: { id: service?._id },
+                  query: { id: service?._id, title: service?.MainTitle },
                 }}
               >
                 Read more →

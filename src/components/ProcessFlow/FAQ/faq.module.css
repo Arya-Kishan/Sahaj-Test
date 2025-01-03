@@ -1,55 +1,47 @@
 .faqContainer {
-  padding: 60px 20px 0px 20px; 
+  padding: 40px 15px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; 
+  height: auto;
   width: 100%;
   position: relative;
   flex-direction: column;
-  overflow: hidden; 
-  margin-bottom: -90px;
-}
-
-.svgtopWave,
-.svgbottomWave {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
-  z-index: -1; 
 }
 
 .topsvg,
 .bottomsvg {
   position: absolute;
-  width: 100%; 
-  height: 100%;
-  object-fit: cover; 
-}
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 120%;
+  min-height: 120%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+} 
 
 .faqtextContainer {
   display: flex;
   flex-direction: column;
-  gap:16px;
-  z-index: 1; 
+  gap: 16px;
+  z-index: 1;
   text-align: center;
   width: 90%;
-  max-width: 600px; 
+  max-width: 600px;
 }
 
 .faqtext {
   font-family: Roboto, sans-serif;
-  font-size: 36px;
+  font-size: 36px; 
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.5px;
-  text-align: center;
-}
+} 
 
-.faqButton {
+ .faqButton {
   padding: 16px 48px;
   border-radius: 5px;
   font-family: Roboto, sans-serif;
@@ -59,56 +51,19 @@
   color: white;
   background-color: rgb(17, 17, 17);
   cursor: pointer;
-}
+  width: 100%; 
+} 
 
-.link {
+ .link {
   color: white;
   text-decoration: none;
 }
-.faqtextContainerSmallScreen {
-  display: none;
-}
 
 @media (max-width: 768px) {
-  .faqContainer {
-    height: auto; 
-    padding: 40px 15px;
-    margin-bottom:0px;
-  }
-
-  .faqtextContainer {
-    display: none; 
-  }
-
-  .faqtextContainerSmallScreen {
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    z-index: 1;
-    padding: 30px 5px;
-  }
-
   .faqtext {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 24px; 
     line-height: 36px;
     letter-spacing: 0.2px;
   }
+} 
 
-  .faqButton {
-    width: 100%; 
-  }
-
-  .topsvg,
-  .bottomsvg {
-    top: 50%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 120%; 
-    min-height: 120%;
-    width: auto;
-    height: auto;
-    object-fit: cover;
-  }
-}

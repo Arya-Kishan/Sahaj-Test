@@ -13,10 +13,11 @@ import {getMainPageServicesData } from "@/services/service";
 const Services = () => {
   const searchParams = useSearchParams();
   const queryId = searchParams.get("id");
+  const queryTitle = searchParams.get("title");
   const [activeTab, setActiveTab] = useState(0);
   const [serviceOptions, setOptions] = useState([]);
   const [serviceData, setServicesData] = useState([]);
-  const [mainServicePageData,setMainServicePageData]=useState({})
+  const [mainServicePageData,setMainServicePageData]=useState([])
 
   const getTitleData = async () => {
     try {
@@ -68,10 +69,10 @@ const Services = () => {
     try {
       const { res, err } = await getMainPageServicesData();
       if (res) {
-        setMainServicePageData(res?.data || {});
+        setMainServicePageData(res?.data || []);
         console.log("the main page  service data is",res.data)
       } else {
-        setMainServicePageData({});
+        setMainServicePageData([]);
       }
     } catch (error) {
       console.error("Error fetching services data:", error);
@@ -80,12 +81,14 @@ const Services = () => {
   useEffect(() => {
     getMainPageServices();
   }, []);
-console.log("active tab",activeTab)
 
-const newServiceOptions = mainServicePageData?.Services?.map(service => ({
+const currentPlanData=mainServicePageData?.find((plan)=>plan.MainTitle === queryTitle);
+
+const newServiceOptions = currentPlanData?.Services?.map(service => ({
   _id: service._id,
   title: service.title
 })) || [];
+
 
   return (
     <>
@@ -100,7 +103,7 @@ const newServiceOptions = mainServicePageData?.Services?.map(service => ({
           <h3>Services</h3>
           <hr />
           <div className={styles.optionBox}>
-            {mainServicePageData?.Services?.map((option, index) => (
+            {currentPlanData?.Services?.map((option, index) => (
               <button
                 key={option._id}
                 className={`${styles.tabButton} ${
