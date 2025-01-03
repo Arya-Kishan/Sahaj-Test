@@ -131,7 +131,8 @@ const FinanceQuestions = ({ financeData }) => {
                 <div className={styles.headsection2}>
                     <h2 className={styles.title2}>What we do for you?</h2>
                     <p className={styles.description}>
-                        Fixed Fee ₹15,000 for the first year, ₹5,000 renewal annually thereafter
+                        Fixed Fee<span className={styles.descriptionSpan}> ₹15,000 for the per year</span>
+                         {/* ₹5,000 renewal annually thereafter */}
                     </p>
                 </div>
             </div>

@@ -5,11 +5,17 @@ import CalendarModal from '@/components/modals/CustomCalendar/CalendarModal';
 import styles from './date.module.css';
 import { getSlots } from '@/services/bookCall';
 
-function DateAndTime({ handleNext, setFormData, formData,formatDate }) {
+function DateAndTime({ handleNext, setFormData, formData, formatDate }) {
     const [selectedtime, setSlot] = useState(formData.timeslot);
     const [openCalendar, setopenCalendar] = useState(false);
     const [slots, setSlots] = useState([])
     const calendarRef = useRef(null);
+    const [selectedTimezone, setSelectedTimezone] = useState("");
+
+    const handleChange = (event) => {
+        setSelectedTimezone(event.target.value);
+    };
+
 
 
     // function formatDate(inputDate) {
@@ -85,11 +91,21 @@ function DateAndTime({ handleNext, setFormData, formData,formatDate }) {
             </div>
             <div className={styles.timezone}>
                 <p>Select time</p>
+               <div className={styles.timezoneDropdown}>
+               <FaEarthAmericas/>
                 <div className={styles.timezoneDropdown}>
-                    <FaEarthAmericas />
-                    <p>Asia/Kolkata</p>
-                    <IoIosArrowDown />
+                
+                    <select
+                        className={styles.dropdownSelect}
+                        value={selectedTimezone}
+                        onChange={handleChange}
+                    > 
+                      <option value="Asia/Kolkata">Asia/Kolkata</option>
+                        
+                    </select>
                 </div>
+               </div>
+               
             </div>
             <div className={styles.slots}>
                 {slots && slots?.length > 0 ? (

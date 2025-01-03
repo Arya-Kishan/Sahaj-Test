@@ -8,6 +8,11 @@
   }
   
   .optionContainer {
+   width: 100%;
+   display: contents;
+  }
+  .container2{
+    padding: 100px;
     display: flex;
     flex-direction: column;
     gap: 40px;

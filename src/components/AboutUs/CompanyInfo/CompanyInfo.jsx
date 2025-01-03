@@ -26,7 +26,7 @@ const SectionOne = () => {
         getData();
     }, []);
 
-    const item = Data[1];
+    //const item = Data[1];
     function transformYouTubeLink(link) {
         if (link.includes("watch?v=")) {
             console.log(link.replace("watch?v=", "embed/"))
@@ -36,8 +36,10 @@ const SectionOne = () => {
     }
     return (
         <div className={styles.sectionOneContainer}>
-            {item && (
-                <div className={styles.informationtextContainer}>
+          
+            {Data &&
+                Data?.map((item, index) => (
+                    <div className={styles.informationtextContainer} key={index}>
                     <div className={styles.infotext}>
                         <p className={styles.infotextheading}>{item?.Title}</p>
                         <p className={styles.infotextbody}>
@@ -61,6 +63,9 @@ const SectionOne = () => {
                         }
                     </div>
                 </div>
+                )
+                  
+                
             )}
         </div>
     );

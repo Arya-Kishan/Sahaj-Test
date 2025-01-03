@@ -7,7 +7,7 @@
     flex-direction: column;
     align-items: baseline;
     gap: 24px;
-    width: 388px;
+    max-width: 388px;
   }
   
   .formHeader {

@@ -42,6 +42,8 @@
 }
 .sebiLinkSpan{
     display: block; 
+    color: #1633B2;
+
 }
 .link{
     text-decoration: none;
