@@ -6,7 +6,7 @@ import styles from "./style.module.css";
 import Dropdown from "@/components/DropDownComponent/DropDown";
 import { getServicesTitles, getServicesData,getMainPageServicesData} from "@/services/service";
 
-function ServicesPage({data={}}) {
+function ServicesPage() {
   const [activeOption, setActiveOption] = useState(0);
   const [serviceOptions, setOptions] = useState([]);
   const [serviceData, setServicesData] = useState([]);

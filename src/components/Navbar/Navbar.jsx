@@ -84,7 +84,7 @@ function Navbar() {
             title="Services"
             options={[
               { label: 'Financial planning', path: '/services' },
-              { label: 'Renewal Service', path: '/services' },
+              { label: 'Renewal Service', path: '/renewalplan' },
             ]}
           />
           <Dropdown

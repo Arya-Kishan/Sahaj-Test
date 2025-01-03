@@ -30,7 +30,7 @@ function Services() {
   return (
     <>
       <ServiceHeader title={mainServicePageData?.MainTitle} banner={mainServicePageData?.Banner} type={false} />
-      <ServicesPage data={mainServicePageData} />
+      <ServicesPage />
       <FAQ heading={mainServicePageData?.footer?.text} buttonText={mainServicePageData?.footer?.buttonText} path="/renewalplan" />
       <ReviewsContainer />
 

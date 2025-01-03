@@ -8,6 +8,7 @@ import image1 from "../../../assests/Service/service1.webp";
 import image2 from "../../../assests/Service/service2.webp";
 import Dropdown from "@/components/DropDownComponent/DropDown";
 import { getServicesTitles, getServicesData } from "@/services/service";
+import {getMainPageServicesData } from "@/services/service";
 
 const Services = () => {
   const searchParams = useSearchParams();
@@ -15,6 +16,7 @@ const Services = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [serviceOptions, setOptions] = useState([]);
   const [serviceData, setServicesData] = useState([]);
+  const [mainServicePageData,setMainServicePageData]=useState({})
 
   const getTitleData = async () => {
     try {
@@ -60,7 +62,25 @@ const Services = () => {
       console.error("Error fetching service data:", error);
     }
   };
-
+    
+  const getMainPageServices = async () => {
+     
+    try {
+      const { res, err } = await getMainPageServicesData();
+      if (res) {
+        setMainServicePageData(res?.data || {});
+        console.log("the main page  service data is",res.data)
+      } else {
+        setMainServicePageData({});
+      }
+    } catch (error) {
+      console.error("Error fetching services data:", error);
+    }
+  };
+  useEffect(() => {
+    getMainPageServices();
+  }, []);
+console.log("active tab",activeTab)
   return (
     <>
       <div className={styles.expertBox}>
@@ -74,7 +94,7 @@ const Services = () => {
           <h3>Services</h3>
           <hr />
           <div className={styles.optionBox}>
-            {serviceOptions?.map((option, index) => (
+            {mainServicePageData?.Services?.map((option, index) => (
               <button
                 key={option._id}
                 className={`${styles.tabButton} ${
@@ -90,12 +110,15 @@ const Services = () => {
             ))}
           </div>
           <div className={styles.dropDownBox}>
-            {/* <Dropdown
-              title="All Services"
+            <Dropdown
+              title={serviceOptions[activeTab]?.title}
               value={activeTab}
-              onChange={(index) => setActiveTab(index)}
-              options={options}
-            /> */}
+              onChange={(index) =>
+                 {setActiveTab(index)
+                 getAllServices(serviceOptions[index]?._id)
+                }}
+              options={serviceOptions}
+            />
           </div>
         </div>
         <div className={styles.content}>
