@@ -4,6 +4,7 @@ import { toggleBookCallModal } from "@/store/slices/modalSlice";
 import React, { useState, useEffect } from "react";
 import styles from "./Carousel.module.css";
 import Image from "next/image";
+import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import playlogo from "../../../public/logos/play.png";
 
 const Carousel = ({ bannerData }) => {
@@ -11,6 +12,7 @@ const Carousel = ({ bannerData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slideData, SetSlideData] = useState([]);
   const [isPaused, setIsPaused] = useState(false);
+  const [isManualChange, setIsManualChange] = useState(false);
 
   const openModal = () => {
     console.log("Book a call clicked");
@@ -26,6 +28,21 @@ const Carousel = ({ bannerData }) => {
       window.location.href = "/services";
     }
   };
+  const handleManualSlideChange = (direction) => {
+    setIsManualChange(true);
+
+    setCurrentSlide((prev) => {
+      if (direction === "prev") {
+        return prev === 0 ? slideData.length - 1 : prev - 1;
+      }
+      if (direction === "next") {
+        return (prev + 1) % slideData.length;
+      }
+      return prev;
+    });
+
+    setTimeout(() => setIsManualChange(false), 6000);
+  };
 
   useEffect(() => {
     if (bannerData) {
@@ -38,11 +55,14 @@ const Carousel = ({ bannerData }) => {
     if (!slideData?.length || isPaused) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slideData.length);
+      if (!isManualChange) {
+        setCurrentSlide((prev) => (prev + 1) % slideData.length);
+      }
+
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [slideData, isPaused]);
+  }, [slideData, isPaused, isManualChange]);
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
@@ -54,13 +74,12 @@ const Carousel = ({ bannerData }) => {
     }
     return link;
   }
-const kk ="https://www.youtube.com/watch?v=jibvfAgrZFM&rco=1"
+  const kk = "https://www.youtube.com/watch?v=jibvfAgrZFM&rco=1"
 
   return (
     <div
-      className={`${styles.carouselContainer} ${
-        currentSlide === 2 ? styles.sideImage : ""
-      }`}
+      className={`${styles.carouselContainer} ${currentSlide === 2 ? styles.sideImage : ""
+        }`}
     >
       <div className={styles.svgtopWave}>
         <svg
@@ -167,7 +186,7 @@ const kk ="https://www.youtube.com/watch?v=jibvfAgrZFM&rco=1"
             </div>
 
             {slide?.VideoLink ? (
-             
+
               <div
                 className={styles.videoContainer}
                 onMouseEnter={() => setIsPaused(true)}
@@ -200,7 +219,7 @@ const kk ="https://www.youtube.com/watch?v=jibvfAgrZFM&rco=1"
             )}
 
             {currentSlide === 2 ? <>
-              <div  className={styles.sidesImage}></div></> : ""}
+              <div className={styles.sidesImage}></div></> : ""}
             {slide?.Images.length > 0 ? (
               <div className={styles.pressLogos}>
                 {slide?.Images?.map((logo, idx) => (
@@ -218,9 +237,8 @@ const kk ="https://www.youtube.com/watch?v=jibvfAgrZFM&rco=1"
             )}
 
             <button
-              className={`${styles.ctamButton} ${
-                index === 2 ? styles["mt-260px"] : styles["mt-32px"]
-              }`}
+              className={`${styles.ctamButton} ${index === 2 ? styles["mt-260px"] : styles["mt-32px"]
+                }`}
               onClick={() => handleStepClick(index)}
             >
               {slide.ButtonText}
@@ -229,17 +247,26 @@ const kk ="https://www.youtube.com/watch?v=jibvfAgrZFM&rco=1"
         ))}
 
       <div className={styles.dotsContainer}>
+        <MdArrowBackIos
+          className={styles.slideChange}
+          onClick={() => handleManualSlideChange("prev")}
+        />
         {slideData &&
           slideData?.map((_, index) => (
             <div
               key={index}
-              className={`${styles.dot} ${
-                index === currentSlide ? styles.activeDot : ""
-              }`}
+              className={`${styles.dot} ${index === currentSlide ? styles.activeDot : ""
+                }`}
               onClick={() => goToSlide(index)}
             ></div>
           ))}
+        <MdArrowForwardIos
+          className={styles.slideChange}
+          onClick={() => handleManualSlideChange("next")}
+        />
+
       </div>
+
     </div>
   );
 };

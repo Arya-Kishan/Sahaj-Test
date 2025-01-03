@@ -15,7 +15,9 @@
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
-
+.slideChange{
+  display: none;
+}
 .slide.active {
   display: flex;
   align-items: center;
@@ -350,6 +352,17 @@
     margin-top: 24px;
     border-radius: 12px;
 
+  }
+  .slideChange{
+    display: flex;
+    width: 40px;
+   height: 40px;
+   cursor: pointer;
+   margin-top: -10px;
+  }
+  .slideChange.disabled {
+    opacity: 0.5;
+    pointer-events: none;
   }
 }
 
