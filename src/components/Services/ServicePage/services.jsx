@@ -12,7 +12,13 @@ function ServicesPage({mainServicePageData={}}) {
   
 
   const scrollToService = (id) => {
-    const serviceIndex = mainServicePageData?.Services?.findIndex((service) => service._id === id);
+    let serviceIndex;
+
+    if (id === "all") {
+      serviceIndex = 0; 
+    }
+    else{
+    serviceIndex = mainServicePageData?.Services?.findIndex((service) => service._id === id);
   
     if (serviceIndex !== -1 && serviceRefs.current[serviceIndex]) {
       const elementTop = serviceRefs.current[serviceIndex].getBoundingClientRect().top + window.scrollY;
@@ -27,6 +33,8 @@ function ServicesPage({mainServicePageData={}}) {
     } else {
       console.error("Service not found or ref missing:", id);
     }
+  }
+  
   };
 
 const newServiceOptions = mainServicePageData?.Services?.map(service => ({
@@ -34,17 +42,19 @@ const newServiceOptions = mainServicePageData?.Services?.map(service => ({
   title: service.title
 })) || [];
 
-  
+const optionsWithAll = [
+  { _id: "all", title: "All" }, 
+  ...newServiceOptions, 
+];
   return (
     <div className={styles.mainContainer}>
       <div className={styles.optionContainer}>
         <h3>{mainServicePageData?.serviceText || "What is included in 1st year"}</h3>
         <div className={styles.optionBox}>
-          {mainServicePageData?.Services?.map((item,id) => (
+          {optionsWithAll?.map((item,id) => (
             <button
               key={id}
               onClick={() => {scrollToService(item._id)
-                console.log("the id is,",id,item._id)
               }}
               className={styles.optionButton}
             >
@@ -55,7 +65,7 @@ const newServiceOptions = mainServicePageData?.Services?.map(service => ({
         {newServiceOptions && 
         <div className={styles.dropDownBox}>
         <Dropdown
-          title="Select Service"
+          title="All Services"
           value={activeOption}
           onChange={(index) => {
             setActiveOption(index);

@@ -55,7 +55,8 @@
   }
   
   .optionButton:hover {
-    border-color: #000;
+   background-color: #000;
+   color: white;
   }
   
   .selected {
@@ -130,7 +131,7 @@
     height: auto;
     object-fit: cover; 
   }
-  
+
   /* .cardImage {
     max-width: 360px;
     max-height: 335px;
