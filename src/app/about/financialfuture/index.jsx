@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer";
 import AboutHeader from "@/components/AboutusHeader/AboutHeader";
@@ -6,42 +6,43 @@ import { getSingleFounderData } from "@/services/aboutus";
 import FinancialFuture from "@/components/FinancialFuture/FinancialFuture";
 
 function FuturePage() {
-    const [content, setContent] = useState([]);
+  const [content, setContent] = useState([]);
 
-    const getData = async () => {
-        const data = {
-            Title: "Building Strong Financial Futures"
-        }
-        try {
-            const { res, err } = await getSingleFounderData(data);
-            if (res) {
-                console.log("the author data",res?.data);
-                setContent(res?.data);
-            }
-            else {
-                setContent([])
-            }
-        } catch (error) {
-            console.log(error)
-        }
+  const getData = async () => {
+    const data = {
+      Title: "Tap Dancing to Financial Freedom"
+    };
+    try {
+      const { res, err } = await getSingleFounderData(data);
+      if (res) {
+        console.log("the author data", res?.data);
+        setContent(res?.data);
+      } else {
+        setContent([]);
+      }
+    } catch (error) {
+      console.log(error);
     }
-    useEffect(() => {
-        getData()
-    }, [])
-    return (
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  return (
+    <>
+      {content && (
         <>
-            {content &&
-                <>
-                    <AboutHeader
-                        heading={content?.Title}
-                        subHeading={content?.Content}
-                    />
-                    <FinancialFuture content={content} />
-                </>
-            }
-            <ReviewsContainer />
+          <AboutHeader
+            heading={content?.Title || "Default Title"}
+            subHeading={content?.Content?.ContentParagraph || "Default Subheading"}
+          />
+          <FinancialFuture content={content} />
         </>
-    )
+      )}
+      <ReviewsContainer />
+    </>
+  );
 }
 
-export default FuturePage
+export default FuturePage;

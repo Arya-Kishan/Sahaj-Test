@@ -3,8 +3,9 @@ import { useState } from "react";
 import styles from './VissionMission.module.css';
 
 const MissionVision = ({ allData }) => {
+  const missions = Array.isArray(allData?.OurMission) ? allData.OurMission : [];
   const [activeTab, setActiveTab] = useState(
-    allData?.OurMission?.[0]?.Title1 || "mission"
+    missions?.[0]?.Title1 || "mission"
   );
 
   return (
@@ -12,7 +13,7 @@ const MissionVision = ({ allData }) => {
       <div className={styles.missionVisioninnerContainer}>
 
         <div className={`${styles.tabs} ${styles.largeScreen}`}>
-          {allData?.OurMission?.map((data, idx) => (
+          {missions.map((data, idx) => (
             <button
               key={idx}
               className={`${styles.tabButton} ${activeTab === data.Title1 ? styles.tabButtonActive : ""}`}
@@ -24,7 +25,7 @@ const MissionVision = ({ allData }) => {
         </div>
 
         <div className={styles.largeScreen}>
-          {allData?.OurMission?.map((data) => (
+          {missions.map((data) => (
             activeTab === data.Title1 && (
               <div className={styles.tabContent} key={data._id}>
                 <ul>
@@ -38,9 +39,8 @@ const MissionVision = ({ allData }) => {
         </div>
 
         <div className={styles.smallScreen}>
-          {allData?.OurMission?.map((data) => (
+          {missions.map((data) => (
             activeTab === data.Title1 && (
-
               <div key={data._id}>
                 {data.Title1 === "vision" && (
                   <button
@@ -63,20 +63,20 @@ const MissionVision = ({ allData }) => {
                     ))}
                   </ul>
                 </div>
-                {allData.OurMission.findIndex((item) => item.Title1 === activeTab) <
-                  allData.OurMission.length - 1 ? (
+                {missions.findIndex((item) => item.Title1 === activeTab) <
+                  missions.length - 1 ? (
                   <button
                     className={styles.tabButton}
                     onClick={() =>
                       setActiveTab(
-                        allData.OurMission[
-                          allData.OurMission.findIndex((item) => item.Title1 === activeTab) + 1
+                        missions[
+                          missions.findIndex((item) => item.Title1 === activeTab) + 1
                         ].Title1
                       )
                     }
                   >
-                    {allData.OurMission[
-                      allData.OurMission.findIndex((item) => item.Title1 === activeTab) + 1
+                    {missions[
+                      missions.findIndex((item) => item.Title1 === activeTab) + 1
                     ].Title2}
                   </button>
                 ) : null}
