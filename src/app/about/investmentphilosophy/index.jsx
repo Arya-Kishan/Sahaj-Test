@@ -10,13 +10,13 @@ function Philosophy() {
 
     const getData = async ()=>{
        const data = {
-            Title:"Our investment philosophy"
+            Title:"SahajMoney Investment Philosophy"
         }
                
         try {
             const {res, err} = await getSingleInvestmentData(data);
             if(res){
-                console.log("investment philosophy data",res?.data);
+                console.log("SahajMoney Investment Philosophy",res?.data);
                 setContent(res?.data);
             }
             else{
