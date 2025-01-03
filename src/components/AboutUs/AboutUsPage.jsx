@@ -31,10 +31,14 @@ const AboutUsPage = () => {
 
   return (
     <>
+        {allData &&
+        <>
         <Heading allData = {allData} />
-        <CompanyInfo />
+        <CompanyInfo allData = {allData} />
         <VisionMission allData = {allData}/>
-        <FounderInfo />
+        <FounderInfo allData = {allData} />
+        </>
+        }
         <ClientsReview />
         <ReviewPortfolio />
   </>

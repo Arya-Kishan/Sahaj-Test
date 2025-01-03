@@ -8,26 +8,24 @@ import ReadMore from "@/components/ReadMoreButton/ReadMoreButton";
 import styles from './founderInfo.module.css';
 import { getFounderData } from "@/services/aboutus";
 
-const FounderInfo = () => {
-    const [founderData, setData] = useState([]);
-
-    const getData = async () => {
-        try {
-            const { res, err } = await getFounderData();
-            if (res) {
-                // console.log("API Response:", res.data); 
-                setData(res?.data);
-            } else {
-                setData([]);
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    };
+const FounderInfo = ({ allData }) => {
+    const [founderData, setFounderData] = useState([]);
 
     useEffect(() => {
-        getData();
-    }, []);
+        if (allData?.Founder) {
+            const transformedData = [
+                {
+                    Title: allData.Founder.title || "Default Title",
+                    Content: { ContentParagraph: allData.Founder.content || "No description available." },
+                    FounderName: allData.Founder.FounderName || "Unknown",
+                    FounderDesignation: allData.Founder.designation || "No designation available",
+                    LinkedInLink: allData.Founder.linkedinLink || "https://www.linkedin.com",
+                    FounderImage: allData.Founder.FounderImage || null,
+                },
+            ];
+            setFounderData(transformedData);
+        }
+    }, [allData]);
 
     return (
         <div className={styles.founderInfoContanier}>
