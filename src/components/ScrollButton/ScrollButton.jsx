@@ -2,12 +2,20 @@
 
 import { useState, useEffect } from "react";
 import styles from "./ScrollToTopButton.module.css"; 
+import { useDispatch, useSelector } from "react-redux";
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false); 
   const [isScrolledUp, setIsScrolledUp] = useState(true); 
+  const isBookCallModalOpen = useSelector((state) => state.modal.isBookCallModalOpen);
+
+
+  
+  
 
   let lastScrollPosition = 0; 
+
+  
 
   const handleScroll = () => {
     const currentScroll = window.scrollY;
@@ -17,6 +25,8 @@ const ScrollToTopButton = () => {
     } else {
       setIsVisible(false);
     }
+
+
 
     setIsScrolledUp(currentScroll < lastScrollPosition);
     lastScrollPosition = currentScroll;
@@ -31,25 +41,36 @@ const ScrollToTopButton = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      
     };
   }, []);
 
   return (
-    <button
-      className={`${styles.scrollButton} ${isVisible ? styles.visible : ""}`}
-      onClick={scrollToTop}
-      title="Scroll to top"
+   <>
+   
+    {
+      isBookCallModalOpen? " " : 
+      <button
+    className={`${styles.scrollButton} ${isVisible ? styles.visible : ""}`}
+    onClick={scrollToTop}
+    title="Scroll to top"
+  >
+     
+    <span
+      className={`${styles.arrow} ${
+        isScrolledUp ? "" : ""
+      }`}
     >
-      <span
-        className={`${styles.arrow} ${
-          isScrolledUp ? "" : ""
-        }`}
-      >
-        ↑
-      </span>
-    </button>
+      ↑
+    </span>
+    
+  </button>
+    }
+   
+   </>
   );
 };
 

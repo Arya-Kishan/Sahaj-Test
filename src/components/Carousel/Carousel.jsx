@@ -68,13 +68,13 @@ const Carousel = ({ bannerData }) => {
     setCurrentSlide(index);
   };
   function transformYouTubeLink(link) {
+    console.log("raw link", link)
     if (link.includes("watch?v=")) {
-      console.log(link.replace("watch?v=", "embed/"))
+      console.log("link",link.replace("watch?v=", "embed/"))
       return link.replace("watch?v=", "embed/");
     }
     return link;
   }
-  const kk = "https://www.youtube.com/watch?v=jibvfAgrZFM&rco=1"
 
   return (
     <div

@@ -53,14 +53,33 @@
     display: flex;
     flex-direction: column;
     max-width: 240px;
+    margin-top: 16px;
 }
 .footerSection h4 {
     font-weight: 400;
     color: #00000080;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-family: Manrope;
 }
+.footerresponsive{
+    margin-bottom: 20px;
+}
+ 
+.footerresponsive2{
+    margin-bottom: 20px;
+}
+
+
+.footerresponsive1{
+    margin-bottom: 20px;
+}
+
+.footerlogo{
+    display: flex;
+    flex-direction: column;
+}
+
 .subLogo{
     height: 26px;
     width: 96px;
@@ -70,6 +89,13 @@
 .footerSection p,
 .linkText {
     color: #333;
+    text-decoration: none;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.linkText1 {
+    color: white;
     text-decoration: none;
     margin: 5px 0;
     font-size: 14px;
@@ -161,4 +187,29 @@
     .policyBox{
         flex-wrap:wrap ;
     }
+
+    .footerresponsive{
+        display: flex;
+        margin-bottom: 0px;
+        
+        
+    }
+    .footerresponsive2{
+        display: flex;
+        margin-bottom: -12px;
+     
+    
+    }
+    
+    .footerresponsive1{
+        margin-right: 40px;
+        
+    }
+    
+    .footerlogo{
+        display: flex;
+        flex-direction: row;
+        margin-right: 15px;
+    }
 }
+

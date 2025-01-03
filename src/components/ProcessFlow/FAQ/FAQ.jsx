@@ -38,7 +38,7 @@ function FAQ({ heading, buttonText,path,onClick }) {
             {buttonText}
           </button>
         )}
-        </div>
+      </div>
       <div className={styles.svgbottomWave}>
         <svg width="1440" height="221" className={styles.bottomsvg} viewBox="0 0 1440 221" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path opacity="0.2" fillRule="evenodd" clipRule="evenodd" d="M0 160.546L48 136.809C96 113.072 192 65.5981 288 65.5981C384 65.5981 480 113.072 576 132.062C672 151.052 768 141.557 864 108.325C960 75.0929 1056 18.1239 1152 3.88162C1248 -10.3606 1344 18.1239 1392 32.3661L1440 46.6084V246H1392C1344 246 1248 246 1152 246C1056 246 960 246 864 246C768 246 672 246 576 246C480 246 384 246 288 246C192 246 96 246 48 246H0L0 160.546Z" fill="url(#paint0_linear_1338_16680)" />
