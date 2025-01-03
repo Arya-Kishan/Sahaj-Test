@@ -68,10 +68,6 @@
           gap: 24px;
         }
         
-        .faqtextContainer{
-          display: none;
-        
-        }
         .faqtextContainerSmallScreen{
           display: block;
           display: flex;

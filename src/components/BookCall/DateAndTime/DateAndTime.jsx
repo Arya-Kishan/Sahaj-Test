@@ -91,18 +91,20 @@ function DateAndTime({ handleNext, setFormData, formData, formatDate }) {
             </div>
             <div className={styles.timezone}>
                 <p>Select time</p>
+               <div className={styles.timezoneDropdown}>
+               <FaEarthAmericas/>
                 <div className={styles.timezoneDropdown}>
+                
                     <select
                         className={styles.dropdownSelect}
                         value={selectedTimezone}
                         onChange={handleChange}
-                    >
-                        <option value="Asia/Kolkata">Asia/Kolkata</option>
-                        <option value="America/New_York">America/New York</option>
-                        <option value="Europe/London">Europe/London</option>
-                        <option value="Australia/Sydney">Australia/Sydney</option>
+                    > 
+                      <option value="Asia/Kolkata">Asia/Kolkata</option>
+                        
                     </select>
                 </div>
+               </div>
                
             </div>
             <div className={styles.slots}>
