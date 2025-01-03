@@ -62,16 +62,16 @@ const optionsWithAll = [
             </button>
           ))}
         </div>
-        {newServiceOptions && 
+        {optionsWithAll && 
         <div className={styles.dropDownBox}>
         <Dropdown
           title="All Services"
           value={activeOption}
           onChange={(index) => {
             setActiveOption(index);
-            scrollToService(newServiceOptions[index]?._id);
+            scrollToService(optionsWithAll[index]?._id);
           }}
-          options={newServiceOptions}
+          options={optionsWithAll}
         />
       </div>}
         
