@@ -9,13 +9,11 @@ function FuturePage() {
   const [content, setContent] = useState([]);
 
   const getData = async () => {
-    const data = {
-      Title: "Tap Dancing to Financial Freedom"
-    };
+   ;
     try {
-      const { res, err } = await getSingleFounderData(data);
+      const { res, err } = await getSingleFounderData();
       if (res) {
-        console.log("the author data", res?.data[0]);
+        // console.log("the author data", res?.data[0]);
         setContent(res?.data[0]);
       } else {
         setContent([]);
