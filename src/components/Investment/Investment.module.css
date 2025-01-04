@@ -10,7 +10,8 @@
 
 .section {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    /* flex-direction: column; */
     gap: 40px;
     width: 100%;
     margin-bottom: 10px;
@@ -22,7 +23,21 @@
     flex-direction: column;
     gap: 16px;
 }
-
+.contentBox{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.title{
+    font-family: 'Roboto';
+    font-size: 24px;
+    font-weight: 600;
+    color: #000000;
+}
+.videoContainer, .imageContainer{
+    min-width: 477px;
+    border-radius: 12px !important;
+}
 .SmallMainTitle {
     display: flex;
     flex-direction: column;
@@ -127,7 +142,12 @@
 .rowreversecontainer {
     flex-direction: column-reverse;
 }
-
+.paragraph{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Manrope";
+    color: #000000BF;
+}
 .socials {
     width: 100%;
     display: flex;
@@ -249,8 +269,12 @@
 
     .section {
         padding: 0px;
+        flex-direction: column;
     }
-
+    .videoContainer, .imageContainer{
+        min-width: 380px;
+        border-radius: 12px !important;
+    }
 
     .SmallMainTitle {
         flex-direction: column;

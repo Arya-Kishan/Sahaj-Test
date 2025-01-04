@@ -5,12 +5,14 @@ import styles from './FinancialPlan.module.css';
 import Image from 'next/image';
 import image from '../../../assests/Home/FinancialPlan.webp';
 import DownloadModal from '@/components/DownloadModal/Download';
-import logo  from "@/assests/Home/logo.webp"
+import logo from "@/assests/Home/logo.webp"
+import { getDownloadData } from '@/services/faq';
 
 const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
     const [companyGrowth, setGrowthData] = useState([])
     const [howWeDoData, setHowDo] = useState([])
     const [isPlaying, setIsPlaying] = useState(false);
+    const [downloadData, setDownloadData] = useState()
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,14 +25,22 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
     }, [financePlanData]);
 
     const handlePlayButtonClick = () => {
-        const videoLink = howWeDoData?.VideoLink;
-        if (videoLink && (videoLink.includes("youtube.com") || videoLink.includes("youtu.be"))) {
-            window.location.href = videoLink;
-        } else {
-            setIsPlaying(true);
-        }
+        setIsPlaying(true);
     };
-
+    const getData = async () => {
+        try {
+            const { res, err } = await getDownloadData();
+            if (res?.data) {
+                console.log(res?.data?.data)
+                setDownloadData(res?.data?.data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        getData()
+    }, [])
     const handleStepClick = (index) => {
         if (index === 0) {
             scrollToTestimonials();
@@ -40,41 +50,53 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
             window.location.href = '/services';
         }
     };
+    function transformYouTubeLink(link) {
+        console.log("raw link", link)
+        if (link.includes("watch?v=")) {
+            console.log("link", link.replace("watch?v=", "embed/"))
+            return link.replace("watch?v=", "embed/");
+        }
+        return link;
+    }
 
     return (
         <div className={styles.container}>
 
             <header className={styles.header}>
                 <div className={styles.headerTitle}>
-                    <h1 className={styles.title}>Download Your Free Financial Plan</h1>
+                    <h1 className={styles.title}>{downloadData?.title}</h1>
                     <p className={styles.subtitle}>
-                        See how <Image  src={logo} className={styles.highlight} alt="logo"/> simplifies financial planning
+                        {downloadData?.description.split('SahajMoney')[0]}
+                        <Image src={logo} className={styles.highlight} alt="logo" />
+                        {downloadData?.description.split('SahajMoney')[1]}
                     </p>
                 </div>
-                <button className={styles.downloadButton} onClick={() => setIsModalOpen(true)}>Download Now</button>
+                <button className={styles.downloadButton} onClick={() => setIsModalOpen(true)}>{downloadData?.buttonText}</button>
             </header>
             <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
             <div className={styles.mainContent}>
                 <div className={styles.videoContainer}>
-                    {howWeDoData && (
+                    {/* <Image src={image} alt="Video Thumbnail" className={styles.videoImage} /> */}
+                    {howWeDoData &&
                         <>
                             {isPlaying ? (
 
-                                <video
+                                <iframe
+                                    id="videoPlayer"
                                     className={styles.videoPlayer}
-                                    src={howWeDoData?.VideoLink}
-                                    controls
-                                    autoPlay
-                                />
+                                    src={transformYouTubeLink(howWeDoData?.VideoLink)}
+                                    title="YouTube video player"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                ></iframe>
                             ) : (
                                 <>
-
                                     <Image
                                         src={image}
                                         alt="Video Thumbnail"
                                         className={styles.videoImage}
-                                        onClick={handlePlayButtonClick}
                                     />
                                     <div
                                         className={styles.playButton}
@@ -83,9 +105,9 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
                                         ▶
                                     </div>
                                 </>
-                            )}
-                        </>
-                    )}
+                            )}</>
+                    }
+
                 </div>
 
 

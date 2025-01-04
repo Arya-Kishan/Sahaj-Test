@@ -1,38 +1,38 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from './VissionMission.module.css';
 
 const MissionVision = ({ allData }) => {
-  const missions = Array.isArray(allData?.OurMission) ? allData.OurMission : [];
-  const [activeTab, setActiveTab] = useState(
-    missions?.[0]?.Title1 || "mission"
-  );
+  const missions = allData?.OurMission?.content || [];
+  const [activeTab, setActiveTab] = useState(missions?.[0]?.title || "Our Vision");
+
+  useEffect(() => {
+    console.log(allData);
+  }, [allData]);
+
+  const currentIndex = missions.findIndex((item) => item.title === activeTab);
 
   return (
     <div className={styles.missionVisionContainer}>
       <div className={styles.missionVisioninnerContainer}>
-
+      
         <div className={`${styles.tabs} ${styles.largeScreen}`}>
           {missions.map((data, idx) => (
             <button
-              key={idx}
-              className={`${styles.tabButton} ${activeTab === data.Title1 ? styles.tabButtonActive : ""}`}
-              onClick={() => setActiveTab(data.Title1)}
+              key={data._id || idx}
+              className={`${styles.tabButton} ${activeTab === data.title ? styles.tabButtonActive : ""}`}
+              onClick={() => setActiveTab(data.title)}
             >
-              {data.Title2}
+              {data.title}
             </button>
           ))}
         </div>
 
         <div className={styles.largeScreen}>
           {missions.map((data) => (
-            activeTab === data.Title1 && (
+            activeTab === data.title && (
               <div className={styles.tabContent} key={data._id}>
-                <ul>
-                  {data.Points.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
+                <p>{data.content}</p>
               </div>
             )
           ))}
@@ -40,46 +40,45 @@ const MissionVision = ({ allData }) => {
 
         <div className={styles.smallScreen}>
           {missions.map((data) => (
-            activeTab === data.Title1 && (
+            activeTab === data.title && (
               <div key={data._id}>
-                {data.Title1 === "vision" && (
-                  <button
-                    className={styles.tabButton}
-                    onClick={() => setActiveTab("mission")}
-                  >
-                    Our Mission
-                  </button>
-                )}
                 <button
-                  className={`${styles.tabButton} ${activeTab === data.Title1 ? styles.tabButtonActive : ""}`}
-                  onClick={() => setActiveTab(data.Title1)}
+                  className={`${styles.tabButton} ${activeTab === data.title ? styles.tabButtonActive : ""}`}
+                  onClick={() => setActiveTab(data.title)}
                 >
-                  {data.Title2}
+                  {data.title}
                 </button>
                 <div className={styles.tabContent}>
-                  <ul>
-                    {data.Points.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
+                  <p>{data.content}</p>
                 </div>
-                {missions.findIndex((item) => item.Title1 === activeTab) <
-                  missions.length - 1 ? (
-                  <button
-                    className={styles.tabButton}
-                    onClick={() =>
-                      setActiveTab(
-                        missions[
-                          missions.findIndex((item) => item.Title1 === activeTab) + 1
-                        ].Title1
-                      )
-                    }
-                  >
-                    {missions[
-                      missions.findIndex((item) => item.Title1 === activeTab) + 1
-                    ].Title2}
-                  </button>
-                ) : null}
+
+                <div className={styles.navigationButtons}>
+                  {currentIndex > 0 && (
+                    <button
+                      className={styles.tabButton}
+                      onClick={() =>
+                        setActiveTab(
+                          missions[currentIndex - 1].title
+                        )
+                      }
+                    >
+                      Previous: {missions[currentIndex - 1].title}
+                    </button>
+                  )}
+
+                  {currentIndex < missions.length - 1 && (
+                    <button
+                      className={styles.tabButton}
+                      onClick={() =>
+                        setActiveTab(
+                          missions[currentIndex + 1].title
+                        )
+                      }
+                    >
+                      Next: {missions[currentIndex + 1].title}
+                    </button>
+                  )}
+                </div>
               </div>
             )
           ))}

@@ -12,10 +12,19 @@ import { FaShareAlt } from 'react-icons/fa';
 
 const Investment = ({ content }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
+    function transformYouTubeLink(link) {
+        console.log("raw link", link)
+        if (link.includes("watch?v=")) {
+          console.log("link",link.replace("watch?v=", "embed/"))
+          return link.replace("watch?v=", "embed/");
+        }
+        return link;
+      }
+
     const shareToPlatform = (platform) => {
         const currentUrl = window.location.href;
         let shareUrl = '';
@@ -46,64 +55,39 @@ const Investment = ({ content }) => {
 
         window.open(shareUrl, '_blank');
     };
-   
+
     return (
         <div className={styles.mainContainer}>
-            {content?.Content?.map((ele, index) => (
-                <div key={index} className={styles.section}>
-                    <div className={styles.heading}>
-                        <p className={styles.SmallMainTitle}>{ele?.SmallMainTitle}</p>
-                        <p className={styles.SmallDescription}>{ele?.SmallMainDescription}</p>
-                    </div>
-
-                    {ele?.MainContent?.map((item, itemIndex) => (
-                        <div key={itemIndex} className={styles.subSection}>
-
-                            {(item?.Points?.length === 0 && item?.ContentParagraph?.length === 0) && (
-                                <p className={`${styles.subHeader} ${item?.reverse ? styles.reverse : ''}`}>
-                                    {item?.title}
-                                </p>
-                            )}
-                            {item?.Content && <p className={styles.subContent}>{item?.Content}</p>}
-                            <div className={`${styles.contentContainer} ${itemIndex % 2 !== 0 ? styles.rowreversecontainer : ''}`}>
-                                {(item?.Points?.length > 0 || item?.ContentParagraph.length > 0) && <div className={`${styles.pointbox} ${itemIndex % 2 == 0 ? styles.rowreverse : ''}`}>
-                                    <div className={styles.ulContainer}>
-                                        <h4 className={styles.subHeader} >{item?.title}</h4>
-
-                                        {(item?.Points?.length > 0) && (
-                                            <ul className={styles.listBox}>
-                                                {item.Points.map((point, pointIndex) => (
-                                                    <li key={pointIndex}>{point}</li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                        {(item?.ContentParagraph.length > 0) && (
-                                            <ul className={styles.listBox}>
-                                                {item?.ContentParagraph.map((point, pointIndex) => (
-                                                    <li key={pointIndex}>{point}</li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                    </div>
-
-                                    <div className={styles.imageBox}>
-                                        {item?.Image && (
-                                            <img
-                                                src={item.Image}
-                                                alt={item.title}
-                                                className={styles.image}
-                                            />
-                                        )}
-                                    </div>
-                                </div>}
-                               
-                            </div>
-
-                        </div>
+            {content?.map((section, sectionIndex) => (
+                <div key={section._id} className={styles.section}>
+                   <div className={styles.contentBox}>
+                   <h2 className={styles.title}>{section.title}</h2>
+                    {section.ContentParagraph?.map((paragraph, paragraphIndex) => (
+                        <p key={paragraphIndex} className={styles.paragraph}>{paragraph}</p>
                     ))}
+                   </div>
+                    {section.Image && (
+                        <div className={styles.imageContainer}>
+                            <img src={section.Image} alt={section.title} className={styles.image} />
+                        </div>
+                    )}
+                    {section.Video && (
+                        <div className={styles.videoContainer}>
+                            <iframe
+                                width="100%"
+                                height="315"
+                                src={transformYouTubeLink(section.Video)}
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                    )}
                 </div>
             ))}
-            <div className={styles.socials}>
+
+<div className={styles.socials}>
                 <div className={styles.followIcons}>
                     <div className={styles.followText} >Follow Us</div>
                     <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
@@ -142,6 +126,6 @@ const Investment = ({ content }) => {
             </div>
         </div>
     );
-}
+};
 
 export default Investment;

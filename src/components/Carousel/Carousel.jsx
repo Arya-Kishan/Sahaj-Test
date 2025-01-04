@@ -70,7 +70,7 @@ const Carousel = ({ bannerData }) => {
   function transformYouTubeLink(link) {
     console.log("raw link", link)
     if (link.includes("watch?v=")) {
-      console.log("link",link.replace("watch?v=", "embed/"))
+      // console.log("link",link.replace("watch?v=", "embed/"))
       return link.replace("watch?v=", "embed/");
     }
     return link;
