@@ -1,7 +1,7 @@
 "use client"
 
 import Services from "@/components/Services/individualservices/Services"
-import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer"
+import ReviewsContainer from "@/components/Reviews/ReviewsContainer"
 import FAQ from "@/components/ProcessFlow/FAQ/FAQ";
 
 function index() {

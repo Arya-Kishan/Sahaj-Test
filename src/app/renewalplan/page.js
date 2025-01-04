@@ -1,7 +1,7 @@
 "use client";
 import { useState,useEffect } from "react";
 import ServicesPage from "@/components/Services/ServicePage/services"
-import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer"
+import ReviewsContainer from "@/components/Reviews/ReviewsContainer"
 import ServiceHeader from "@/components/Services/Header/ServiceHeader"
 import FAQ from "@/components/ProcessFlow/FAQ/FAQ";
 import {getMainPageServicesData } from "@/services/service";

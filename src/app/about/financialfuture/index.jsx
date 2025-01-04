@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer";
+import ReviewsContainer from "@/components/Reviews/ReviewsContainer";
 import AboutHeader from "@/components/AboutusHeader/AboutHeader";
 import { getSingleFounderData } from "@/services/aboutus";
 import FinancialFuture from "@/components/FinancialFuture/FinancialFuture";

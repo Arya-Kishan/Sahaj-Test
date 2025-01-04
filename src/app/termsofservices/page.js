@@ -1,6 +1,6 @@
 "use client"
 import TermsOfServices from "@/components/TermsOfservices/TermsOfServices"
-import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer"
+import ReviewsContainer from "@/components/Reviews/ReviewsContainer"
 function Page() {
 
   

@@ -4,7 +4,7 @@ import { useState,useEffect } from "react";
 import Header from "@/components/FAQ/Header/Header";
 import FAQ from "@/components/ProcessFlow/FAQ/FAQ";
 import FaqPage from "@/components/FAQ/FQAPage/FaqPage";
-import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer";
+import ReviewsContainer from "@/components/Reviews/ReviewsContainer";
 import { getFaqData, getTopicFaqData} from "@/services/faq" ;
 
 const FAQsPage = () => {

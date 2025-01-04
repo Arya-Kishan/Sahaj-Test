@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Sebiheader from "@/components/SEBIDisclosure/Header/SebiHeader";
 import Sebi from "@/components/SEBIDisclosure/Sebi";
 import InvestorCharter from "@/components/SEBIDisclosure/InvestorCharter/InvestorCharter";
-import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer";
+import ReviewsContainer from "@/components/Reviews/ReviewsContainer";
 import { getlastMonthData,getmonthTrendData,getyearTrendData,getannualTrendData,getcontentData} from "@/services/sebi" ;
 
 const SEBIPage = () => {

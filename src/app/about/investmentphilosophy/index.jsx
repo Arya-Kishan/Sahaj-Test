@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Investment from "@/components/Investment/Investment";
 import AboutHeader from "@/components/AboutusHeader/AboutHeader";
 import { getSingleInvestmentData } from "@/services/aboutus";
-import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer";
+import ReviewsContainer from "@/components/Reviews/ReviewsContainer";
 function Philosophy() {
 
     const [content, setContent ] = useState([]);
