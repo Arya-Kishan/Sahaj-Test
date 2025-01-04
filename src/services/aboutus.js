@@ -25,17 +25,17 @@ export const getInvestmentData = async () =>{
         return { err: error, res: null }
      }
 }
-export const getSingleInvestmentData = async (data) =>{
+export const getSingleInvestmentData = async () =>{
     try {
-        const res = await axiosInstance.post(`/about/singlecontent`, data)
+        const res = await axiosInstance.get(`/about/allcontent`)
         return { res: res?.data, err: null }
      } catch (error) {
         return { err: error, res: null }
      }
 }
-export const getSingleFounderData = async (data) =>{
+export const getSingleFounderData = async () =>{
     try {
-        const res = await axiosInstance.post(`/about/singlefounder`, data)
+        const res = await axiosInstance.get(`about/allfounder`,)
         return { res: res?.data, err: null }
      } catch (error) {
         return { err: error, res: null }

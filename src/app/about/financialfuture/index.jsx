@@ -15,8 +15,8 @@ function FuturePage() {
     try {
       const { res, err } = await getSingleFounderData(data);
       if (res) {
-        console.log("the author data", res?.data);
-        setContent(res?.data);
+        console.log("the author data", res?.data[0]);
+        setContent(res?.data[0]);
       } else {
         setContent([]);
       }
