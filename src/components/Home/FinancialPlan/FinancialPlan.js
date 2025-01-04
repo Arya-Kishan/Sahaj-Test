@@ -110,6 +110,7 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
 
                 </div>
 
+
                 <div className={styles.stepsContainer}>
                     <p className={styles.stepHeading}>How we do it?</p>
 

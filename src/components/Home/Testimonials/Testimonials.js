@@ -126,7 +126,7 @@ const Testimonials = ({ref}) => {
                                         }}
                                     >
                                         <p className={styles.comment}>
-                                            {item?.ReviewContent}
+                                            {item?.TestimonialContent}
                                             <br />
                                             Thank you
                                         </p>
@@ -137,11 +137,12 @@ const Testimonials = ({ref}) => {
                                                     alt="Client"
                                                     className={styles.clientImage}
                                                 />
-                                                <img
-                                                    src={item?.PersonCompanyImage}
+                                                {item?.PersonFromCompanyName &&  <img
+                                                    src={item?.PersonFromCompanyName}
                                                     alt="Company"
                                                     className={styles.companyLogo}
-                                                />
+                                                />}
+                                               
                                             </div>
                                             <p className={styles.name}>{item?.PersonName}</p>
                                             <p className={styles.designation}>{item?.PersonDesignation}</p>
@@ -173,7 +174,7 @@ const Testimonials = ({ref}) => {
                     {leftTestimonials &&
                         leftTestimonials.map((testimonial, index) => (
                             <div key={index} className={styles.card}>
-                                <p className={styles.text}>{testimonial.ReviewContent}</p>
+                                <p className={styles.text}>{testimonial.TestimonialContent}</p>
                                 <div className={styles.profile}>
                                     <img src={testimonial?.PersonImage} alt="Profile" className={styles.avatar} />
                                     <div>
@@ -188,7 +189,7 @@ const Testimonials = ({ref}) => {
                     {rightTestimonials &&
                         rightTestimonials?.map((testimonial, index) => (
                             <div key={index} className={styles.card}>
-                                <p className={styles.text}>{testimonial.ReviewContent}</p>
+                                <p className={styles.text}>{testimonial.TestimonialContent}</p>
                                 <div className={styles.profile}>
                                     <img src={testimonial?.PersonImage} alt="Profile" className={styles.avatar} />
                                     <div>

@@ -1,6 +1,6 @@
 
 import styles from './Policy.module.css'
-import ReviewsContainer from '../Blog/Reviews/ReviewsContainer'
+import ReviewsContainer from '../Reviews/ReviewsContainer'
 
 const PrivacyPolicy = () => {
   return (

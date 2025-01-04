@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import Heading from '@/components/Blog/BlogHeader/BlogHeader'
 import MainSection from '@/components/Blog/BlogMainSection/MainSection';
 import SuggestionCardList from '@/components/Blog/Featured/Suggestion';
-import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer";
+import ReviewsContainer from "@/components/Reviews/ReviewsContainer";
 import { getBlogsData } from '@/services/blogs';
 
 const BlogPage = () => {

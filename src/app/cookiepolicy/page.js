@@ -1,5 +1,5 @@
 import CookiePolicy from "@/components/CookiePolicy/CookiePolicy"
-import ReviewsContainer from "@/components/Blog/Reviews/ReviewsContainer"
+import ReviewsContainer from "@/components/Reviews/ReviewsContainer"
 function page() {
   return (
     <>
