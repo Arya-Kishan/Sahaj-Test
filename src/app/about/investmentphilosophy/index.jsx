@@ -9,14 +9,12 @@ function Philosophy() {
     const [content, setContent ] = useState([]);
 
     const getData = async ()=>{
-       const data = {
-            Title:"SahajMoney Investment Philosophy"
-        }
+       
                
         try {
-            const {res, err} = await getSingleInvestmentData(data);
+            const {res, err} = await getSingleInvestmentData();
             if(res){
-                console.log("SahajMoney Investment Philosophy",res?.data);
+                console.log("SahajMoney Investment Philosophy",res?.data[0]?.Content);
                 setContent(res?.data);
             }
             else{
@@ -35,10 +33,10 @@ useEffect(()=>{
     {content &&
     <>
      <AboutHeader 
-        heading={content?.Title} 
-        subHeading="Understand Your Risk Tolerance" 
+        heading={content[0]?.MainHeading} 
+        subHeading={content[0]?.Title} 
       />
-    <Investment content={content} />
+    <Investment content={content[0]?.Content} />
     <ReviewsContainer/>
     </>}
     </>
@@ -46,3 +44,4 @@ useEffect(()=>{
 }
 
 export default Philosophy;
+
