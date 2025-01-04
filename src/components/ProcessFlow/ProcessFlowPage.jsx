@@ -1,8 +1,7 @@
 "use client";
-import HeadSection from './HeadSection/HeadSection';
 import FAQ from './FAQ/FAQ';
 import Support from './Support/Support';
-import ProcessSteps from "./ProcessSteps/ProcessSteps";
+import ProcessStepsContainer from "./ProcessSteps/ProcessSteps";
 import ReviewsContainer from '../Reviews/ReviewsContainer';
 
 const ProcessFlow = ({ data }) => {
@@ -14,15 +13,16 @@ const ProcessFlow = ({ data }) => {
         return <div>Loading...</div>;
     }
 
-    const { ProcessVideo, ProcessContent, PrcessSteps } = ProcessObject;
+    const { 
+        ProcessTopBanner,ProcessVideo, ProcessContent, ProcessSteps,
+        ProcessBottomBanner } = ProcessObject;
    
 
     return (
         <div>
-            <HeadSection />
-            <ProcessSteps ProcessVideo={ProcessVideo} PrcessSteps={PrcessSteps} />
+            <ProcessStepsContainer ProcessTopBanner={ProcessTopBanner} ProcessVideo={ProcessVideo} ProcessSteps={ProcessSteps} />
             <Support ProcessContent={ProcessContent} />
-            <FAQ heading="Find Answers to Your Questions in Our FAQ" buttonText="Visit FAQ" path="/faqs" />
+            <FAQ heading={ProcessBottomBanner?.Title} buttonText={ProcessBottomBanner?.ButtonText} path="/faqs" />
             <ReviewsContainer />
         </div>
     );

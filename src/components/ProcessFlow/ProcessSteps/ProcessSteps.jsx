@@ -6,7 +6,7 @@ import styles from './processSteps.module.css';
 import process from '../../../assests/ProcessFlow/process.webp'
 
 
-const ProcessSteps = ({ ProcessVideo, PrcessSteps }) => {
+const ProcessStepsContainer = ({ ProcessTopBanner,ProcessVideo, ProcessSteps }) => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const handlePlayClick = () => {
@@ -18,15 +18,19 @@ const ProcessSteps = ({ ProcessVideo, PrcessSteps }) => {
   };
 
   return (
+  <>
+  <div className={styles.processFlowHeading}>
+    <p>{ProcessTopBanner?.MainTitle|| "Title"}</p>
+  </div>
     <div className={styles.processContainer}>
       <div className={styles.processContents} >
-        <p className={styles.processHeading}>Our Process</p>
+        <p className={styles.processHeading}>{ProcessTopBanner?.Title|| "Heading"}</p>
         <div className={styles.videoContainer}>
           {isVideoPlaying ? (
             <div className={styles.videoPlayerControls}>
               <video
                 className={styles.videoPlayer}
-                src={ProcessVideo}
+                src={ProcessTopBanner?.Video}
                 controls
                 autoPlay
               />
@@ -53,7 +57,7 @@ const ProcessSteps = ({ ProcessVideo, PrcessSteps }) => {
         </div>
         <div className={styles.processSteps}>
           <div className={styles.stepHeader}>
-            {PrcessSteps?.map((step, index) => (
+            {ProcessSteps?.map((step, index) => (
               <React.Fragment key={index} >
                 <div className={styles.circle} >{index + 1}</div>
                 {step.Processname && (
@@ -66,7 +70,7 @@ const ProcessSteps = ({ ProcessVideo, PrcessSteps }) => {
 
           </div>
           <div className={styles.stepDesccriptionContainer}>
-            {PrcessSteps?.map((step, index) => (
+            {ProcessSteps?.map((step, index) => (
               <div key={index} className={styles.step}>
                 <div className={styles.description}>
                   <p className={styles.descriptionTitle}>{step.MainTitle}</p>
@@ -83,9 +87,9 @@ const ProcessSteps = ({ ProcessVideo, PrcessSteps }) => {
       </div>
 
     </div>
-
+  </>
   );
 };
 
-export default ProcessSteps;
+export default ProcessStepsContainer;
 
