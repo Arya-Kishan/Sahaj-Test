@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import styles from './VissionMission.module.css';
 
 const MissionVision = ({ allData }) => {
-  const missions = allData?.OurMission?.content || []; 
+  const missions = allData?.OurMission?.content || [];
   const [activeTab, setActiveTab] = useState(missions?.[0]?.title || "Our Vision");
 
   useEffect(() => {
     console.log(allData);
   }, [allData]);
+
+  const currentIndex = missions.findIndex((item) => item.title === activeTab);
 
   return (
     <div className={styles.missionVisionContainer}>
@@ -49,23 +51,34 @@ const MissionVision = ({ allData }) => {
                 <div className={styles.tabContent}>
                   <p>{data.content}</p>
                 </div>
-                {missions.findIndex((item) => item.title === activeTab) <
-                  missions.length - 1 ? (
-                  <button
-                    className={styles.tabButton}
-                    onClick={() =>
-                      setActiveTab(
-                        missions[
-                          missions.findIndex((item) => item.title === activeTab) + 1
-                        ].title
-                      )
-                    }
-                  >
-                    Next: {missions[
-                      missions.findIndex((item) => item.title === activeTab) + 1
-                    ].title}
-                  </button>
-                ) : null}
+
+                <div className={styles.navigationButtons}>
+                  {currentIndex > 0 && (
+                    <button
+                      className={styles.tabButton}
+                      onClick={() =>
+                        setActiveTab(
+                          missions[currentIndex - 1].title
+                        )
+                      }
+                    >
+                      Previous: {missions[currentIndex - 1].title}
+                    </button>
+                  )}
+
+                  {currentIndex < missions.length - 1 && (
+                    <button
+                      className={styles.tabButton}
+                      onClick={() =>
+                        setActiveTab(
+                          missions[currentIndex + 1].title
+                        )
+                      }
+                    >
+                      Next: {missions[currentIndex + 1].title}
+                    </button>
+                  )}
+                </div>
               </div>
             )
           ))}
