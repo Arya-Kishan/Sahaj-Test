@@ -50,6 +50,14 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
             window.location.href = '/services';
         }
     };
+    function transformYouTubeLink(link) {
+        console.log("raw link", link)
+        if (link.includes("watch?v=")) {
+            console.log("link", link.replace("watch?v=", "embed/"))
+            return link.replace("watch?v=", "embed/");
+        }
+        return link;
+    }
 
     return (
         <div className={styles.container}>
@@ -58,9 +66,9 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
                 <div className={styles.headerTitle}>
                     <h1 className={styles.title}>{downloadData?.title}</h1>
                     <p className={styles.subtitle}>
-                        {downloadData?.description.split('SahajMoney')[0]} 
+                        {downloadData?.description.split('SahajMoney')[0]}
                         <Image src={logo} className={styles.highlight} alt="logo" />
-                        {downloadData?.description.split('SahajMoney')[1]} 
+                        {downloadData?.description.split('SahajMoney')[1]}
                     </p>
                 </div>
                 <button className={styles.downloadButton} onClick={() => setIsModalOpen(true)}>{downloadData?.buttonText}</button>
@@ -73,12 +81,16 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
                     {howWeDoData &&
                         <>
                             {isPlaying ? (
-                                <video
+
+                                <iframe
+                                    id="videoPlayer"
                                     className={styles.videoPlayer}
                                     src={howWeDoData?.VideoLink}
-                                    controls
-                                    autoPlay
-                                />
+                                    title="YouTube video player"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                ></iframe>
                             ) : (
                                 <>
                                     <Image
