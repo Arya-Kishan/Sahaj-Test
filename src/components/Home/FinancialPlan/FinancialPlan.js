@@ -85,7 +85,7 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
                                 <iframe
                                     id="videoPlayer"
                                     className={styles.videoPlayer}
-                                    src={howWeDoData?.VideoLink}
+                                    src={transformYouTubeLink(howWeDoData?.VideoLink)}
                                     title="YouTube video player"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
