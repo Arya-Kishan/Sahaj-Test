@@ -23,9 +23,13 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
     }, [financePlanData]);
 
     const handlePlayButtonClick = () => {
-        setIsPlaying(true); 
+        const videoLink = howWeDoData?.VideoLink;
+        if (videoLink && (videoLink.includes("youtube.com") || videoLink.includes("youtu.be"))) {
+            window.location.href = videoLink;
+        } else {
+            setIsPlaying(true);
+        }
     };
-   
 
     const handleStepClick = (index) => {
         if (index === 0) {
@@ -53,54 +57,57 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
 
             <div className={styles.mainContent}>
                 <div className={styles.videoContainer}>
-                    {/* <Image src={image} alt="Video Thumbnail" className={styles.videoImage} /> */}
-                    {howWeDoData &&
-                    <>
-                    {isPlaying ? (
-                        <video
-                            className={styles.videoPlayer}
-                            src={howWeDoData?.VideoLink}
-                            controls
-                            autoPlay
-                        />
-                    ) : (
+                    {howWeDoData && (
                         <>
-                            <Image
-                                src={image}
-                                alt="Video Thumbnail"
-                                className={styles.videoImage}
-                            />
-                            <div
-                                className={styles.playButton}
-                                onClick={handlePlayButtonClick}
-                            >
-                                ▶
-                            </div>
+                            {isPlaying ? (
+
+                                <video
+                                    className={styles.videoPlayer}
+                                    src={howWeDoData?.VideoLink}
+                                    controls
+                                    autoPlay
+                                />
+                            ) : (
+                                <>
+
+                                    <Image
+                                        src={image}
+                                        alt="Video Thumbnail"
+                                        className={styles.videoImage}
+                                        onClick={handlePlayButtonClick}
+                                    />
+                                    <div
+                                        className={styles.playButton}
+                                        onClick={handlePlayButtonClick}
+                                    >
+                                        ▶
+                                    </div>
+                                </>
+                            )}
                         </>
-                    )}</>
-                    }
-                    
+                    )}
                 </div>
+
 
                 <div className={styles.stepsContainer}>
                     <p className={styles.stepHeading}>How we do it?</p>
 
                     {howWeDoData &&
                         howWeDoData?.Content?.map((item, index) =>
-                            
-                            (
-                         
-                                <div key={index} >
-                                    <button className={styles.stepTitle}><p>{`Step 0${index+1}`}</p></button>
-                                    <h4 className={styles.stepSubtitle}>{item.title}</h4>
-                                    <ul className={styles.stepText}>
-                                        {item?.Points &&
-                                            item?.Points?.map((ele, ind) => <li key={ind} className={styles.serviceDescription}>{ele.point}</li>)
-                                        }
-                                    </ul>
-                                </div>
-                         
-                             ))
+
+                        (
+
+                            <div key={index} >
+                                <button className={styles.stepTitle}><p>{`Step 0${index + 1}`}</p></button>
+                                <h4 className={styles.stepSubtitle}>{item.title}</h4>
+                                <ul className={styles.stepText}>
+                                    {item?.Points &&
+                                        item?.Points?.map((ele, ind) => <li key={ind} className={styles.serviceDescription}>{ele.point}</li>)
+                                    }
+                                </ul>
+                            </div>
+
+                        ))
                     }
 
 
@@ -110,15 +117,15 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
 
             <div className={styles.footer}>
                 {companyGrowth &&
-                    companyGrowth?.map((item, index) => 
-                        (
-                     
-                            <div className={styles.stat} key={index}>
-                                <p className={styles.statTitle}>{item?.GrowthTitle}</p>
-                                <h3 className={styles.statNumber}>{item?.Achievement}</h3>
-                                <p className={styles.statDescription} onClick={()=>handleStepClick(index)} >{item?.Description}</p>
-                            </div>
-                       
+                    companyGrowth?.map((item, index) =>
+                    (
+
+                        <div className={styles.stat} key={index}>
+                            <p className={styles.statTitle}>{item?.GrowthTitle}</p>
+                            <h3 className={styles.statNumber}>{item?.Achievement}</h3>
+                            <p className={styles.statDescription} onClick={() => handleStepClick(index)} >{item?.Description}</p>
+                        </div>
+
                     ))
                 }
 

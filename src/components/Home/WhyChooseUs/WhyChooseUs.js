@@ -2,7 +2,7 @@
 import styles from './WhyChooseUs.module.css';
 import { useState, useEffect } from 'react';
 import { getWhyChooseUsData } from '@/services/home';
-
+import Image  from 'next/image';
 
 
 const WhyChooseUs = () => {
@@ -38,13 +38,24 @@ const WhyChooseUs = () => {
       <h2 className={styles.heading}>Why choose us?</h2>
       <div className={styles.features}>
         {data &&
-        data?.map((feature, index) => (
-          <div key={index} className={styles.featureCard}>
-            <img src={feature?.Logo} className={styles.icon}/>
+      data?.map((feature, index) => (
+        <div key={index} className={styles.featureCard}>
+          <div className={styles.iconContainer}>
+            <Image
+              src={feature?.Logo}
+              className={styles.icon}
+              width={100}
+              height={100}
+              alt="featured logos"
+            />
+          </div>
+          <div>
             <h3 className={styles.title}>{feature?.Title}</h3>
             <p className={styles.description}>{feature.Description}</p>
           </div>
-        ))}
+        </div>
+      ))}
+      
       </div>
     </section>
   );
