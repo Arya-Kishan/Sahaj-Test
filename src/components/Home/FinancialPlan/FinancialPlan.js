@@ -5,12 +5,14 @@ import styles from './FinancialPlan.module.css';
 import Image from 'next/image';
 import image from '../../../assests/Home/FinancialPlan.webp';
 import DownloadModal from '@/components/DownloadModal/Download';
-import logo  from "@/assests/Home/logo.webp"
+import logo from "@/assests/Home/logo.webp"
+import { getDownloadData } from '@/services/faq';
 
 const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
     const [companyGrowth, setGrowthData] = useState([])
     const [howWeDoData, setHowDo] = useState([])
     const [isPlaying, setIsPlaying] = useState(false);
+    const [downloadData, setDownloadData] = useState()
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,10 +25,22 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
     }, [financePlanData]);
 
     const handlePlayButtonClick = () => {
-        setIsPlaying(true); 
+        setIsPlaying(true);
     };
-   
-
+    const getData = async () => {
+        try {
+            const { res, err } = await getDownloadData();
+            if (res?.data) {
+                console.log(res?.data?.data)
+                setDownloadData(res?.data?.data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        getData()
+    }, [])
     const handleStepClick = (index) => {
         if (index === 0) {
             scrollToTestimonials();
@@ -42,12 +56,14 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
 
             <header className={styles.header}>
                 <div className={styles.headerTitle}>
-                    <h1 className={styles.title}>Download Your Free Financial Plan</h1>
+                    <h1 className={styles.title}>{downloadData?.title}</h1>
                     <p className={styles.subtitle}>
-                        See how <Image  src={logo} className={styles.highlight} alt="logo"/> simplifies financial planning
+                        {downloadData?.description.split('SahajMoney')[0]} 
+                        <Image src={logo} className={styles.highlight} alt="logo" />
+                        {downloadData?.description.split('SahajMoney')[1]} 
                     </p>
                 </div>
-                <button className={styles.downloadButton} onClick={() => setIsModalOpen(true)}>Download Now</button>
+                <button className={styles.downloadButton} onClick={() => setIsModalOpen(true)}>{downloadData?.buttonText}</button>
             </header>
             <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
@@ -55,31 +71,31 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
                 <div className={styles.videoContainer}>
                     {/* <Image src={image} alt="Video Thumbnail" className={styles.videoImage} /> */}
                     {howWeDoData &&
-                    <>
-                    {isPlaying ? (
-                        <video
-                            className={styles.videoPlayer}
-                            src={howWeDoData?.VideoLink}
-                            controls
-                            autoPlay
-                        />
-                    ) : (
                         <>
-                            <Image
-                                src={image}
-                                alt="Video Thumbnail"
-                                className={styles.videoImage}
-                            />
-                            <div
-                                className={styles.playButton}
-                                onClick={handlePlayButtonClick}
-                            >
-                                ▶
-                            </div>
-                        </>
-                    )}</>
+                            {isPlaying ? (
+                                <video
+                                    className={styles.videoPlayer}
+                                    src={howWeDoData?.VideoLink}
+                                    controls
+                                    autoPlay
+                                />
+                            ) : (
+                                <>
+                                    <Image
+                                        src={image}
+                                        alt="Video Thumbnail"
+                                        className={styles.videoImage}
+                                    />
+                                    <div
+                                        className={styles.playButton}
+                                        onClick={handlePlayButtonClick}
+                                    >
+                                        ▶
+                                    </div>
+                                </>
+                            )}</>
                     }
-                    
+
                 </div>
 
                 <div className={styles.stepsContainer}>
@@ -87,20 +103,20 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
 
                     {howWeDoData &&
                         howWeDoData?.Content?.map((item, index) =>
-                            
-                            (
-                         
-                                <div key={index} >
-                                    <button className={styles.stepTitle}><p>{`Step 0${index+1}`}</p></button>
-                                    <h4 className={styles.stepSubtitle}>{item.title}</h4>
-                                    <ul className={styles.stepText}>
-                                        {item?.Points &&
-                                            item?.Points?.map((ele, ind) => <li key={ind} className={styles.serviceDescription}>{ele.point}</li>)
-                                        }
-                                    </ul>
-                                </div>
-                         
-                             ))
+
+                        (
+
+                            <div key={index} >
+                                <button className={styles.stepTitle}><p>{`Step 0${index + 1}`}</p></button>
+                                <h4 className={styles.stepSubtitle}>{item.title}</h4>
+                                <ul className={styles.stepText}>
+                                    {item?.Points &&
+                                        item?.Points?.map((ele, ind) => <li key={ind} className={styles.serviceDescription}>{ele.point}</li>)
+                                    }
+                                </ul>
+                            </div>
+
+                        ))
                     }
 
 
@@ -110,15 +126,15 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
 
             <div className={styles.footer}>
                 {companyGrowth &&
-                    companyGrowth?.map((item, index) => 
-                        (
-                     
-                            <div className={styles.stat} key={index}>
-                                <p className={styles.statTitle}>{item?.GrowthTitle}</p>
-                                <h3 className={styles.statNumber}>{item?.Achievement}</h3>
-                                <p className={styles.statDescription} onClick={()=>handleStepClick(index)} >{item?.Description}</p>
-                            </div>
-                       
+                    companyGrowth?.map((item, index) =>
+                    (
+
+                        <div className={styles.stat} key={index}>
+                            <p className={styles.statTitle}>{item?.GrowthTitle}</p>
+                            <h3 className={styles.statNumber}>{item?.Achievement}</h3>
+                            <p className={styles.statDescription} onClick={() => handleStepClick(index)} >{item?.Description}</p>
+                        </div>
+
                     ))
                 }
 

@@ -10,6 +10,14 @@ export const getFaqData = async () =>{
         return { err: error, res: null }
      }
 }
+export const getDownloadData = async () =>{
+    try {
+        const res = await axiosInstance.get(`/download/getDownload`)
+        return { res: res, err: null }
+     } catch (error) {
+        return { err: error, res: null }
+     }
+}
 export const getTopicFaqData = async (bodyData) => {
    try {
        const res = await axiosInstance.post(`/faq/gettopicfaq`, bodyData); 
