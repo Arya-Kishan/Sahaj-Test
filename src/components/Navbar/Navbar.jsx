@@ -21,7 +21,7 @@ function Navbar() {
   const openModal = () => {
     console.log('Book a call clicked');
     dispatch(toggleBookCallModal());
-    
+
   };
 
 
@@ -80,7 +80,7 @@ function Navbar() {
             <Image className={style.mobilelogos} src={logo} alt="Sahaj Logo" />
             <p onClick={toggleMenu}>✕</p>
           </div> */}
-          <Link href="/" className={style.mobileAboutus}>
+          <Link href="/" className={style.mobileAboutus} onClick={toggleMenu}>
             Home
           </Link>
           <Dropdown
@@ -97,6 +97,7 @@ function Navbar() {
               { label: 'Our Process', path: '/processflow' },
               { label: 'FAQs', path: '/faqs' },
             ]}
+            closeMenu={toggleMenu}
           />
           <Dropdown
             title="Media"
@@ -107,17 +108,21 @@ function Navbar() {
               { label: 'Blogs', path: '/media/blogs' },
               { label: 'SM’s Customers in Media', path: '/media/customers' },
             ]}
+            closeMenu={toggleMenu}
           />
-          <Link href="/about" className={style.mobileAboutus}>
+          <Link href="/about" className={style.mobileAboutus} onClick={toggleMenu}>
             About Us
           </Link>
-          <button className={style.mobileCallButton} onClick={openModal}>
+          <button className={style.mobileCallButton} onClick={() => {
+            openModal();
+            toggleMenu();
+          }}>
             Book a free call
           </button>
         </div>
       )}
       <BookCallModal isOpen={isBookCallModalOpen} onClose={() => dispatch(toggleBookCallModal())} />
-    </div>  
+    </div>
   );
 }
 
