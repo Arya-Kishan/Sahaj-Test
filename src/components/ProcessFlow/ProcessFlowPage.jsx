@@ -1,7 +1,7 @@
 "use client";
 import FAQ from './FAQ/FAQ';
 import Support from './Support/Support';
-import ProcessStepsContainer from "./ProcessSteps/ProcessSteps";
+import ProcessStepsContainer from "./ProcessSteps/ProcessStepsContainer";
 import ReviewsContainer from '../Reviews/ReviewsContainer';
 
 const ProcessFlow = ({ data }) => {
@@ -13,9 +13,7 @@ const ProcessFlow = ({ data }) => {
         return <div>Loading...</div>;
     }
 
-    const { 
-        ProcessTopBanner,ProcessVideo, ProcessContent, ProcessSteps,
-        ProcessBottomBanner } = ProcessObject;
+    const {  ProcessTopBanner,ProcessVideo, ProcessContent, ProcessSteps,  ProcessBottomBanner } = ProcessObject;
    
 
     return (

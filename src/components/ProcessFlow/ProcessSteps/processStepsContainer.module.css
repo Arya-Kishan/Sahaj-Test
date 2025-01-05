@@ -32,8 +32,9 @@
     /* height: 100%; */
    }
    .videoPlayer {
-    width: 100%;
-    height: auto;
+    max-width: 800px; 
+    aspect-ratio: 16 / 9;
+    margin: 0 auto; 
   }
   .videoPlayerControls{
     position: relative;
