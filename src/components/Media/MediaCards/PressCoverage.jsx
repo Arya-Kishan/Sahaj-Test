@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
 import { useState, useEffect } from 'react';
+import mediaCard from "../../../assests/Media/mediaCard.webp"
 import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
@@ -41,7 +42,7 @@ const PressCoverageMediaCards = ({ filteredData = [], activeTab, searchQuery }) 
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-              {cardData.CoverageImage && <Image src={cardData.CoverageImage || cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/>}
+             <Image src={cardData.CoverageImage || mediaCard} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/>
      
             </div>
             <div className={styles.textContainer}>

@@ -17,7 +17,7 @@ const tabs = [
   { id: "customersInMedia", label: "SM's Customers in Media" },
 ];
 
-const Tabs = ({ filtersData }) => {
+const Tabs = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { path } = useParams();
@@ -152,8 +152,7 @@ const Tabs = ({ filtersData }) => {
         isSearching={isSearching}
         searchQuery={searchQuery}
         setSearchQuery={dispatch(() => setSearchQuery())} 
-        data={displayContent}  
-        filtersData={filtersData}
+        data={displayContent}
       />
         }
       </div>

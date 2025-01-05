@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
 import styles from './ComplaintsTable.module.css';
 
-const ComplaintsTable = ({ tableData = {}, totals }) => {
+const ComplaintsTable = ({ tableData = {}, totals,tableHeaderData=[] }) => {
 
   const columns = tableData.length > 0 ? Object.keys(tableData[0]) : [];
   const totalRow = totals ? Object.keys(totals).map((key) => totals[key]) : [];
@@ -12,15 +12,17 @@ const ComplaintsTable = ({ tableData = {}, totals }) => {
       <table className={styles.table}>
         <thead>
           <tr className={styles.tr}>
-
-            <th className={styles.th}><strong>SR No</strong></th>
-            {columns.map((column) => (
-              column !== '_id' && <th key={column} className={styles.th}><strong>{column}</strong></th>
+            <th className={styles.th}><strong>Sr No.</strong></th>
+            {tableHeaderData.map((column) => (
+              column !== '_id' && (
+                <th key={column} className={styles.th}>
+                  <strong>{column||"Col Name"}</strong> 
+                </th>
+              )
             ))}
           </tr>
         </thead>
         <tbody>
-
           {tableData.length > 0 && tableData.map((row, index) => (
             <tr key={index} className={styles.tr}>
               <td className={styles.td}>{index + 1}</td>
@@ -41,7 +43,6 @@ const ComplaintsTable = ({ tableData = {}, totals }) => {
               ))}
             </tr>
           )}
-
         </tbody>
       </table>
     </div>

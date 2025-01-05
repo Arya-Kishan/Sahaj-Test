@@ -1,15 +1,16 @@
 "use client"
 import Image from "next/image";
 import styles from './pressCoverage.module.css';
+import mediaCard from "../../../assests/Media/mediaCard.webp"
 
 function PressCoverageFeatured({ data = [] }) {
 
   return (
     <div className={styles.cardContainer}>
-      {data.map((card, index) => (
+      {data?.map((card, index) => (
         <div className={styles.card} key={index}>
           <div className={styles.logo}>
-            <Image src={card.BrandLogo} alt="cardlogo" width={100} height={100} />
+            <Image src={card?.CoverageImage||card?.BrandLogo ||mediaCard} alt="cardlogo" width={100} height={100} />
           </div>
           <h3 className={styles.title}>{card.Title}</h3>
           <p className={styles.description}>{card.Content}</p>

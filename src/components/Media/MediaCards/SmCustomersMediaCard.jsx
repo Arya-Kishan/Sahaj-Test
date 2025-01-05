@@ -6,7 +6,7 @@ import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
 import Link from "next/link";
 import FormateDate from "../FormateDate";
-
+import blogCard from "../../../assests/Media/blogCard.webp"
 const SmCustomerMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
   const [visibleCount, setVisibleCount] = useState(3); 
 
@@ -35,12 +35,12 @@ const SmCustomerMediaCards = ({ filteredData = [], activeTab, searchQuery }) => 
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-            {cardData.CoverImage &&  <Image src={cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/> }
+            {<Image src={cardData.CoverImage || blogCard} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/> }
              
             </div>
             <div className={styles.textContainer}>
               {cardData.MediaCompanyFrom && <p className={styles.subheading}>{cardData.MediaCompanyFrom}</p>}
-              <p className={styles.heading}>{cardData.MediaTitle}</p>
+              <p className={styles.heading}>{cardData.MediaTitle||"Practical Money Guidance for Financial Well-being"}</p>
               {/* <p className={styles.description}>{cardData.MediaDescription}</p> */}
               <p className={styles.cardDate}>{FormateDate(cardData.createdAt)}</p>
             </div>

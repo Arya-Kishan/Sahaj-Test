@@ -1,13 +1,13 @@
+const FormateDate = (date) => {
 
+  // Check if  date is provided; if not, use today's date
+  const validDate = date ? new Date(date) : new Date();
 
- const  FormateDate=(date)=>{
-   
-        return new Date(date).toLocaleDateString("en-GB", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        });
+  return validDate.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 };
-
 
 export default FormateDate;
