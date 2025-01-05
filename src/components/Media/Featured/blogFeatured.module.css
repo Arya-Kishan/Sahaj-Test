@@ -7,13 +7,17 @@
   
   .featuredImage {
     position: relative;
+    width: 100%;
+    max-width: 1000px; 
+    margin: 0 auto; 
+    border-radius: 12px;
+    overflow: hidden; 
   }
   
   .featuredimg {
     width: 100%;
-   
-    border-radius: 12px; 
-    height: 500px;
+    height: 100%; 
+    border-radius: 12px;
     object-fit: cover; 
   }
   
