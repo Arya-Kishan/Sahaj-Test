@@ -105,7 +105,7 @@ const  filtersData= [...new Set(
         )}
       </div>
 
-      <div className={styles.mediaCardContainer}>
+      <div >
 
 
         {activeTab === "All" ? (
