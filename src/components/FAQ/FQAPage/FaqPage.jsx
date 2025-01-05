@@ -22,7 +22,7 @@ const FaqPage = ({ faqData = [], topic = [] }) => {
     let filteredData =
       activeFilter === "All"
         ? faqData
-        : faqData.filter((data) => data.Topic === activeFilter);
+        : faqData.filter((data) => data.Topic.TopicName === activeFilter);
 
     if (searchQuery.trim()) {
       filteredData = filteredData
@@ -134,7 +134,7 @@ const FaqPage = ({ faqData = [], topic = [] }) => {
             <div className={styles.infoContainer} key={faq._id}>
               <div className={styles.textBox}>
                 <div className={styles.filterName}>
-                  <p>{faq.Topic}</p>
+                  <p>{faq.Topic.TopicName}</p>
                 </div>
                 {faq.FaqQuestionWithAnswer.map((q) => {
                   const tabSpecificKey = `${activeFilter}-${faq._id}-${q._id}`;
