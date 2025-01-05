@@ -1,0 +1,75 @@
+.container {
+    text-align: center;
+    background-color: #0000000A;
+    padding: 60px 100px 60px 100px;
+  }
+  
+  .heading {
+    font-size: 36px;
+    font-weight: 600;
+    font-family: Roboto;
+    margin-bottom: 40px;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .featureCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* max-width: 232px; */
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block; 
+    margin: 0 auto;
+  }
+  .iconContainer {
+    width: fit-content;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+    border-radius: 8px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    font-family: Roboto;
+    margin: 0;
+  }
+  
+  .description {
+    font-size: 16px;
+    font-family: Manrope;
+    color: #00000099;
+    margin: 0;
+  }
+  @media (max-width: 720px) {
+    .container{
+      padding: 16px;
+    }
+    .features{
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 4px;
+      gap: 12px;
+    }
+    .featureCard{
+      /* width: fit-content; */
+      width: 145px;
+    }
+  }

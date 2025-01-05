@@ -1,0 +1,273 @@
+  .processFlowHeading{
+    padding: 60px 0px;
+    gap: 62px;
+    background: black;
+    color:white;
+   
+}
+.processFlowHeading p{
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56.25px;
+    text-align: center;
+}
+
+ .imgSection{
+    border-radius: 12px;
+    /* max-width: 1240px;
+    height: 400px; */
+    position: relative;
+
+   }
+   .playIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+   .imgSection img{
+    width: 100%;
+    /* height: 100%; */
+   }
+   .videoPlayer {
+    max-width: 800px; 
+    aspect-ratio: 16 / 9;
+    margin: 0 auto; 
+  }
+  .videoPlayerControls{
+    position: relative;
+  }
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    color: rgb(27, 25, 25);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: background-color 0.3s ease;
+  }
+  
+   .processContainer{
+    padding: 60px 100px 100px 100px;
+    gap: 100px;
+
+   }
+   .processContents{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+
+   }
+   .processSteps {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #222; 
+    color: #fff;
+    padding: 40px 0px;
+    gap:32px;
+    border-radius: 24px;
+
+  }
+  
+  .descriptionTitle{
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 37.5px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color:#E8F3EC;
+    
+  }
+  .descriptionbody{
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-align: left;
+    
+  }
+  .step {
+    flex: 1; 
+  } 
+  .stepDesccriptionContainer{
+    display: flex;
+    gap:20px;
+    padding: 20px;
+  }
+  .circleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .circle {
+    background-color: #fff;
+    color: #222;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 2;
+    position: relative;
+  }
+  .line {
+    flex: 1;
+    margin:18px 0;
+    height:1px;
+    position: relative;
+    background:
+      repeating-linear-gradient(90deg,rgb(235, 230, 230) 0 5px,transparent 0 7px)
+     
+  }
+  .stepHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 40px;
+  }
+
+  .responseTime {
+    font-size: 12px;
+    color: #fff;
+    background: #222;
+    width:fit-content;
+    padding: 5px 20px ;
+    gap: 10px;
+    border-radius: 22px;
+    border: 1px  solid white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+  .processHeading{
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 42.19px;
+    letter-spacing: 0.5px;
+    text-align: left;
+  }
+  .description{
+    display: flex;
+    flex-direction: column;
+    /* padding: 0px 40px; */
+    gap: 0px;
+    justify-content: space-between;
+
+  }
+  .descriptionTitle{
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 37.5px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: #E8F3EC;
+  }
+  .descriptionbody{
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-align: left;
+  }
+  
+  .title {
+    font-size: 18px;
+    margin: 20px 0 10px 0;
+  }
+ 
+  @media (max-width: 768px) { 
+    .processFlowHeading p{
+      font-family: Roboto;
+      font-size: 28px;
+      font-weight: 500;
+
+  }
+    .processContainer{
+      padding: 24px 16px ;
+      gap: 32px;
+
+    }
+    .processContents{
+      gap:16px;
+    }
+      .processSteps{
+        flex-direction: row;
+
+        padding: 40px 0px ;
+        gap: 32px;
+        border-radius: 24px;
+
+      }
+      .stepHeader{
+        display: flex;
+        flex-direction: column;
+        height:735px;
+        padding: 60px 0px;
+      }
+      .stepDesccriptionContainer{
+        flex-direction: column;
+        gap:20vw;
+        padding: 60px 0px 0px 0px;
+      }
+      .circle {
+  
+        width: 20px;
+        height: 20px;
+      }
+      .line {
+        flex: 1;
+        margin:2px 9px;
+        height:2px;
+        position: relative;
+        background:
+          repeating-linear-gradient(245deg,rgb(235, 230, 230) 0 5px,transparent 0 7px)
+         
+      }
+      .responseTime {
+        font-size: 12px;
+        color: #fff;
+        background: #222;
+        width:205px;
+        top:80%;
+        /* margin-top: 165px; */
+        margin-left: 100px;
+        padding: 10px 40px ;
+        border-radius: 22px;
+        border: 1px  solid white;
+        
+    
+      }
+      .step {
+        display: flex;
+        padding: 30px 0px;
+      }
+      .description{
+        
+        padding: 0px;
+      }
+  }
+ 
+
+
