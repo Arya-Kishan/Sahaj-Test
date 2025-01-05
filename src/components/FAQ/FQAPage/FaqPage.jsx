@@ -14,7 +14,7 @@ const FaqPage = ({ faqData = [], topic = [] }) => {
   const [openQuestions, setOpenQuestions] = useState({});
   const [displayedData, setDisplayedData] = useState(faqData);
 
-  const enrichedTopics = [{ id: 0, topic: "All" }, ...topic];
+  const enrichedTopics = [{ id: 0, topic: "All" }, ...topic.map((item, index) => { return { topic: item.TopicName, id: index + 2 } })];
 
   useEffect(() => {
     if (!faqData) return;
@@ -74,14 +74,14 @@ const FaqPage = ({ faqData = [], topic = [] }) => {
   const handlePlayClick = (faqId) => {
     setOpenQuestions((prev) => ({
       ...prev,
-      [`video-${faqId}`]: !prev[`video-${faqId}`], 
+      [`video-${faqId}`]: !prev[`video-${faqId}`],
     }));
   };
 
   const handleCloseClick = (faqId) => {
     setOpenQuestions((prev) => ({
       ...prev,
-      [`video-${faqId}`]: false, 
+      [`video-${faqId}`]: false,
     }));
   };
 
@@ -186,7 +186,7 @@ const FaqPage = ({ faqData = [], topic = [] }) => {
                       width="80"
                       height="80"
                       className={styles.videoIcon}
-                      onClick={() => handlePlayClick(faq._id)} 
+                      onClick={() => handlePlayClick(faq._id)}
                       viewBox="0 0 80 80"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
