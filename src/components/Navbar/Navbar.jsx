@@ -76,10 +76,10 @@ function Navbar() {
 
       {isMenuOpen && (
         <div className={style.mobileMenu}>
-          <div className={style.mobilelogo}>
+          {/* <div className={style.mobilelogo}>
             <Image className={style.mobilelogos} src={logo} alt="Sahaj Logo" />
             <p onClick={toggleMenu}>✕</p>
-          </div>
+          </div> */}
           <Link href="/" className={style.mobileAboutus}>
             Home
           </Link>
@@ -89,6 +89,7 @@ function Navbar() {
               { label: 'Financial planning', path: '/services' },
               { label: 'Renewal Service', path: '/renewalplan' },
             ]}
+            closeMenu={toggleMenu}
           />
           <Dropdown
             title="How it works"

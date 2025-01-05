@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import styles from "./Dropdown.module.css";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-const Dropdown = ({ title, options }) => {
+const Dropdown = ({ title, options, closeMenu = () => { } }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  const dropdownRef = useRef(null); 
+  const dropdownRef = useRef(null);
 
   const handleOptionClick = (path) => {
     router.push(path);
@@ -16,7 +16,7 @@ const Dropdown = ({ title, options }) => {
 
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      setIsOpen(false); 
+      setIsOpen(false);
     }
   };
 
@@ -45,7 +45,10 @@ const Dropdown = ({ title, options }) => {
           {options.map((option, index) => (
             <button
               key={index}
-              onClick={() => handleOptionClick(option.path)}
+              onClick={() => {
+                handleOptionClick(option.path)
+                closeMenu();
+              }}
               className={styles.menuItem}
             >
               {option.label}
