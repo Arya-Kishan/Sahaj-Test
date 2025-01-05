@@ -12,6 +12,7 @@
   /* box-shadow: 0 0 5px black; */
   max-width: 376px;
   max-height: 376px;
+  margin-top:20px;
 }
 
 .calendarcontainer {
@@ -47,10 +48,14 @@
   
   min-width: fit-content;
   height: 24px;
-  font-size: 16px;
+  /* font-size: 16px;
   font-weight: 500;
-  font-family: Poppins;
+  font-family: Poppins; */
   color: #08090A;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 23.44px;
+  letter-spacing: -0.5px;
 }
 
 .calendarnavigation {
