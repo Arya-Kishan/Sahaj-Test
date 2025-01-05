@@ -5,6 +5,8 @@ import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
 import Link from "next/link";
+import blogCard from "../../../assests/Media/blogCard.webp"
+
 import FormateDate from "../FormateDate";
 const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
     const [visibleCount, setVisibleCount] = useState(3);
@@ -33,7 +35,7 @@ const BlogMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
                 <div className={styles.cardfullContainer} key={index}>
                     <div className={styles.cardContainer}>
                         <div className={styles.imgContainer}>
-                            {cardData?.BlogImage &&  <Image src={cardData?.BlogImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/>}
+                              <Image src={cardData?.BlogImage || blogCard} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/>
                            
                         </div>
                         <div className={styles.textContainer}>

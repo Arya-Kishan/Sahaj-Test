@@ -17,13 +17,18 @@ import styles from './tabContent.module.css';
 import { setCombinedData } from "../../../store/slices/mediaSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery, filtersData}) => {
+const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery}) => {
+  
   const dispatch = useDispatch();
   const combinedData = useSelector((state) => state.media.combinedData);
 
   const [filteredData, setFilteredData] = useState(data);
   const [activeFilter, setActiveFilter] = useState("All");
 
+
+const  filtersData= [...new Set(
+  data?.filter((obj) => obj.Topic) 
+  .map((value) => value.Topic) )]
 
 
   useEffect(() => {
@@ -46,12 +51,26 @@ const TabContent = ({ data, activeTab, isSearching, searchQuery, setSearchQuery,
 
 
   function getFeaturedItem(data) {
+    // Find items marked as isFeature === true
     const featuredItems = data?.filter((item) => item.isFeature === true);
-    return featuredItems || null;
+  
+    // If there are featured items, return the first 3
+    if (featuredItems.length > 0) {
+      return featuredItems.slice(0, 3);
+    }
+  
+    // If there are no featured items, return any 3 random items from the data
+    if (data?.length > 0) {
+      const randomItems = [...data]; // Create a copy of the data
+      // Shuffle the array and return the first 3 items
+      const shuffledItems = randomItems.sort(() => 0.5 - Math.random());
+      return shuffledItems.slice(0, 3);
+    }
+  
+    // If no items at all, return null
+    return null;
   }
-
   const featuredItems = getFeaturedItem(data);
-
 
   const componentMap = {
     pressCoverage: [PressCoverageFeatured, PressCoverageMediaCards],

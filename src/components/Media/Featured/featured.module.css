@@ -6,6 +6,8 @@
 }
 .imgContainer{
     overflow: hidden;
+    max-width:400px;
+    max-height: 300px;
     gap: 0px;
     border-radius: 8px;
     position: relative;

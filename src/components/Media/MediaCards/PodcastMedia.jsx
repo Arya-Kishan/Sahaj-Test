@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
 import { useState, useEffect } from 'react';
+import mediaCard from "../../../assests/Media/mediaCard.webp"
 import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
@@ -33,7 +34,7 @@ const PodcastMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
-            {cardData.CoverImage &&   <Image src={cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238} />}
+              <Image src={cardData.CoverImage || mediaCard} alt={"CoverImage"} className={styles.cardImg} width={350} height={250} />
               {cardData.PodCastLink ? (
                 <Link href={cardData.PodcastLink || "#"} passHref>
                   <svg
