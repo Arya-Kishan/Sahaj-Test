@@ -45,3 +45,12 @@ export const getcontentData = async () =>{
        return { err: error, res: null }
     }
 }
+
+export const getTableColumnData = async () =>{
+   try {
+       const res = await axiosInstance.get(`/sebi/columns`)
+       return { res: res, err: null }
+    } catch (error) {
+       return { err: error, res: null }
+    }
+}

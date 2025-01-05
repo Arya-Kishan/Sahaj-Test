@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import styles from './filters.module.css';
 
 const Filters = ({ onFilterChange, activeTab, filtersData }) => {
+
   const [activeFilter, setActiveFilter] = useState("All");
 
 
-  const filters = ["All", ...(filtersData?.map(filter => filter.TopicName) || [])];
-
+  const filters = ["All", ...filtersData]||[]
+ 
   useEffect(() => {
     setActiveFilter("All"); 
   }, [activeTab]);

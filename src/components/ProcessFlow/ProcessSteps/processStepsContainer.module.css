@@ -1,4 +1,19 @@
-  .imgSection{
+  .processFlowHeading{
+    padding: 60px 0px;
+    gap: 62px;
+    background: black;
+    color:white;
+   
+}
+.processFlowHeading p{
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56.25px;
+    text-align: center;
+}
+
+ .imgSection{
     border-radius: 12px;
     /* max-width: 1240px;
     height: 400px; */
@@ -17,8 +32,9 @@
     /* height: 100%; */
    }
    .videoPlayer {
-    width: 100%;
-    height: auto;
+    max-width: 800px; 
+    aspect-ratio: 16 / 9;
+    margin: 0 auto; 
   }
   .videoPlayerControls{
     position: relative;
@@ -182,6 +198,12 @@
   }
  
   @media (max-width: 768px) { 
+    .processFlowHeading p{
+      font-family: Roboto;
+      font-size: 28px;
+      font-weight: 500;
+
+  }
     .processContainer{
       padding: 24px 16px ;
       gap: 32px;

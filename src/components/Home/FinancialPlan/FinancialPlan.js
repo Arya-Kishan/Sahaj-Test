@@ -7,6 +7,7 @@ import image from '../../../assests/Home/FinancialPlan.webp';
 import DownloadModal from '@/components/DownloadModal/Download';
 import logo from "@/assests/Home/logo.webp"
 import { getDownloadData } from '@/services/faq';
+import ReactPlayer from 'react-player';
 
 const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
     const [companyGrowth, setGrowthData] = useState([])
@@ -78,19 +79,18 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
             <div className={styles.mainContent}>
                 <div className={styles.videoContainer}>
                     {/* <Image src={image} alt="Video Thumbnail" className={styles.videoImage} /> */}
-                    {howWeDoData &&
+                    {howWeDoData && (
                         <>
                             {isPlaying ? (
-
-                                <iframe
-                                    id="videoPlayer"
+                                // Use ReactPlayer instead of iframe it will adjust to any type of video
+                                <ReactPlayer
+                                    url={transformYouTubeLink(howWeDoData?.VideoLink)}
                                     className={styles.videoPlayer}
-                                    src={transformYouTubeLink(howWeDoData?.VideoLink)}
-                                    title="YouTube video player"
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowFullScreen
-                                ></iframe>
+                                    playing={true}
+                                    controls={true}
+                                    width="100%" 
+                                    height="100%"
+                                />
                             ) : (
                                 <>
                                     <Image
@@ -105,8 +105,10 @@ const FinancialPlan = ({ financePlanData, scrollToTestimonials }) => {
                                         ▶
                                     </div>
                                 </>
-                            )}</>
-                    }
+                            )}
+                        </>
+                    )}
+
 
                 </div>
 

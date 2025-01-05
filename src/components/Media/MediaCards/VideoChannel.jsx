@@ -5,6 +5,7 @@ import styles from './mediaCards.module.css';
 import { useIsMobile } from './useIsMobile';
 import Link from "next/link";
 import FormateDate from "../FormateDate";
+import blogCard from "../../../assests/Media/blogCard.webp"
 
 const VideoChanelMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
     const [visibleCount, setVisibleCount] = useState(3);
@@ -32,7 +33,7 @@ const VideoChanelMediaCards = ({ filteredData = [], activeTab, searchQuery }) =>
                 <div className={styles.cardfullContainer} key={index}>
                     <div className={styles.cardContainer}>
                         <div className={styles.imgContainer}>
-                        {cardData.CoverImage &&    <Image src={cardData.CoverImage} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/> } 
+                         <Image src={cardData.CoverImage || blogCard} alt={"CoverImage"} className={styles.cardImg} width={350} height={238}/> 
 
                             {cardData.VideoLink ? (
                                 <Link href={cardData?.VideoLink} passHref>

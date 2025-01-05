@@ -7,6 +7,7 @@ import { useIsMobile } from "./useIsMobile";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import FormateDate from "../FormateDate";
+import mediaCard from "../../../assests/Media/mediaCard.webp"
 
 const MediaCards = ({ filteredData = [],  }) => {
   const [visibleCount, setVisibleCount] = useState(3);
@@ -68,11 +69,11 @@ const MediaCards = ({ filteredData = [],  }) => {
             {
                  (cardData?.CoverageImage ||
                   cardData.CoverImage ||
-                  cardData?.BlogImage) &&   <Image
+                  cardData?.BlogImage ||mediaCard) &&   <Image
                   src={
                     cardData?.CoverageImage ||
                     cardData.CoverImage ||
-                    cardData?.BlogImage
+                    cardData?.BlogImage||mediaCard
                   }
                   alt={"CoverImage"}
                   className={styles.cardImg}

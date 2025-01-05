@@ -3,7 +3,7 @@ import ComplaintsTable from "./ComplaintsTable/ComplaintsTable"
 import styles from './sebi.module.css';
 import { format } from 'date-fns';
 
-const Sebi = ({lastMonthData,monthTrendData,yearTrendData,annualTrendData}) => {
+const Sebi = ({lastMonthData,monthTrendData,yearTrendData,annualTrendData,tableHeaderData=[]}) => {
   let formattedDate;
   try {
    
@@ -25,16 +25,16 @@ const Sebi = ({lastMonthData,monthTrendData,yearTrendData,annualTrendData}) => {
     <div className={styles.sebiContainer}>
          <div className={styles.tableContainer}>
             <p className={styles.tableHeading}>Data as of last month :{formattedDate}</p>
-            <ComplaintsTable   tableData={lastMonthData?.Table}/>
+            <ComplaintsTable   tableData={lastMonthData?.Table}  tableHeaderData={tableHeaderData[0]?.columns}/>
         </div>
        <div className={styles.tableContainer}>
             <p className={styles.tableHeading}>Trend of monthly disposal of complaints</p>
-            <ComplaintsTable   tableData={monthTrendData?.structureData} totals={monthTrendData?.totals}/>
+            <ComplaintsTable   tableData={monthTrendData?.structureData} totals={monthTrendData?.totals} tableHeaderData={tableHeaderData[1]?.columns}/>
         </div>
         
         <div className={styles.tableContainer}>
             <p className={styles.tableHeading}>Trend of annual disposal of complaints</p>
-            <ComplaintsTable    tableData={yearTrendData?.structureData} totals={yearTrendData?.totals}/>
+            <ComplaintsTable    tableData={yearTrendData?.structureData} totals={yearTrendData?.totals} tableHeaderData={tableHeaderData[2]?.columns}/>
             <p className={styles.note}>
               <span>*</span> Inclusive of complaints of previous months/years resolved in the current
               month/year | ^ Time in days | # Inclusive of complaints pending as on last day of the month/year
@@ -46,10 +46,11 @@ const Sebi = ({lastMonthData,monthTrendData,yearTrendData,annualTrendData}) => {
                requirement under Regulation 19(3) of SEBI (Investment Advisers) 
                Regulations, 2013 for the previous and current financial year are as under:
             </p>
-            <ComplaintsTable   tableData={annualTrendData}/>
+            <ComplaintsTable   tableData={annualTrendData} tableHeaderData={tableHeaderData[3]?.columns}/>
             
         </div>
     </div>
+   
   )
 }
 
