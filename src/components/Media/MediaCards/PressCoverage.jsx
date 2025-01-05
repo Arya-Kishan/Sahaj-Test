@@ -37,8 +37,9 @@ const PressCoverageMediaCards = ({ filteredData = [], activeTab, searchQuery }) 
   };
 
   return (
-    <>
-      {visibleData.map((cardData, index) => (
+    <> 
+    <div className={styles.mediaCardContainer}>
+    {visibleData.map((cardData, index) => (
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
             <div className={styles.imgContainer}>
@@ -63,11 +64,15 @@ const PressCoverageMediaCards = ({ filteredData = [], activeTab, searchQuery }) 
         </div>
       ))}
 
-       {isMobile && visibleCount < filteredData.length && (
+    </div>
+     <div>
+     {isMobile && visibleCount < filteredData.length && (
                 <button onClick={handleLoadMore} className={styles.loadMoreButton}>
                     Load More
                 </button>
         )}
+     </div>
+      
     </>
   );
 };
