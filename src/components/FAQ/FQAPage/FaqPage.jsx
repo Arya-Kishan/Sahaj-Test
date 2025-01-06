@@ -141,16 +141,17 @@ const FaqPage = ({ faqData = [], topic = [] }) => {
                   return (
                     <div className={styles.accordionContainer} key={tabSpecificKey}>
                       <div
+                      
                         className={styles.questionContainer}
                         role="button"
                         tabIndex="0"
                         onClick={() => toggleAccordion(faq._id, q._id)}
                       >
-                        <div className={styles.faqBox}>
+                        <div  className={styles.faqBox}>
                           <p className={styles.question}>{q.questions}</p>
                           {openQuestions[tabSpecificKey] && <p>{q.answers}</p>}
                         </div>
-                        <Image
+                        <Image 
                           src={
                             openQuestions[tabSpecificKey]
                               ? minusCircle
@@ -163,8 +164,9 @@ const FaqPage = ({ faqData = [], topic = [] }) => {
                   );
                 })}
               </div>
-              <div>
-                {openQuestions[`video-${faq._id}`] ? (
+              <div >
+                {faq.isVideo ? <>
+                  {openQuestions[`video-${faq._id}`] ? (
                   <div className={styles.videoPlayerControls}>
                     <video
                       className={styles.videoPlayer}
@@ -212,6 +214,8 @@ const FaqPage = ({ faqData = [], topic = [] }) => {
                     </svg>
                   </div>
                 )}
+                </>:<><img className={styles.videoPlayer} src={faq?.Image}/></>}
+                
               </div>
             </div>
           ))

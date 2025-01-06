@@ -5,6 +5,7 @@ import styles from "./FinanceQuestions.module.css";
 import checkLogo from '../../../../public/logos/tick.png';
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import BookCallModal from "@/components/BookCall/BookCall";
+import ReactPlayer from "react-player";
 
 const FinanceQuestions = ({ financeData }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,7 +46,7 @@ const FinanceQuestions = ({ financeData }) => {
             return prev;
         });
 
-        setTimeout(() => setIsManualChange(false), 6000); 
+        setTimeout(() => setIsManualChange(false), 6000);
     };
 
     return (
@@ -122,17 +123,20 @@ const FinanceQuestions = ({ financeData }) => {
                     </div>
                 </div>
                 <div className={styles.imageSection}>
-                    <img
-                        src={financeInfo?.Image}
-                        alt="What we do illustration"
-                        className={styles.image}
-                    />
+                    {financeInfo?.isVideo ? <>
+                        <ReactPlayer className={styles.image} url={financeInfo?.Video} />
+                    </> : <>
+                        <img
+                            src={financeInfo?.Image}
+                            alt="What we do illustration"
+                            className={styles.image}
+                        /></>}
+
                 </div>
                 <div className={styles.headsection2}>
-                    <h2 className={styles.title2}>What we do for you?</h2>
+                    <h2 className={styles.title2}>{financeInfo?.MainTitle}</h2>
                     <p className={styles.description}>
-                        Fixed Fee<span className={styles.descriptionSpan}> ₹15,000 for the per year</span>
-                         {/* ₹5,000 renewal annually thereafter */}
+                        {financeInfo?.SmallMainTitle}
                     </p>
                 </div>
             </div>
