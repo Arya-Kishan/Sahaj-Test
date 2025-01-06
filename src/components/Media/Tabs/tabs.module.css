@@ -1,0 +1,105 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+  }
+  
+  .tabsContainer{
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+  }
+  
+  .tabsHeader{
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .Heading{
+      font-family: Roboto;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 56.25px;
+      text-align: center;
+  }
+  
+  .searchBox {
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    }
+    
+    .searchInput {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    
+    .tabs{
+        display: flex;
+        gap: 36px; 
+        cursor: pointer;
+        overflow-x: auto; 
+        white-space: nowrap;
+        scrollbar-width: none; 
+        -ms-overflow-style: none;
+    }
+  .tabs::-webkit-scrollbar {
+      display: none; 
+    }
+  
+  .tabButton,.activetabButton{
+      font-family: Roboto;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 36px;
+      cursor: pointer;
+      padding-bottom: 8px;
+      letter-spacing: 0.2px;
+      text-align: center;
+      background: none;
+      border: none;
+  
+  }
+  .tabButton{
+      color: var(--Color-black-50, #00000080);
+  }
+  
+  .activetabButton{
+      color:black;
+      border-bottom: 3px solid black;
+  }
+  .noDataMessage{
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 36px;
+}
+  @media (max-width:768px) {
+      .container{
+          margin: 0px;
+          padding: 5px;
+      }
+      .tabsContainer{
+          padding: 32px 0px ;
+          gap: 32px;
+      }
+      .Heading{
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 48px;
+      letter-spacing: 0.5px;
+  
+      }
+      .tabButton,.activetabButton{
+       
+         font-size: 20px;
+      }
+      .activetabButton {
+        position: relative;
+  
+      }
+  
+  }

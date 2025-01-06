@@ -1,0 +1,35 @@
+.readMoreButton{
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center; 
+    margin-top: 4px;
+    padding: 8px 0 ;
+    height: 49px;
+    border-radius: 5px;
+    border: none;
+    background: none;
+ 
+ }
+ .readMoreButton span{
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+    letter-spacing: 0.4px;
+    text-align: center;
+ }
+ 
+ @media (max-width: 764px) {
+  
+    .readMoreButton span{
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+    }
+    
+    .readMoreButton span{
+      font-size: 16px;
+      line-height: 24px;
+    }
+}

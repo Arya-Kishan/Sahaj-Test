@@ -1,0 +1,97 @@
+
+.header {
+  height: 100px;
+  background-color: #333; 
+  color: #fff; 
+  height: 176px;
+  display: flex;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  align-items: center;
+}
+
+.header1{
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.privacyPolicy {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  margin: 40px;
+  max-width: fit-content;
+}
+
+.title {
+  font-size: 2rem;
+  color: black;
+  
+  margin-bottom: 1.5rem;
+}
+
+.date {
+  font-size: 1.2rem;
+  color: black;
+  margin-bottom: 1rem;
+  font-weight: bold;
+
+}
+
+.paragraph {
+  font-size: 20px;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  color: black;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  
+}
+
+.subSectionTitle {
+  font-size: 1.2rem;
+  color: black;
+  margin-top: 1.0rem;
+  margin-bottom: 0.1rem;
+  font-weight: 600;
+}
+
+.list {
+  margin-left: 20px;
+  list-style-type: disc;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.listItem {
+  margin-bottom: 0.2rem;
+}
+
+
+
+@media (max-width: 768px) {
+  .privacyPolicy {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.2rem;
+  }
+
+  .subSectionTitle {
+    font-size: 1rem;
+  }
+}
+
+

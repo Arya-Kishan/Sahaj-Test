@@ -1,0 +1,330 @@
+.container {
+  background: #C188230F;
+  padding: 60px 100px 60px 100px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: baseline; */
+  gap: 40px;
+
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-left: 30px;
+  font-family: Roboto;
+  color: #000000;
+}
+
+.cardsContainer {
+  font-family: Roboto;
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #000000;
+  color: #ffff;
+  width: 289px;
+  height: 410px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+.slide {
+  object-fit: contain;
+  background-color: #000000;
+  color: #ffff;
+  width: 100%;
+  height: 410px;
+  border-radius: 10px;
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  color: #ffffff;
+  gap: 32px;
+}
+.slidequestion {
+  width: 100%;
+  padding: 10px 24px 16px 24px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: Manrope;
+}
+.question {
+  font-size: 1rem;
+  text-align: justify;
+}
+.slideLogo{
+ width: 100%;
+ height: 70%;
+}
+.dotsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+ 
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #c1882340;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.activeDot {
+  background: linear-gradient(215.91deg, #f8db75 22.43%, #a4730f 80.57%);
+  width: 84px;
+  border-radius: 12px;
+}
+.cardLogo{
+  width: 100%;
+  height: 80%;
+}
+.slideChange{
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+}
+.slideChange.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.container2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 100px 40px 100px;
+  background-color: #FFFFFF;
+  font-family: Roboto;
+  gap: 24px;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 24px;
+}
+
+.headsection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #000000;
+}
+
+.title2 {
+
+  color: #000000;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-weight: 600;
+  font-size: 16px;
+}
+.descriptionSpan{
+  color:#C39934;
+
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.mobileCarouselBox{
+  display: none;
+}
+.service {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  gap: 23px;
+}
+
+.icons {
+  width: 24px !important;
+  height: 38px !important;
+  
+}
+.mobileBox{
+  display: none;
+}
+.serviceTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  color: #000000;
+}
+
+.serviceDescription {
+  margin: 0;
+  color: #000000BF;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  text-align: center;
+  gap: 10px;
+}
+
+.viewServicesButton {
+  width: 213px;
+  height: 59px;
+  background-color: #000;
+  color: #FFFFFF;
+  padding: 16px 48px 16px 48px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+ 
+.bookCallButton {
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  width: 189px;
+  height: 59px;
+  background: linear-gradient(215.91deg, #f8db75 22.43%, #a4730f 80.57%);
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  transition: color 0.4s ease;
+}
+
+.bookCallButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  transition: all 0.4s ease-in-out;
+  z-index: 0;
+
+}
+
+.bookCallButton:hover::before {
+  left: 0;
+}
+
+.bookCallButton:hover {
+  border: 2px solid transparent;
+  border-image: linear-gradient(215.91deg, #f8db75 22.43%, #a4730f 80.57%);
+  border-image-slice: 1;
+}
+
+.bookCallButton>span {
+  position: relative;
+  z-index: 1;
+  
+}
+
+.bookCallButton:hover>span {
+  border-radius: 5px !important;
+  background: linear-gradient(215.91deg, #f8db75 22.43%, #a4730f 80.57%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
+.imageSection {
+  flex: 1;
+}
+.image {
+  width: 100%;
+  /* height: 662px; */
+  height: auto;
+  border-radius: 10px;
+}
+.headsection2{
+  display: none;
+}
+@media (max-width: 768px) {
+  .container{
+    padding: 16px;
+    margin-top: 30px;
+  }
+  .cardsContainer{
+    display: none;
+  }
+ .mobileCarouselBox{
+  display: block;
+  width: 100%;
+  padding: 20px;
+  height: fit-content;
+ }
+  .mobileCarousel{
+    background-color: #000000;
+    color: #ffff;
+    width: 100%;
+    height: 410px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .question{
+    margin-top: 90%;
+  }
+  .container2{
+    flex-direction: column-reverse;
+    padding: 24px 16px 24px 16px;
+    gap: 35px;
+  }
+  .headsection{
+    display: none;
+  }
+
+  .headsection2{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    width:100%
+  }
+
+  .buttons{
+    flex-direction: column;
+    width: 100%;
+  }
+  .viewServicesButton{
+    width: 100%;
+  }
+  .bookCallButton{
+    width: 100%;
+  }
+  .image{
+    height: 383px;
+  }
+  
+}

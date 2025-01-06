@@ -1,0 +1,29 @@
+.tabContentContainer{
+    display: flex;
+    flex-direction: column;
+    gap:60px;
+    margin-top: 20px;
+}
+.featuredContainer{
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+    margin-top: 60px;
+}
+.mainheading{
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0.2px;
+    text-align: left;
+
+}
+
+
+  .noDataMessage{
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 36px;
+}

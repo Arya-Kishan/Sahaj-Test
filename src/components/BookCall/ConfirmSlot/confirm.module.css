@@ -1,0 +1,229 @@
+.headerBox{
+    margin-top: -6%;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+.headerBox h3{
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    font-family: Roboto;
+    font-weight: 600;
+    color: #000000;
+}
+.cancelbtn, .CrossIcon{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+.CrossIcon{
+   align-self: flex-end;
+}
+.headerBox p{
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 400;
+    color:#000000;
+}
+.progressBox{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .stepBox{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .progressLine{
+   position: absolute;
+    margin-top: -4%;
+    border: 1px dashed #000000;
+    width: 13%;
+    align-self: center;
+    margin-left: 2%;
+    border-radius: 10px;
+  }
+  .stepBox h3{
+  text-align: center;
+  padding: 4px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #C1882340;
+ }
+ .progressBox div p{
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 400;
+    color: #08090A;
+ }
+ .buttonBox{
+    width: 365px;
+    display: flex;
+    gap: 28px;
+    align-self: center;
+ }
+ .whatsAppBox{
+    width: 100%;
+    background-color: #C1882326;
+    border-radius: 12px;
+    height: 114px;
+    display: flex;
+    align-items: center;
+    gap:22px;
+    padding: 24px;
+ }
+ .whatsAppText{
+    width: fit-content;
+    height: 100%;
+ }
+ .whatsAppText h3{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Roboto;
+    line-height: 24px;
+    color: #000000BF;
+ }
+ 
+ .whatsAppTextPara{
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Roboto;
+  line-height: 24px;
+  color: #000000;
+  padding: 8px 0 8px 0;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+ }
+  .whatsAppTextPara::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px; 
+  background: var(--Color-gold-50, #C1882380);
+  margin-top: 2px; 
+}
+ .whatsAppLogo{
+    width: 47px;
+    height: 47px;
+    color:#1FAF38;
+ }
+
+ .datailsSection{
+   align-self: center;
+   width: fit-content;
+   height: fit-content;
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+   align-items: center;
+   justify-content: center;
+ }
+ .iconOuterBorder{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 80px;
+   height: 80px;
+   border-radius: 50%;
+   background-color: #FFFAF1;
+ }
+ .iconInnerBorder{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 60px;
+   height: 60px;
+   border-radius: 50%;
+   background-color: #FFF5E5;
+ }
+ .subHeader{
+   width: fit-content;
+   height: fit-content;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   gap: 19px;
+ }
+ .subHeader h3{
+   font-size: 24px;
+   font-weight: 600;
+   font-family: Roboto;
+   line-height: 36px;
+   color: #000000;
+ }
+ .subHeader p{
+   width: 310px;
+   font-size: 16px;
+   font-weight: 400;
+   font-family: Manrope;
+   color: #000000;
+ }
+ .slotDetailsBox{
+   width: fit-content;
+   height: fit-content;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 28px;
+ }
+ .slotDetailsBox h3{
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 24px;
+  color: #000000;
+ }
+ .sltoData{
+   padding: 22px 0 22px 0;
+   width: 278px;
+   height: fit-content;
+   border-bottom: 1px solid #D9D9D999;
+   border-top: 1px solid #D9D9D999;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+ .sltoData div{
+   width: fit-content;
+   height: fit-content;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+ }
+ .slotIcon{
+   width: 24px;
+   height: 24px;
+   color: #C1882380;
+ }
+ .sltoData p{
+   display: flex;
+   align-items: center;
+   gap: 12px;
+ }
+ @media (max-width:768px) {
+  .buttonBox{
+    flex-direction: column;
+    padding: 10px;
+  }
+  .whatsAppText h3{
+    font-size: 16px;
+  }
+  .whatsAppTextPara{
+    font-size: 16px;
+  }
+  
+ }

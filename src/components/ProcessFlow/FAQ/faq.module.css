@@ -1,0 +1,69 @@
+.faqContainer {
+  padding: 40px 15px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topsvg,
+.bottomsvg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 120%;
+  min-height: 120%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+} 
+
+.faqtextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+.faqtext {
+  font-family: Roboto, sans-serif;
+  font-size: 36px; 
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+} 
+
+ .faqButton {
+  padding: 16px 48px;
+  border-radius: 5px;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  background-color: rgb(17, 17, 17);
+  cursor: pointer;
+  width: 100%; 
+} 
+
+ .link {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .faqtext {
+    font-size: 24px; 
+    line-height: 36px;
+    letter-spacing: 0.2px;
+  }
+} 
+

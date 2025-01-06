@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  padding: 1rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: #000000;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: -0.16px;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}

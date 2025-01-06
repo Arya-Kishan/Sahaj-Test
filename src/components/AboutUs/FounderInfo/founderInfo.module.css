@@ -1,0 +1,174 @@
+.founderinformationtext{
+
+    padding:100px;
+
+}
+.founderinformationtextContainer{
+    display: flex; 
+    gap:29px;
+}
+.infoHeader{
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 0;
+background: var(--Color-gray, #292929);
+color: white;
+padding: 60px 0;
+}
+.infoHeadertext{
+font-family: Roboto;
+font-size: 36px;
+font-weight: 600;
+line-height: 42.19px;
+letter-spacing: 0.5px;
+text-align: center;
+margin: 0;
+
+}
+.founderinfotextHeading{
+
+font-family: Roboto;
+font-size: 36px;
+font-weight: 600;
+line-height: 42.19px;
+letter-spacing: 0.5px;
+margin: 0;
+}
+
+.founderinfotextBody{
+    max-width:695px;
+    font-family: Manrope;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-align: left; 
+}
+
+ 
+.founderinfotext{
+    display: flex;
+    flex-direction: column;
+    width: 764px;
+    gap: 29px;
+    
+}
+.founderinfoimg {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.founderimg {
+    width: 195px;
+    height: 208px;
+    position: relative;
+}
+
+.founderimg img {
+    object-fit: contain; 
+    width: 100%;       
+    height: 100%;      
+    border-radius: 8px; 
+}
+.founderSocialsName{
+font-family: Roboto;
+font-size: 24px;
+font-weight: 600;
+line-height: 36px;
+letter-spacing: 0.2px;
+text-align: left;
+
+}
+.founderSocialsInfo{
+    max-width: 100px;   
+    font-family: Manrope;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-align: left;
+}
+.founderSocialsCompany{
+    font-family: Manrope;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-align: left;
+}
+
+ .founderSocials p{
+
+    padding:0;
+    margin:0;
+} 
+
+@media (max-width: 768px) {
+    .founderinformationtext {
+        flex-direction: column;
+        padding: 20px;
+        margin: 0;
+        gap: 20px;
+        height: auto;
+    }
+    .founderinformationtextContainer{
+        display: flex; 
+        flex-direction: column;
+    }
+    
+    .founderinfotextHeading{
+        font-size: 24px;
+    }
+    .founderinfotextBody{
+       
+        font-size: 16px;
+    }
+    .founderinfotext {
+        width: 100%;
+        gap: 12px;
+        padding: 0 10px;
+    }
+
+    .infoHeader {
+        height: auto;
+       padding: 32px 16px 32px 16px;
+    }
+
+    .infoHeadertext {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .readMoreButton span{
+        font-size: 16px;
+    }
+
+    .founderinfoimg {
+        
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+        justify-content: unset;
+    }
+
+    .founderimg {
+        width:195px;
+        height: auto;
+        object-fit: cover;
+    }
+    .founderimg img{
+        width:100%;
+    }
+    .founderSocialsName{
+       
+        font-size: 20px;
+    }
+    .founderSocialsInfo{
+        font-size: 16px;
+    }
+    .founderSocialsCompany{
+        font-size: 16px;
+    }
+}
+

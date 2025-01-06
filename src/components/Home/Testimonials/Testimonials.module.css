@@ -1,0 +1,285 @@
+.mainContainer {
+  height: 775px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px 0 100px;
+  background: #0000000A;
+}
+
+.leftBox {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.heading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.reviews {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.reviewCard {
+  padding: 24px 36px 24px 36px;
+  width: 247px;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0px 0px 24px 0px #0000001F;
+
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+.logoBox{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.reviewCount {
+  margin: auto;
+  font-size: 16px;
+  font-family: Roboto;
+  font-weight: 600;
+  color: #000000;
+}
+
+.rating {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: Roboto;
+  font-weight: bold;
+  color: #000000 !important;
+
+}
+
+.rating span {
+  font-size: 24px;
+  background: linear-gradient(215.91deg, #F8DB75 22.43%, #A4730F 80.57%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.comment {
+  font-size: 20px;
+  font-family: Manrope;
+  color: #000000;
+  margin: 1rem 0;
+}
+
+.clientInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 17px;
+}
+
+.clientImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.clientDetails {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.companyLogo {
+  width: 164px;
+  height: 61px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.designation {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ddd;
+  border-radius: 50%;
+}
+
+.dot.active {
+  background-color: #f1c40f;
+}
+
+.rightBoxContainer {
+
+  display: flex;
+  width: fit-content;
+  height: 100%;
+  overflow-y: scroll;
+  gap: 14px;
+}
+
+.rightBox {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 24px;
+
+  font-family: Manrope;
+}
+
+.rightBoxContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  max-width: 252px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: max-content;
+}
+
+.text {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.occupation {
+  font-size: 0.85rem;
+  color: #777;
+  margin: 0;
+}
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+
+.clientInfo {
+  text-align: center;
+}
+
+.clientDetails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.clientImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.companyLogo {
+  width: 50px;
+  height: 50px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.activeDot {
+  background: #000;
+}
+.slide {
+  display: none; 
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.activeSlide {
+  display: block; 
+  opacity: 1;
+}
+
+@media (max-width: 720px){
+  .mainContainer{
+    flex-direction: column;
+    padding: 16px;
+    height: fit-content;
+    gap: 24px;
+  }
+  .reviews{
+    width: 100%;
+    gap: 8px;
+  }
+  .reviewCard{
+  }
+  .leftBox{
+    width: 100%;
+  }
+  .rightBoxContainer{
+    height: 400px;
+  }
+}
