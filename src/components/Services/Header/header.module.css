@@ -23,8 +23,8 @@
 .leftBox {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: baseline;
+    gap: 32px;
 }
 
 .rightBox {
@@ -68,10 +68,8 @@
 .textContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: baseline;
     gap: 32px;
-    padding: 20px;
-    text-align: center;
 }
 
 .downloadButton {
