@@ -15,7 +15,7 @@ function Services() {
       const { res, err } = await getMainPageServicesData();
       if (res) {
         setMainServicePageData(res?.data || {});
-        console.log("the main page  service data is",res.data)
+        // console.log("the main page  service data is",res.data)
       } else {
         setMainServicePageData({});
       }
