@@ -96,7 +96,7 @@ const Testimonials = ({ref}) => {
                 <h2 className={styles.heading}>What our clients say?</h2>
                 <div className={styles.reviews}>
                     {reviewData &&
-                        reviewData.map((item, index) => 
+                        reviewData[0]?.ratings?.map((item, index) => 
                         (
                             <div key={index} className={styles.reviewCard}>
                                 <div className={styles.logoBox} >
