@@ -324,7 +324,7 @@
     width: 100%;
   }
   .image{
-    height: 383px;
+    height: auto;
   }
   
 }
