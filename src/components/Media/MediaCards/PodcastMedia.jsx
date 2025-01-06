@@ -30,6 +30,7 @@ const PodcastMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
 
   return (
     <>
+      <div className={styles.mediaCardContainer}>
       {visibleData.map((cardData, index) => (
         <div className={styles.cardfullContainer} key={index}>
           <div className={styles.cardContainer}>
@@ -112,12 +113,12 @@ const PodcastMediaCards = ({ filteredData = [], activeTab, searchQuery }) => {
           </div>
         </div>
       ))}
-
-      {isMobile && visibleCount < filteredData.length && (
-                <button onClick={handleLoadMore} className={styles.loadMoreButton}>
-                    Load More
-          </button>
-        )}
+      </div>
+       <div className={styles.loadMoreContainer}>
+        <button onClick={handleLoadMore} className={styles.loadMoreButton}>
+          Load More
+        </button>
+      </div>
     </>
   );
 };

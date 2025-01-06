@@ -260,10 +260,10 @@
 .imageSection {
   flex: 1;
 }
-
 .image {
   width: 100%;
-  height: 662px;
+  /* height: 662px; */
+  height: auto;
   border-radius: 10px;
 }
 .headsection2{
