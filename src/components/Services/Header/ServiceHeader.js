@@ -1,36 +1,50 @@
 "use client";
-import { useState, useEffect, useRef } from 'react';
-import styles from './header.module.css';
-import DownloadModal from '@/components/DownloadModal/Download';
-import ReactPlayer from 'react-player';
+import { useState, useEffect, useRef } from "react";
+import styles from "./header.module.css";
+import DownloadModal from "@/components/DownloadModal/Download";
+import ReactPlayer from "react-player";
 
 function ServiceHeader({ title, banner = {}, type }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    const playerRef = useRef(null);
-
-    useEffect(() => {
-        console.log(banner);
-    }, [banner]);
+    const [isUserPlayed, setIsUserPlayed] = useState(false);
+    const [isManuallyPaused, setIsManuallyPaused] = useState(false); 
+    const playerContainerRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsPlaying(entry.isIntersecting); 
+                if (isUserPlayed && !isManuallyPaused) {
+                    const isVisible = entry.intersectionRatio >= 0.5;
+                    setIsPlaying(isVisible);
+                }
             },
-            { threshold: 0.5 } 
+            {
+                threshold: [0.5], 
+            }
         );
 
-        if (playerRef.current) {
-            observer.observe(playerRef.current.wrapper); 
+        if (playerContainerRef.current) {
+            observer.observe(playerContainerRef.current);
         }
 
         return () => {
-            if (playerRef.current) {
-                observer.unobserve(playerRef.current.wrapper);
+            if (playerContainerRef.current) {
+                observer.unobserve(playerContainerRef.current);
             }
         };
-    }, []);
+    }, [isUserPlayed, isManuallyPaused]);
+
+    const handlePlay = () => {
+        setIsUserPlayed(true); 
+        setIsManuallyPaused(false); 
+        setIsPlaying(true);
+    };
+
+    const handlePause = () => {
+        setIsManuallyPaused(true);
+        setIsPlaying(false);
+    };
 
     return (
         <>
@@ -50,13 +64,17 @@ function ServiceHeader({ title, banner = {}, type }) {
                         Download free sample plan
                     </button>
                 </div>
-                <div className={styles.rightBox}>
+                <div
+                    className={styles.rightBox}
+                    ref={playerContainerRef} 
+                >
                     <ReactPlayer
                         className={styles.player}
                         url={banner?.VideoLink}
                         playing={isPlaying}
-                        ref={playerRef}
                         controls
+                        onPlay={handlePlay} 
+                        onPause={handlePause} 
                     />
                 </div>
             </section>
