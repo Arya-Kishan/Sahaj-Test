@@ -9,12 +9,24 @@ const nextConfig = {
     return config;
   },
   images: {
-    //for tetsing adding (img.freepik.com)(www.business-standard.com) should be removed later
-    domains: ['sahajmoney-bucket.s3.ap-south-1.amazonaws.com','sahajmoney.com','img.freepik.com',"www.business-standard.com"]
-},
-
+    // For testing, adding (img.freepik.com) and (www.business-standard.com) domains. Remove later.
+    domains: [
+      'sahajmoney-bucket.s3.ap-south-1.amazonaws.com',
+      'sahajmoney.com',
+      'img.freepik.com',
+      'www.business-standard.com',
+    ],
+  },
   env: {
     NEXT_APP_BASE_URL: process.env.NEXT_APP_BASE_URL,
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://15.207.70.211:4001/api/:path*',
+      },
+    ];
   },
 };
 
