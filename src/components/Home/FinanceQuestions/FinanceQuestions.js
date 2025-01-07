@@ -49,6 +49,29 @@ const FinanceQuestions = ({ financeData }) => {
         setTimeout(() => setIsManualChange(false), 6000);
     };
 
+    const regex = /₹[\d,]+/g; // Regex to match amounts like ₹15,000 or ₹7000
+
+    const getStyledText = (text) => {
+
+        if (!text) {
+            return "";
+        }
+        const parts = text.split(regex); // Split the string by amounts
+        const matches = text.match(regex); // Find all matching amounts
+
+        return parts.reduce((acc, part, index) => {
+            acc.push(<span key={`part-${index}`}>{part}</span>);
+            if (matches && matches[index]) {
+                acc.push(
+                    <span key={`amount-${index}`} style={{ color: "#C18823", fontWeight: "bold" }}>
+                        {matches[index]}
+                    </span>
+                );
+            }
+            return acc;
+        }, []);
+    };
+
     return (
         <>
             <div className={styles.container}>
@@ -97,7 +120,7 @@ const FinanceQuestions = ({ financeData }) => {
                 <div className={styles.textSection}>
                     <div className={styles.headsection}>
                         <h2 className={styles.title2}>{financeInfo?.MainTitle}</h2>
-                        <p className={styles.description}>{financeInfo?.SmallMainTitle}</p>
+                        <p className={styles.description}>{getStyledText(financeInfo?.SmallMainTitle)}</p>
                     </div>
                     <div className={styles.servicesList}>
                         {financeInfo?.WhatWeDoPoints?.map((item, index) => (

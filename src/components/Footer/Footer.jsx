@@ -34,8 +34,8 @@ const Footer = () => {
           <img src={footerData?.FooterLogo} alt="Sahaj money logo" />
           <p className={styles.kk} >{footerData?.FooterDescription}</p>
           <div className={styles.subLogoBox}>
-            <img src={footerData?.FooterLogo} className={styles.subLogo} alt="Sahaj money logo" />
-            <p>2024</p>
+            {/* <img src={footerData?.FooterLogo} className={styles.subLogo} alt="Sahaj money logo" />
+            <p>2024</p> */}
           </div>
         </div>
         <div className={styles.footerSection}>
@@ -94,7 +94,7 @@ const Footer = () => {
       </div>
       <div className={styles.footerBottom}>
         <div className={styles.termBox}>
-          <p>All rights reserved</p>
+          <p>SahajMoney © 2017-2024. All Rights Reserved</p>
           <div className={styles.policyBox}  >
             <Link href={"/termsofservices"}>
             <p>Terms of services</p>

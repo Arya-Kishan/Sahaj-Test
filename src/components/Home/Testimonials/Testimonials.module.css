@@ -45,11 +45,13 @@
   width: 40px;
   height: 40px;
 }
-.logoBox{
+
+.logoBox {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .reviewCount {
   margin: auto;
   font-size: 16px;
@@ -199,9 +201,13 @@
   color: #777;
   margin: 0;
 }
+
 .sliderContainer {
   position: relative;
-  width: 100%;
+  max-width: 100%;
+  width: 600px;
+  max-height: 100%;
+  height: 200px;
   overflow: hidden;
 }
 
@@ -252,34 +258,42 @@
 .activeDot {
   background: #000;
 }
+
 .slide {
-  display: none; 
+  display: none;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 
 .slide.activeSlide {
-  display: block; 
+  display: block;
   opacity: 1;
 }
 
-@media (max-width: 720px){
-  .mainContainer{
+@media (max-width: 720px) {
+  .mainContainer {
     flex-direction: column;
     padding: 16px;
     height: fit-content;
     gap: 24px;
   }
-  .reviews{
+
+  .sliderContainer {
+    height: 250px;
+  }
+
+  .reviews {
     width: 100%;
     gap: 8px;
   }
-  .reviewCard{
-  }
-  .leftBox{
+
+  .reviewCard {}
+
+  .leftBox {
     width: 100%;
   }
-  .rightBoxContainer{
+
+  .rightBoxContainer {
     height: 400px;
   }
 }
