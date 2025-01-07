@@ -6,7 +6,7 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import style from "./calendar.module.css";
 
 function CalendarModal({ setFormData, formData, setopenCalendar }) {
-  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat","Sun",];
+  const days = ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat",];
   const currentDate = dayjs();
   const [today, setToday] = useState(currentDate);
   const [selectDate, setSelectDate] = useState(currentDate);
