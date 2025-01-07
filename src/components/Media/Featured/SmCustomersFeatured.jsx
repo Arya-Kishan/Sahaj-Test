@@ -5,25 +5,27 @@ import styles from './featured.module.css';
 import ReadMore from '@/components/ReadMoreButton/ReadMoreButton';
 import { FaShareAlt } from 'react-icons/fa';
 import FormateDate from "../FormateDate";
+import Link from 'next/link';
+import arrowUpRight from '@/assests/AboutUs/arrowUpRight.svg';
 
 
 const SmCustomersFeatured = ({ data }) => {
 
   const singlefeaturedData = data?.slice(0, 1);
-  const videoLink = singlefeaturedData[0]?.PostCastLink ;
+  const videoLink = singlefeaturedData[0]?.PostCastLink;
   const router = useRouter();
 
   const handleReadMoreClick = () => {
-   
-  
+
+
     if (videoLink) {
-      window.open(videoLink, '_blank'); 
+      window.open(videoLink, '_blank');
     } else {
-     
-      router.push('/invalid-link'); 
+
+      router.push('/invalid-link');
     }
   };
-  
+
   const handleShareClick = () => {
     const message = "Check this out!";  // it can be customized later
     const shareLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
@@ -34,7 +36,7 @@ const SmCustomersFeatured = ({ data }) => {
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         {singlefeaturedData[0]?.CoverImage && (
-          <Image src={singlefeaturedData[0]?.CoverImage} alt="customermedia featured"  width={600} height={350}/>
+          <Image src={singlefeaturedData[0]?.CoverImage} alt="customermedia featured" width={600} height={350} />
         )}
       </div>
       <div className={styles.textContainer}>
@@ -58,7 +60,20 @@ const SmCustomersFeatured = ({ data }) => {
           </p>
         </div>
 
-        <ReadMore text={"Learn More"} onClick={handleReadMoreClick} />  
+        {/* <ReadMore text={"Learn More"} onClick={handleReadMoreClick} /> */}
+        <Link href={{
+          pathname: "/pdfViewer",
+          query: {
+            title: singlefeaturedData[0]?.MediaTitle ?? "",
+            coverImage: singlefeaturedData[0]?.CoverImage ?? "",
+            pdfLink: videoLink
+          }
+        }}
+          style={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
+          <span style={{ fontWeight: "bold" }}>Learn More</span>
+          <Image src={arrowUpRight} alt="icon" className={""} />
+        </Link>
+
       </div>
     </div>
   );
