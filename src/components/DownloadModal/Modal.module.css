@@ -88,6 +88,10 @@
     color: #08090A;
     font-size: 16px;
   }
+
+  .form label p{
+    font-family: Manrope;
+  }
   
   .input {
     min-width: 100%;

@@ -73,7 +73,7 @@
 .videoImage {
     width: 100%; 
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .playButton {
@@ -138,6 +138,7 @@
     font-family: Manrope;
     font-size: 16px;
     font-weight: 400;
+    margin-top: 3px;
 }
 
 .stepText {

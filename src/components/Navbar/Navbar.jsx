@@ -1,7 +1,7 @@
 'use client';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleBookCallModal } from '@/store/slices/modalSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './style.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,6 +23,21 @@ function Navbar() {
     dispatch(toggleBookCallModal());
 
   };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      // Disable scrolling
+      document.body.style.overflow = "hidden";
+    } else {
+      // Enable scrolling
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup function to reset overflow when component unmounts
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
 
 

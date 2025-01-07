@@ -1,167 +1,192 @@
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    overflow: scroll;
-  }
-  
-  .modalContent {
-    background: #FFFFFF;
-    padding: 100px 60px 100px 60px;
-    min-width: 65%;
-    height: fit-content;
-    max-width: 358px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    gap: 34px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
-  }
-  
-  .closeButton {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  .buttonBox{
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .backArrow{
-    color: #C18823;
-    cursor: pointer;
-  }
-  .section{
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    gap: 34px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: scroll;
+}
 
-  }
-  .leftBox{
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    gap: 52px;
-  }
-  .leftBoxHeader{
-    width: 354px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    gap: 19px;
-  }
-  .leftBoxHeader h3{
-    font-size: 24px;
-    font-weight: 600;
-    font-family: Roboto;
-    color: #000000;
-  }
-  .leftBoxHeader p{
-    font-size: 16px;
-    font-weight: 400;
-    font-family: Manrope;
-    color: #000000;
-  }
-  .progressBox{
-    width: 300px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .progressBox div{
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .progressLine{
-    border: 1px dashed #000000;
-    min-height: 40px;
-    margin-left: 16px;
-  }
- .progressBox div h3{
+.modalContent {
+  background: #FFFFFF;
+  padding: 100px 60px 100px 60px;
+  min-width: 65%;
+  height: fit-content;
+  max-width: 358px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 34px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.buttonBox {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.backArrow {
+  color: #C18823;
+  cursor: pointer;
+}
+
+.section {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  gap: 34px;
+
+}
+
+.leftBox {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 52px;
+}
+
+.leftBoxHeader {
+  width: 354px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.leftBoxHeader h3 {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: Roboto;
+  color: #000000;
+}
+
+.leftBoxHeader p {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Manrope;
+  color: #000000;
+}
+
+.progressBox {
+  width: 300px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progressBox div {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.progressLine {
+  border: 1px dashed #000000;
+  min-height: 40px;
+  margin-left: 16px;
+}
+
+.progressBox div h3 {
   text-align: center;
   padding: 4px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   background-color: #C1882340;
- }
-  .rightBox{
+}
+
+.rightBox {
+  width: 100%;
+  max-width: 1000px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.verticleLine {
+  height: 357px;
+  border: 1px solid #D9D9D933;
+}
+
+@media (max-width: 1330px) {
+  .section {
+
+    flex-direction: column;
+  }
+
+  .verticleLine {
+    height: 1px;
     width: 100%;
-    max-width: 1000px;
-    height: fit-content;
+  }
+}
+
+@media (max-width: 768px) {
+  .leftBoxHeader {
+    width: 100%;
+  }
+
+  .modalOverlay {
+    flex-direction: column;
+  }
+
+  .modalContent {
+    object-fit: contain;
+    height: 95vh;
+    padding: 10px 12px 32px 12px;
+    overflow: scroll;
+  }
+
+  .section {
+    flex-direction: column;
+  }
+
+  .verticleLine {
+    height: 0;
+  }
+
+  .progressBox {
+
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .progressLine {
+    min-height: 0;
+    min-width: 80px;
+    margin: 12px -25px;
+  }
+
+  .progressTab {
     display: flex;
     flex-direction: column;
-    gap: 34px;
-  }
-  
-  .verticleLine{
-    height: 357px;
-    border: 1px solid #D9D9D933;
   }
 
-  @media (max-width: 1330px ) {
-    .section{
-  
-      flex-direction: column;
-    }
-    .verticleLine{
-      height: 1px;
-      width: 100%;
-    }
+  .leftBox {
+    width: 100%;
   }
-  
-  @media (max-width: 768px) {
-    .modalOverlay{
-      flex-direction: column;
-    }
-    .modalContent{
-      object-fit: contain;
-      padding: 80px 12px 32px 12px;
-    }
-    .section{
-      flex-direction: column;
-    }
-    .verticleLine{
-      height: 0;
-    }
-    .progressBox{
 
-      flex-direction: row;
-      width:100%;
-      justify-content: center;
-    }
-    .progressLine{
-      min-height: 0;
-      min-width: 80px;
-      margin: 12px -25px ;
-    }
-    .progressTab{
-      display: flex;
-      flex-direction: column;
-    }
-    .leftBox{
-      width: 100%;
-    }
-   
-  }
-  
+}
