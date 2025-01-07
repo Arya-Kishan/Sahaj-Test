@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import styles from './FinancialPlan.module.css';
 import Image from 'next/image';
-import image from '../../../assests/Home/FinancialPlan.webp';
+import image from '../../../assests/Home/FinancialPlan.avif';
 import DownloadModal from '@/components/DownloadModal/Download';
 import logo from "@/assests/Home/logo.webp"
 import { getDownloadData } from '@/services/faq';
