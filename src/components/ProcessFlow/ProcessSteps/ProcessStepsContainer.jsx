@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import styles from './processStepsContainer.module.css';
 import process from '../../../assests/ProcessFlow/process.webp'
+import youtubeThumbnail from '../../../assests/ProcessFlow/youtubeThumbnail.avif'
 import dynamic from 'next/dynamic';
 
 const ProcessStepsContainer = ({ ProcessTopBanner, ProcessSteps }) => {
@@ -29,7 +30,7 @@ const ProcessStepsContainer = ({ ProcessTopBanner, ProcessSteps }) => {
       <div className={styles.processContainer}>
         <div className={styles.processContents} >
           <p className={styles.processHeading}>{ProcessTopBanner?.Title || "Heading"}</p>
-          <div >
+          <div className={styles.playerParent}>
 
             {isVideoPlaying ? (
               <div className={styles.videoPlayerControls}>
@@ -51,7 +52,7 @@ const ProcessStepsContainer = ({ ProcessTopBanner, ProcessSteps }) => {
               :
               (
                 <div className={styles.imgSection}>
-                  <Image src={process} alt="ProcessImage" />
+                  <Image src={youtubeThumbnail} alt="ProcessImage" />
                   <svg
                     width="80"
                     height="80"
