@@ -136,11 +136,68 @@ const FaqPage = ({ faqData = [], topic = [] }) => {
                 <div className={styles.filterName}>
                   <p>{faq.Topic.TopicName}</p>
                 </div>
+
+                {/* ADDED IN BETWEEN TO SHOW IN MOBILE RESPONSIVE AS PER CLIENT REQ */}
+                <div className={styles.imageBox2} >
+                  {faq.isVideo ? <>
+                    {openQuestions[`video-${faq._id}`] ? (
+                      <div className={styles.videoPlayerControls}>
+                        <video
+                          className={styles.videoPlayer}
+                          src={faq?.Videos[0]?.VideoLink}
+                          controls
+                          autoPlay
+                        />
+                        <button
+                          className={styles.closeButton}
+                          onClick={() => handleCloseClick(faq._id)}
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    ) : (
+                      <div className={styles.imageBox}>
+                        <Image src={faq1} alt="FAQ Image" className={styles.Img} />
+                        <svg
+                          width="80"
+                          height="80"
+                          className={styles.videoIcon}
+                          onClick={() => handlePlayClick(faq._id)}
+                          viewBox="0 0 80 80"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle cx="40" cy="40" r="40" fill="white" fillOpacity="0.2" />
+                          <circle cx="40" cy="40" r="30" fill="white" fillOpacity="0.8" />
+                          <path
+                            d="M40.0007 56.6654C49.2054 56.6654 56.6673 49.2034 56.6673 39.9987C56.6673 30.794 49.2054 23.332 40.0007 23.332C30.7959 23.332 23.334 30.794 23.334 39.9987C23.334 49.2034 30.7959 56.6654 40.0007 56.6654Z"
+                            stroke="#C18823"
+                            strokeOpacity="0.75"
+                            strokeWidth="3.33333"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M36.666 33.332L46.666 39.9987L36.666 46.6654V33.332Z"
+                            stroke="#C18823"
+                            strokeOpacity="0.75"
+                            strokeWidth="3.33333"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    )}
+                  </> : <><img className={styles.videoPlayer} src={faq?.Image} /></>}
+
+                </div>
+
                 {faq.FaqQuestionWithAnswer.map((q) => {
                   const tabSpecificKey = `${activeFilter}-${faq._id}-${q._id}`;
                   return (
                     <div className={styles.accordionContainer} key={tabSpecificKey}>
                       <div
+
                         className={styles.questionContainer}
                         role="button"
                         tabIndex="0"
@@ -163,55 +220,58 @@ const FaqPage = ({ faqData = [], topic = [] }) => {
                   );
                 })}
               </div>
-              <div>
-                {openQuestions[`video-${faq._id}`] ? (
-                  <div className={styles.videoPlayerControls}>
-                    <video
-                      className={styles.videoPlayer}
-                      src={faq?.Videos[0]?.VideoLink}
-                      controls
-                      autoPlay
-                    />
-                    <button
-                      className={styles.closeButton}
-                      onClick={() => handleCloseClick(faq._id)}
-                    >
-                      ✕
-                    </button>
-                  </div>
-                ) : (
-                  <div className={styles.imageBox}>
-                    <Image src={faq1} alt="FAQ Image" className={styles.Img} />
-                    <svg
-                      width="80"
-                      height="80"
-                      className={styles.videoIcon}
-                      onClick={() => handlePlayClick(faq._id)}
-                      viewBox="0 0 80 80"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle cx="40" cy="40" r="40" fill="white" fillOpacity="0.2" />
-                      <circle cx="40" cy="40" r="30" fill="white" fillOpacity="0.8" />
-                      <path
-                        d="M40.0007 56.6654C49.2054 56.6654 56.6673 49.2034 56.6673 39.9987C56.6673 30.794 49.2054 23.332 40.0007 23.332C30.7959 23.332 23.334 30.794 23.334 39.9987C23.334 49.2034 30.7959 56.6654 40.0007 56.6654Z"
-                        stroke="#C18823"
-                        strokeOpacity="0.75"
-                        strokeWidth="3.33333"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+              <div className={styles.imageBox1}>
+                {faq.isVideo ? <>
+                  {openQuestions[`video-${faq._id}`] ? (
+                    <div className={styles.videoPlayerControls}>
+                      <video
+                        className={styles.videoPlayer}
+                        src={faq?.Videos[0]?.VideoLink}
+                        controls
+                        autoPlay
                       />
-                      <path
-                        d="M36.666 33.332L46.666 39.9987L36.666 46.6654V33.332Z"
-                        stroke="#C18823"
-                        strokeOpacity="0.75"
-                        strokeWidth="3.33333"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                )}
+                      <button
+                        className={styles.closeButton}
+                        onClick={() => handleCloseClick(faq._id)}
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ) : (
+                    <div className={styles.imageBox}>
+                      <Image src={faq1} alt="FAQ Image" className={styles.Img} />
+                      <svg
+                        width="80"
+                        height="80"
+                        className={styles.videoIcon}
+                        onClick={() => handlePlayClick(faq._id)}
+                        viewBox="0 0 80 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle cx="40" cy="40" r="40" fill="white" fillOpacity="0.2" />
+                        <circle cx="40" cy="40" r="30" fill="white" fillOpacity="0.8" />
+                        <path
+                          d="M40.0007 56.6654C49.2054 56.6654 56.6673 49.2034 56.6673 39.9987C56.6673 30.794 49.2054 23.332 40.0007 23.332C30.7959 23.332 23.334 30.794 23.334 39.9987C23.334 49.2034 30.7959 56.6654 40.0007 56.6654Z"
+                          stroke="#C18823"
+                          strokeOpacity="0.75"
+                          strokeWidth="3.33333"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M36.666 33.332L46.666 39.9987L36.666 46.6654V33.332Z"
+                          stroke="#C18823"
+                          strokeOpacity="0.75"
+                          strokeWidth="3.33333"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </> : <><img className={styles.videoPlayer} src={faq?.Image} /></>}
+
               </div>
             </div>
           ))

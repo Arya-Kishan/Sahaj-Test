@@ -10,8 +10,8 @@ const nextConfig = {
   },
   images: {
     //for tetsing adding (img.freepik.com)(www.business-standard.com) should be removed later
-    domains: ['sahajmoney-bucket.s3.ap-south-1.amazonaws.com','sahajmoney.com','img.freepik.com',"www.business-standard.com","img.etimg.com","staticbiassets.in","www.livemint.com"]
-},
+    domains: ['sahajmoney-bucket.s3.ap-south-1.amazonaws.com', 'sahajmoney.com', 'img.freepik.com', "www.business-standard.com", "img.etimg.com","staticbiassets.in","www.livemint.com"]
+  },
 
   env: {
     NEXT_APP_BASE_URL: process.env.NEXT_APP_BASE_URL,

@@ -57,24 +57,28 @@
     gap: 2rem;
 }
 
+
 .videoContainer {
+    position: relative;
     width: 600px;
-    height: 656px;
+    aspect-ratio: 600 / 656; 
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0.5rem;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    overflow: hidden;
 }
 
 .videoImage {
-    width: 600px;
-    height: 656px;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%; 
+    height: 100%;
+    object-fit: contain;
 }
 
 .playButton {
     position: absolute;
-    /* inset: 0; */
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,6 +86,7 @@
     color: #f8db75;
     cursor: pointer;
 }
+
 
 .stepsContainer {
     width: 100%;
@@ -133,6 +138,7 @@
     font-family: Manrope;
     font-size: 16px;
     font-weight: 400;
+    margin-top: 3px;
 }
 
 .stepText {
@@ -202,7 +208,7 @@
     }
     .videoImage{
         width: 100%;
-        height: 500px;
+       
     }
     .footer{
         flex-wrap: wrap;

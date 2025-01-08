@@ -10,11 +10,11 @@ import styles from "./tabs.module.css";
 import TabContent from "../TabContent/TabContent";
 
 const tabs = [
-  { id: "pressCoverage", label: "Press Coverage" },
+  { id: "customersInMedia", label: "Client Story" },
+  { id: "videoChannel", label: "Video" },
   { id: "podcast", label: "Podcast" },
-  { id: "videoChannel", label: "Video Channels" },
-  { id: "blogs", label: "Blogs" },
-  { id: "customersInMedia", label: "SM's Customers in Media" },
+  { id: "pressCoverage", label: "Press" },
+  { id: "blogs", label: "Blog" },
 ];
 
 const Tabs = () => {

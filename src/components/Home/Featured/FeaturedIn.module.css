@@ -40,9 +40,8 @@
   }
   
   .logo {
-    width: 220px;
-    height: 80px;
-    
+    width: 255px;
+    height: 70px;
   }
   
   @media (max-width: 1300px) {

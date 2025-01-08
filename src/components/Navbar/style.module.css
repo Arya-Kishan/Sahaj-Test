@@ -17,6 +17,10 @@
   z-index: 10;
 }
 
+.navShadow {
+  box-shadow: 0 0 10px black;
+}
+
 .logoBox {
   cursor: pointer;
 }
@@ -82,7 +86,7 @@
 .callButton>span {
   position: relative;
   z-index: 1;
-  
+
 }
 
 .callButton:hover>span {
@@ -90,7 +94,7 @@
   background: linear-gradient(215.91deg, #f8db75 22.43%, #a4730f 80.57%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
+
 }
 
 

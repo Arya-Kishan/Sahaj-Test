@@ -4,10 +4,12 @@ import { useRouter } from "next/navigation";
 import styles from "./Dropdown.module.css";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-const Dropdown = ({ title, options, closeMenu = () => { } }) => {
+const Dropdown = ({ title, options, closeMenu = () => { }, activeLink = "", setActiveLink = () => { } }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const dropdownRef = useRef(null);
+
+  console.log("activeLink !!!!!!! ", activeLink);
 
   const handleOptionClick = (path) => {
     router.push(path);
@@ -34,7 +36,7 @@ const Dropdown = ({ title, options, closeMenu = () => { } }) => {
   return (
     <div ref={dropdownRef} className={styles.dropdown}>
       <button onClick={toggleDropdown} className={styles.buttons}>
-        <p>{title}</p>
+        <p style={activeLink == title ? { fontWeight: "bold" } : { fontWeight: "300" }} >{title}</p>
         <IoIosArrowDown
           className={`${styles.icon} ${isOpen ? styles.rotate : ""}`}
         />
@@ -48,6 +50,7 @@ const Dropdown = ({ title, options, closeMenu = () => { } }) => {
               onClick={() => {
                 handleOptionClick(option.path)
                 closeMenu();
+                setActiveLink(title);
               }}
               className={styles.menuItem}
             >

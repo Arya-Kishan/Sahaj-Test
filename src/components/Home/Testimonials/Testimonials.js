@@ -9,7 +9,7 @@ import mintLogo from "../../../assests/Blog/image.webp";
 import { getClientReviewData, getAllReviewData, getFeatureListData } from '@/services/home';
 
 
-const Testimonials = ({ref}) => {
+const Testimonials = ({ ref }) => {
 
     const [reviewData, setData] = useState([]);
     const [reviewAllData, setAllData] = useState([]);
@@ -96,7 +96,7 @@ const Testimonials = ({ref}) => {
                 <h2 className={styles.heading}>What our clients say?</h2>
                 <div className={styles.reviews}>
                     {reviewData &&
-                        reviewData.map((item, index) => 
+                        reviewData[0]?.ratings.slice(0, 1)?.map((item, index) =>
                         (
                             <div key={index} className={styles.reviewCard}>
                                 <div className={styles.logoBox} >
@@ -137,12 +137,12 @@ const Testimonials = ({ref}) => {
                                                     alt="Client"
                                                     className={styles.clientImage}
                                                 />
-                                                {item?.PersonFromCompanyName &&  <img
+                                                {item?.PersonFromCompanyName && <img
                                                     src={item?.PersonFromCompanyName}
                                                     alt="Company"
                                                     className={styles.companyLogo}
                                                 />}
-                                               
+
                                             </div>
                                             <p className={styles.name}>{item?.PersonName}</p>
                                             <p className={styles.designation}>{item?.PersonDesignation}</p>

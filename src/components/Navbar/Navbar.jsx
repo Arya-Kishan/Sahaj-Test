@@ -1,7 +1,7 @@
 'use client';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleBookCallModal } from '@/store/slices/modalSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './style.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,8 +11,10 @@ import BookCallModal from '../BookCall/BookCall';
 
 function Navbar() {
   const dispatch = useDispatch();
+  const [hasShadow, setHasShadow] = useState(false);
   const isBookCallModalOpen = useSelector((state) => state.modal.isBookCallModalOpen);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -24,11 +26,48 @@ function Navbar() {
 
   };
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      // Disable scrolling
+      document.body.style.overflow = "hidden";
+    } else {
+      // Enable scrolling
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup function to reset overflow when component unmounts
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setHasShadow(true);
+      } else {
+        setHasShadow(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
 
 
   return (
     <div className={style.mainContainer}>
-      <nav className={style.nav}>
+      <nav className={style.nav} style={{
+        boxShadow: hasShadow
+          ? "0 4px 6px rgba(0, 0, 0, 0.1)"
+          : "none",
+      }}
+      >
         <div className={style.logoBox}>
           <Link href="/">
             <Image className={style.logos} src={logo} alt="Sahaj Logo" />
@@ -42,6 +81,8 @@ function Navbar() {
               { label: 'Financial planning', path: '/services' },
               { label: 'Renewal Service', path: '/renewalplan' },
             ]}
+            activeLink={activeLink}
+            setActiveLink={setActiveLink}
           />
           <Dropdown
             title="How it works"
@@ -49,18 +90,22 @@ function Navbar() {
               { label: 'Our Process', path: '/processflow' },
               { label: 'FAQs', path: '/faqs' },
             ]}
+            activeLink={activeLink}
+            setActiveLink={setActiveLink}
           />
           <Dropdown
             title="Media"
             options={[
-              { label: 'Press coverage', path: '/media/pressCoverage' },
+              { label: 'Client Story', path: '/media/customersInMedia' },
+              { label: 'Video', path: '/media/videoChannel' },
               { label: 'Podcast', path: '/media/podcast' },
-              { label: 'Video channels', path: '/media/videoChannel' },
-              { label: 'Blogs', path: '/media/blogs' },
-              { label: 'SM’s Customers in Media', path: '/media/customersInMedia' },
+              { label: 'Press', path: '/media/pressCoverage' },
+              { label: 'Blog', path: '/media/blogs' },
             ]}
+            activeLink={activeLink}
+            setActiveLink={setActiveLink}
           />
-          <Link href="/about" className={style.aboutus}>
+          <Link href="/about" className={style.aboutus} onClick={() => { setActiveLink("About Us") }} style={activeLink == "About Us" ? { fontWeight: "bold" } : { fontWeight: "300" }}>
             About Us
           </Link>
         </div>

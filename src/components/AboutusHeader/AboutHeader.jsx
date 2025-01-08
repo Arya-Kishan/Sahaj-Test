@@ -11,13 +11,13 @@ function AboutHeader({ heading, subHeading }) {
         <div className={styles.gobackIconBox}>
           <Image src={backIcon} alt="backIcon" className={styles.gobackIcon} />
         </div>
-        <Link href="/about" className={styles.gobackLinkText}> About us</Link>
+        <Link href="/about" className={styles.gobackLinkText}>Back to About Us</Link>
       </div>
 
 
       <div className={styles.textContainer}>
         <h1 className={styles.heading}>{heading}</h1>
-        <p className={styles.subHeading}>{subHeading}</p>
+        {/* <p className={styles.subHeading}>{subHeading}</p> */}
       </div>
     </div>
   );
